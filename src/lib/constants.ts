@@ -1,0 +1,93 @@
+export const BRAND = {
+  name: 'AEITCH',
+  nameArabic: 'إيتش',
+  tagline: 'Engineering Sovereign AI, Cloud & Enterprise Digital Systems',
+  taglineArabic: 'هندسة نظم الذكاء الاصطناعي والسحابة السيادية والتحول الرقمي',
+  description:
+    'AEITCH is a premier technology partner architecting compliant cloud infrastructure, autonomous AI agents, and rapid MVP platforms for enterprises and startups in Saudi Arabia and the GCC.',
+  email: 'engineering@aeitch.com',
+  location: 'Riyadh, Saudi Arabia & Global Delivery Centers',
+  gulfTimezone: 'GMT+3 (Riyadh / Mecca)',
+  foundedYear: 2022,
+  founder: 'Haseeb Ur Rehman Khan',
+  phonePlaceholder: '+966 [REPLACE: Official Saudi Support]',
+  colors: {
+    bg: '#000000',
+    bgElevated: '#0a0a0a',
+    surface1: '#111111',
+    surface2: '#181818',
+    surfaceBorder: 'rgba(255, 255, 255, 0.10)',
+    surfaceBorderStrong: 'rgba(255, 255, 255, 0.18)',
+    accent: '#e9800a',
+    accentHover: '#ff9420',
+    accentPress: '#c96d05',
+    accentSoft: 'rgba(233, 128, 10, 0.12)',
+    accentGlow: 'rgba(233, 128, 10, 0.35)',
+    textPrimary: '#ffffff',
+    textSecondary: 'rgba(255, 255, 255, 0.64)',
+    textSubtle: 'rgba(255, 255, 255, 0.42)',
+    onAccent: '#000000',
+    accentFlare: '#ff9420',
+    accentEmber: '#e9800a',
+  },
+};
+
+export const NAV_LINKS = [
+  { name: 'Services', nameAr: 'الخدمات', href: '/#services' },
+  { name: 'Industries', nameAr: 'القطاعات', href: '/#industries' },
+  { name: 'Kingdom 2030', nameAr: 'مستقبل المملكة', href: '/#vision-2030' },
+  { name: 'Case Studies', nameAr: 'دراسات النجاح', href: '/case-studies' },
+  { name: 'Insights', nameAr: 'المقالات التقنية', href: '/insights' },
+  { name: 'About', nameAr: 'من نحن', href: '/about-us' },
+  { name: 'Contact', nameAr: 'تواصل معنا', href: '/contact-us' },
+];
+
+export const SERVICE_LINKS = [
+  {
+    name: 'Applied AI & Autonomous Agents',
+    nameAr: 'الذكاء الاصطناعي التطبيقي والوكلاء',
+    href: '/services/ai-consulting',
+    slug: 'ai-consulting',
+    icon: 'Cpu',
+  },
+  {
+    name: 'Sovereign Cloud & DevOps',
+    nameAr: 'السحابة السيادية وحلول ديف أوبس',
+    href: '/services/cloud-devops',
+    slug: 'cloud-devops',
+    icon: 'Cloud',
+  },
+  {
+    name: 'Custom Enterprise Software',
+    nameAr: 'البرمجيات المؤسسية المخصصة',
+    href: '/services/custom-software',
+    slug: 'custom-software',
+    icon: 'Code',
+  },
+  {
+    name: 'Product Engineering & Rapid MVPs',
+    nameAr: 'تطوير المنتجات والنماذج الأولية',
+    href: '/services/new-product-development',
+    slug: 'new-product-development',
+    icon: 'Rocket',
+  },
+];
+
+export const TECH_STACK_LOGOS = [
+  'Next.js 15',
+  'Three.js',
+  'TypeScript',
+  'Python AI',
+  'Kubernetes',
+  'AWS ME-Central',
+  'Terraform',
+  'PostgreSQL',
+  'LangChain',
+  'Docker',
+  'Redis',
+  'Prisma ORM',
+  'Tailwind CSS',
+  'vLLM',
+  'Qdrant',
+  'mada / Apple Pay Ready',
+];

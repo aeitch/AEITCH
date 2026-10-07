@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="280" height="64">
+  <!-- Monogram Box -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#000000" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+  <text x="16" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="900" letter-spacing="-0.05em">H</text>
+  <circle cx="50" cy="41" r="5" fill="#e9800a" />
+
+  <!-- Wordmark -->
+  <text x="76" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" letter-spacing="-0.03em">AEITCH</text>
+  <circle cx="218" cy="41" r="5" fill="#e9800a" />
+
+  <!-- Tagline -->
+  <text x="78" y="58" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="9" font-weight="700" letter-spacing="0.2em">DIGITAL ENGINEERING</text>
+</svg>

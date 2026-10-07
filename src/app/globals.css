@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Modern CSS Angle Property for 60fps GPU animation without repaints */
+  @property --conic-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  :root {
+    /* AEITCH Design Tokens - Dark Theme (Default) */
+    --bg: #000000;
+    --bg-elevated: #0a0a0a;
+    --surface: #111111;
+    --surface-2: #181818;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --fg: #ffffff;
+    --fg-muted: rgba(255, 255, 255, 0.64);
+    --fg-subtle: rgba(255, 255, 255, 0.42);
+    --accent: #e9800a;
+    --accent-hover: #ff9420;
+    --accent-press: #c96d05;
+    --accent-soft: rgba(233, 128, 10, 0.12);
+    --accent-glow: rgba(233, 128, 10, 0.35);
+    --on-accent: #000000;
+
+    /* Semantic Aliases */
+    --bg-void: var(--bg);
+    --bg-surface-1: var(--surface);
+    --bg-surface-2: var(--surface-2);
+    --bg-surface-3: #222222;
+    --surface-border: var(--border);
+    --brand-accent: var(--accent);
+
+    /* Cursor tracking coordinates */
+    --mx: 50%;
+    --my: 50%;
+  }
+
+  .light {
+    --bg: #ffffff;
+    --bg-elevated: #fcfcfc;
+    --surface: #f6f6f6;
+    --surface-2: #eeeeee;
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.16);
+    --fg: #000000;
+    --fg-muted: rgba(0, 0, 0, 0.64);
+    --fg-subtle: rgba(0, 0, 0, 0.42);
+    --accent: #c96d05; /* Meets WCAG AA contrast on white */
+    --accent-hover: #e9800a;
+    --accent-press: #a55603;
+    --accent-soft: rgba(201, 109, 5, 0.12);
+    --accent-glow: rgba(201, 109, 5, 0.35);
+    --on-accent: #ffffff;
+  }
+
+  html {
+    background-color: #000000;
+    color: #ffffff;
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Custom AEITCH Obsidian/Orange Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.20);
+    border-radius: 9999px;
+    border: 1px solid #000000;
+    transition: background 0.2s ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e9800a;
+    box-shadow: 0 0 10px rgba(233, 128, 10, 0.5);
+  }
+
+  /* Selection: Accent Orange Background, Black Text */
+  ::selection {
+    background: #e9800a;
+    color: #000000;
+  }
+  ::-moz-selection {
+    background: #e9800a;
+    color: #000000;
+  }
+
+  /* Focus visible accessibility indicator: 2px accent ring with 2px offset */
+  *:focus-visible {
+    outline: 2px solid #e9800a;
+    outline-offset: 2px;
+  }
+}
+
+@keyframes spin-conic {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@layer utilities {
+  .animate-conic-spin {
+    animation: spin-conic 8s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Accent Glow Utilities */
+  .text-glow-accent {
+    text-shadow: 0 0 20px rgba(233, 128, 10, 0.55), 0 0 40px rgba(233, 128, 10, 0.25);
+  }
+
+  .box-glow-sm {
+    box-shadow: 0 0 15px -2px rgba(233, 128, 10, 0.3);
+  }
+
+  .box-glow-md {
+    box-shadow: 0 0 25px -4px rgba(233, 128, 10, 0.45);
+  }
+
+  .box-glow-lg {
+    box-shadow: 0 0 40px -6px rgba(233, 128, 10, 0.6);
+  }
+
+  .mask-radial-faded {
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  .mask-marquee-edges {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  /* Faint technical dot grid for depth */
+  .bg-tech-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Subtle global film-grain overlay */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Smooth GPU conic border helper */
+  .glowing-conic-border {
+    background: conic-gradient(
+      from var(--conic-angle),
+      transparent 0%,
+      rgba(233, 128, 10, 0.7) 20%,
+      rgba(255, 255, 255, 0.3) 40%,
+      transparent 60%
+    );
+    animation: spin-conic 6s linear infinite;
+  }
+}

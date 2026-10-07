@@ -1,0 +1,111 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. Admin Users & Credentials
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  role         String    @default("admin")
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// 2. Services & Service Details
+model Service {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  title        String
+  tagline      String
+  category     String    @default("Engineering")
+  description  String
+  fullContent  String
+  icon         String
+  features     String    // JSON stringified array of strings
+  techStack    String    // JSON stringified array of strings
+  order        Int       @default(0)
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// 3. Case Studies & MVP Showcase
+model CaseStudy {
+  id             String    @id @default(cuid())
+  slug           String    @unique
+  title          String
+  clientName     String
+  clientIndustry String
+  type           String    @default("CASE_STUDY") // "CASE_STUDY" | "MVP_SHOWCASE"
+  summary        String
+  challenge      String
+  solution       String
+  results        String    // JSON stringified array of { metric: string, label: string }
+  techStack      String    // JSON stringified array of strings
+  coverImage     String?
+  liveUrl        String?
+  order          Int       @default(0)
+  isFeatured     Boolean   @default(false)
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+// 4. Client Testimonials
+model Testimonial {
+  id            String    @id @default(cuid())
+  clientName    String
+  clientRole    String
+  clientCompany String
+  avatarUrl     String?
+  quote         String
+  rating        Int       @default(5)
+  verified      Boolean   @default(true)
+  order         Int       @default(0)
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// 5. Homepage Statistics & Counters
+model MetricCounter {
+  id          String    @id @default(cuid())
+  label       String
+  value       String
+  prefix      String    @default("")
+  suffix      String    @default("")
+  description String?
+  icon        String?
+  order       Int       @default(0)
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// 6. Consultation Inquiries & Contact Submissions
+model Inquiry {
+  id               String    @id @default(cuid())
+  name             String
+  email            String
+  company          String?
+  serviceRequested String?
+  budgetRange      String?
+  timeline         String?
+  message          String
+  meetingDate      String?
+  meetingTime      String?
+  status           String    @default("NEW") // "NEW" | "CONTACTED" | "IN_DISCUSSION" | "CONVERTED" | "ARCHIVED"
+  notes            String?
+  ipAddress        String?
+  userAgent        String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
