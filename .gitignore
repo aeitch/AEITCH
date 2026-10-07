@@ -35,6 +35,14 @@ yarn-error.log*
 prisma/*.db
 prisma/*.db-journal
 
+# agent skills & scratch
+.agents/
+skills-lock.json
+
+# raw / unused frame extractions
+scroll motion animations/
+public/scroll-motion/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
