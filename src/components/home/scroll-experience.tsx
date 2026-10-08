@@ -38,39 +38,6 @@ export function ScrollExperience() {
   const phase4Opacity = useTransform(scrollYProgress, [0.86, 0.91, 1], [0, 1, 1]);
   const phase4Y = useTransform(scrollYProgress, [0.86, 0.91, 1], [30, 0, 0]);
 
-  // Preload frames progressively
-  useEffect(() => {
-    let loadedCount = 0;
-    const images: HTMLImageElement[] = [];
-
-    // Preload keyframe 1 immediately for instant paint
-    const img1 = new Image();
-    img1.src = `/scroll-motion/frame_0001.webp`;
-    img1.onload = () => {
-      images[1] = img1;
-      imagesRef.current = images;
-      renderFrame(1);
-    };
-
-    // Preload remaining frames
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-      const img = new Image();
-      const frameNum = String(i).padStart(4, '0');
-      img.src = `/scroll-motion/frame_${frameNum}.webp`;
-      img.onload = () => {
-        loadedCount++;
-        images[i] = img;
-        setLoadProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-        if (loadedCount >= 30) {
-          // Ready to scrub once initial chunk is loaded
-          setImagesLoaded(true);
-        }
-      };
-    }
-
-    imagesRef.current = images;
-  }, []);
-
   // Canvas paint method with aspect-ratio: cover
   const renderFrame = useCallback((frameNumber: number) => {
     const canvas = canvasRef.current;
@@ -106,6 +73,7 @@ export function ScrollExperience() {
       offsetY = (ch - renderH) / 2;
     } else {
       renderW = ch * imgRatio;
+      offsetY = 0;
       offsetX = (cw - renderW) / 2;
     }
 
@@ -115,6 +83,39 @@ export function ScrollExperience() {
 
     ctx.restore();
   }, []);
+
+  // Preload frames progressively
+  useEffect(() => {
+    let loadedCount = 0;
+    const images: HTMLImageElement[] = [];
+
+    // Preload keyframe 1 immediately for instant paint
+    const img1 = new Image();
+    img1.src = `/scroll-motion/frame_0001.webp`;
+    img1.onload = () => {
+      images[1] = img1;
+      imagesRef.current = images;
+      renderFrame(1);
+    };
+
+    // Preload remaining frames
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      const frameNum = String(i).padStart(4, '0');
+      img.src = `/scroll-motion/frame_${frameNum}.webp`;
+      img.onload = () => {
+        loadedCount++;
+        images[i] = img;
+        setLoadProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
+        if (loadedCount >= 30) {
+          // Ready to scrub once initial chunk is loaded
+          setImagesLoaded(true);
+        }
+      };
+    }
+
+    imagesRef.current = images;
+  }, [renderFrame]);
 
   // Listen to frame changes via Framer Motion transform listener
   useEffect(() => {

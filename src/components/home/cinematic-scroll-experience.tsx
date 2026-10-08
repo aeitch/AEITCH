@@ -282,7 +282,7 @@ export function CinematicScrollExperience() {
             <div className="flex items-center gap-2 rounded-full border border-white/15 bg-black/85 backdrop-blur-md px-3.5 py-1.5 shadow-lg text-white">
               <span className="flex h-2 w-2 rounded-full bg-accent animate-ping" />
               <span className="font-bold tracking-wider">
-                {currentAct.actCode} // {currentAct.sectionNumber}
+                {currentAct.actCode} {'//'} {currentAct.sectionNumber}
               </span>
             </div>
             <div className="hidden md:flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-3 py-1.5 text-white/70">
@@ -491,7 +491,7 @@ export function CinematicScrollExperience() {
                 FRAME SCRUB: {Math.round(localActProgress * 100)}%
               </span>
               <span className="text-[10px] text-white/40 hidden sm:inline">
-                // {currentAct.sectionNumber}
+                {'//'} {currentAct.sectionNumber}
               </span>
             </div>
 
