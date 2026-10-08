@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 import { ConsultationModal } from '@/components/forms/ConsultationModal';
+import { SovereignMicroservicesTopology, MvpRoadmapGantt } from '@/components/schematics';
 
 export function ServicesShowcase() {
   const { t, direction, locale } = useTranslation();
@@ -33,9 +34,6 @@ export function ServicesShowcase() {
   // State for Cloud CI/CD Interactive Simulation
   const [buildStep, setBuildStep] = useState(3);
   const [isSimulatingBuild, setIsSimulatingBuild] = useState(false);
-
-  // State for MVP 8-Week Sprint Interactive Tracker
-  const [activeSprintWeek, setActiveSprintWeek] = useState(2);
 
   const activeService =
     t.services.items.find((s) => s.id === selectedServiceId) || t.services.items[0];
@@ -62,29 +60,6 @@ export function ServicesShowcase() {
       });
     }, 700);
   };
-
-  const sprintMilestones = [
-    {
-      weeks: 'W1 - W2',
-      title: locale === 'ar' ? 'المعمارية وقواعد البيانات' : 'Architecture Spec & Schema',
-      deliverables: ['System Architecture ADRs', 'PostgreSQL / Prisma Schema', 'API Contract'],
-    },
-    {
-      weeks: 'W3 - W5',
-      title: locale === 'ar' ? 'بناء المحرك والوكلاء' : 'Core Engine & Agent Mesh',
-      deliverables: ['Multi-Agent Pipelines', 'Auth & RBAC Matrix', 'Third-Party Webhooks'],
-    },
-    {
-      weeks: 'W6 - W7',
-      title: locale === 'ar' ? 'الأمان وتدقيق الامتثال' : 'Security & PDPL Audit',
-      deliverables: ['Penetration Test Report', 'SDAIA Data Check', 'Load Testing (10k TPS)'],
-    },
-    {
-      weeks: 'W8',
-      title: locale === 'ar' ? 'التسليم ونقل الملكية' : '100% IP Transfer & Launch',
-      deliverables: ['Production CI/CD Handover', 'Complete Source Code IP', 'Training Pods'],
-    },
-  ];
 
   return (
     <section id="services" className="relative py-28 bg-[#fafafa] text-zinc-900 overflow-hidden border-t border-zinc-200" dir={direction}>
@@ -315,54 +290,8 @@ export function ServicesShowcase() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.25 }}
-                    className="rounded-2xl border border-white/10 bg-black p-4 sm:p-6 space-y-4 sm:space-y-6"
                   >
-                    <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                      <div className="flex items-center gap-2">
-                        <Code2 className="h-4 w-4 text-accent" />
-                        <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
-                          BESPOKE B2B MICROSERVICES TOPOLOGY
-                        </span>
-                      </div>
-                      <span className="font-mono text-[10px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
-                        LATENCY &lt; 80MS
-                      </span>
-                    </div>
-
-                    {/* Visual Microservice Bus Diagram */}
-                    <div className="rounded-xl border border-white/10 bg-surface p-3 sm:p-4 relative overflow-hidden font-mono text-xs">
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 text-center">
-                        <div className="rounded-lg border border-white/10 bg-bg p-2.5 sm:p-3">
-                          <span className="text-[10px] text-fg-subtle block">API GATEWAY</span>
-                          <span className="font-bold text-white text-xs sm:text-sm">Kong / Envoy</span>
-                        </div>
-                        <div className="rounded-lg border border-accent/40 bg-accent/10 p-2.5 sm:p-3">
-                          <span className="text-[10px] text-accent block">EVENT BROKER</span>
-                          <span className="font-bold text-accent text-xs sm:text-sm">Apache Kafka</span>
-                        </div>
-                        <div className="rounded-lg border border-white/10 bg-bg p-2.5 sm:p-3">
-                          <span className="text-[10px] text-fg-subtle block">DATA LAKE</span>
-                          <span className="font-bold text-white text-xs sm:text-sm">PostgreSQL / S3</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-white/70">
-                        <span>AVERAGE API LATENCY: <strong className="text-accent">42ms</strong></span>
-                        <span>FAULT TOLERANCE: <strong className="text-white">ACTIVE-ACTIVE</strong></span>
-                      </div>
-                    </div>
-
-                    {/* Concrete Feature Matrix */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs">
-                      <div className="rounded-xl border border-white/10 bg-surface-2 p-3">
-                        <span className="font-bold text-white block mb-0.5">Enterprise Identity (SSO)</span>
-                        <span className="text-fg-subtle text-[11px]">SAML 2.0 / OAuth2 / Nafath Ready</span>
-                      </div>
-                      <div className="rounded-xl border border-white/10 bg-surface-2 p-3">
-                        <span className="font-bold text-white block mb-0.5">Immutable Audit Trail</span>
-                        <span className="text-fg-subtle text-[11px]">Cryptographic Tamper-Proof Logs</span>
-                      </div>
-                    </div>
+                    <SovereignMicroservicesTopology />
                   </motion.div>
                 )}
 
@@ -374,69 +303,8 @@ export function ServicesShowcase() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.25 }}
-                    className="rounded-2xl border border-white/10 bg-black p-6 space-y-6"
                   >
-                    <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                      <div className="flex items-center gap-2">
-                        <Rocket className="h-4 w-4 text-accent" />
-                        <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
-                          8-WEEK PRODUCTION SPRINT MACHINE
-                        </span>
-                      </div>
-                      <span className="font-mono text-[10px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
-                        56-DAY HANDOVER
-                      </span>
-                    </div>
-
-                    {/* 4 Interactive Phase Milestone Tabs */}
-                    <div className="grid grid-cols-4 gap-2 font-mono text-xs">
-                      {sprintMilestones.map((phase, pIdx) => {
-                        const isCurrentPhase = activeSprintWeek === pIdx;
-                        return (
-                          <button
-                            key={pIdx}
-                            onClick={() => setActiveSprintWeek(pIdx)}
-                            className={`rounded-xl border p-2.5 text-center transition-all ${
-                              isCurrentPhase
-                                ? 'border-accent bg-accent text-black font-bold shadow-glow-sm'
-                                : 'border-white/10 bg-surface text-white/60 hover:border-white/30'
-                            }`}
-                          >
-                            <span className="text-[10px] block">{phase.weeks}</span>
-                            <span className="text-xs truncate block mt-0.5">PHASE 0{pIdx + 1}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Active Phase Deliverables Card */}
-                    <div className="rounded-xl border border-white/10 bg-surface p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-bold text-white text-sm">
-                          {sprintMilestones[activeSprintWeek].title}
-                        </h4>
-                        <span className="font-mono text-[11px] text-accent">
-                          {sprintMilestones[activeSprintWeek].weeks}
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
-                        {sprintMilestones[activeSprintWeek].deliverables.map((item, dIdx) => (
-                          <div
-                            key={dIdx}
-                            className="flex items-center gap-2 rounded-lg bg-bg border border-border p-2 text-[11px] text-fg-muted"
-                          >
-                            <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
-                            <span className="truncate">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Ownership Guarantee Slate */}
-                    <div className="rounded-xl border border-accent/30 bg-accent/5 p-3 flex items-center justify-between font-mono text-xs">
-                      <span className="text-white">100% CODE & IP OWNERSHIP:</span>
-                      <span className="text-accent font-bold">ZERO VENDOR LOCK-IN</span>
-                    </div>
+                    <MvpRoadmapGantt />
                   </motion.div>
                 )}
               </AnimatePresence>

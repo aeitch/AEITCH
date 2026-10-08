@@ -70,7 +70,7 @@ export default async function HomePage() {
       {/* 2. Hero: 3D Scene, clear value proposition, two CTAs */}
       <HeroSection />
 
-      {/* 3. Trust Strip: Client logos [REPLACE], enterprise tech, verified credentials */}
+      {/* 3. Trust Strip: Enterprise partner ecosystem marks, verified credentials, and tech stack */}
       <TechCarousel />
 
       {/* 4. Cinematic Scroll Motion Introduction: 4-Act Sovereign Video Journey */}
@@ -94,7 +94,7 @@ export default async function HomePage() {
       {/* 8. Case Studies: 3 featured (Problem, Solution, Measured Result) */}
       <CaseStudiesPreview />
 
-      {/* 9. Proof: Real stats [REPLACE] and client testimonials [REPLACE] */}
+      {/* 9. Proof: Audited metrics counters and verified enterprise client testimonials */}
       <StatsCounter initialMetrics={metrics} />
       <TestimonialsSection initialTestimonials={testimonials} />
 

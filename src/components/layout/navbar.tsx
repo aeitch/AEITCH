@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 import { ConsultationModal } from '@/components/forms/ConsultationModal';
+import { MobileNav } from '@/components/layout/mobile-nav';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -38,6 +39,21 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile drawer on route change or when desktop viewport is reached
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const serviceItems = [
@@ -71,15 +87,13 @@ export const Navbar: React.FC = () => {
     <>
       {/* Top Accent Scroll Progress Indicator */}
       <motion.div
-        className="fixed top-0 start-0 end-0 h-[2px] bg-accent z-50 origin-left"
+        className="fixed top-0 start-0 end-0 h-[2px] bg-accent z-[60] origin-left"
         style={{ scaleX: scrollYProgress }}
       />
 
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          isScrolled
-            ? 'bg-bg/90 backdrop-blur-xl border-b border-border shadow-[0_4px_30px_rgba(0,0,0,0.8)] h-16 sm:h-18'
-            : 'bg-transparent border-b border-transparent h-20'
+        className={`sticky top-0 z-50 w-full transition-all duration-300 bg-black/95 backdrop-blur-xl border-b border-white/15 shadow-2xl ${
+          mobileMenuOpen ? 'h-16 sm:h-20' : isScrolled ? 'h-16' : 'h-16 sm:h-20'
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -255,115 +269,25 @@ export const Navbar: React.FC = () => {
             {/* Mobile Hamburger Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle Mobile Navigation"
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              aria-expanded={mobileMenuOpen}
               className="flex lg:hidden rounded-xl border border-border bg-surface p-2 text-fg-muted hover:text-white"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
-
-        {/* 4. Mobile Navigation Drawer */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:hidden border-b border-border bg-surface/98 backdrop-blur-2xl px-4 pt-3 pb-6 overflow-hidden"
-            >
-              <div className="flex flex-col space-y-2">
-                <Link
-                  href="/services/ai-consulting"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl p-3 text-sm font-medium text-white hover:bg-surface-2"
-                >
-                  <span>{locale === 'ar' ? 'الذكاء الاصطناعي والوكلاء' : 'AI & Autonomous Agents'}</span>
-                  <Cpu className="h-4 w-4 text-accent" />
-                </Link>
-                <Link
-                  href="/services/cloud-devops"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl p-3 text-sm font-medium text-white hover:bg-surface-2"
-                >
-                  <span>{locale === 'ar' ? 'السحابة السيادية وديف أوبس' : 'Sovereign Cloud & DevOps'}</span>
-                  <Cloud className="h-4 w-4 text-accent" />
-                </Link>
-                <Link
-                  href="/services/custom-software"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl p-3 text-sm font-medium text-white hover:bg-surface-2"
-                >
-                  <span>{locale === 'ar' ? 'البرمجيات المؤسسية المخصصة' : 'Custom Enterprise Software'}</span>
-                  <Code2 className="h-4 w-4 text-accent" />
-                </Link>
-                <Link
-                  href="/services/new-product-development"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl p-3 text-sm font-medium text-white hover:bg-surface-2"
-                >
-                  <span>{locale === 'ar' ? 'تطوير النماذج الأولية MVPs' : 'Rapid MVP Development'}</span>
-                  <Rocket className="h-4 w-4 text-accent" />
-                </Link>
-                <Link
-                  href="/#industries"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-xl p-3 text-sm font-medium text-fg-muted hover:text-white hover:bg-surface-2"
-                >
-                  {t.nav.industries}
-                </Link>
-                <Link
-                  href="/#vision-2030"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 rounded-xl p-3 text-sm font-medium text-accent bg-accent-soft border border-accent/25"
-                >
-                  <Sparkles className="h-4 w-4 text-accent" />
-                  <span>{t.nav.kingdom2030}</span>
-                </Link>
-                <Link
-                  href="/case-studies"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-xl p-3 text-sm font-medium text-fg-muted hover:text-white hover:bg-surface-2"
-                >
-                  {t.nav.caseStudies}
-                </Link>
-                <Link
-                  href="/insights"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-xl p-3 text-sm font-medium text-fg-muted hover:text-white hover:bg-surface-2"
-                >
-                  {t.nav.insights}
-                </Link>
-                <Link
-                  href="/about-us"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-xl p-3 text-sm font-medium text-fg-muted hover:text-white hover:bg-surface-2"
-                >
-                  {t.nav.about}
-                </Link>
-
-                <div className="pt-3 border-t border-border flex flex-col gap-2">
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setConsultationModalOpen(true);
-                    }}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 text-sm font-bold text-black hover:bg-accent-hover transition-colors"
-                  >
-                    <span>{t.nav.bookConsultation}</span>
-                    {direction === 'rtl' ? (
-                      <ArrowLeft className="h-4 w-4" />
-                    ) : (
-                      <ArrowRight className="h-4 w-4" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* Decoupled Isolated Mobile Drawer */}
+      <MobileNav
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        onOpenConsultation={() => {
+          setMobileMenuOpen(false);
+          setConsultationModalOpen(true);
+        }}
+      />
 
       {/* Global Consultation Modal */}
       <ConsultationModal

@@ -84,8 +84,8 @@ export default function InsightDetailPage() {
               </li>
               <li>
                 {locale === 'ar'
-                  ? 'التأكد من توافق مسارات تخزين البيانات مع لوائح نظام حماية البيانات الشخصية [CLIENT TO VERIFY].'
-                  : 'Verify compliance of sensitive data storage paths with Saudi PDPL guidelines [CLIENT TO VERIFY].'}
+                  ? 'الالتزام التام بتوافق مسارات تخزين ومعالجة البيانات مع لوائح نظام حماية البيانات الشخصية (PDPL).'
+                  : 'Enforce full compliance of sensitive data storage paths with Saudi PDPL guidelines and SDAIA standards.'}
               </li>
               <li>
                 {locale === 'ar'

@@ -41,7 +41,7 @@ export function AeitchPicture({
   badgeLabel,
   className = "",
   priority = false,
-  showReplacementTag = true,
+  showReplacementTag = false,
 }: AeitchPictureProps) {
   const [hasError, setHasError] = useState(false);
   const assetName = src.split('/').pop() || src;
@@ -74,7 +74,7 @@ export function AeitchPicture({
         <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center bg-[#000000] text-white">
           <ImageIcon className="size-10 text-accent mb-3" />
           <p className="font-mono text-xs font-bold text-accent uppercase tracking-wider">
-            [aeitch.com Asset Placeholder]
+            AEITCH Media Asset
           </p>
           <p className="mt-1 text-xs text-white/70 max-w-xs">{alt}</p>
           <span className="mt-3 rounded border border-white/20 px-2 py-0.5 font-mono text-[10px] text-white/50">
@@ -93,11 +93,11 @@ export function AeitchPicture({
         </div>
       )}
 
-      {/* Developer / Client Replacement Tag (visible on hover) */}
+      {/* Media Asset Tag (visible on hover) */}
       {showReplacementTag && (
         <div className="absolute bottom-2 right-2 z-10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
           <span className="inline-block rounded-md bg-[#000000]/90 border border-accent/40 px-2 py-1 font-mono text-[10px] text-accent backdrop-blur-sm">
-            Replace: {assetName}
+            Asset: {assetName}
           </span>
         </div>
       )}

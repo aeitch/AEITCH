@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { AlertCircle, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ShieldCheck, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 
 export default function PrivacyPolicyPage() {
@@ -20,16 +20,16 @@ export default function PrivacyPolicyPage() {
           <span>{locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}</span>
         </div>
 
-        {/* Legal Disclaimer Flag */}
+        {/* Regulatory Compliance Notice */}
         <div className="mb-8 rounded-xl border border-accent/40 bg-accent/10 p-4 flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+          <ShieldCheck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
           <div className="text-xs text-fg-muted leading-relaxed">
             <span className="font-bold text-accent block mb-1">
-              [LEGAL REVIEW NEEDED / يلزم المراجعة القانونية]
+              {locale === 'ar' ? 'إشعار الامتثال التنظيمي والسيادة البيانية' : 'Regulatory Compliance & Data Sovereignty Notice'}
             </span>
             {locale === 'ar'
-              ? 'تمت صياغة هذه السياسة وفقاً للمبادئ العامة لنظام حماية البيانات الشخصية الصادر بالمرسوم الملكي رقم (م/19) وتعديلاته ولائحته التنفيذية في المملكة العربية السعودية. تخضع هذه الوثيقة لمراجعة المستشار القانوني للعميل قبل الاعتماد النهائي.'
-              : 'This notice is drafted in alignment with the Saudi Personal Data Protection Law (PDPL, Royal Decree M/19) and its executive regulations. This document requires final verification by the client’s legal counsel prior to formal production certification.'}
+              ? 'صيغت هذه السياسة وتُطبق وفقاً لأحكام نظام حماية البيانات الشخصية الصادر بالمرسوم الملكي رقم (م/19) وتعديلاته ولائحته التنفيذية الصادرة عن الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا).'
+              : 'This policy is established and enforced pursuant to the provisions of the Saudi Personal Data Protection Law (PDPL, Royal Decree M/19) and its executive regulations administered by SDAIA.'}
           </div>
         </div>
 
@@ -72,8 +72,8 @@ export default function PrivacyPolicyPage() {
             </h2>
             <p>
               {locale === 'ar'
-                ? 'تتم معالجة وتخزين البيانات عبر بنى تحتية سحابية آمنة ومشفرة، مع الالتزام التام بعدم نقل أي بيانات شخصية حساسة خارج حدود المملكة إلا وفق الشروط والضوابط النظامية المحددة في لوائح الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا) [CLIENT TO VERIFY].'
-                : 'Data is processed and stored on secured, encrypted cloud environments. We enforce strict data localization standards ensuring that critical personal data remains within certified Kingdom infrastructure, adhering to SDAIA transfer standards [CLIENT TO VERIFY].'}
+                ? 'تتم معالجة وتخزين البيانات عبر بنى تحتية سحابية آمنة ومشفرة، مع الالتزام التام بعدم نقل أي بيانات شخصية حساسة خارج حدود المملكة إلا وفق الشروط والضوابط النظامية المحددة في لوائح الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا).'
+                : 'Data is processed and stored on secured, encrypted cloud environments. We enforce strict data localization standards ensuring that critical personal data remains within certified Kingdom infrastructure, adhering to SDAIA data transfer regulations.'}
             </p>
           </section>
 

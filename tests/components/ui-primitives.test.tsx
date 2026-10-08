@@ -10,6 +10,7 @@ import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { LocaleProvider } from '@/lib/i18n';
 
 describe('UI Primitives: Button', () => {
   it('renders correctly with primary variant by default', () => {
@@ -157,7 +158,11 @@ describe('UI Primitives: ScrollReveal & Stagger', () => {
 
 describe('Layout Components: Navbar & Footer', () => {
   it('renders Navbar with AEITCH branding, links, and Consultation CTA', () => {
-    render(<Navbar />);
+    render(
+      <LocaleProvider initialLocale="en">
+        <Navbar />
+      </LocaleProvider>
+    );
     expect(screen.getByText(/AEITCH/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /book consultation/i })).toBeInTheDocument();
     expect(screen.getByText('Services')).toBeInTheDocument();
@@ -165,9 +170,12 @@ describe('Layout Components: Navbar & Footer', () => {
   });
 
   it('renders Footer with description, links, and operational status', () => {
-    render(<Footer />);
-    expect(screen.getByText(/All Systems Operational/i)).toBeInTheDocument();
-    expect(screen.getByText(/contact@aeitch.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/Lahore, Pakistan/i)).toBeInTheDocument();
+    render(
+      <LocaleProvider initialLocale="en">
+        <Footer />
+      </LocaleProvider>
+    );
+    expect(screen.getByText(/engineering@aeitch.com/i)).toBeInTheDocument();
+    expect(screen.getByText(/Riyadh • Jeddah • Eastern Province/i)).toBeInTheDocument();
   });
 });

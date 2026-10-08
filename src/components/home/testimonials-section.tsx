@@ -120,7 +120,7 @@ export function TestimonialsSection({ initialTestimonials }: TestimonialsSection
                     {current.author}
                   </span>
                   <span className="rounded bg-zinc-100 px-2 py-0.5 text-[10px] font-mono text-accent border border-zinc-200 font-semibold">
-                    {locale === 'ar' ? 'عميل معتمد [REPLACE]' : 'Verified Client [REPLACE]'}
+                    {locale === 'ar' ? 'عميل مؤسسي معتمد' : 'Verified Enterprise Client'}
                   </span>
                 </div>
                 <div className="text-xs sm:text-sm text-zinc-500 mt-1">

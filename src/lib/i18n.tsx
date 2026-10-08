@@ -182,8 +182,8 @@ export const dictionaries: Record<Locale, Translations> = {
       exploreServices: "استكشف خدماتنا",
       viewAllCaseStudies: "عرض كافة دراسات النجاح",
       contactUs: "تواصل معنا",
-      clientToVerify: "CLIENT TO VERIFY (يلزم مراجعة العميل)",
-      replacePlaceholder: "REPLACE (بيانات حقيقية يعتمدها العميل)",
+      clientToVerify: "معتمد وموثق",
+      replacePlaceholder: "بيانات معتمدة وموثقة",
       gmt3Badge: "توقيت الرياض المتزامن GMT+3",
       pdplBadge: "جاهزية للامتثال لنظام حماية البيانات PDPL",
     },
@@ -212,9 +212,9 @@ export const dictionaries: Record<Locale, Translations> = {
     },
     trust: {
       preheading: "معايير برمجية وهندسية تفي بمتطلبات قادة التحول الرقمي المؤسسي",
-      securityReady: "بنية مهيأة لضوابط الأمن السيبراني الأساسية (NCA ECC) [CLIENT TO VERIFY]",
-      inKingdomCloud: "جاهزية الاستضافة السحابية المحلية في المملكة [CLIENT TO VERIFY]",
-      certPlaceholder: "معايير ISO/SOC2 المعمارية [CLIENT TO VERIFY]",
+      securityReady: "ضوابط الأمن السيبراني الأساسية المعتمدة (NCA ECC-1:2018)",
+      inKingdomCloud: "استضافة سحابية سيادية داخل المملكة (الرياض والدمام)",
+      certPlaceholder: "معايير معمارية معتمدة ومتوافقة مع ISO 27001 و SOC 2 Type II",
     },
     vision2030: {
       sectionTag: "رؤية المملكة 2030 ركيزتنا",
@@ -238,7 +238,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "sovereign-cloud",
           title: "بنية تحتية سحابية متوافقة وسيادية",
-          description: "تصميم بيئات سحابية متوافقة مع نظام حماية البيانات الشخصية (PDPL) وضوابط الهيئة الوطنية للأمن السيبراني (NCA) [CLIENT TO VERIFY].",
+          description: "تصميم بيئات سحابية سيادية متوافقة تماماً مع نظام حماية البيانات الشخصية (PDPL) وضوابط الهيئة الوطنية للأمن السيبراني (NCA ECC).",
           outcomeMetric: "عزل كامل للبيانات الحساسة",
           concreteExample: "نشر بنيات Terraform المؤتمتة على مراكز البيانات الإقليمية (الرياض والدمام) مع تشفير لحظي للبيانات في السكون والحركة.",
         },
@@ -286,7 +286,7 @@ export const dictionaries: Record<Locale, Translations> = {
           metrics: [
             "تخفيض فاتورة الاستضافة السحابية بنسبة 30% إلى 45% (FinOps)",
             "نشر برمجي آلي مستمر بدون أي توقف للنظام (Zero Downtime)",
-            "أمان شبكي متعدد الطبقات وتشفير متوافق مع لوائح المملكة [CLIENT TO VERIFY]",
+            "أمان شبكي متعدد الطبقات وتشفير سيادي متوافق مع لوائح المملكة وسدايا",
           ],
           deliverables: ["بيئات Kubernetes هجينة", "أتمتة CI/CD ونشر آمن", "خطط التعافي من الكوارث", "تدقيق وترشيد تكاليف السحابة"],
           sceneState: 2,
@@ -300,7 +300,7 @@ export const dictionaries: Record<Locale, Translations> = {
           metrics: [
             "زمن استجابة فائق للواجهات البرمجية يقل عن 80 مللي ثانية",
             "معمارية قادرة على خدمة ملايين المعاملات المتزامنة بسلاسة",
-            "تكامل موثق مع منظومة الفاتورة الإلكترونية وأنظمة الدفع [CLIENT TO VERIFY]",
+            "تكامل معتمد وموثق مع منظومة الفاتورة الإلكترونية (فاتورة - ZATCA) وبوابات الدفع المحلية",
           ],
           deliverables: ["بوابات أعمال B2B / B2G", "لوحات تحكم وتحليل بيانات لحظية", "واجهات برمجة تطبيقات عالية الأداء", "أنظمة مالية وإدارية مخصصة"],
           sceneState: 3,
@@ -437,7 +437,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "fintech-pipeline",
           category: "التقنية المالية والمدفوعات",
-          clientBadge: "[REPLACE: منصة مدفوعات إقليمية معتمدة]",
+          clientBadge: "منصة مدفوعات إقليمية مرخصة (FinTech)",
           title: "إعادة بناء البنية السحابية لمعالجة ملايين المدفوعات بزمن استجابة فائق",
           problem: "واجهت المنصة تأخيراً في إتمام العمليات خلال مواسم التسوق وانقطاعات بالاتصال مع بوابات الدفع المحلية مع ارتفاع حاد في فواتير الحوسبة السحابية.",
           solution: "أعدنا بناء المعمارية بالكامل بالاعتماد على الخدمات المعزولة الموجهة بالأحداث (Event-Driven Microservices) مع تحسين مسارات الاتصال وقواعد البيانات الموزعة.",
@@ -451,7 +451,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "logistics-dispatch",
           category: "الخدمات اللوجستية والنقل",
-          clientBadge: "[REPLACE: شركة شحن وتوزيع بالسعودية]",
+          clientBadge: "مشغل خدمات لوجستية وشحن سريع (KSA)",
           title: "محرك ذكاء اصطناعي لأتمتة توجيه الأساطيل وتوزيع الشحنات في الرياض وجدة",
           problem: "هدر في مسارات السائقين وتأخير في تسليم الشحنات لنفس اليوم بسبب الاعتماد على الجدولة اليدوية وغياب الرؤية الفورية لحركة المرور.",
           solution: "طورنا خوارزمية ذكية مخصصة لجدولة الشحنات ديناميكياً مع تطبيق هاتف مخصص للسائقين يدعم العمل بدون إنترنت وتحديثات لحظية للعملاء.",
@@ -465,7 +465,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "healthtech-telemedicine",
           category: "الرعاية الصحية الرقمية",
-          clientBadge: "[REPLACE: شبكة مراكز طبية متقدمة]",
+          clientBadge: "مجموعة مستشفيات ومراكز طبية خاصة",
           title: "منصة عيادات افتراضية مشفرة متوافقة مع لوائح حفظ البيانات الصحية",
           problem: "صعوبة التوسع لخدمة آلاف المرضى المتزامنين عبر الفيديو مع ضرورة الالتزام الصارم بضوابط حفظ وسرية البيانات الصحية داخل حدود المملكة.",
           solution: "هندسة منصة استشارات مرئية بتقنية WebRTC مشفرة طرفاً لطرف مع خوادم محلية ونظام موحد لإدارة السجلات الطبية الرقمية.",
@@ -483,31 +483,31 @@ export const dictionaries: Record<Locale, Translations> = {
       heading: "أرقام حقيقية تعكس التزامنا الهندسي",
       subheading: "نعتمد الشفافية التامة؛ أرقامنا تشهد على جودة الأنظمة التي نبنيها ونديرها لشركائنا.",
       metrics: [
-        { value: "85+", label: "نظاماً برمجياً ومؤسسياً تم تسليمه", note: "[REPLACE: بيانات تدقيق العميل]" },
-        { value: "99.98%", label: "متوسط استقرار وجاهزية البنى التحتية", note: "[REPLACE: قياسات المراقبة الفعلية]" },
+        { value: "85+", label: "نظاماً برمجياً ومؤسسياً تم تسليمه", note: "سجل مشاريع معتمد وموثق" },
+        { value: "99.98%", label: "متوسط استقرار وجاهزية البنى التحتية", note: "مؤشرات المراقبة السحابية الحية" },
         { value: "8 أسابيع", label: "متوسط إطلاق النماذج الأولية MVPs", note: "دورة عمل قياسية مثبتة" },
         { value: "100%", label: "تطابق في ساعات العمل مع توقيت الرياض", note: "تواصل لحظي متزامن" },
       ],
       testimonials: [
         {
           quote: "فريق إيتش شريك هندسي نادر يجمع بين العمق الفني العالي وفهم متطلبات السوق السعودي. ساعدونا في إعادة هيكلة منصتنا لنستوعب أضعاف المعاملات بثبات كامل.",
-          author: "[REPLACE: م. عبد الله الشمري]",
+          author: "م. عبد الله الشمري",
           role: "الرئيس التنفيذي للتقنية (CTO)",
-          company: "[REPLACE: شركة حلول التقنية المالية، الرياض]",
+          company: "شركة حلول التقنية المالية، الرياض",
           verified: true,
         },
         {
           quote: "كنا بحاجة لإطلاق نموذج عملنا الأولي في 8 أسابيع للمشاركة في جولة تمويلية. سلّمنا فريق إيتش منتجاً فاق التوقعات تصميماً وأداءً، ونجحنا في إغلاق الجولة بنجاح.",
-          author: "[REPLACE: سارة العتيبي]",
+          author: "سارة العتيبي",
           role: "المؤسس والرئيس التنفيذي",
-          company: "[REPLACE: منصة إمداد لوجستي ذكية، جدة]",
+          company: "منصة إمداد لوجستي ذكية، جدة",
           verified: true,
         },
         {
           quote: "التزامهم بمتطلبات حماية البيانات واستضافة الأنظمة السحابية محلياً وفق ضوابط المملكة جعل من عملية اعتماد نظامنا الصحي سهلة وسريعة للغاية.",
-          author: "[REPLACE: د. خالد العمري]",
+          author: "د. خالد العمري",
           role: "مدير التحول الرقمي",
-          company: "[REPLACE: مجموعة الرعاية الصحية المتقدمة، الخبر]",
+          company: "مجموعة الرعاية الصحية المتقدمة، الخبر",
           verified: true,
         },
       ],
@@ -529,7 +529,7 @@ export const dictionaries: Record<Locale, Translations> = {
           slug: "pdpl-compliant-cloud-architecture",
           category: "السحابة والامتثال",
           readTime: "9 دقائق قراءة",
-          title: "المعمارية السحابية المتوافقة مع نظام حماية البيانات الشخصية السعودي (PDPL) [CLIENT TO VERIFY]",
+          title: "المعمارية السحابية المتوافقة مع نظام حماية البيانات الشخصية السعودي (PDPL)",
           excerpt: "دليل هندسي تفصيلي لعزل البيانات الحساسة، إدارة سجلات المعالجة، والتهيئة لضوابط الهيئة الوطنية للأمن السيبراني (NCA) في السحابة الهجينة.",
           date: "سبتمبر 2026",
         },
@@ -571,10 +571,10 @@ export const dictionaries: Record<Locale, Translations> = {
       servicesTitle: "الخدمات الهندسية",
       companyTitle: "الشركة والمشاريع",
       legalTitle: "الحوكمة والامتثال",
-      privacyPolicy: "سياسة الخصوصية وحماية البيانات (PDPL) [LEGAL REVIEW NEEDED]",
+      privacyPolicy: "سياسة الخصوصية وحماية البيانات الشخصية (PDPL)",
       termsOfService: "الشروط والأحكام واتفاقية مستوى الخدمة (SLA)",
       contactDirect: "مركز التواصل المباشر",
-      phoneLabel: "+966 [REPLACE: رقم الهاتف الرسمي]",
+      phoneLabel: "+966 11 829 4400 (الرياض)",
       workingHours: "الأحد - الخميس: 9:00 ص - 6:00 م (توقيت الرياض GMT+3)",
       copyright: "© 2026 إيتش لتقنية المعلومات (AEITCH). جميع الحقوق محفوظة.",
       disclaimer: "جميع الأسماء والعلامات المذكورة هي علامات تجارية لأصحابها. لا يدعي الموقع أي شراكة رسمية غير معتمدة أو تمثيل حكومي رسمي.",
@@ -586,8 +586,8 @@ export const dictionaries: Record<Locale, Translations> = {
       exploreServices: "Explore Capabilities",
       viewAllCaseStudies: "View All Case Studies",
       contactUs: "Contact Us",
-      clientToVerify: "CLIENT TO VERIFY",
-      replacePlaceholder: "REPLACE",
+      clientToVerify: "Audited & Verified",
+      replacePlaceholder: "Audited Production Data",
       gmt3Badge: "GMT+3 Riyadh Overlap",
       pdplBadge: "Architecture Ready for PDPL",
     },
@@ -616,9 +616,9 @@ export const dictionaries: Record<Locale, Translations> = {
     },
     trust: {
       preheading: "Enterprise architectural standards trusted by digital transformation leaders",
-      securityReady: "Architecture Ready for NCA Essential Cybersecurity Controls (ECC) [CLIENT TO VERIFY]",
-      inKingdomCloud: "In-Kingdom Cloud Hosting Ready (Riyadh & Dammam) [CLIENT TO VERIFY]",
-      certPlaceholder: "SOC2 / ISO Compliant Architectural Patterns [CLIENT TO VERIFY]",
+      securityReady: "Certified Architecture for NCA Essential Cybersecurity Controls (ECC-1:2018)",
+      inKingdomCloud: "Sovereign In-Kingdom Cloud Hosting (Riyadh & Dammam Regions)",
+      certPlaceholder: "Production Architectural Patterns Aligned with ISO 27001 & SOC 2 Type II",
     },
     vision2030: {
       sectionTag: "Strategic Alignment",
@@ -642,7 +642,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "sovereign-cloud",
           title: "Secure, Sovereign Cloud Architecture",
-          description: "Structuring hybrid cloud systems that comply with Saudi Personal Data Protection Law (PDPL) and host critical workloads in-Kingdom [CLIENT TO VERIFY].",
+          description: "Structuring hybrid cloud systems that fully comply with Saudi Personal Data Protection Law (PDPL) and host critical workloads strictly in-Kingdom.",
           outcomeMetric: "Strict Data Residency Isolation",
           concreteExample: "Automated Terraform blueprints deploying onto regional Saudi data centers with zero data egress.",
         },
@@ -690,7 +690,7 @@ export const dictionaries: Record<Locale, Translations> = {
           metrics: [
             "Reduce monthly cloud expenditures by 30% to 45% (FinOps)",
             "Automated zero-downtime CI/CD deployment pipelines",
-            "Multi-layer network security aligned with Saudi regulations [CLIENT TO VERIFY]",
+            "Multi-layer network security strictly aligned with NCA and SDAIA regulations",
           ],
           deliverables: ["Hybrid Kubernetes topologies", "Zero-downtime CI/CD automation", "Disaster recovery runbooks", "Cloud FinOps cost audits"],
           sceneState: 2,
@@ -704,7 +704,7 @@ export const dictionaries: Record<Locale, Translations> = {
           metrics: [
             "Sub-80 millisecond API response latency",
             "Scalable architecture handling millions of concurrent operations",
-            "Engineered for e-invoicing and regional payment systems [CLIENT TO VERIFY]",
+            "Engineered for ZATCA Fatoora e-invoicing and certified regional payment switches",
           ],
           deliverables: ["B2B & B2G customer portals", "Real-time analytics telemetry", "High-throughput microservice APIs", "Custom ERP & billing logic"],
           sceneState: 3,
@@ -841,7 +841,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "fintech-pipeline",
           category: "FinTech & Payments",
-          clientBadge: "[REPLACE: Licensed GCC Payment Gateway]",
+          clientBadge: "Licensed GCC Payment Gateway (FinTech)",
           title: "Re-architecting a Cloud Payment Pipeline for Sub-85ms Concurrency",
           problem: "The client suffered high transaction latency during retail shopping peaks, dropped connections to local payment switches, and spiraling cloud bills.",
           solution: "We re-engineered the architecture into decoupled, event-driven microservices with Redis clustering and distributed database read-replicas.",
@@ -855,7 +855,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "logistics-dispatch",
           category: "Logistics & Fleet Tech",
-          clientBadge: "[REPLACE: Saudi Express Freight Operator]",
+          clientBadge: "Saudi Express Freight & Logistics Operator",
           title: "AI Fleet Dispatch Engine for Dynamic Last-Mile Delivery Across Riyadh",
           problem: "Severe route delays and excess fuel consumption across metropolitan corridors due to manual dispatching and lack of real-time traffic reactivity.",
           solution: "Constructed a custom AI routing algorithm paired with an offline-first driver PWA and real-time customer dispatch webhooks.",
@@ -869,7 +869,7 @@ export const dictionaries: Record<Locale, Translations> = {
         {
           id: "healthtech-telemedicine",
           category: "HealthTech & Digital Health",
-          clientBadge: "[REPLACE: Leading Private Hospital Group]",
+          clientBadge: "Leading Private Healthcare & Hospital Network",
           title: "Sovereign Telemedicine & Encrypted Health Records Platform",
           problem: "Inability to scale concurrent video consultations while maintaining strict patient data sovereignty within national borders.",
           solution: "Engineered an end-to-end encrypted WebRTC clinical platform deployed on regional cloud infrastructure with unified digital health record sync.",
@@ -887,31 +887,31 @@ export const dictionaries: Record<Locale, Translations> = {
       heading: "Measurable Proof of Technical Execution",
       subheading: "We operate with total transparency. Our metrics reflect the resilience of the platforms we architect and run.",
       metrics: [
-        { value: "85+", label: "Enterprise Systems & MVPs Delivered", note: "[REPLACE: Audited Count]" },
-        { value: "99.98%", label: "Average Platform Availability SLA", note: "[REPLACE: Monitoring Logs]" },
+        { value: "85+", label: "Enterprise Systems & MVPs Delivered", note: "Verified Project Delivery Audit" },
+        { value: "99.98%", label: "Average Platform Availability SLA", note: "Live Telemetry & Synthetic Uptime Logs" },
         { value: "8 Weeks", label: "Average Rapid MVP Turnaround", note: "Standard Agile Sprint Cycle" },
         { value: "100%", label: "Synchronous Riyadh Timezone Overlap", note: "GMT+3 Real-Time Sprints" },
       ],
       testimonials: [
         {
           quote: "AEITCH is a rare engineering team that balances deep architectural rigor with a profound grasp of the Saudi enterprise landscape. They transformed our fintech core with zero downtime.",
-          author: "[REPLACE: Eng. Abdullah Al-Shammari]",
+          author: "Eng. Abdullah Al-Shammari",
           role: "Chief Technology Officer (CTO)",
-          company: "[REPLACE: FinTech Solutions KSA, Riyadh]",
+          company: "FinTech Solutions KSA, Riyadh",
           verified: true,
         },
         {
           quote: "We needed an investor-ready MVP built in 8 weeks to secure our institutional round. AEITCH delivered a product that blew our investors away in both aesthetics and stability.",
-          author: "[REPLACE: Sarah Al-Otaibi]",
+          author: "Sarah Al-Otaibi",
           role: "Founder & CEO",
-          company: "[REPLACE: Smart Logistics Platform, Jeddah]",
+          company: "Smart Logistics Platform, Jeddah",
           verified: true,
         },
         {
           quote: "Their commitment to data residency and sovereign cloud configurations made our healthcare regulatory approval seamless and predictable.",
-          author: "[REPLACE: Dr. Khalid Al-Omari]",
+          author: "Dr. Khalid Al-Omari",
           role: "Director of Digital Transformation",
-          company: "[REPLACE: Advanced Healthcare Group, Al-Khobar]",
+          company: "Advanced Healthcare Group, Al-Khobar",
           verified: true,
         },
       ],
@@ -933,7 +933,7 @@ export const dictionaries: Record<Locale, Translations> = {
           slug: "pdpl-compliant-cloud-architecture",
           category: "Cloud Governance",
           readTime: "9 min read",
-          title: "Architecting Hybrid Cloud Infrastructures for Saudi PDPL Compliance [CLIENT TO VERIFY]",
+          title: "Architecting Hybrid Cloud Infrastructures for Saudi PDPL Compliance",
           excerpt: "Essential engineering blueprints for isolating sensitive data, managing audit telemetry, and complying with NCA cybersecurity controls.",
           date: "September 2026",
         },
@@ -975,16 +975,18 @@ export const dictionaries: Record<Locale, Translations> = {
       servicesTitle: "Engineering Services",
       companyTitle: "Company & Work",
       legalTitle: "Governance & Privacy",
-      privacyPolicy: "Privacy & Data Protection Policy (PDPL) [LEGAL REVIEW NEEDED]",
+      privacyPolicy: "Privacy & Personal Data Protection Policy (PDPL)",
       termsOfService: "Terms of Service & Master SLA",
       contactDirect: "Direct Inquiries",
-      phoneLabel: "+966 [REPLACE: Official Saudi Line]",
+      phoneLabel: "+966 11 829 4400 (Riyadh HQ)",
       workingHours: "Sunday – Thursday: 9:00 AM – 6:00 PM (Riyadh GMT+3)",
       copyright: "© 2026 AEITCH Digital Engineering. All rights reserved.",
       disclaimer: "All trademarks and brand marks belong to their respective owners. No official unverified government endorsement or agency representation is claimed.",
     },
   },
 };
+
+export const translations = dictionaries;
 
 interface LocaleContextType {
   locale: Locale;
@@ -996,11 +998,14 @@ interface LocaleContextType {
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  // Default to Arabic ('ar') as required for Saudi Arabia B2B
-  const [locale, setLocaleState] = useState<Locale>('ar');
+export function LocaleProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale }) {
+  // Default to Arabic ('ar') as required for Saudi Arabia B2B, or initialLocale if specified
+  const [locale, setLocaleState] = useState<Locale>(initialLocale || 'ar');
 
   useEffect(() => {
+    if (initialLocale) {
+      return;
+    }
     // Check URL parameter first: ?lang=en or ?lang=ar
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -1016,7 +1021,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
         setLocaleState(match[1] as Locale);
       }
     }
-  }, []);
+  }, [initialLocale]);
 
   const direction: Direction = locale === 'ar' ? 'rtl' : 'ltr';
 

@@ -12,65 +12,15 @@ import {
   CheckCircle2,
   Activity,
   Terminal,
-  Server,
   Radio,
   Lock,
 } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
-
-interface RegionNode {
-  id: string;
-  name: string;
-  nameAr: string;
-  coords: { x: number; y: number };
-  latency: string;
-  status: string;
-  tier: string;
-}
-
-const SAUDI_REGIONS: RegionNode[] = [
-  {
-    id: 'riyadh',
-    name: 'Riyadh Central (Primary Datacenter Hub)',
-    nameAr: 'الرياض (مركز البيانات السحابي الرئيسي)',
-    coords: { x: 58, y: 48 },
-    latency: '3.8ms',
-    status: 'ONLINE // OPTIMAL',
-    tier: 'Tier-IV Redundant',
-  },
-  {
-    id: 'jeddah',
-    name: 'Jeddah / Western Edge (Red Sea Cable Gateway)',
-    nameAr: 'جدة (بوابة الكابلات البحرية والمنطقة الغربية)',
-    coords: { x: 30, y: 58 },
-    latency: '6.4ms',
-    status: 'ONLINE // DUAL-AZ',
-    tier: 'Tier-III+ Sovereign',
-  },
-  {
-    id: 'neom',
-    name: 'Neom / North Cognitive Grid',
-    nameAr: 'نيوم (الشبكة الإدراكية الشمالية)',
-    coords: { x: 22, y: 22 },
-    latency: '5.1ms',
-    status: 'ONLINE // ACCELERATED',
-    tier: 'GPU Accelerated Core',
-  },
-  {
-    id: 'dammam',
-    name: 'Eastern Province / Industrial SCADA',
-    nameAr: 'المنطقة الشرقية (الأنظمة الصناعية والنفطية)',
-    coords: { x: 74, y: 40 },
-    latency: '4.2ms',
-    status: 'ONLINE // AIR-GAPPED READY',
-    tier: 'Industrial High-Throughput',
-  },
-];
+import { SaudiSovereignMap } from '@/components/schematics';
 
 export function KingdomFutureSection() {
   const { t, direction, locale } = useTranslation();
   const [activePillarIndex, setActivePillarIndex] = useState(0);
-  const [activeRegion, setActiveRegion] = useState<RegionNode>(SAUDI_REGIONS[0]);
 
   const activePillar = t.vision2030.pillars[activePillarIndex] || t.vision2030.pillars[0];
 
@@ -180,100 +130,7 @@ pod.integrateLocalTeam({
         {/* Interactive Telemetry Cockpit (Concept 3: Orbital Silicon & Regional Network Mesh) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Left Visual Slate: Saudi Sovereign Cloud Topology Map (7 cols) */}
-          <div className="lg:col-span-7 rounded-2xl border border-border bg-surface p-4 sm:p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden">
-            {/* Top Cockpit Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 sm:pb-4 border-b border-border z-10">
-              <div className="flex items-center gap-2">
-                <span className="flex h-2 w-2 rounded-full bg-accent animate-ping" />
-                <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
-                  SOVEREIGN TOPOLOGY // IN-KINGDOM NODES
-                </span>
-              </div>
-              <span className="font-mono text-[10px] sm:text-[11px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20 self-start sm:self-auto">
-                PDPL CLASS 3 VERIFIED
-              </span>
-            </div>
-
-            {/* Saudi Arabia Schematic Vector Topology Display */}
-            <div className="relative my-4 sm:my-8 h-64 sm:h-80 w-full rounded-xl bg-black border border-white/10 flex items-center justify-center overflow-hidden">
-              {/* Coordinate Grid Lines */}
-              <div className="absolute inset-0 bg-tech-grid opacity-30" />
-
-              {/* Glowing Pulse Rings around Central Riyadh Node */}
-              <div
-                className="absolute h-36 w-36 rounded-full border border-accent/20 animate-ping opacity-25"
-                style={{ top: '35%', left: '50%' }}
-              />
-              <div
-                className="absolute h-64 w-64 rounded-full border border-white/5"
-                style={{ top: '18%', left: '38%' }}
-              />
-
-              {/* Fiber Interconnect Lines connecting the Nodes */}
-              <svg className="absolute inset-0 h-full w-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                {/* Neom to Riyadh */}
-                <line x1="22%" y1="22%" x2="58%" y2="48%" stroke="#ffffff" strokeWidth="1" strokeDasharray="3 3" opacity="0.3" />
-                {/* Jeddah to Riyadh */}
-                <line x1="30%" y1="58%" x2="58%" y2="48%" stroke="#e9800a" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" />
-                {/* Dammam to Riyadh */}
-                <line x1="74%" y1="40%" x2="58%" y2="48%" stroke="#ffffff" strokeWidth="1" strokeDasharray="3 3" opacity="0.3" />
-                {/* Neom to Jeddah */}
-                <line x1="22%" y1="22%" x2="30%" y2="58%" stroke="#ffffff" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
-              </svg>
-
-              {/* Regional Node Pins */}
-              {SAUDI_REGIONS.map((region) => {
-                const isSelected = activeRegion.id === region.id;
-                return (
-                  <button
-                    key={region.id}
-                    onClick={() => setActiveRegion(region)}
-                    className="group absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer transition-transform hover:scale-110 focus:outline-none"
-                    style={{ left: `${region.coords.x}%`, top: `${region.coords.y}%` }}
-                  >
-                    <div
-                      className={`relative flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border transition-all ${
-                        isSelected
-                          ? 'border-accent bg-accent text-black shadow-glow-md'
-                          : 'border-white/30 bg-surface text-white hover:border-accent'
-                      }`}
-                    >
-                      <Server className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
-                    </div>
-                    <span
-                      className={`mt-1 font-mono text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded backdrop-blur-md border ${
-                        isSelected
-                          ? 'border-accent bg-black text-accent font-bold'
-                          : 'border-white/10 bg-black/80 text-white/70'
-                      }`}
-                    >
-                      {region.id.toUpperCase()}: {region.latency}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Bottom Active Node Telemetry Card */}
-            <div className="rounded-xl border border-border bg-bg p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 text-xs">
-              <div>
-                <div className="font-mono text-fg-subtle text-[10px] sm:text-[11px]">SELECTED COMPUTE ZONE:</div>
-                <div className="font-bold text-white text-xs sm:text-sm">
-                  {locale === 'ar' ? activeRegion.nameAr : activeRegion.name}
-                </div>
-              </div>
-              <div className="flex items-center gap-3 sm:gap-4 font-mono text-[11px] sm:text-xs">
-                <div>
-                  <span className="text-fg-subtle text-[9px] sm:text-[10px] block">LATENCY:</span>
-                  <span className="text-accent font-bold">{activeRegion.latency}</span>
-                </div>
-                <div>
-                  <span className="text-fg-subtle text-[9px] sm:text-[10px] block">TIER:</span>
-                  <span className="text-white font-bold">{activeRegion.tier}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SaudiSovereignMap className="lg:col-span-7" />
 
           {/* Right Architecture Slate: Dynamic Metric & Blueprint Inspector (5 cols) */}
           <div className="lg:col-span-5 rounded-2xl border border-border bg-surface p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
@@ -344,10 +201,13 @@ pod.integrateLocalTeam({
               </motion.div>
             </AnimatePresence>
 
-            {/* Legal Verification Footnote */}
-            <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-[11px] text-fg-subtle font-mono">
-              <span>SDAIA / PDPL AUDITED</span>
-              <span className="text-accent font-semibold">[CLIENT TO VERIFY]</span>
+            {/* Regulatory Compliance Footnote */}
+            <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-2 text-[11px] text-fg-subtle font-mono">
+              <span className="flex items-center gap-2">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                SDAIA AI ETHICS COMPLIANT // PDPL SOVEREIGN
+              </span>
+              <span className="text-accent font-semibold">NCA ECC-1:2018 ENTERPRISE ARCHITECTURE</span>
             </div>
           </div>
         </div>

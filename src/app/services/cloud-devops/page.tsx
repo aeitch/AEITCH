@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { RadialGlowCard } from '@/components/ui/radial-glow-card';
+import { SovereignMicroservicesTopology } from '@/components/schematics';
 
 export const metadata: Metadata = {
   title: 'Cloud Architecture & DevOps Engineering | AEITCH',
@@ -162,6 +163,31 @@ export default function CloudDevOpsPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ARCHITECTURAL TOPOLOGY SCHEMATIC SECTION (PURE BLACK) */}
+      <section className="relative w-full py-20 bg-[#000000] border-t border-white/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <ScrollReveal delay={0.05} yOffset={20}>
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-[#e9800a] bg-white/5 border border-white/10 mb-3">
+                CLOUD ARCHITECTURE TOPOLOGY
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-white">
+                Sovereign Cloud & Microservices Bus
+              </h2>
+              <p className="mt-4 text-sm sm:text-base text-white/70">
+                Multi-AZ container orchestration with Envoy edge ingress, Kafka event backbone, and air-gapped worker execution.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={0.15} yOffset={25}>
+            <div className="max-w-5xl mx-auto">
+              <SovereignMicroservicesTopology />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

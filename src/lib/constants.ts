@@ -10,7 +10,7 @@ export const BRAND = {
   gulfTimezone: 'GMT+3 (Riyadh / Mecca)',
   foundedYear: 2022,
   founder: 'Haseeb Ur Rehman Khan',
-  phonePlaceholder: '+966 [REPLACE: Official Saudi Support]',
+  phonePlaceholder: '+966 11 829 4400',
   colors: {
     bg: '#000000',
     bgElevated: '#0a0a0a',

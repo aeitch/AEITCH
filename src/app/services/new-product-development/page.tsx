@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { RadialGlowCard } from '@/components/ui/radial-glow-card';
+import { MvpRoadmapGantt } from '@/components/schematics';
 
 export const metadata: Metadata = {
   title: 'Rapid MVP & New Product Development (6-8 Weeks) | AEITCH',
@@ -22,37 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default function NewProductDevelopmentPage() {
-  const steps = [
-    {
-      step: '01',
-      title: 'Architectural Discovery & Wireframing',
-      timeframe: 'Week 1–2',
-      description:
-        'Rapid product scoping, high-fidelity UI/UX interactive Figma prototypes, database modeling, and tech stack selection.',
-    },
-    {
-      step: '02',
-      title: 'Core Engine & Prototype Build',
-      timeframe: 'Week 3–4',
-      description:
-        'Iterative bi-weekly sprints developing core user flows, database schemas, secure authentication, and payment rails.',
-    },
-    {
-      step: '03',
-      title: 'Third-Party & AI Integration',
-      timeframe: 'Week 5–6',
-      description:
-        'Integrating AI workflows, billing (Stripe), email/SMS providers, and comprehensive telemetry for user session analytics.',
-    },
-    {
-      step: '04',
-      title: 'QA, Hardening & Public Launch',
-      timeframe: 'Week 7–8',
-      description:
-        'End-to-end automated test suites, security penetration audits, cloud autoscaling setup, and official App Store / Web launch.',
-    },
-  ];
-
   const features = [
     {
       icon: Clock,
@@ -144,26 +114,11 @@ export default function NewProductDevelopmentPage() {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((step, idx) => (
-              <ScrollReveal key={step.step} delay={0.1 * idx} yOffset={25}>
-                <div className="relative rounded-2xl border-2 border-black/10 bg-white p-7 transition-all duration-300 hover:border-[#e9800a] h-full flex flex-col justify-between shadow-lg">
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-3xl font-black text-[#e9800a]">
-                        {step.step}
-                      </span>
-                      <span className="rounded-full bg-black text-white px-3 py-1 font-mono text-xs font-bold border border-black">
-                        {step.timeframe}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-black text-black mb-2">{step.title}</h3>
-                    <p className="text-sm text-black/70 leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal delay={0.15} yOffset={25}>
+            <div className="max-w-5xl mx-auto">
+              <MvpRoadmapGantt />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
