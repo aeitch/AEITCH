@@ -110,21 +110,21 @@ export function ServicesShowcase() {
         </div>
 
         {/* 4 Interactive Service Mode Switchers */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-8 sm:mb-10">
           {t.services.items.map((service) => {
             const isSelected = selectedServiceId === service.id;
             return (
               <button
                 key={service.id}
                 onClick={() => setSelectedServiceId(service.id)}
-                className={`relative flex items-center gap-3 rounded-2xl border p-4 text-start transition-all duration-200 ${
+                className={`relative flex items-center gap-3 rounded-xl sm:rounded-2xl border p-3.5 sm:p-4 text-start transition-all duration-200 ${
                   isSelected
                     ? 'border-accent bg-zinc-950 text-white shadow-md ring-1 ring-accent/30'
                     : 'border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-black shadow-sm'
                 }`}
               >
                 <div
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-colors ${
+                  className={`flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl border transition-colors ${
                     isSelected
                       ? 'border-accent bg-accent text-black font-bold'
                       : 'border-zinc-200 bg-zinc-50 text-accent'
@@ -133,7 +133,7 @@ export function ServicesShowcase() {
                   {serviceIcons[service.id]}
                 </div>
                 <div className="truncate">
-                  <div className={`font-mono text-[10px] uppercase tracking-wider ${isSelected ? 'text-accent' : 'text-zinc-400'}`}>
+                  <div className={`font-mono text-[9px] sm:text-[10px] uppercase tracking-wider ${isSelected ? 'text-accent' : 'text-zinc-400'}`}>
                     {service.id === 'ai-automation'
                       ? 'AI // AGENTS'
                       : service.id === 'cloud-devops'
@@ -150,7 +150,7 @@ export function ServicesShowcase() {
         </div>
 
         {/* Dynamic Interactive Engineering Workbench */}
-        <div className="rounded-3xl border border-zinc-200/90 bg-white p-6 sm:p-10 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.06)]">
+        <div className="rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-white p-4 sm:p-8 lg:p-10 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.06)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Column: Visual Interactive Apparatus Sandbox (7 Cols) */}
             <div className="lg:col-span-7">
@@ -261,7 +261,7 @@ export function ServicesShowcase() {
                     </div>
 
                     {/* Step-by-Step Interactive DAG */}
-                    <div className="grid grid-cols-4 gap-2 text-center font-mono">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-mono">
                       {[
                         { label: '01. COMMIT', desc: 'Git Signed' },
                         { label: '02. LINT', desc: 'Terraform Sec' },
@@ -273,7 +273,7 @@ export function ServicesShowcase() {
                         return (
                           <div
                             key={sIdx}
-                            className={`rounded-xl border p-3 transition-all ${
+                            className={`rounded-xl border p-2.5 sm:p-3 transition-all ${
                               isCurrent
                                 ? 'border-accent bg-accent/20 text-accent animate-pulse'
                                 : isDone
@@ -292,15 +292,15 @@ export function ServicesShowcase() {
                     </div>
 
                     {/* Live Cluster Specs Slate */}
-                    <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                       <div className="rounded-xl border border-white/10 bg-surface p-3.5">
                         <span className="font-mono text-[10px] text-fg-subtle block">SLA AVAILABILITY</span>
-                        <span className="font-mono text-xl font-black text-white">99.99%</span>
+                        <span className="font-mono text-lg sm:text-xl font-black text-white">99.99%</span>
                         <span className="font-mono text-[10px] text-accent block">ZERO DOWNTIME UPGRADES</span>
                       </div>
                       <div className="rounded-xl border border-white/10 bg-surface p-3.5">
                         <span className="font-mono text-[10px] text-fg-subtle block">FINOPS COST EFFICIENCY</span>
-                        <span className="font-mono text-xl font-black text-white">-38%</span>
+                        <span className="font-mono text-lg sm:text-xl font-black text-white">-38%</span>
                         <span className="font-mono text-[10px] text-accent block">AUTOSCALED IDLE NODES</span>
                       </div>
                     </div>
@@ -315,7 +315,7 @@ export function ServicesShowcase() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.25 }}
-                    className="rounded-2xl border border-white/10 bg-black p-6 space-y-6"
+                    className="rounded-2xl border border-white/10 bg-black p-4 sm:p-6 space-y-4 sm:space-y-6"
                   >
                     <div className="flex items-center justify-between pb-3 border-b border-white/10">
                       <div className="flex items-center gap-2">
@@ -330,30 +330,30 @@ export function ServicesShowcase() {
                     </div>
 
                     {/* Visual Microservice Bus Diagram */}
-                    <div className="rounded-xl border border-white/10 bg-surface p-4 relative overflow-hidden font-mono text-xs">
-                      <div className="grid grid-cols-3 gap-3 text-center">
-                        <div className="rounded-lg border border-white/10 bg-bg p-3">
+                    <div className="rounded-xl border border-white/10 bg-surface p-3 sm:p-4 relative overflow-hidden font-mono text-xs">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 text-center">
+                        <div className="rounded-lg border border-white/10 bg-bg p-2.5 sm:p-3">
                           <span className="text-[10px] text-fg-subtle block">API GATEWAY</span>
-                          <span className="font-bold text-white">Kong / Envoy</span>
+                          <span className="font-bold text-white text-xs sm:text-sm">Kong / Envoy</span>
                         </div>
-                        <div className="rounded-lg border border-accent/40 bg-accent/10 p-3">
+                        <div className="rounded-lg border border-accent/40 bg-accent/10 p-2.5 sm:p-3">
                           <span className="text-[10px] text-accent block">EVENT BROKER</span>
-                          <span className="font-bold text-accent">Apache Kafka</span>
+                          <span className="font-bold text-accent text-xs sm:text-sm">Apache Kafka</span>
                         </div>
-                        <div className="rounded-lg border border-white/10 bg-bg p-3">
+                        <div className="rounded-lg border border-white/10 bg-bg p-2.5 sm:p-3">
                           <span className="text-[10px] text-fg-subtle block">DATA LAKE</span>
-                          <span className="font-bold text-white">PostgreSQL / S3</span>
+                          <span className="font-bold text-white text-xs sm:text-sm">PostgreSQL / S3</span>
                         </div>
                       </div>
 
-                      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-white/70">
+                      <div className="mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-white/70">
                         <span>AVERAGE API LATENCY: <strong className="text-accent">42ms</strong></span>
                         <span>FAULT TOLERANCE: <strong className="text-white">ACTIVE-ACTIVE</strong></span>
                       </div>
                     </div>
 
                     {/* Concrete Feature Matrix */}
-                    <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs">
                       <div className="rounded-xl border border-white/10 bg-surface-2 p-3">
                         <span className="font-bold text-white block mb-0.5">Enterprise Identity (SSO)</span>
                         <span className="text-fg-subtle text-[11px]">SAML 2.0 / OAuth2 / Nafath Ready</span>

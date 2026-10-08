@@ -46,7 +46,7 @@ export function HeroSection() {
             </motion.div>
 
             {/* Semantic H1 Main Headline with Word-by-Word Mask Reveal */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold tracking-tight text-white leading-[1.2] mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold tracking-tight text-white leading-[1.2] mb-6">
               <span className="inline-block overflow-hidden align-top">
                 <motion.span
                   className="inline-block"
@@ -84,7 +84,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-              className="text-base sm:text-lg text-fg-muted leading-relaxed mb-8 max-w-2xl font-normal"
+              className="text-sm sm:text-base md:text-lg text-fg-muted leading-relaxed mb-6 sm:mb-8 max-w-2xl font-normal"
             >
               {t.hero.subtitle}
             </motion.p>
@@ -94,11 +94,11 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-10"
             >
               <button
                 onClick={() => setModalOpen(true)}
-                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-sm sm:text-base font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
+                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
               >
                 <span>{t.hero.primaryCta}</span>
                 {direction === 'rtl' ? (
@@ -110,7 +110,7 @@ export function HeroSection() {
 
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-6 py-3.5 text-sm sm:text-base font-semibold text-white hover:border-accent hover:text-accent transition-all duration-200 backdrop-blur-md"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-semibold text-white hover:border-accent hover:text-accent transition-all duration-200 backdrop-blur-md"
               >
                 <span>{t.hero.secondaryCta}</span>
               </a>
@@ -135,8 +135,8 @@ export function HeroSection() {
           </div>
 
             {/* Three.js Interactive 3D Hero Visual (Desktop 5 cols) */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-              <div className="relative flex items-center justify-center w-full">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center relative w-full overflow-hidden">
+              <div className="relative flex items-center justify-center w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[480px]">
                 {/* Outer Radiant Glow */}
                 <div className="pointer-events-none absolute -inset-4 rounded-full bg-accent-soft blur-3xl opacity-30" />
 
@@ -145,7 +145,7 @@ export function HeroSection() {
               </div>
 
               {/* Real-time Telemetry Overlay Card */}
-              <div className="mt-4 flex items-center justify-between gap-4 rounded-xl border border-border bg-surface/90 px-4 py-2.5 shadow-xl backdrop-blur-md text-xs w-full max-w-sm">
+              <div className="mt-4 flex items-center justify-between gap-4 rounded-xl border border-border bg-surface/90 px-3.5 sm:px-4 py-2 sm:py-2.5 shadow-xl backdrop-blur-md text-xs w-full max-w-sm">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />

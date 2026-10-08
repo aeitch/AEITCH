@@ -199,7 +199,7 @@ export const dictionaries: Record<Locale, Translations> = {
       currentLangName: "العربية",
     },
     hero: {
-      badge: "🇸🇦 مُصممون للمستقبل الرقمي للمملكة 2030",
+      badge: "مُصممون للمستقبل الرقمي للمملكة 2030",
       titleStart: "نبني أنظمة برمجية وذكاء اصطناعي سيادي ",
       titleHighlight: "تقود التحول الرقمي المؤسسي",
       titleEnd: " للمملكة ودول الخليج",
@@ -603,7 +603,7 @@ export const dictionaries: Record<Locale, Translations> = {
       currentLangName: "English",
     },
     hero: {
-      badge: "🇸🇦 Engineered for the Kingdom’s Digital Future",
+      badge: "Engineered for the Kingdom’s Digital Future",
       titleStart: "We engineer sovereign AI and cloud systems that ",
       titleHighlight: "power enterprise transformation",
       titleEnd: " across Saudi Arabia and the GCC",

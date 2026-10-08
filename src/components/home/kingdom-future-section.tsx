@@ -144,28 +144,30 @@ pod.integrateLocalTeam({
         </div>
 
         {/* 5 Tactical Mode Selector Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5 mb-8">
           {t.vision2030.pillars.map((pillar, idx) => {
             const isActive = activePillarIndex === idx;
             return (
               <button
                 key={pillar.id}
                 onClick={() => setActivePillarIndex(idx)}
-                className={`relative flex items-center gap-2.5 rounded-xl border p-3 text-start transition-all duration-200 ${
+                className={`relative flex items-center gap-2 sm:gap-2.5 rounded-xl border p-2.5 sm:p-3 text-start transition-all duration-200 ${
+                  idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                } ${
                   isActive
                     ? 'border-accent bg-surface-2 text-white shadow-glow-sm'
                     : 'border-border bg-surface text-fg-muted hover:border-white/20 hover:text-white'
                 }`}
               >
                 <div
-                  className={`flex h-7 w-7 items-center justify-center rounded-lg ${
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
                     isActive ? 'bg-accent text-black font-bold' : 'bg-bg text-accent'
                   }`}
                 >
                   {pillarIcons[idx]}
                 </div>
                 <div className="truncate">
-                  <div className="font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+                  <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-fg-subtle">
                     PILLAR 0{idx + 1}
                   </div>
                   <div className="truncate text-xs font-bold">{pillar.title}</div>
@@ -178,22 +180,22 @@ pod.integrateLocalTeam({
         {/* Interactive Telemetry Cockpit (Concept 3: Orbital Silicon & Regional Network Mesh) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Left Visual Slate: Saudi Sovereign Cloud Topology Map (7 cols) */}
-          <div className="lg:col-span-7 rounded-2xl border border-border bg-surface p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-7 rounded-2xl border border-border bg-surface p-4 sm:p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden">
             {/* Top Cockpit Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-border z-10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 sm:pb-4 border-b border-border z-10">
               <div className="flex items-center gap-2">
                 <span className="flex h-2 w-2 rounded-full bg-accent animate-ping" />
                 <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
                   SOVEREIGN TOPOLOGY // IN-KINGDOM NODES
                 </span>
               </div>
-              <span className="font-mono text-[11px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
+              <span className="font-mono text-[10px] sm:text-[11px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20 self-start sm:self-auto">
                 PDPL CLASS 3 VERIFIED
               </span>
             </div>
 
             {/* Saudi Arabia Schematic Vector Topology Display */}
-            <div className="relative my-8 h-72 sm:h-80 w-full rounded-xl bg-black border border-white/10 flex items-center justify-center overflow-hidden">
+            <div className="relative my-4 sm:my-8 h-64 sm:h-80 w-full rounded-xl bg-black border border-white/10 flex items-center justify-center overflow-hidden">
               {/* Coordinate Grid Lines */}
               <div className="absolute inset-0 bg-tech-grid opacity-30" />
 
@@ -230,16 +232,16 @@ pod.integrateLocalTeam({
                     style={{ left: `${region.coords.x}%`, top: `${region.coords.y}%` }}
                   >
                     <div
-                      className={`relative flex h-8 w-8 items-center justify-center rounded-full border transition-all ${
+                      className={`relative flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border transition-all ${
                         isSelected
                           ? 'border-accent bg-accent text-black shadow-glow-md'
                           : 'border-white/30 bg-surface text-white hover:border-accent'
                       }`}
                     >
-                      <Server className="h-3.5 w-3.5" />
+                      <Server className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                     </div>
                     <span
-                      className={`mt-1 font-mono text-[10px] px-1.5 py-0.5 rounded backdrop-blur-md border ${
+                      className={`mt-1 font-mono text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded backdrop-blur-md border ${
                         isSelected
                           ? 'border-accent bg-black text-accent font-bold'
                           : 'border-white/10 bg-black/80 text-white/70'
@@ -253,20 +255,20 @@ pod.integrateLocalTeam({
             </div>
 
             {/* Bottom Active Node Telemetry Card */}
-            <div className="rounded-xl border border-border bg-bg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="rounded-xl border border-border bg-bg p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 text-xs">
               <div>
-                <div className="font-mono text-fg-subtle text-[11px]">SELECTED COMPUTE ZONE:</div>
-                <div className="font-bold text-white text-sm">
+                <div className="font-mono text-fg-subtle text-[10px] sm:text-[11px]">SELECTED COMPUTE ZONE:</div>
+                <div className="font-bold text-white text-xs sm:text-sm">
                   {locale === 'ar' ? activeRegion.nameAr : activeRegion.name}
                 </div>
               </div>
-              <div className="flex items-center gap-4 font-mono">
+              <div className="flex items-center gap-3 sm:gap-4 font-mono text-[11px] sm:text-xs">
                 <div>
-                  <span className="text-fg-subtle text-[10px] block">LATENCY:</span>
+                  <span className="text-fg-subtle text-[9px] sm:text-[10px] block">LATENCY:</span>
                   <span className="text-accent font-bold">{activeRegion.latency}</span>
                 </div>
                 <div>
-                  <span className="text-fg-subtle text-[10px] block">TIER:</span>
+                  <span className="text-fg-subtle text-[9px] sm:text-[10px] block">TIER:</span>
                   <span className="text-white font-bold">{activeRegion.tier}</span>
                 </div>
               </div>
@@ -274,7 +276,7 @@ pod.integrateLocalTeam({
           </div>
 
           {/* Right Architecture Slate: Dynamic Metric & Blueprint Inspector (5 cols) */}
-          <div className="lg:col-span-5 rounded-2xl border border-border bg-surface p-6 sm:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-5 rounded-2xl border border-border bg-surface p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePillar.id}

@@ -316,9 +316,10 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/#vision-2030"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-xl p-3 text-sm font-medium text-accent bg-accent-soft border border-accent/25"
+                  className="flex items-center gap-2 rounded-xl p-3 text-sm font-medium text-accent bg-accent-soft border border-accent/25"
                 >
-                  🇸🇦 {t.nav.kingdom2030}
+                  <Sparkles className="h-4 w-4 text-accent" />
+                  <span>{t.nav.kingdom2030}</span>
                 </Link>
                 <Link
                   href="/case-studies"
