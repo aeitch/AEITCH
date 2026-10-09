@@ -18,6 +18,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/blog',
+        destination: '/insights',
+        permanent: true,
+      },
+      {
+        source: '/terms-and-conditions',
+        destination: '/terms-of-service',
+        permanent: true,
+      },
+      {
+        source: '/terms',
+        destination: '/terms-of-service',
+        permanent: true,
+      },
+      {
         source: '/blogs/:path*',
         destination: '/insights/:path*',
         permanent: true,

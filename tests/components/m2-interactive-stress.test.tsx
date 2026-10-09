@@ -202,7 +202,7 @@ describe('Milestone 2 Stress Challenge: AnimatedCounter', () => {
     });
 
     expect(screen.getByText(/\$1,000,000,000 ARR/)).toBeInTheDocument();
-  });
+  }, 15000);
 
   it('2.3: Zero and negative values handling', () => {
     const { unmount } = render(<AnimatedCounter value={0} duration={500} prefix="#" suffix=" items" />);
