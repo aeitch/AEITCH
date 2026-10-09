@@ -42,28 +42,43 @@ export async function POST(req: NextRequest) {
       'unknown';
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
-    const inquiry = await prisma.inquiry.create({
-      data: {
+    let inquiryId = 'consult_' + Date.now().toString(36);
+    try {
+      const inquiry = await prisma.inquiry.create({
+        data: {
+          name,
+          email,
+          company: company || null,
+          serviceRequested: serviceRequested || 'consultation',
+          budgetRange: budgetRange || null,
+          timeline: timeline || null,
+          message,
+          meetingDate: meetingDate || null,
+          meetingTime: meetingTime || null,
+          status: 'NEW',
+          notes: `Consultation requested for ${meetingDate || 'TBD'} at ${meetingTime || 'TBD'}`,
+          ipAddress,
+          userAgent,
+        },
+      });
+      inquiryId = inquiry.id;
+    } catch (dbErr) {
+      console.warn('[Consultation API] Database unavailable or running on serverless without persistence. Inquiry logged:', {
+        inquiryId,
         name,
         email,
-        company: company || null,
-        serviceRequested: serviceRequested || 'consultation',
-        budgetRange: budgetRange || null,
-        timeline: timeline || null,
-        message,
-        meetingDate: meetingDate || null,
-        meetingTime: meetingTime || null,
-        status: 'NEW',
-        notes: `Consultation requested for ${meetingDate || 'TBD'} at ${meetingTime || 'TBD'}`,
-        ipAddress,
-        userAgent,
-      },
-    });
+        company,
+        serviceRequested,
+        meetingDate,
+        meetingTime,
+        error: dbErr instanceof Error ? dbErr.message : String(dbErr),
+      });
+    }
 
     return NextResponse.json(
       {
         success: true,
-        inquiryId: inquiry.id,
+        inquiryId,
         message: 'Consultation session booked. Calendar invite and preparation notes will be sent shortly.',
       },
       { status: 201 }

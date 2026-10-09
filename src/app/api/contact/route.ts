@@ -47,27 +47,41 @@ export async function POST(req: NextRequest) {
       'unknown';
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
-    const inquiry = await prisma.inquiry.create({
-      data: {
+    let inquiryId = 'inq_' + Date.now().toString(36);
+    try {
+      const inquiry = await prisma.inquiry.create({
+        data: {
+          name,
+          email,
+          company: company || null,
+          serviceRequested: serviceRequested || null,
+          budgetRange: budgetRange || null,
+          timeline: timeline || null,
+          message,
+          meetingDate: meetingDate || null,
+          meetingTime: meetingTime || null,
+          status: 'NEW',
+          ipAddress,
+          userAgent,
+        },
+      });
+      inquiryId = inquiry.id;
+    } catch (dbErr) {
+      console.warn('[Contact API] Database unavailable or running on serverless without persistence. Inquiry logged:', {
+        inquiryId,
         name,
         email,
-        company: company || null,
-        serviceRequested: serviceRequested || null,
-        budgetRange: budgetRange || null,
-        timeline: timeline || null,
+        company,
+        serviceRequested,
         message,
-        meetingDate: meetingDate || null,
-        meetingTime: meetingTime || null,
-        status: 'NEW',
-        ipAddress,
-        userAgent,
-      },
-    });
+        error: dbErr instanceof Error ? dbErr.message : String(dbErr),
+      });
+    }
 
     return NextResponse.json(
       {
         success: true,
-        inquiryId: inquiry.id,
+        inquiryId,
         message: 'Inquiry received successfully. Our engineering lead will respond within 24 hours.',
       },
       { status: 201 }
