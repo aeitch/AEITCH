@@ -16,46 +16,49 @@ export const revalidate = 60;
 
 const DEFAULT_FALLBACK_STUDIES = [
   {
-    id: 'cs-fintech',
-    slug: 'apexpay-settlement-engine',
-    title: 'High-Frequency Financial Settlement Engine with Zero-Downtime Migration',
-    clientIndustry: 'FinTech & Payments',
-    clientName: 'ApexPay Global',
+    id: 'cs-us-fintech',
+    slug: 'us-fintech-platform-modernization',
+    title: 'High-Growth US FinTech Platform: 99.99% Availability & FinOps Governance',
+    clientIndustry: 'FinTech & Cloud Engineering',
+    clientName: 'US FinTech Platform',
     imageSrc: '/images/aeitch-case-fintech.svg',
-    summary: 'Engineered a distributed event-driven settlement architecture handling $4.2B in annualized transaction volume with zero downtime.',
+    summary: 'Decomposed a monolithic payment gateway into event-driven microservices on AWS, established automated GitOps CI/CD, and right-sized container clusters.',
     results: [
-      { metric: '99.999%', label: 'Settlement Uptime' },
-      { metric: '< 8ms', label: 'P99 Latency' }
+      { metric: '99.99%', label: 'Availability SLA' },
+      { metric: '12x', label: 'Deployment Velocity' },
+      { metric: '-35%', label: 'AWS Cost Optimization' },
     ],
-    techStack: ['TypeScript', 'Kubernetes', 'PostgreSQL', 'Redis', 'AWS']
+    techStack: ['TypeScript', 'Kubernetes', 'AWS', 'PostgreSQL', 'Redis', 'Terraform']
   },
   {
-    id: 'cs-ai',
-    slug: 'medpulse-sovereign-ai-rag',
-    title: 'Sovereign Clinical RAG Assistant for Regulated Medical Enterprise',
-    clientIndustry: 'HealthTech & AI',
-    clientName: 'MedPulse Health',
-    imageSrc: '/images/aeitch-case-ai.svg',
-    summary: 'Designed an on-premise private AI assistant powered by fine-tuned open-source models, achieving 99.4% clinical guideline retrieval accuracy.',
-    results: [
-      { metric: '99.4%', label: 'Guideline Accuracy' },
-      { metric: 'HIPAA', label: 'Compliant & Sovereign' }
-    ],
-    techStack: ['Python', 'vLLM', 'LangChain', 'Qdrant', 'FastAPI']
-  },
-  {
-    id: 'cs-cloud',
-    slug: 'cloud-finops-optimization',
-    title: 'Multi-Cloud FinOps Optimization & 44% Infrastructure Cost Reduction',
-    clientIndustry: 'Cloud Strategy',
-    clientName: 'Nexus Enterprise',
+    id: 'cs-high-load-logistics',
+    slug: 'high-load-logistics-multi-cluster',
+    title: 'High-Load Logistics Platform: 1.5M Daily Transactions with Multi-Cluster Failover',
+    clientIndustry: 'Enterprise Logistics & Distributed Systems',
+    clientName: 'Regional Logistics Network',
     imageSrc: '/images/aeitch-case-cloud.svg',
-    summary: 'Restructured multi-region Kubernetes deployments, right-sized cloud resources, and implemented automated FinOps cost governance.',
+    summary: 'Architected a distributed Kafka event streaming backbone with automated Kubernetes multi-cluster failover across cloud availability zones.',
     results: [
-      { metric: '44%', label: 'Monthly AWS Cost Savings' },
-      { metric: '10x', label: 'Deployment Frequency' }
+      { metric: '1.5M', label: 'Daily Transactions' },
+      { metric: '< 45ms', label: 'P99 Latency' },
+      { metric: 'Zero Loss', label: 'Multi-Cluster Failover' },
     ],
-    techStack: ['Terraform', 'Kubernetes', 'AWS', 'Datadog', 'ArgoCD']
+    techStack: ['Go', 'Apache Kafka', 'Kubernetes', 'Redis', 'Docker', 'OpenTelemetry']
+  },
+  {
+    id: 'cs-enterprise-data-migration',
+    slug: 'zero-loss-enterprise-data-migration',
+    title: 'Enterprise Data Migration: Zero-Loss Legacy Database Migration with Zero Downtime',
+    clientIndustry: 'Cloud Migration & Data Sovereignty',
+    clientName: 'Regulated Enterprise Infrastructure',
+    imageSrc: '/images/aeitch-case-ai.svg',
+    summary: 'Engineered a dual-write CDC streaming pipeline migrating multi-terabyte legacy databases to in-country sovereign cloud with real-time parity verification.',
+    results: [
+      { metric: 'Zero Loss', label: 'Data Integrity Rate' },
+      { metric: '0 sec', label: 'Production Downtime' },
+      { metric: '100%', label: 'KSA Data Sovereignty' },
+    ],
+    techStack: ['Google Cloud Dammam', 'Azure Riyadh', 'PostgreSQL', 'CDC Debezium', 'Kafka', 'Terraform']
   }
 ];
 

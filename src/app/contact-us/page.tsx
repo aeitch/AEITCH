@@ -13,9 +13,13 @@ import {
   Sparkles,
   ArrowRight,
   AlertCircle,
+  MapPin,
+  Phone,
+  Building,
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { RadialGlowCard } from '@/components/ui/radial-glow-card';
+import { BRAND } from '@/lib/constants';
 
 export default function ContactUsPage() {
   const [activeTab, setActiveTab] = useState<'consultation' | 'scope'>('consultation');
@@ -28,7 +32,7 @@ export default function ContactUsPage() {
     name: '',
     email: '',
     company: '',
-    serviceRequested: 'custom-software',
+    serviceRequested: 'cloud-first-product-engineering',
     budgetRange: '$25k - $50k',
     timeline: '1 - 3 months',
     message: '',
@@ -69,7 +73,7 @@ export default function ContactUsPage() {
         name: '',
         email: '',
         company: '',
-        serviceRequested: 'custom-software',
+        serviceRequested: 'cloud-first-product-engineering',
         budgetRange: '$25k - $50k',
         timeline: '1 - 3 months',
         message: '',
@@ -134,12 +138,44 @@ export default function ContactUsPage() {
               <div className="space-y-4">
                 <div className="flex items-start gap-4 rounded-2xl border-2 border-black/10 bg-white p-6 shadow-sm hover:border-[#e9800a] transition-colors">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-black text-[#e9800a]">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-black">Riyadh Engineering Hub</h3>
+                    <p className="text-xs text-black/70 mt-1 leading-relaxed">
+                      {BRAND.location}. Aligned with Saudi Vision 2030, NCA ECC/CCC cybersecurity mandates, and in-Kingdom hyperscaler cloud regions.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 rounded-2xl border-2 border-black/10 bg-white p-6 shadow-sm hover:border-[#e9800a] transition-colors">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-black text-[#25D366]">
+                    <Phone className="h-5 w-5 text-[#e9800a]" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-black">Executive Hotline & WhatsApp</h3>
+                    <p className="text-xs text-black/70 mt-1 leading-relaxed">
+                      Direct executive line with our Regional Director in Riyadh:
+                    </p>
+                    <a
+                      href={BRAND.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono font-bold text-[#e9800a] hover:underline mt-1 inline-flex items-center gap-1.5"
+                    >
+                      {BRAND.whatsappDirect} (WhatsApp / Voice)
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 rounded-2xl border-2 border-black/10 bg-white p-6 shadow-sm hover:border-[#e9800a] transition-colors">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-black text-[#e9800a]">
                     <Shield className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-black">Mutual NDA Protected</h3>
+                    <h3 className="text-base font-bold text-black">Mutual NDA & IP Sovereignty</h3>
                     <p className="text-xs text-black/70 mt-1 leading-relaxed">
-                      We protect your IP from the very first conversation. NDA provided upon request.
+                      US and Saudi legal contracting frameworks. Complete enterprise IP protection, data residency controls, and bilateral confidentiality guarantees.
                     </p>
                   </div>
                 </div>
@@ -149,9 +185,9 @@ export default function ContactUsPage() {
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-black">24-Hour SLA Response</h3>
+                    <h3 className="text-base font-bold text-black">24-Hour Technical SLA</h3>
                     <p className="text-xs text-black/70 mt-1 leading-relaxed">
-                      You will receive technical feedback directly from a Senior Software or Cloud Architect.
+                      Preliminary architectural analysis directly from Senior Enterprise Architects within 24 business hours.
                     </p>
                   </div>
                 </div>
@@ -161,12 +197,12 @@ export default function ContactUsPage() {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-black">Direct Email Access</h3>
+                    <h3 className="text-base font-bold text-black">Engineering Desk</h3>
                     <a
-                      href="mailto:contact@aeitch.com"
+                      href={`mailto:${BRAND.email}`}
                       className="text-xs font-mono font-bold text-[#e9800a] hover:underline mt-1 inline-block"
                     >
-                      contact@aeitch.com
+                      {BRAND.email}
                     </a>
                   </div>
                 </div>
@@ -298,11 +334,23 @@ export default function ContactUsPage() {
                           onChange={handleChange}
                           className="w-full rounded-xl border border-black/20 bg-white px-4 py-3 text-sm text-black focus:border-[#e9800a] focus:ring-1 focus:ring-[#e9800a] focus:outline-none transition-colors"
                         >
-                          <option value="custom-software">Custom Software Engineering</option>
-                          <option value="ai-consulting">AI Consulting & Systems</option>
-                          <option value="cloud-devops">Cloud & DevOps Architecture</option>
-                          <option value="new-product-development">Rapid MVP (6–8 Weeks)</option>
-                          <option value="other">Other Technical Scoping</option>
+                          <optgroup label="Core Cloud & Platform Capabilities">
+                            <option value="cloud-first-product-engineering">Cloud-First Product Engineering</option>
+                            <option value="platform-engineering-devops">Platform Engineering & DevOps</option>
+                            <option value="devsecops-ksa-compliance">DevSecOps & KSA Compliance (NCA / SAMA)</option>
+                            <option value="dedicated-engineering-squads">Dedicated Offshore Engineering Squads (GMT+3)</option>
+                          </optgroup>
+                          <optgroup label="Saudi Vision 2030 Sector Solutions">
+                            <option value="fintech-digital-banking">FinTech & Digital Banking (SAMA Open Banking)</option>
+                            <option value="giga-projects-smart-infrastructure">Giga-Projects Smart Infrastructure & IoT</option>
+                            <option value="enterprise-cloud-migration">Enterprise Cloud Migration (In-Kingdom Hyperscalers)</option>
+                            <option value="high-growth-saas">High-Growth SaaS & Venture Launch</option>
+                          </optgroup>
+                          <optgroup label="Specialized Advisory & Build">
+                            <option value="ai-consulting">Applied AI & Autonomous Agents</option>
+                            <option value="custom-software">Custom Enterprise Software</option>
+                            <option value="other">Other Architecture Consultation</option>
+                          </optgroup>
                         </select>
                       </div>
                     </div>

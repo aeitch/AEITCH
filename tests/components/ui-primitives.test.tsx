@@ -164,7 +164,7 @@ describe('Layout Components: Navbar & Footer', () => {
       </LocaleProvider>
     );
     expect(screen.getByText(/AEITCH/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /book consultation/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /book (consultation|architecture audit)/i })).toBeInTheDocument();
     expect(screen.getByText('Services')).toBeInTheDocument();
     expect(screen.getByText('Case Studies')).toBeInTheDocument();
   });

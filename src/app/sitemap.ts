@@ -6,11 +6,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
+    '/solutions',
+    '/solutions/fintech-digital-banking',
+    '/solutions/giga-projects-smart-infrastructure',
+    '/solutions/enterprise-cloud-migration',
+    '/solutions/high-growth-saas',
     '/services',
+    '/services/cloud-first-product-engineering',
+    '/services/platform-engineering-devops',
+    '/services/devsecops-ksa-compliance',
+    '/services/dedicated-engineering-squads',
     '/services/ai-consulting',
     '/services/cloud-devops',
     '/services/custom-software',
     '/services/new-product-development',
+    '/delivery-engine',
+    '/delivery-engine/security-ip-protection',
+    '/saudi-hub',
     '/case-studies',
     '/insights',
     '/insights/ai-agents-saudi-enterprise',
@@ -26,7 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
     changeFrequency: route === '' ? 'daily' : 'weekly',
-    priority: route === '' ? 1.0 : route.startsWith('/services') ? 0.9 : 0.8,
+    priority:
+      route === ''
+        ? 1.0
+        : route.startsWith('/solutions') ||
+          route.startsWith('/services') ||
+          route === '/delivery-engine' ||
+          route === '/saudi-hub'
+        ? 0.9
+        : 0.8,
     alternates: {
       languages: {
         'ar-SA': `${baseUrl}${route}`,

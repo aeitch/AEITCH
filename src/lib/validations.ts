@@ -7,6 +7,14 @@ export const ContactFormSchema = z.object({
   company: z.string().max(100).optional().nullable(),
   serviceRequested: z
     .enum([
+      'cloud-first-product-engineering',
+      'platform-engineering-devops',
+      'devsecops-ksa-compliance',
+      'dedicated-engineering-squads',
+      'fintech-digital-banking',
+      'giga-projects-smart-infrastructure',
+      'enterprise-cloud-migration',
+      'high-growth-saas',
       'ai-consulting',
       'cloud-devops',
       'custom-software',

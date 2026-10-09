@@ -19,3 +19,5 @@ export {
   type SaudiSovereignMapProps,
   type SaudiRegionNode,
 } from './SaudiSovereignMap';
+
+export { DeliveryEngineTriad } from './DeliveryEngineTriad';
