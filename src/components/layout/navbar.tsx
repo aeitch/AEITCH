@@ -67,32 +67,32 @@ export const Navbar: React.FC = () => {
 
   const serviceItems = [
     {
-      name: locale === 'ar' ? 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة' : 'AI Automation & Integration',
+      name: locale === 'ar' ? 'الذكاء الاصطناعي والأتمتة' : 'AI Automation & Integration',
       href: '/services/ai-automation',
-      desc: locale === 'ar' ? 'وكلاء ذكاء اصطناعي ذاتية، استضافة نماذج سيادية H100، ومحركات RAG دلالية' : 'Autonomous agent swarms, private sovereign LLMs (vLLM/H100), RAG & ERP integration',
+      desc: locale === 'ar' ? 'أتمتة العمليات، وكلاء ذكاء اصطناعي مؤسسيون وأنظمة RAG' : 'AI-driven process automation, enterprise agents & RAG',
       icon: <Cpu className="h-5 w-5 text-accent" />,
-      tag: 'SOVEREIGN AI',
+      tag: '01',
     },
     {
-      name: locale === 'ar' ? 'تطوير المنتجات الرقمية وهندسة الابتكار' : 'Product Development',
+      name: locale === 'ar' ? 'تطوير المنتجات' : 'Product Development',
       href: '/services/product-development',
-      desc: locale === 'ar' ? 'هندسة المنتجات الرقمية المتكاملة، إطلاق MVPs في 8 أسابيع ومنصات SaaS' : 'Full-cycle digital products, rapid 8-week MVPs & scalable bilingual GCC platforms',
+      desc: locale === 'ar' ? 'هندسة منتجات متكاملة من الفكرة والـ MVP إلى منصة قابلة للتوسع' : 'End-to-end product engineering, MVPs & scalable SaaS',
       icon: <Rocket className="h-5 w-5 text-accent" />,
-      tag: 'RAPID MVPS',
+      tag: '02',
     },
     {
-      name: locale === 'ar' ? 'ديف أوبس وهندسة السحابة السيادية' : 'DevOps & Cloud Engineering',
+      name: locale === 'ar' ? 'DevOps وهندسة السحابة' : 'DevOps & Cloud Engineering',
       href: '/services/cloud-devops',
-      desc: locale === 'ar' ? 'بنى سحابية محلية متعددة، كوبرنيتيس، تيرا فورم وأتمتة النشر وترشيد FinOps' : 'In-kingdom multi-cloud (AWS KSA, GCP Dammam, Azure, Oracle), K8s & FinOps',
+      desc: locale === 'ar' ? 'خطوط نشر آلية، بنية سحابية موثوقة وتحسين التكلفة' : 'Automated pipelines, reliable infrastructure & FinOps',
       icon: <Cloud className="h-5 w-5 text-accent" />,
-      tag: '99.99% RESILIENCE',
+      tag: '03',
     },
     {
-      name: locale === 'ar' ? 'تطوير البرمجيات المؤسسية المخصصة' : 'Custom Software Development',
+      name: locale === 'ar' ? 'تطوير البرمجيات المخصصة' : 'Custom Software Development',
       href: '/services/custom-software',
-      desc: locale === 'ar' ? 'أنظمة مؤسسية موزعة فائقة الأداء، واجهات برمجية سريعة وتكامل الفاتورة وساما' : 'High-throughput distributed systems, <80ms APIs, Kafka streams & ZATCA/SAMA',
+      desc: locale === 'ar' ? 'تطبيقات مؤسسية مخصصة، واجهات API وتحديث الأنظمة القديمة' : 'Tailored enterprise applications, APIs & legacy modernization',
       icon: <Code2 className="h-5 w-5 text-accent" />,
-      tag: 'ENTERPRISE B2B',
+      tag: '04',
     },
   ];
 
@@ -162,7 +162,7 @@ export const Navbar: React.FC = () => {
                 }`}
                 aria-expanded={servicesOpen}
               >
-                <span>{locale === 'ar' ? 'الخدمات التقنية الأربع' : 'Services'}</span>
+                <span>{locale === 'ar' ? 'الخدمات' : 'Services'}</span>
                 <ChevronDown
                   className={`h-4 w-4 transition-transform duration-200 ${
                     servicesOpen ? 'rotate-180 text-accent' : 'text-fg-subtle'
@@ -181,8 +181,8 @@ export const Navbar: React.FC = () => {
                   >
                     <div className="rounded-2xl border border-border bg-surface p-2.5 shadow-2xl backdrop-blur-2xl">
                       <div className="flex items-center justify-between px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/5 mb-1.5">
-                        <span>{locale === 'ar' ? 'الخدمات الهندسية الأساسية' : '4 Core Engineering Disciplines'}</span>
-                        <span className="text-[9px] text-fg-subtle">{locale === 'ar' ? 'معايير وادي السيليكون' : 'US-KSA Pods'}</span>
+                        <span>{locale === 'ar' ? 'أربع خدمات' : 'Four Services'}</span>
+                        <span className="text-[9px] text-fg-subtle">{locale === 'ar' ? 'هندسة واحدة متقنة' : 'One Standard'}</span>
                       </div>
                       <div className="space-y-1">
                         {serviceItems.map((s) => (
@@ -222,29 +222,13 @@ export const Navbar: React.FC = () => {
             {/* Vision 2030 Sovereign Flagship */}
             <Link
               href="/#vision-2030"
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === '/saudi-hub'
-                  ? 'text-accent bg-accent-soft border border-accent/40'
-                  : 'text-accent bg-accent-soft/70 border border-accent/25 hover:bg-accent/20'
-              }`}
+              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-accent bg-accent-soft/70 border border-accent/25 hover:bg-accent/20 transition-colors"
             >
               <Sparkles className="h-3.5 w-3.5 text-accent" />
               <span>{locale === 'ar' ? 'رؤية 2030' : 'Vision 2030'}</span>
             </Link>
 
-            {/* Delivery Model (The Aeitch Delivery Engine) */}
-            <Link
-              href="/delivery-engine"
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === '/delivery-engine'
-                  ? 'text-accent'
-                  : 'text-fg-muted hover:text-white hover:bg-white/5'
-              }`}
-            >
-              {locale === 'ar' ? 'محرك الإنجاز' : 'Delivery Model'}
-            </Link>
-
-            {/* Case Studies */}
+            {/* Our Work */}
             <Link
               href="/case-studies"
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
@@ -253,7 +237,7 @@ export const Navbar: React.FC = () => {
                   : 'text-fg-muted hover:text-white hover:bg-white/5'
               }`}
             >
-              {locale === 'ar' ? 'دراسات النجاح' : 'Case Studies'}
+              {locale === 'ar' ? 'أعمالنا' : 'Our Work'}
             </Link>
 
             {/* About Us */}
@@ -269,7 +253,7 @@ export const Navbar: React.FC = () => {
             </Link>
           </nav>
 
-          {/* 3. Actions: Language Switcher & Architecture Audit CTA */}
+          {/* 3. Actions: Language Switcher & Consultation CTA */}
           <div className="flex items-center gap-2.5 sm:gap-3">
             {/* Language Switcher Toggle */}
             <button
@@ -281,12 +265,12 @@ export const Navbar: React.FC = () => {
               <span>{locale === 'ar' ? 'English' : 'العربية'}</span>
             </button>
 
-            {/* Primary CTA Button: Book Architecture Audit */}
+            {/* Primary CTA Button: Book a Consultation */}
             <button
               onClick={() => setConsultationModalOpen(true)}
               className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-xs sm:text-sm font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
             >
-              <span>{locale === 'ar' ? 'حجز تدقيق معماري' : 'Book Architecture Audit'}</span>
+              <span>{locale === 'ar' ? 'احجز استشارة' : 'Book a Consultation'}</span>
               {direction === 'rtl' ? (
                 <ArrowLeft className="h-4 w-4" />
               ) : (

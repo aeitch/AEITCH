@@ -36,10 +36,10 @@ describe('Milestone M_NAV: Persistent Dark Glass Navbar', () => {
 
     expect(screen.getByText(/AEITCH/i)).toBeInTheDocument();
     expect(screen.getByText('Services')).toBeInTheDocument();
-    expect(screen.getByText('Case Studies')).toBeInTheDocument();
-    expect(screen.getByText('Insights')).toBeInTheDocument();
-    expect(screen.getByText('About Us')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /book consultation/i })).toBeInTheDocument();
+    expect(screen.getByText('Vision 2030')).toBeInTheDocument();
+    expect(screen.getByText('Our Work')).toBeInTheDocument();
+    expect(screen.getByText('About')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /book a consultation|book consultation/i })).toBeInTheDocument();
   });
 
   it('toggles mobile drawer when clicking the mobile menu button', () => {
@@ -163,7 +163,7 @@ describe('Milestone M_NAV: Decoupled Isolated MobileNav Drawer', () => {
       </LocaleProvider>
     );
 
-    const ctaButton = screen.getByRole('button', { name: /book consultation/i });
+    const ctaButton = screen.getByRole('button', { name: /book a consultation|book consultation/i });
     expect(ctaButton).toBeInTheDocument();
 
     fireEvent.click(ctaButton);
@@ -195,10 +195,10 @@ describe('Milestone M_NAV: Decoupled Isolated MobileNav Drawer', () => {
       </LocaleProvider>
     );
 
-    const caseStudiesLink = screen.getByText('Case Studies');
-    expect(caseStudiesLink).toBeInTheDocument();
+    const ourWorkLink = screen.getByText('Our Work');
+    expect(ourWorkLink).toBeInTheDocument();
 
-    fireEvent.click(caseStudiesLink);
+    fireEvent.click(ourWorkLink);
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
@@ -210,11 +210,10 @@ describe('Milestone M_NAV: Decoupled Isolated MobileNav Drawer', () => {
       </LocaleProvider>
     );
 
-    expect(screen.getByText('Applied AI & Agents')).toBeInTheDocument();
-    expect(screen.getByText('Sovereign Cloud & DevOps')).toBeInTheDocument();
-    expect(screen.getByText('Custom Enterprise Software')).toBeInTheDocument();
-    expect(screen.getByText('Product Engineering & MVPs')).toBeInTheDocument();
-    expect(screen.getByText('SYSTEM OPERATIONAL')).toBeInTheDocument();
+    expect(screen.getByText('AI Automation & Integration')).toBeInTheDocument();
+    expect(screen.getByText('Product Development')).toBeInTheDocument();
+    expect(screen.getByText('DevOps & Cloud Engineering')).toBeInTheDocument();
+    expect(screen.getByText('Custom Software Development')).toBeInTheDocument();
 
     // Verify zero occurrences of draft or placeholder text
     const textContent = container.textContent || '';

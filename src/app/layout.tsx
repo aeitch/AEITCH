@@ -19,20 +19,21 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: 'إيتش للحلول الرقمية | أنظمة الذكاء الاصطناعي والسحابة السيادية للمملكة',
+  title: 'إيتش | الذكاء الاصطناعي وتطوير المنتجات وDevOps والبرمجيات المخصصة',
   description:
-    'شريك هندسة البرمجيات والذكاء الاصطناعي للمؤسسات والشركات الناشئة في المملكة العربية السعودية ودول الخليج. بنى سحابية آمنة، وكلاء ذكاء اصطناعي، وتطوير MVPs في 8 أسابيع.',
+    'شريك هندسي للمؤسسات والشركات الناشئة: أتمتة بالذكاء الاصطناعي، تطوير المنتجات، DevOps وهندسة السحابة، وبرمجيات مخصصة، بما يدعم رؤية السعودية 2030.',
   metadataBase: new URL('https://aeitch.com'),
   keywords: [
-    'التحول الرقمي السعودي',
-    'الذكاء الاصطناعي في السعودية',
-    'هندسة السحابة وحلول ديف أوبس',
-    'تطوير البرمجيات المؤسسية الرياض',
-    'تطوير النماذج الأولية MVPs جدة',
-    'نظام حماية البيانات الشخصية PDPL',
-    'Saudi Vision 2030 Digital Transformation',
-    'Enterprise AI Agents GCC',
-    'Sovereign Cloud Engineering',
+    'الذكاء الاصطناعي والأتمتة',
+    'تطوير المنتجات',
+    'DevOps وهندسة السحابة',
+    'تطوير البرمجيات المخصصة',
+    'رؤية 2030',
+    'AI Automation & Integration',
+    'Product Development',
+    'DevOps & Cloud Engineering',
+    'Custom Software Development',
+    'Saudi Vision 2030',
   ],
   authors: [{ name: BRAND.name, url: 'https://aeitch.com' }],
   creator: BRAND.name,
@@ -49,14 +50,16 @@ export const metadata: Metadata = {
     locale: 'ar_SA',
     alternateLocale: ['en_US'],
     url: 'https://aeitch.com',
-    title: 'إيتش للحلول الرقمية | هندسة نظم الذكاء الاصطناعي والسحابة السيادية',
-    description: BRAND.description,
+    title: 'إيتش | الذكاء الاصطناعي وتطوير المنتجات وDevOps والبرمجيات المخصصة',
+    description:
+      'شريك هندسي للمؤسسات والشركات الناشئة: أتمتة بالذكاء الاصطناعي، تطوير المنتجات، DevOps وهندسة السحابة، وبرمجيات مخصصة، بما يدعم رؤية السعودية 2030.',
     siteName: BRAND.name,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'إيتش (AEITCH) | الشريك الهندسي للتحول الرقمي بالمملكة',
-    description: BRAND.description,
+    title: 'AEITCH | AI Automation, Product Development, DevOps & Custom Software',
+    description:
+      'An engineering partner for enterprises and startups: AI automation, product development, DevOps and cloud engineering, and custom software, in support of Saudi Vision 2030.',
   },
   icons: {
     icon: [

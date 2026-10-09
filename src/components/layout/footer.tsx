@@ -29,27 +29,27 @@ export const Footer: React.FC = () => {
                   AEITCH<span className="text-accent">.</span>
                 </span>
                 <span className="text-[10px] font-mono tracking-widest text-fg-subtle uppercase">
-                  {locale === 'ar' ? 'إيتش للحلول الرقمية' : 'DIGITAL ENGINEERING'}
+                  {locale === 'ar' ? 'هندسة رقمية للمؤسسات' : 'DIGITAL ENGINEERING'}
                 </span>
               </div>
             </Link>
 
             <p className="text-sm text-fg-muted leading-relaxed max-w-sm">
-              {t.footer.description}
+              {locale === 'ar'
+                ? 'إيتش — هندسة رقمية بأربع خدمات، ورؤية واضحة.'
+                : 'AEITCH — Digital engineering: four services, one clear vision.'}
             </p>
 
             <div className="space-y-2 pt-2 text-xs text-fg-subtle">
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-accent shrink-0" />
-                <span>{t.footer.workingHours}</span>
+                <Mail className="h-4 w-4 text-accent shrink-0" />
+                <a href="mailto:hello@aeitch.com" className="hover:text-accent transition-colors">
+                  hello@aeitch.com
+                </a>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-accent shrink-0" />
-                <span>
-                  {locale === 'ar'
-                    ? 'الرياض • جدة • المنطقة الشرقية'
-                    : 'Riyadh • Jeddah • Eastern Province'}
-                </span>
+                <Phone className="h-4 w-4 text-accent shrink-0" />
+                <span className="font-mono">0318-4055723</span>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
           {/* Column 2: Engineering Services */}
           <div>
             <h4 className="text-sm font-mono font-bold text-fg uppercase tracking-wider mb-4">
-              {locale === 'ar' ? 'الخدمات التقنية الأربع' : '4 Core Services'}
+              {locale === 'ar' ? 'الخدمات' : 'Services'}
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
                   href="/services/ai-automation"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة' : 'AI Automation & Integration'}
+                  {locale === 'ar' ? 'الذكاء الاصطناعي والأتمتة' : 'AI Automation & Integration'}
                 </Link>
               </li>
               <li>
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
                   href="/services/product-development"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'تطوير المنتجات الرقمية (MVPs)' : 'Product Development'}
+                  {locale === 'ar' ? 'تطوير المنتجات' : 'Product Development'}
                 </Link>
               </li>
               <li>
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
                   href="/services/cloud-devops"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'ديف أوبس وهندسة السحابة' : 'DevOps & Cloud Engineering'}
+                  {locale === 'ar' ? 'DevOps وهندسة السحابة' : 'DevOps & Cloud Engineering'}
                 </Link>
               </li>
               <li>
@@ -89,55 +89,55 @@ export const Footer: React.FC = () => {
                   href="/services/custom-software"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'البرمجيات المؤسسية المخصصة' : 'Custom Software Development'}
+                  {locale === 'ar' ? 'تطوير البرمجيات المخصصة' : 'Custom Software Development'}
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="text-xs font-mono text-accent hover:underline">
-                  {locale === 'ar' ? 'نظرة شاملة على الخدمات ←' : 'View All 4 Disciplines →'}
+                  {locale === 'ar' ? 'جميع الخدمات ←' : 'View All Services →'}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Company & Insights */}
+          {/* Column 3: Company */}
           <div>
             <h4 className="text-sm font-mono font-bold text-fg uppercase tracking-wider mb-4">
-              {t.footer.companyTitle}
+              {locale === 'ar' ? 'الشركة' : 'Company'}
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link href="/about-us" className="hover:text-accent transition-colors">
-                  {t.nav.about}
+                  {locale === 'ar' ? 'من نحن' : 'About'}
                 </Link>
               </li>
               <li>
                 <Link href="/case-studies" className="hover:text-accent transition-colors">
-                  {t.nav.caseStudies}
+                  {locale === 'ar' ? 'أعمالنا' : 'Our Work'}
                 </Link>
               </li>
               <li>
                 <Link href="/#vision-2030" className="hover:text-accent transition-colors">
-                  {t.nav.kingdom2030}
+                  {locale === 'ar' ? 'رؤية 2030' : 'Vision 2030'}
                 </Link>
               </li>
               <li>
                 <Link href="/insights" className="hover:text-accent transition-colors">
-                  {t.nav.insights}
+                  {locale === 'ar' ? 'المدونة' : 'Blog'}
                 </Link>
               </li>
               <li>
                 <Link href="/contact-us" className="hover:text-accent transition-colors">
-                  {t.common.contactUs}
+                  {locale === 'ar' ? 'تواصل معنا' : 'Contact'}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Governance & Direct Contact */}
+          {/* Column 4: Legal & Social */}
           <div>
             <h4 className="text-sm font-mono font-bold text-fg uppercase tracking-wider mb-4">
-              {t.footer.legalTitle}
+              {locale === 'ar' ? 'قانوني' : 'Legal'}
             </h4>
             <ul className="space-y-2.5 text-sm mb-6">
               <li>
@@ -145,7 +145,7 @@ export const Footer: React.FC = () => {
                   href="/privacy-policy"
                   className="hover:text-accent transition-colors text-xs text-fg-subtle"
                 >
-                  {t.footer.privacyPolicy}
+                  {locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
                 </Link>
               </li>
               <li>
@@ -153,26 +153,41 @@ export const Footer: React.FC = () => {
                   href="/terms-of-service"
                   className="hover:text-accent transition-colors text-xs text-fg-subtle"
                 >
-                  {t.footer.termsOfService}
+                  {locale === 'ar' ? 'الشروط والأحكام' : 'Terms of Service'}
                 </Link>
               </li>
             </ul>
 
             <h4 className="text-xs font-mono font-bold text-fg-subtle uppercase tracking-wider mb-2">
-              {t.footer.contactDirect}
+              {locale === 'ar' ? 'شبكات التواصل' : 'Social'}
             </h4>
-            <div className="space-y-2 text-xs">
+            <div className="flex items-center gap-3 text-xs text-fg-subtle">
               <a
-                href="mailto:engineering@aeitch.com"
-                className="flex items-center gap-2 hover:text-accent transition-colors"
+                href="https://linkedin.com/company/aeitch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
               >
-                <Mail className="h-3.5 w-3.5 text-accent" />
-                <span>engineering@aeitch.com</span>
+                LinkedIn
               </a>
-              <div className="flex items-center gap-2 text-fg-subtle">
-                <Phone className="h-3.5 w-3.5 text-accent" />
-                <span>{t.footer.phoneLabel}</span>
-              </div>
+              <span>•</span>
+              <a
+                href="https://instagram.com/aeitch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                Instagram
+              </a>
+              <span>•</span>
+              <a
+                href="https://facebook.com/aeitch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                Facebook
+              </a>
             </div>
 
             <div className="pt-4">
@@ -187,11 +202,13 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Strict Honesty Notice */}
+        {/* Bottom Bar: Copyright & Note */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-fg-subtle">
-          <p>{t.footer.copyright}</p>
+          <p>© 2026 AEITCH</p>
           <p className="text-center md:text-end max-w-xl text-[11px] leading-relaxed">
-            {t.footer.disclaimer}
+            {locale === 'ar'
+              ? 'إيتش شركة خاصة مستقلة، ولا تدّعي أي تمثيل حكومي أو شراكة رسمية مع الجهات المذكورة.'
+              : 'AEITCH is an independent private company and does not claim government representation or official partnership with the bodies mentioned.'}
           </p>
         </div>
       </div>

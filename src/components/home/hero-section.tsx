@@ -24,112 +24,80 @@ export function HeroSection() {
   const { locale, direction } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
 
-  const hook =
+  const eyebrow =
+    locale === 'ar' ? 'إيتش — هندسة رقمية للمؤسسات' : 'AEITCH — Digital engineering for enterprises';
+
+  const h1 =
+    locale === 'ar' ? 'أربع خدمات. هندسة واحدة متقنة.' : 'Four services. One engineering standard.';
+
+  const sub =
     locale === 'ar'
-      ? 'هندسة سحابية بمعايير وادي السيليكون. مصممة خصيصاً للريادة الرقمية في المملكة.'
-      : 'Silicon Valley-Grade Cloud Architecture. Tailored for Saudi Arabia’s Digital Frontier.';
+      ? 'نبني حلول الذكاء الاصطناعي والمنتجات الرقمية والبنية السحابية والبرمجيات المخصصة، بفرق هندسية senior، وبما يخدم مستهدفات رؤية المملكة 2030.'
+      : 'We build AI automation, digital products, cloud infrastructure and custom software, with senior engineers, in step with Saudi Vision 2030.';
 
-  const headlineStart =
-    locale === 'ar' ? 'تسريع المستقبل الرقمي للمملكة ' : 'Accelerating the Kingdom’s Digital Future with ';
+  const cta1 =
+    locale === 'ar' ? 'احجز استشارة تقنية مجانية' : 'Book a free technical consultation';
 
-  const headlineHighlight =
-    locale === 'ar' ? 'بهندسة سحابية متقدمة' : 'Cloud-First Engineering';
+  const cta2 =
+    locale === 'ar' ? 'استكشف خدماتنا' : 'Explore our services';
 
-  const headlineEnd =
-    locale === 'ar' ? ' وحلول ديف أوبس مؤسسية.' : ' & Enterprise DevOps.';
-
-  const subtitle =
-    locale === 'ar'
-      ? 'نجمع بين الحوكمة المعمارية الأمريكية وفرق الهندسة المتسارعة لبناء منصات رقمية سيادية فائقة الحصانة متوافقة مع ضوابط الأمن والسيادة السعودية (NCA ECC & PDPL).'
-      : 'We combine US product governance with high-velocity engineering pods to build mission-critical digital platforms compliant with Saudi data sovereignty and security standards.';
-
-  const primaryCta =
-    locale === 'ar' ? 'احجز جلسة استشارية تنفيذية' : 'Schedule an Executive Briefing';
-
-  const secondaryCta =
-    locale === 'ar' ? 'استكشف الخدمات التقنية الأربع' : 'Explore The 4 Disciplines';
+  const monoLabels = ['AI', 'PRODUCT', 'DEVOPS & CLOUD', 'CUSTOM SOFTWARE', 'VISION 2030'];
 
   return (
-    <section className="relative overflow-hidden pt-6 pb-20 md:pt-12 md:pb-28" dir={direction}>
+    <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24" dir={direction}>
       {/* Background Subtle Tech Grid & Radial Vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-tech-grid opacity-30" />
-      <div className="pointer-events-none absolute top-1/4 start-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-accent-soft blur-[140px] opacity-40" />
+      <div className="pointer-events-none absolute inset-0 bg-tech-grid opacity-25" />
+      <div className="pointer-events-none absolute top-1/4 start-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-accent-soft blur-[140px] opacity-35" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
           {/* Main Value Proposition & Content (Desktop 7 cols) */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
-            {/* The Hook & Vision 2030 Badge */}
+            {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex flex-wrap items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-semibold text-fg shadow-sm mb-6 backdrop-blur-md"
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-mono font-medium text-accent shadow-sm mb-6 backdrop-blur-md"
             >
-              <span className="flex items-center gap-1.5 text-accent font-bold">
-                <Zap className="h-3.5 w-3.5 fill-current" />
-                <span>{locale === 'ar' ? 'معايير وادي السيليكون' : 'Silicon Valley Standard'}</span>
-              </span>
-              <span className="text-white/30">•</span>
-              <span className="text-fg-muted">{hook}</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              <span>{eyebrow}</span>
             </motion.div>
 
-            {/* Semantic H1 Main Headline with Word-by-Word Mask Reveal */}
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight text-white leading-[1.2] mb-6">
-              <span className="inline-block overflow-hidden align-top">
-                <motion.span
-                  className="inline-block"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                >
-                  {headlineStart}
-                </motion.span>
-              </span>{' '}
-              <span className="inline-block overflow-hidden align-top">
-                <motion.span
-                  className="inline-block bg-gradient-to-r from-white via-[#ff9420] to-accent bg-clip-text text-transparent"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                >
-                  {headlineHighlight}
-                </motion.span>
-              </span>{' '}
-              <span className="inline-block overflow-hidden align-top">
-                <motion.span
-                  className="inline-block"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-                >
-                  {headlineEnd}
-                </motion.span>
-              </span>
+            {/* Semantic H1 Headline */}
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              >
+                {h1}
+              </motion.span>
             </h1>
 
             {/* Sub-headline */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-              className="text-sm sm:text-base md:text-lg text-fg-muted leading-relaxed mb-6 sm:mb-8 max-w-2xl font-normal"
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              className="text-base sm:text-lg md:text-xl text-fg-muted leading-relaxed mb-8 max-w-2xl font-normal"
             >
-              {subtitle}
+              {sub}
             </motion.p>
 
             {/* Dual CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-10"
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10"
             >
               <button
                 onClick={() => setModalOpen(true)}
-                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
+                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
               >
-                <span>{primaryCta}</span>
+                <span>{cta1}</span>
                 {direction === 'rtl' ? (
                   <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 ) : (
@@ -139,59 +107,39 @@ export function HeroSection() {
 
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-semibold text-white hover:border-accent hover:text-accent transition-all duration-200 backdrop-blur-md"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-5 sm:px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white hover:border-accent hover:text-accent transition-all duration-200 backdrop-blur-md"
               >
-                <span>{secondaryCta}</span>
+                <span>{cta2}</span>
               </a>
             </motion.div>
 
-            {/* In-Country Hyperscaler Active Region Bar */}
+            {/* Hero Detail Strip (Small Mono Labels) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-border w-full text-xs text-fg-subtle"
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="pt-6 border-t border-border w-full flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] font-mono tracking-wider text-fg-subtle"
             >
-              <div className="flex items-center gap-2">
-                <Server className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span className="text-white">
-                  {locale === 'ar' ? 'مناطق السحابة السيادية:' : 'In-Country Hyperscalers:'}{' '}
-                  <span className="text-fg-muted">Google Dammam • Azure Riyadh • AWS KSA • Oracle</span>
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-accent shrink-0" />
-                <span className="text-white">
-                  {locale === 'ar' ? 'معايير الأمن والسيادة:' : 'Sovereign Mandates:'}{' '}
-                  <span className="text-fg-muted">NCA ECC/CCC • Saudi PDPL Class 3</span>
-                </span>
-              </div>
+              {monoLabels.map((label, idx) => (
+                <React.Fragment key={label}>
+                  <span className="text-fg-muted hover:text-accent transition-colors font-medium">
+                    {label}
+                  </span>
+                  {idx < monoLabels.length - 1 && (
+                    <span className="text-border select-none">•</span>
+                  )}
+                </React.Fragment>
+              ))}
             </motion.div>
           </div>
 
-          {/* Three.js Interactive 3D Hero Visual (Desktop 5 cols) */}
+          {/* Three.js 3D Hero Experience */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative w-full overflow-hidden">
             <div className="relative flex items-center justify-center w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[480px]">
-              {/* Outer Radiant Glow */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 via-transparent to-accent/10 blur-[90px] pointer-events-none" />
-
-              {/* 3D Scene Canvas Container */}
               <div className="relative z-10 w-full aspect-square flex items-center justify-center">
                 <Hero3DExperience />
               </div>
-            </div>
-
-            {/* Riyadh Sovereign Node Status Bar */}
-            <div className="mt-4 flex items-center gap-3 rounded-full border border-border bg-surface/80 px-4 py-2 backdrop-blur-md">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
-              </span>
-              <span className="text-xs font-mono font-medium text-fg">
-                {locale === 'ar' ? 'بوابة الرياض السحابية: متصلة ونشطة' : 'Riyadh Sovereign Cloud Gateway: ACTIVE'}
-              </span>
-              <span className="h-3 w-[1px] bg-border" />
-              <span className="text-[11px] font-mono text-emerald-400">99.99% UPTIME</span>
             </div>
           </div>
         </div>

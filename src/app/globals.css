@@ -130,9 +130,22 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 @layer utilities {
   .animate-conic-spin {
     animation: spin-conic 8s linear infinite;
+  }
+
+  .animate-conic-spin-fast {
+    animation: spin-conic 2.5s linear infinite;
   }
 
   .animate-pulse-glow {

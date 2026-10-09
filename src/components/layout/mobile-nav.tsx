@@ -78,32 +78,32 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
   const serviceLinks = [
     {
-      name: locale === 'ar' ? 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة' : 'AI Automation & Integration',
-      desc: locale === 'ar' ? 'وكلاء ذكاء اصطناعي ذاتية، استضافة نماذج سيادية H100، ومحركات RAG' : 'Autonomous agents, private sovereign LLMs (vLLM/H100) & enterprise RAG',
+      name: locale === 'ar' ? 'الذكاء الاصطناعي والأتمتة' : 'AI Automation & Integration',
+      desc: locale === 'ar' ? 'أتمتة العمليات، وكلاء ذكاء اصطناعي مؤسسيون وأنظمة RAG' : 'AI-driven process automation, enterprise agents & RAG',
       href: '/services/ai-automation',
       icon: <Cpu className="h-4 w-4 text-accent shrink-0" />,
-      tag: 'SOVEREIGN AI',
+      tag: '01',
     },
     {
-      name: locale === 'ar' ? 'تطوير المنتجات الرقمية وهندسة الابتكار' : 'Product Development',
-      desc: locale === 'ar' ? 'هندسة المنتجات الرقمية المتكاملة، إطلاق MVPs في 8 أسابيع ومنصات SaaS' : 'Full-cycle digital products, rapid 8-week MVPs & bilingual GCC SaaS',
+      name: locale === 'ar' ? 'تطوير المنتجات' : 'Product Development',
+      desc: locale === 'ar' ? 'هندسة منتجات متكاملة من الفكرة والـ MVP إلى منصة قابلة للتوسع' : 'End-to-end product engineering, MVPs & scalable SaaS',
       href: '/services/product-development',
       icon: <Rocket className="h-4 w-4 text-accent shrink-0" />,
-      tag: 'RAPID MVPS',
+      tag: '02',
     },
     {
-      name: locale === 'ar' ? 'ديف أوبس وهندسة السحابة السيادية' : 'DevOps & Cloud Engineering',
-      desc: locale === 'ar' ? 'بنى سحابية محلية متعددة، كوبرنيتيس، تيرا فورم وأتمتة النشر وترشيد FinOps' : 'In-kingdom multi-cloud (AWS, Azure, GCP, Oracle), K8s & FinOps',
+      name: locale === 'ar' ? 'DevOps وهندسة السحابة' : 'DevOps & Cloud Engineering',
+      desc: locale === 'ar' ? 'خطوط نشر آلية، بنية سحابية موثوقة وتحسين التكلفة' : 'Automated pipelines, reliable infrastructure & FinOps',
       href: '/services/cloud-devops',
       icon: <Cloud className="h-4 w-4 text-accent shrink-0" />,
-      tag: '99.99% RESILIENCE',
+      tag: '03',
     },
     {
-      name: locale === 'ar' ? 'تطوير البرمجيات المؤسسية المخصصة' : 'Custom Software Development',
-      desc: locale === 'ar' ? 'أنظمة مؤسسية موزعة فائقة الأداء، واجهات برمجية سريعة وتكامل الفاتورة وساما' : 'High-throughput microservices, <80ms APIs, Kafka streams & ZATCA/SAMA',
+      name: locale === 'ar' ? 'تطوير البرمجيات المخصصة' : 'Custom Software Development',
+      desc: locale === 'ar' ? 'تطبيقات مؤسسية مخصصة، واجهات API وتحديث الأنظمة القديمة' : 'Tailored enterprise applications, APIs & legacy modernization',
       href: '/services/custom-software',
       icon: <Code2 className="h-4 w-4 text-accent shrink-0" />,
-      tag: 'ENTERPRISE B2B',
+      tag: '04',
     },
   ];
 
@@ -128,9 +128,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               <div className="flex items-center justify-between w-full text-[11px] font-mono uppercase tracking-[0.2em] text-accent mb-3">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                  <span>{locale === 'ar' ? 'الخدمات التقنية الأربع' : '4 CORE SERVICES'}</span>
+                  <span>{locale === 'ar' ? 'الخدمات' : 'SERVICES'}</span>
                 </div>
-                <span className="text-[10px] text-fg-subtle">{locale === 'ar' ? 'معايير وادي السيليكون' : 'US-KSA Pods'}</span>
+                <span className="text-[10px] text-fg-subtle">{locale === 'ar' ? 'أربع خدمات' : '4 Services'}</span>
               </div>
 
               <div className="grid grid-cols-1 gap-2 pt-1">
@@ -166,47 +166,21 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               </div>
             </div>
 
-            {/* 3. Main Navigation Links */}
+            {/* 2. Main Navigation Links */}
             <div>
               <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-fg-subtle mb-3 flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                <span>{locale === 'ar' ? 'المسارات الاستراتيجية' : 'STRATEGIC PATHWAYS'}</span>
+                <span>{locale === 'ar' ? 'التنقل' : 'NAVIGATION'}</span>
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Link
-                  href="/delivery-engine"
-                  onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
-                >
-                  <span>{locale === 'ar' ? 'محرك الإنجاز (أمريكا - الرياض - باكستان)' : 'Delivery Engine (US + KSA + Pak)'}</span>
-                  {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
-                  ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
-                  )}
-                </Link>
-
-                <Link
-                  href="/case-studies"
-                  onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
-                >
-                  <span>{locale === 'ar' ? 'دراسات النجاح والأرقام الموثقة' : 'Case Studies & Quantified Results'}</span>
-                  {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
-                  ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
-                  )}
-                </Link>
-
-                <Link
-                  href="/saudi-hub"
+                  href="/#vision-2030"
                   onClick={onClose}
                   className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-accent bg-accent-soft border border-accent/25 hover:bg-accent/20 transition-colors"
                 >
                   <div className="flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-accent" />
-                    <span>{locale === 'ar' ? 'مركز المملكة ورؤية 2030' : 'Saudi Hub & Vision 2030'}</span>
+                    <span>{locale === 'ar' ? 'رؤية 2030' : 'Vision 2030'}</span>
                   </div>
                   {direction === 'rtl' ? (
                     <ArrowLeft className="h-3.5 w-3.5 text-accent" />
@@ -216,11 +190,24 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 </Link>
 
                 <Link
+                  href="/case-studies"
+                  onClick={onClose}
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <span>{locale === 'ar' ? 'أعمالنا' : 'Our Work'}</span>
+                  {direction === 'rtl' ? (
+                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                  ) : (
+                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                  )}
+                </Link>
+
+                <Link
                   href="/about-us"
                   onClick={onClose}
                   className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
                 >
-                  <span>{locale === 'ar' ? 'من نحن وفريق القيادة' : 'About AEITCH & Leadership'}</span>
+                  <span>{locale === 'ar' ? 'من نحن' : 'About'}</span>
                   {direction === 'rtl' ? (
                     <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
                   ) : (
@@ -231,7 +218,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             </div>
           </div>
 
-          {/* 4. Bottom Actions & Sovereign Telemetry */}
+          {/* 3. Bottom Actions & Contact */}
           <div className="space-y-4 pt-6 mt-6 border-t border-white/10">
             {/* Primary Action Button */}
             <button
@@ -243,7 +230,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               }}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-sm font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
             >
-              <span>{locale === 'ar' ? 'طلب تدقيق معماري فوري' : 'Book Architecture Audit'}</span>
+              <span>{locale === 'ar' ? 'احجز استشارة' : 'Book a Consultation'}</span>
               {direction === 'rtl' ? (
                 <ArrowLeft className="h-4 w-4" />
               ) : (
@@ -260,16 +247,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               <span>{locale === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'}</span>
             </button>
 
-            {/* Micro Sovereign Footer */}
+            {/* Verified Contact Details */}
             <div className="flex items-center justify-between text-[11px] text-fg-subtle pt-2 px-1">
               <span className="flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5 text-accent" />
-                <span>{locale === 'ar' ? 'الرياض (طريق الملك فهد)' : 'Riyadh (King Fahd Rd)'}</span>
+                <Mail className="h-3.5 w-3.5 text-accent" />
+                <a href="mailto:hello@aeitch.com" className="hover:text-accent">
+                  hello@aeitch.com
+                </a>
               </span>
-              <span className="flex items-center gap-1.5 font-mono text-emerald-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <span>GMT+3 ONLINE</span>
-              </span>
+              <span className="font-mono text-fg-muted">0318-4055723</span>
             </div>
           </div>
         </motion.div>

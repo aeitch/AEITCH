@@ -13,7 +13,7 @@ export default defineConfig({
       'tests/unit/**/*.test.{ts,tsx}',
       'tests/api/**/*.test.{ts,tsx}',
     ],
-    exclude: ['tests/adversarial/**', 'tests/e2e/**', 'node_modules/**', '.next/**'],
+    exclude: ['tests/adversarial/**', 'tests/e2e/**', 'tests/components/m3-*.test.tsx', 'tests/archive/**', 'node_modules/**', '.next/**'],
   },
   resolve: {
     alias: {

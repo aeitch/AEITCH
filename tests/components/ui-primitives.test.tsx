@@ -164,9 +164,9 @@ describe('Layout Components: Navbar & Footer', () => {
       </LocaleProvider>
     );
     expect(screen.getByText(/AEITCH/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /book (consultation|architecture audit)/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /book (a )?consultation/i })).toBeInTheDocument();
     expect(screen.getByText('Services')).toBeInTheDocument();
-    expect(screen.getByText('Case Studies')).toBeInTheDocument();
+    expect(screen.getByText('Our Work')).toBeInTheDocument();
   });
 
   it('renders Footer with description, links, and operational status', () => {
@@ -175,7 +175,8 @@ describe('Layout Components: Navbar & Footer', () => {
         <Footer />
       </LocaleProvider>
     );
-    expect(screen.getByText(/engineering@aeitch.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/Riyadh • Jeddah • Eastern Province/i)).toBeInTheDocument();
+    expect(screen.getByText(/hello@aeitch.com/i)).toBeInTheDocument();
+    expect(screen.getByText(/0318-4055723/i)).toBeInTheDocument();
+    expect(screen.getByText(/© 2026 AEITCH/i)).toBeInTheDocument();
   });
 });

@@ -14,8 +14,8 @@ import { AeitchPicture } from '@/components/ui/aeitch-picture';
 import { KingdomFutureSection } from '@/components/home/kingdom-future-section';
 
 describe('Milestone M_CONTENT Verification: Zero Draft / Placeholder Strings', () => {
-  it('verifies BRAND.phonePlaceholder contains the authoritative Riyadh phone number', () => {
-    expect(BRAND.phonePlaceholder).toBe('+966 11 829 4400');
+  it('verifies BRAND.phonePlaceholder contains the authoritative contact phone number', () => {
+    expect(BRAND.phonePlaceholder).toBe('0318-4055723');
     expect(BRAND.phonePlaceholder).not.toContain('REPLACE');
     expect(BRAND.phonePlaceholder).not.toContain('CLIENT TO VERIFY');
   });
@@ -31,7 +31,7 @@ describe('Milestone M_CONTENT Verification: Zero Draft / Placeholder Strings', (
     expect(translations.ar.common.replacePlaceholder).toBe('بيانات معتمدة وموثقة');
     expect(translations.ar.trust.securityReady).toContain('NCA ECC-1:2018');
     expect(translations.ar.trust.certPlaceholder).toContain('ISO 27001');
-    expect(translations.ar.footer.phoneLabel).toContain('+966 11 829 4400');
+    expect(translations.ar.footer.phoneLabel).toContain('0318-4055723');
     expect(translations.ar.footer.privacyPolicy).not.toContain('LEGAL REVIEW');
   });
 
@@ -46,7 +46,7 @@ describe('Milestone M_CONTENT Verification: Zero Draft / Placeholder Strings', (
     expect(translations.en.common.replacePlaceholder).toBe('Audited Production Data');
     expect(translations.en.trust.securityReady).toContain('NCA Essential Cybersecurity Controls');
     expect(translations.en.trust.certPlaceholder).toContain('ISO 27001');
-    expect(translations.en.footer.phoneLabel).toContain('+966 11 829 4400');
+    expect(translations.en.footer.phoneLabel).toContain('0318-4055723');
     expect(translations.en.footer.privacyPolicy).not.toContain('LEGAL REVIEW');
   });
 
@@ -159,8 +159,8 @@ describe('Milestone M_CONTENT Verification: Component Rendering Hardening', () =
       </LocaleProvider>
     );
 
-    expect(screen.getByText(/SDAIA AI ETHICS COMPLIANT/i)).toBeInTheDocument();
-    expect(screen.getByText(/NCA ECC-1:2018 ENTERPRISE ARCHITECTURE/i)).toBeInTheDocument();
+    expect(screen.getByText(/NCA ECC \/ CCC Aligned/i)).toBeInTheDocument();
+    expect(screen.getByText(/Saudi PDPL Class-3 Enforced/i)).toBeInTheDocument();
     expect(screen.queryByText(/\[CLIENT TO VERIFY\]/i)).not.toBeInTheDocument();
   });
 });

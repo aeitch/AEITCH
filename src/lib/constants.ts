@@ -1,23 +1,23 @@
 export const BRAND = {
   name: 'AEITCH',
   nameArabic: 'إيتش',
-  hook: 'Silicon Valley-Grade Cloud Architecture. Tailored for Saudi Arabia’s Digital Frontier.',
-  hookArabic: 'هندسة سحابية بمعايير وادي السيليكون. مصممة خصيصاً للريادة الرقمية في المملكة العربية السعودية.',
-  tagline: 'Accelerating the Kingdom’s Digital Future with Cloud-First Engineering & Enterprise DevOps',
-  taglineArabic: 'تسريع المستقبل الرقمي للمملكة بهندسة سحابية متقدمة وحلول ديف أوبس مؤسسية',
+  hook: 'Digital engineering for enterprises.',
+  hookArabic: 'إيتش — هندسة رقمية للمؤسسات.',
+  tagline: 'Four services. One engineering standard.',
+  taglineArabic: 'أربع خدمات. هندسة واحدة متقنة.',
   description:
-    'We combine US product governance with high-velocity engineering pods to build mission-critical digital platforms compliant with Saudi data sovereignty and security standards.',
+    'We build AI automation, digital products, cloud infrastructure and custom software, with senior engineers, in step with Saudi Vision 2030.',
   descriptionArabic:
-    'نجمع بين الحوكمة المعمارية الأمريكية وفرق الهندسة المتسارعة لبناء منصات رقمية سيادية فائقة الحصانة متوافقة مع ضوابط الأمن والسيادة السعودية.',
-  email: 'engineering@aeitch.com',
-  location: 'Riyadh (King Fahd Road / KAFD) & Global Engineering Hubs',
-  locationArabic: 'الرياض (طريق الملك فهد / مركز الملك عبدالله المالي) ومراكز الهندسة العالمية',
+    'نبني حلول الذكاء الاصطناعي والمنتجات الرقمية والبنية السحابية والبرمجيات المخصصة، بفرق هندسية senior، وبما يخدم مستهدفات رؤية المملكة 2030.',
+  email: 'hello@aeitch.com',
+  location: 'Saudi Arabia & Global Engineering Pods',
+  locationArabic: 'المملكة العربية السعودية وفرق الهندسة المتخصصة',
   gulfTimezone: 'GMT+3 (Riyadh / Mecca)',
   foundedYear: 2022,
   founder: 'Haseeb Ur Rehman Khan',
-  phonePlaceholder: '+966 11 829 4400',
-  whatsappDirect: '+966 11 829 4400',
-  whatsappUrl: 'https://wa.me/966118294400?text=Hello%20AEITCH%20Riyadh,%20I%20would%20like%20to%20inquire%20about%20cloud%20architecture%20and%20compliance%20for%20our%20enterprise.',
+  phonePlaceholder: '0318-4055723',
+  whatsappDirect: '0318-4055723',
+  whatsappUrl: 'https://wa.me/923184055723?text=Hello%20AEITCH,%20I%20would%20like%20to%20inquire%20about%20a%20technical%20consultation.',
   colors: {
     bg: '#000000',
     bgElevated: '#0a0a0a',
@@ -40,12 +40,10 @@ export const BRAND = {
 };
 
 export const NAV_LINKS = [
-  { name: 'Services', nameAr: 'الخدمات الهندسية', href: '/services' },
+  { name: 'Services', nameAr: 'الخدمات', href: '/services' },
   { name: 'Vision 2030', nameAr: 'رؤية 2030', href: '/#vision-2030' },
-  { name: 'Delivery Model', nameAr: 'محرك الإنجاز', href: '/delivery-engine' },
-  { name: 'Case Studies', nameAr: 'دراسات النجاح', href: '/case-studies' },
+  { name: 'Our Work', nameAr: 'أعمالنا', href: '/case-studies' },
   { name: 'About', nameAr: 'من نحن', href: '/about-us' },
-  { name: 'Contact', nameAr: 'تواصل معنا', href: '/contact-us' },
 ];
 
 export const SERVICES_LINKS = [
