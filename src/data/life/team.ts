@@ -1,0 +1,138 @@
+export interface TeamMember {
+  id: string;
+  nameAr: string;
+  nameEn: string;
+  roleAr: string;
+  roleEn: string;
+  category: 'ai' | 'product' | 'cloud' | 'software';
+  image: string;
+  funFactAr: string;
+  funFactEn: string;
+  favoriteTool: string;
+  quoteAr: string;
+  quoteEn: string;
+  consent: boolean;
+}
+
+export const TEAM_MEMBERS: TeamMember[] = [
+  {
+    id: 'member-1',
+    nameAr: 'م. حسيب الرحمن خان',
+    nameEn: 'Haseeb Ur Rehman Khan',
+    roleAr: 'المؤسس ورئيس المعمارية التقنية',
+    roleEn: 'Founder & Principal Systems Architect',
+    category: 'software',
+    image: '/life/team/member-1.svg',
+    funFactAr: 'يبدأ كتابة الكود عند الفجر مع كوب شاي كشميري تقليدي.',
+    funFactEn: 'Writes production kernels at dawn powered by Kashmiri chai.',
+    favoriteTool: 'Neovim + Rust + Terraform',
+    quoteAr: 'البرمجيات الحقيقية تُبنى بالانضباط والحرفة، وليس بالحيل السريعة.',
+    quoteEn: 'Extraordinary systems are forged through discipline and craft, not shortcuts.',
+    consent: true,
+  },
+  {
+    id: 'member-2',
+    nameAr: 'م. عبد الله سليم',
+    nameEn: 'Abdullah Saleem',
+    roleAr: 'كبير مهندسي الذكاء الاصطناعي',
+    roleEn: 'Lead AI & RAG Engineer',
+    category: 'ai',
+    image: '/life/team/member-2.svg',
+    funFactAr: 'يستطيع شرح معمارية المحولات (Transformers) برسم على منديل ورقي.',
+    funFactEn: 'Can sketch transformer attention maps on a napkin in 30 seconds.',
+    favoriteTool: 'PyTorch + Pinecone + LangGraph',
+    quoteAr: 'الذكاء الاصطناعي المؤسسي الناجح هو الذي يعمل بهدوء دون هلوسة.',
+    quoteEn: 'Great enterprise AI is boring, deterministic, and hallucination-free.',
+    consent: true,
+  },
+  {
+    id: 'member-3',
+    nameAr: 'م. زينب البلوشي',
+    nameEn: 'Zainab Al-Balushi',
+    roleAr: 'مهندسة حلول السحابة وDevOps',
+    roleEn: 'Principal Cloud & SRE Engineer',
+    category: 'cloud',
+    image: '/life/team/member-3.svg',
+    funFactAr: 'لم يفشل أي خط إنتاج CI/CD تحت إدارتها لأكثر من 3 دقائق.',
+    funFactEn: 'Zero broken CI/CD main branches lasting over 3 minutes on her watch.',
+    favoriteTool: 'Kubernetes + ArgoCD + OpenTelemetry',
+    quoteAr: 'البنية التحتية الصلبة كالهواء النقي، لا تلاحظها إلا عند انقطاعها.',
+    quoteEn: 'Bulletproof infrastructure is like clean air: completely invisible until it fails.',
+    consent: true,
+  },
+  {
+    id: 'member-4',
+    nameAr: 'م. عمر طارق',
+    nameEn: 'Omer Tariq',
+    roleAr: 'رئيس تصميم وهندسة المنتجات',
+    roleEn: 'Head of Product Design & Frontend',
+    category: 'product',
+    image: '/life/team/member-4.svg',
+    funFactAr: 'يكتشف انحراف البكسل الواحد (1px misalignment) بمجرد النظر للشاشة.',
+    funFactEn: 'Can spot a 1px layout misalignment from across the room.',
+    favoriteTool: 'Figma + Next.js + Tailwind CSS',
+    quoteAr: 'الواجهة الأنيقة هي احترام صامت لوقت وذكاء المستخدم النهائي.',
+    quoteEn: 'Exceptional UX is a quiet gesture of respect for the user’s cognitive time.',
+    consent: true,
+  },
+  {
+    id: 'member-5',
+    nameAr: 'م. حمزة فاروق',
+    nameEn: 'Hamza Farooq',
+    roleAr: 'مهندس أول للأنظمة الخلفية',
+    roleEn: 'Senior Distributed Systems Engineer',
+    category: 'software',
+    image: '/life/team/member-5.svg',
+    funFactAr: 'يحب تحسين استعلامات SQL المعقدة حتى تنخفض مدة التنفيذ إلى 4 ميلي ثانية.',
+    funFactEn: 'Refactors complex PostgreSQL queries until execution drops under 4ms.',
+    favoriteTool: 'Go + PostgreSQL + Redis',
+    quoteAr: 'إذا لم تكن تقيس زمن الاستجابة بالميلي ثانية، فأنت لا تقيسه أصلاً.',
+    quoteEn: 'If latency is not measured in single-digit milliseconds, it is not optimized.',
+    consent: true,
+  },
+  {
+    id: 'member-6',
+    nameAr: 'م. عائشة مالك',
+    nameEn: 'Ayesha Malik',
+    roleAr: 'مهندسة أمن البنية السيبرانية',
+    roleEn: 'DevSecOps & Compliance Specialist',
+    category: 'cloud',
+    image: '/life/team/member-6.svg',
+    funFactAr: 'تحفظ متطلبات ضوابط NCA ECC وCCC عن ظهر قلب.',
+    funFactEn: 'Has memorized every single clause in the NCA ECC & CCC control matrices.',
+    favoriteTool: 'Trivy + Vault + Checkov',
+    quoteAr: 'الأمان السيبراني ليس مرحلة تفتيش لاحقة، بل أساس كل سطر برمجي.',
+    quoteEn: 'Security is not an afterthought checkpoint; it is baked into every commit.',
+    consent: true,
+  },
+  {
+    id: 'member-7',
+    nameAr: 'م. دانيال أحمد',
+    nameEn: 'Danial Ahmed',
+    roleAr: 'مهندس تكامل النظم والواجهات',
+    roleEn: 'Full-Stack Integration Engineer',
+    category: 'software',
+    image: '/life/team/member-7.svg',
+    funFactAr: 'بطل شطرنج المكتب ومحترف في سباقات الكارتينج.',
+    funFactEn: 'Office chess champion and avid amateur go-kart racer.',
+    favoriteTool: 'TypeScript + Docker + Postman',
+    quoteAr: 'الكود الجيد هو الكود الذي يمكن لزميلك قراءته وتطويره بعد سنة بدون حيرة.',
+    quoteEn: 'Clean code is code your peer can pick up a year later with zero confusion.',
+    consent: true,
+  },
+  {
+    id: 'member-8',
+    nameAr: 'م. مريم رحمن',
+    nameEn: 'Maryam Rehman',
+    roleAr: 'باحثة تجربة المستخدم ومنتجات MVP',
+    roleEn: 'Product Researcher & MVP Strategist',
+    category: 'product',
+    image: '/life/team/member-8.svg',
+    funFactAr: 'تجري أكثر من 40 مقابلة مستخدمين شهرياً وتستمع لتفاصيل التحديات.',
+    funFactEn: 'Conducts 40+ user feedback sessions a month with obsessive note-taking.',
+    favoriteTool: 'Notion + Miro + Hotjar',
+    quoteAr: 'أفضل ميزة في المنتج الأولي هي الميزة التي تمتلك الشجاعة لحذفها.',
+    quoteEn: 'The most impactful feature of an MVP is the one you had the courage to cut.',
+    consent: true,
+  },
+];

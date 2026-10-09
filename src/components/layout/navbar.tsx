@@ -35,6 +35,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [workOpen, setWorkOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [consultationModalOpen, setConsultationModalOpen] = useState(false);
 
@@ -55,6 +56,7 @@ export const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
     setWorkOpen(false);
+    setAboutOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -298,17 +300,74 @@ export const Navbar: React.FC = () => {
               </AnimatePresence>
             </div>
 
-            {/* About Us */}
-            <Link
-              href="/about-us"
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === '/about-us'
-                  ? 'text-accent'
-                  : 'text-fg-muted hover:text-white hover:bg-white/5'
-              }`}
+            {/* About Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => setAboutOpen(false)}
             >
-              {locale === 'ar' ? 'من نحن' : 'About'}
-            </Link>
+              <button
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  pathname?.startsWith('/about-us')
+                    ? 'text-accent'
+                    : 'text-fg-muted hover:text-white hover:bg-white/5'
+                }`}
+                aria-expanded={aboutOpen}
+              >
+                <span>{locale === 'ar' ? 'من نحن' : 'About'}</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    aboutOpen ? 'rotate-180 text-accent' : 'text-fg-subtle'
+                  }`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {aboutOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute top-full start-0 pt-2 w-64 z-50"
+                  >
+                    <div className="rounded-2xl border border-border bg-surface p-2 shadow-2xl backdrop-blur-2xl">
+                      <div className="space-y-1">
+                        <Link
+                          href="/about-us"
+                          onClick={() => setAboutOpen(false)}
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                        >
+                          <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
+                            {locale === 'ar' ? 'عن الشركة' : 'About Company'}
+                          </div>
+                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                            {locale === 'ar' ? 'رسالتنا وهندستنا التقنية' : 'Our mission & methodology'}
+                          </div>
+                        </Link>
+                        <Link
+                          href="/about-us/life-at-aeitch"
+                          onClick={() => setAboutOpen(false)}
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
+                              {locale === 'ar' ? 'الحياة في إيتش' : 'Life at AEITCH'}
+                            </span>
+                            <span className="font-mono text-[9px] uppercase tracking-wider text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30">
+                              NEW
+                            </span>
+                          </div>
+                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                            {locale === 'ar' ? 'ثقافة العمل، الفريق والرحلات' : 'Culture, squad & expeditions'}
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* Blog */}
             <Link

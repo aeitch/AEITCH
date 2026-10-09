@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import { Inter, IBM_Plex_Sans_Arabic, Readex_Pro, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { MainSiteChrome } from '@/components/layout/main-site-chrome';
 import { LocaleProvider } from '@/lib/i18n';
@@ -15,6 +15,20 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-arabic',
+  display: 'swap',
+});
+
+const readexPro = Readex_Pro({
+  subsets: ['arabic', 'latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-readex',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -113,7 +127,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       translate="no"
-      className={`dark notranslate ${inter.variable} ${ibmPlexArabic.variable}`}
+      className={`dark notranslate ${inter.variable} ${ibmPlexArabic.variable} ${readexPro.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

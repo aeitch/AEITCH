@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b"/>
+      <stop offset="50%" stop-color="#111114"/>
+      <stop offset="100%" stop-color="#09090b"/>
+    </linearGradient>
+    <pattern id="gridPattern" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="noise"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <rect width="100%" height="100%" fill="url(#gridPattern)"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+
+  <rect x="8" y="8" width="784" height="584" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <rect x="8" y="8" width="784" height="584" fill="none" stroke="#e9800a" stroke-width="1" stroke-dasharray="16 32" opacity="0.4"/>
+
+  <path d="M 8 28 L 8 8 L 28 8" fill="none" stroke="#e9800a" stroke-width="2"/>
+  <path d="M 772 8 L 792 8 L 792 28" fill="none" stroke="#e9800a" stroke-width="2"/>
+  <path d="M 8 572 L 8 592 L 28 592" fill="none" stroke="#e9800a" stroke-width="2"/>
+  <path d="M 772 592 L 792 592 L 792 572" fill="none" stroke="#e9800a" stroke-width="2"/>
+
+  <g transform="translate(400, 300)">
+    <circle r="36" fill="#1a1a20" stroke="#e9800a" stroke-width="1.5" opacity="0.9"/>
+    <path d="M -12 -5 L -8 -11 L 8 -11 L 12 -5 L 16 -5 C 17 -5 18 -4 18 -3 L 18 11 C 18 12 17 13 16 13 L -16 13 C -17 13 -18 12 -18 11 L -18 -3 C -18 -4 -17 -5 -16 -5 Z" fill="none" stroke="#e9800a" stroke-width="1.5"/>
+    <circle r="5" fill="none" stroke="#ffffff" stroke-width="1.5" cy="3"/>
+
+    <text y="56" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14" font-weight="bold" letter-spacing="2">[ PHOTO HERE ]</text>
+    <text y="76" text-anchor="middle" fill="#a1a1aa" font-family="monospace" font-size="11">Culture Value 1 • 4:3 (800x600)</text>
+    <text y="94" text-anchor="middle" fill="#e9800a" font-family="monospace" font-size="10" opacity="0.8">DROP REAL PHOTO INTO /public/life/values</text>
+  </g>
+</svg>

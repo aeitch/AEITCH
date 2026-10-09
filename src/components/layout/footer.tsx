@@ -112,6 +112,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/about-us/life-at-aeitch" className="hover:text-accent transition-colors flex items-center gap-1.5">
+                  <span>{locale === 'ar' ? 'الحياة في إيتش' : 'Life at AEITCH'}</span>
+                  <span className="text-[9px] font-mono text-accent bg-accent/10 px-1.5 py-0.5 rounded border border-accent/30">
+                    NEW
+                  </span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/case-studies" className="hover:text-accent transition-colors">
                   {locale === 'ar' ? 'دراسات الحالة' : 'Our Work'}
                 </Link>

@@ -1126,3 +1126,9 @@ export function useTranslation() {
   }
   return context;
 }
+
+export function useLanguage() {
+  const { locale, direction } = useTranslation();
+  return { language: locale, locale, direction };
+}
+

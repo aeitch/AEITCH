@@ -229,6 +229,24 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 </Link>
 
                 <Link
+                  href="/about-us/life-at-aeitch"
+                  onClick={onClose}
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <span>{locale === 'ar' ? 'الحياة في إيتش' : 'Life at AEITCH'}</span>
+                    <span className="text-[9px] font-mono text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30">
+                      NEW
+                    </span>
+                  </div>
+                  {direction === 'rtl' ? (
+                    <ArrowLeft className="h-3.5 w-3.5 text-accent" />
+                  ) : (
+                    <ArrowRight className="h-3.5 w-3.5 text-accent" />
+                  )}
+                </Link>
+
+                <Link
                   href="/insights"
                   onClick={onClose}
                   className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"

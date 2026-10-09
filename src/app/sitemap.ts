@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/insights/pdpl-compliant-cloud-architecture',
     '/insights/mvp-velocity-gcc-startups',
     '/about-us',
+    '/about-us/life-at-aeitch',
     '/contact-us',
     '/privacy-policy',
     '/terms-of-service',

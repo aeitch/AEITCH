@@ -85,8 +85,10 @@ const config: Config = {
         'glow-gold': '0 0 25px -4px rgba(233, 128, 10, 0.35)',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'var(--font-arabic)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-arabic)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
         arabic: ['var(--font-arabic)', 'system-ui', 'sans-serif'],
+        readex: ['var(--font-readex)', 'var(--font-arabic)', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
       animation: {
         'conic-spin': 'conicSpin 6s linear infinite',
