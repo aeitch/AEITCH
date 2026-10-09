@@ -40,6 +40,7 @@ export function ServicesShowcase() {
 
   const serviceIcons: Record<string, React.ReactNode> = {
     'ai-automation': <Cpu className="h-5 w-5" />,
+    'product-development': <Rocket className="h-5 w-5" />,
     'cloud-devops': <Cloud className="h-5 w-5" />,
     'custom-software': <Code2 className="h-5 w-5" />,
     'mvp-development': <Rocket className="h-5 w-5" />,
@@ -110,12 +111,12 @@ export function ServicesShowcase() {
                 <div className="truncate">
                   <div className={`font-mono text-[9px] sm:text-[10px] uppercase tracking-wider ${isSelected ? 'text-accent' : 'text-zinc-400'}`}>
                     {service.id === 'ai-automation'
-                      ? 'AI // AGENTS'
+                      ? 'AI // SOVEREIGN'
+                      : service.id === 'product-development' || service.id === 'mvp-development'
+                      ? 'PRODUCT // MVP'
                       : service.id === 'cloud-devops'
                       ? 'CLOUD // DEVOPS'
-                      : service.id === 'custom-software'
-                      ? 'ENTERPRISE // B2B'
-                      : 'MVP // 8 WEEKS'}
+                      : 'ENTERPRISE // B2B'}
                   </div>
                   <div className={`truncate text-xs sm:text-sm font-bold ${isSelected ? 'text-white' : 'text-zinc-900'}`}>{service.title}</div>
                 </div>
@@ -295,8 +296,8 @@ export function ServicesShowcase() {
                   </motion.div>
                 )}
 
-                {/* 4. RAPID MVP 8-WEEK SPRINT CADENCE MACHINE */}
-                {selectedServiceId === 'mvp-development' && (
+                {/* 4. PRODUCT DEVELOPMENT & RAPID MVP 8-WEEK SPRINT MACHINE */}
+                {(selectedServiceId === 'product-development' || selectedServiceId === 'mvp-development') && (
                   <motion.div
                     key="mvp-sandbox"
                     initial={{ opacity: 0, scale: 0.98 }}
@@ -370,13 +371,7 @@ export function ServicesShowcase() {
                 </button>
 
                 <Link
-                  href={`/services/${
-                    activeService.id === 'ai-automation'
-                      ? 'ai-consulting'
-                      : activeService.id === 'mvp-development'
-                      ? 'new-product-development'
-                      : activeService.id
-                  }`}
+                  href={`/services/${activeService.slug || activeService.id}`}
                   className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-zinc-900 hover:text-accent transition-colors"
                 >
                   <span>{locale === 'ar' ? 'المواصفة الكاملة' : 'Full Architecture Spec'}</span>

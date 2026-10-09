@@ -47,7 +47,7 @@ export function HeroSection() {
     locale === 'ar' ? 'احجز جلسة استشارية تنفيذية' : 'Schedule an Executive Briefing';
 
   const secondaryCta =
-    locale === 'ar' ? 'استكشف أطر الامتثال السيادية' : 'Explore Saudi Compliance Frameworks';
+    locale === 'ar' ? 'استكشف الخدمات التقنية الأربع' : 'Explore The 4 Disciplines';
 
   return (
     <section className="relative overflow-hidden pt-6 pb-20 md:pt-12 md:pb-28" dir={direction}>
@@ -138,7 +138,7 @@ export function HeroSection() {
               </button>
 
               <a
-                href="/solutions/enterprise-cloud-migration"
+                href="#services"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-semibold text-white hover:border-accent hover:text-accent transition-all duration-200 backdrop-blur-md"
               >
                 <span>{secondaryCta}</span>

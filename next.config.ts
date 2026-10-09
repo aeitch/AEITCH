@@ -42,6 +42,46 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      {
+        source: '/services/ai-consulting',
+        destination: '/services/ai-automation',
+        permanent: true,
+      },
+      {
+        source: '/services/cloud-first-product-engineering',
+        destination: '/services/product-development',
+        permanent: true,
+      },
+      {
+        source: '/services/new-product-development',
+        destination: '/services/product-development',
+        permanent: true,
+      },
+      {
+        source: '/services/platform-engineering-devops',
+        destination: '/services/cloud-devops',
+        permanent: true,
+      },
+      {
+        source: '/services/devsecops-ksa-compliance',
+        destination: '/services/cloud-devops',
+        permanent: true,
+      },
+      {
+        source: '/services/dedicated-engineering-squads',
+        destination: '/services/product-development',
+        permanent: true,
+      },
+      {
+        source: '/solutions',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/solutions/:path*',
+        destination: '/services',
+        permanent: true,
+      },
     ];
   },
 };

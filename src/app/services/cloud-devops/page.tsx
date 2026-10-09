@@ -7,11 +7,11 @@ import { CloudCostSizingSimulator } from '@/components/services/CloudCostSizingS
 import { CloudDevOpsCTA } from '@/components/services/CloudDevOpsCTA';
 
 export const metadata: Metadata = {
-  title: 'Cloud Architecture & DevOps Engineering | AEITCH',
+  title: 'DevOps & Cloud Engineering | In-Kingdom Multi-Cloud | AEITCH',
   description:
     'Resilient multi-cloud engineering on Saudi Hyperscaler regions (AWS Riyadh, Azure, Google Cloud Dammam). Production-grade Kubernetes orchestration, zero-drift Terraform IaC, automated GitOps CI/CD, and 30-50% FinOps cost reduction.',
   openGraph: {
-    title: 'Cloud Architecture & DevOps Engineering | AEITCH',
+    title: 'DevOps & Cloud Engineering | In-Kingdom Multi-Cloud | AEITCH',
     description:
       'Architecting resilient multi-cloud infrastructure on Saudi Hyperscalers with 99.99% availability. Zero-drift Terraform, Kubernetes clusters, and automated GitOps continuous delivery.',
     url: 'https://aeitch.com/services/cloud-devops',

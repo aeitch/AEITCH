@@ -27,13 +27,12 @@ import {
 import { useTranslation } from '@/lib/i18n';
 import { ConsultationModal } from '@/components/forms/ConsultationModal';
 import { MobileNav } from '@/components/layout/mobile-nav';
-import { SOLUTIONS_LINKS, SERVICES_LINKS } from '@/lib/constants';
+import { SERVICES_LINKS } from '@/lib/constants';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const { t, locale, toggleLocale, direction } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [consultationModalOpen, setConsultationModalOpen] = useState(false);
@@ -53,7 +52,6 @@ export const Navbar: React.FC = () => {
   // Close mobile drawer on route change or when desktop viewport is reached
   useEffect(() => {
     setMobileMenuOpen(false);
-    setSolutionsOpen(false);
     setServicesOpen(false);
   }, [pathname]);
 
@@ -67,57 +65,34 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const solutionItems = [
-    {
-      name: locale === 'ar' ? 'التقنية المالية والمصرفية' : 'FinTech & Digital Banking',
-      href: '/solutions/fintech-digital-banking',
-      desc: locale === 'ar' ? 'جاهزية ساما، المصرفية المفتوحة ومعيار ISO 20022' : 'SAMA Open Banking, ISO 20022 & mada rails',
-      icon: <CreditCard className="h-5 w-5 text-accent" />,
-    },
-    {
-      name: locale === 'ar' ? 'المشاريع الكبرى والمنصات الذكية' : 'Giga-Projects & Platforms',
-      href: '/solutions/giga-projects-smart-infrastructure',
-      desc: locale === 'ar' ? 'إنترنت الأشياء، التوائم الرقمية والحوسبة الطرفية' : 'IoT telemetry, digital twins & cognitive edge',
-      icon: <Building2 className="h-5 w-5 text-accent" />,
-    },
-    {
-      name: locale === 'ar' ? 'الهجرة السحابية السيادية' : 'Enterprise Cloud Migration',
-      href: '/solutions/enterprise-cloud-migration',
-      desc: locale === 'ar' ? 'جوجل الدمام، أزور، أمازون وأوراكل الرياض' : 'GCP Dammam, Azure Riyadh, AWS KSA & Oracle',
-      icon: <CloudLightning className="h-5 w-5 text-accent" />,
-    },
-    {
-      name: locale === 'ar' ? 'الشركات الريادية وساس (SaaS)' : 'High-Growth SaaS',
-      href: '/solutions/high-growth-saas',
-      desc: locale === 'ar' ? 'بنى متعددة المستأجرين وإطلاق MVP في 8 أسابيع' : 'Multi-tenant scale & 8-week MVP launch',
-      icon: <Flame className="h-5 w-5 text-accent" />,
-    },
-  ];
-
   const serviceItems = [
     {
-      name: locale === 'ar' ? 'هندسة المنتجات المرتكزة على السحابة' : 'Cloud-First Product Engineering',
-      href: '/services/cloud-first-product-engineering',
-      desc: locale === 'ar' ? 'خدمات مصغرة، بث كافكا والأنظمة اللامركزية' : 'Microservices, Kafka event-streaming & serverless',
+      name: locale === 'ar' ? 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة' : 'AI Automation & Integration',
+      href: '/services/ai-automation',
+      desc: locale === 'ar' ? 'وكلاء ذكاء اصطناعي ذاتية، استضافة نماذج سيادية H100، ومحركات RAG دلالية' : 'Autonomous agent swarms, private sovereign LLMs (vLLM/H100), RAG & ERP integration',
       icon: <Cpu className="h-5 w-5 text-accent" />,
+      tag: 'SOVEREIGN AI',
     },
     {
-      name: locale === 'ar' ? 'هندسة المنصات وديف أوبس' : 'Platform Engineering & DevOps',
-      href: '/services/platform-engineering-devops',
-      desc: locale === 'ar' ? 'كوبرنيتيس، منصات المطورين وتيرا فورم GitOps' : 'Internal Developer Platforms, Kubernetes & IaC',
+      name: locale === 'ar' ? 'تطوير المنتجات الرقمية وهندسة الابتكار' : 'Product Development',
+      href: '/services/product-development',
+      desc: locale === 'ar' ? 'هندسة المنتجات الرقمية المتكاملة، إطلاق MVPs في 8 أسابيع ومنصات SaaS' : 'Full-cycle digital products, rapid 8-week MVPs & scalable bilingual GCC platforms',
+      icon: <Rocket className="h-5 w-5 text-accent" />,
+      tag: 'RAPID MVPS',
+    },
+    {
+      name: locale === 'ar' ? 'ديف أوبس وهندسة السحابة السيادية' : 'DevOps & Cloud Engineering',
+      href: '/services/cloud-devops',
+      desc: locale === 'ar' ? 'بنى سحابية محلية متعددة، كوبرنيتيس، تيرا فورم وأتمتة النشر وترشيد FinOps' : 'In-kingdom multi-cloud (AWS KSA, GCP Dammam, Azure, Oracle), K8s & FinOps',
       icon: <Cloud className="h-5 w-5 text-accent" />,
+      tag: '99.99% RESILIENCE',
     },
     {
-      name: locale === 'ar' ? 'ديف سيك أوبس والامتثال السيادي' : 'DevSecOps & KSA Compliance',
-      href: '/services/devsecops-ksa-compliance',
-      desc: locale === 'ar' ? 'ضوابط NCA ECC/CCC، حماية البيانات PDPL وفولت' : 'NCA ECC/CCC, NDMO data residency & HashiCorp Vault',
-      icon: <ShieldCheck className="h-5 w-5 text-accent" />,
-    },
-    {
-      name: locale === 'ar' ? 'فرق هندسية مخصصة (Pods)' : 'Dedicated Engineering Squads',
-      href: '/services/dedicated-engineering-squads',
-      desc: locale === 'ar' ? 'فرق عمل متزامنة بتوقيت الرياض GMT+3 وإشراف أمريكي' : 'Full-cycle pods with GMT+3 overlap & US governance',
-      icon: <Users className="h-5 w-5 text-accent" />,
+      name: locale === 'ar' ? 'تطوير البرمجيات المؤسسية المخصصة' : 'Custom Software Development',
+      href: '/services/custom-software',
+      desc: locale === 'ar' ? 'أنظمة مؤسسية موزعة فائقة الأداء، واجهات برمجية سريعة وتكامل الفاتورة وساما' : 'High-throughput distributed systems, <80ms APIs, Kafka streams & ZATCA/SAMA',
+      icon: <Code2 className="h-5 w-5 text-accent" />,
+      tag: 'ENTERPRISE B2B',
     },
   ];
 
@@ -171,69 +146,9 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* 2. Desktop Navigation Links */}
+          {/* 2. Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {/* Solutions Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setSolutionsOpen(true)}
-              onMouseLeave={() => setSolutionsOpen(false)}
-            >
-              <button
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                  pathname?.startsWith('/solutions')
-                    ? 'text-accent'
-                    : 'text-fg-muted hover:text-white hover:bg-white/5'
-                }`}
-                aria-expanded={solutionsOpen}
-              >
-                <span>{locale === 'ar' ? 'الحلول القطاعية' : 'Solutions'}</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    solutionsOpen ? 'rotate-180 text-accent' : 'text-fg-subtle'
-                  }`}
-                />
-              </button>
-
-              <AnimatePresence>
-                {solutionsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute top-full start-0 pt-2 w-96 z-50"
-                  >
-                    <div className="rounded-2xl border border-border bg-surface p-2 shadow-2xl backdrop-blur-2xl">
-                      <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/5 mb-1">
-                        {locale === 'ar' ? 'التركيز على مستهدفات رؤية 2030' : 'Saudi Vision 2030 Focus'}
-                      </div>
-                      {solutionItems.map((s) => (
-                        <Link
-                          key={s.href}
-                          href={s.href}
-                          onClick={() => setSolutionsOpen(false)}
-                          className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-surface-2"
-                        >
-                          <div className="rounded-lg bg-surface-2 p-2 border border-border group-hover:border-accent/40 transition-colors">
-                            {s.icon}
-                          </div>
-                          <div>
-                            <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
-                              {s.name}
-                            </div>
-                            <div className="text-xs text-fg-subtle leading-snug mt-0.5">
-                              {s.desc}
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Services Dropdown */}
+            {/* 4 Core Services Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setServicesOpen(true)}
@@ -247,7 +162,7 @@ export const Navbar: React.FC = () => {
                 }`}
                 aria-expanded={servicesOpen}
               >
-                <span>{locale === 'ar' ? 'القدرات الهندسية' : 'Services'}</span>
+                <span>{locale === 'ar' ? 'الخدمات التقنية الأربع' : 'Services'}</span>
                 <ChevronDown
                   className={`h-4 w-4 transition-transform duration-200 ${
                     servicesOpen ? 'rotate-180 text-accent' : 'text-fg-subtle'
@@ -262,37 +177,60 @@ export const Navbar: React.FC = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute top-full start-0 pt-2 w-96 z-50"
+                    className="absolute top-full start-0 pt-2 w-[420px] z-50"
                   >
-                    <div className="rounded-2xl border border-border bg-surface p-2 shadow-2xl backdrop-blur-2xl">
-                      <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/5 mb-1">
-                        {locale === 'ar' ? 'القدرات الهندسية المؤسسية' : 'Core Cloud & DevOps Capabilities'}
+                    <div className="rounded-2xl border border-border bg-surface p-2.5 shadow-2xl backdrop-blur-2xl">
+                      <div className="flex items-center justify-between px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/5 mb-1.5">
+                        <span>{locale === 'ar' ? 'الخدمات الهندسية الأساسية' : '4 Core Engineering Disciplines'}</span>
+                        <span className="text-[9px] text-fg-subtle">{locale === 'ar' ? 'معايير وادي السيليكون' : 'US-KSA Pods'}</span>
                       </div>
-                      {serviceItems.map((s) => (
-                        <Link
-                          key={s.href}
-                          href={s.href}
-                          onClick={() => setServicesOpen(false)}
-                          className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-surface-2"
-                        >
-                          <div className="rounded-lg bg-surface-2 p-2 border border-border group-hover:border-accent/40 transition-colors">
-                            {s.icon}
-                          </div>
-                          <div>
-                            <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
-                              {s.name}
+                      <div className="space-y-1">
+                        {serviceItems.map((s) => (
+                          <Link
+                            key={s.href}
+                            href={s.href}
+                            onClick={() => setServicesOpen(false)}
+                            className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                          >
+                            <div className="rounded-lg bg-surface-2 p-2 border border-border group-hover:border-accent/40 transition-colors shrink-0 mt-0.5">
+                              {s.icon}
                             </div>
-                            <div className="text-xs text-fg-subtle leading-snug mt-0.5">
-                              {s.desc}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between gap-2">
+                                <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors truncate">
+                                  {s.name}
+                                </div>
+                                {s.tag && (
+                                  <span className="font-mono text-[9px] uppercase tracking-wider text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30 shrink-0">
+                                    {s.tag}
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-xs text-fg-subtle leading-snug mt-1 line-clamp-2">
+                                {s.desc}
+                              </div>
                             </div>
-                          </div>
-                        </Link>
-                      ))}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Vision 2030 Sovereign Flagship */}
+            <Link
+              href="/#vision-2030"
+              className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                pathname === '/saudi-hub'
+                  ? 'text-accent bg-accent-soft border border-accent/40'
+                  : 'text-accent bg-accent-soft/70 border border-accent/25 hover:bg-accent/20'
+              }`}
+            >
+              <Sparkles className="h-3.5 w-3.5 text-accent" />
+              <span>{locale === 'ar' ? 'رؤية 2030' : 'Vision 2030'}</span>
+            </Link>
 
             {/* Delivery Model (The Aeitch Delivery Engine) */}
             <Link
@@ -316,19 +254,6 @@ export const Navbar: React.FC = () => {
               }`}
             >
               {locale === 'ar' ? 'دراسات النجاح' : 'Case Studies'}
-            </Link>
-
-            {/* Saudi Hub / Vision 2030 */}
-            <Link
-              href="/saudi-hub"
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === '/saudi-hub'
-                  ? 'text-accent bg-accent-soft border border-accent/40'
-                  : 'text-accent bg-accent-soft/70 border border-accent/25 hover:bg-accent/20'
-              }`}
-            >
-              <Sparkles className="h-3.5 w-3.5 text-accent" />
-              <span>{locale === 'ar' ? 'مركز المملكة 2030' : 'Saudi Hub'}</span>
             </Link>
 
             {/* About Us */}

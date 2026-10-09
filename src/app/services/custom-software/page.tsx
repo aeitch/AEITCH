@@ -18,7 +18,7 @@ import { RadialGlowCard } from '@/components/ui/radial-glow-card';
 import { SovereignMicroservicesTopology } from '@/components/schematics';
 
 export const metadata: Metadata = {
-  title: 'Custom Software Engineering & Distributed Systems | AEITCH',
+  title: 'Custom Software Development & Distributed Systems | AEITCH',
   description:
     'High-throughput enterprise platforms, ultra-low latency APIs, multi-tenant SaaS architecture, and resilient distributed microservices with zero architectural debt.',
 };

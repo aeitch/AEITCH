@@ -40,99 +40,59 @@ export const BRAND = {
 };
 
 export const NAV_LINKS = [
-  { name: 'Solutions', nameAr: 'الحلول القطاعية', href: '/solutions' },
-  { name: 'Services', nameAr: 'القدرات الهندسية', href: '/services' },
+  { name: 'Services', nameAr: 'الخدمات الهندسية', href: '/services' },
+  { name: 'Vision 2030', nameAr: 'رؤية 2030', href: '/#vision-2030' },
   { name: 'Delivery Model', nameAr: 'محرك الإنجاز', href: '/delivery-engine' },
   { name: 'Case Studies', nameAr: 'دراسات النجاح', href: '/case-studies' },
-  { name: 'Saudi Hub', nameAr: 'مركز المملكة 2030', href: '/saudi-hub' },
   { name: 'About', nameAr: 'من نحن', href: '/about-us' },
   { name: 'Contact', nameAr: 'تواصل معنا', href: '/contact-us' },
 ];
 
-export const SOLUTIONS_LINKS = [
-  {
-    name: 'FinTech & Digital Banking',
-    nameAr: 'التقنية المالية والخدمات المصرفية الرقمية',
-    href: '/solutions/fintech-digital-banking',
-    slug: 'fintech-digital-banking',
-    desc: 'SAMA Open Banking readiness, ISO 20022 messaging & mada integration',
-    descAr: 'جاهزية المصرفية المفتوحة من ساما، معيار ISO 20022 وتكامل شبكة مدى',
-    icon: 'CreditCard',
-  },
-  {
-    name: 'Giga-Projects & Smart Infrastructure',
-    nameAr: 'المشاريع الكبرى والمنصات الذكية',
-    href: '/solutions/giga-projects-smart-infrastructure',
-    slug: 'giga-projects-smart-infrastructure',
-    desc: 'Large-scale IoT telemetry, digital twins & cognitive edge computing',
-    descAr: 'استيعاب إنترنت الأشياء فائق الضخامة، التوائم الرقمية والحوسبة الطرفية',
-    icon: 'Building2',
-  },
-  {
-    name: 'Enterprise Cloud Migration',
-    nameAr: 'تحديث المؤسسات والهجرة السحابية السيادية',
-    href: '/solutions/enterprise-cloud-migration',
-    slug: 'enterprise-cloud-migration',
-    desc: 'Google Cloud Dammam, Azure Riyadh, AWS & Oracle in-country regions',
-    descAr: 'مناطق السحابة المحلية (جوجل الدمام، أزور، أمازون وأوراكل الرياض)',
-    icon: 'CloudLightning',
-  },
-  {
-    name: 'High-Growth SaaS & Venture Products',
-    nameAr: 'البرمجيات كخدمة (SaaS) والشركات الريادية',
-    href: '/solutions/high-growth-saas',
-    slug: 'high-growth-saas',
-    desc: 'Multi-tenant architecture, rapid scale & 8-week production launch',
-    descAr: 'بنى متعددة المستأجرين، توسع فائق وإطلاق تجاري متكامل خلال 8 أسابيع',
-    icon: 'Flame',
-  },
-];
-
 export const SERVICES_LINKS = [
   {
-    name: 'Cloud-First Product Engineering',
-    nameAr: 'هندسة المنتجات المرتكزة على السحابة',
-    href: '/services/cloud-first-product-engineering',
-    slug: 'cloud-first-product-engineering',
-    desc: 'Microservices, event-driven streaming (Kafka) & serverless architectures',
-    descAr: 'بنى الخدمات المصغرة، البث الحدثي عبر كافكا والأنظمة غير الخادمة',
+    name: 'AI Automation & Integration',
+    nameAr: 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة',
+    href: '/services/ai-automation',
+    slug: 'ai-automation',
+    desc: 'Autonomous agent swarms, private sovereign LLMs (vLLM/H100), enterprise RAG & ERP integration',
+    descAr: 'وكلاء ذكاء اصطناعي ذاتية، استضافة نماذج سيادية، ومحركات RAG دلالية آمنة',
     icon: 'Cpu',
   },
   {
-    name: 'Platform Engineering & DevOps',
-    nameAr: 'هندسة المنصات وحلول ديف أوبس',
-    href: '/services/platform-engineering-devops',
-    slug: 'platform-engineering-devops',
-    desc: 'Internal Developer Platforms (IDPs), Kubernetes, Terraform GitOps & SRE',
-    descAr: 'منصات المطورين الداخلية، كوبرنيتيس، إدارة البنية البرمجية ونظم الموثوقية',
+    name: 'Product Development',
+    nameAr: 'تطوير المنتجات الرقمية وهندسة الابتكار',
+    href: '/services/product-development',
+    slug: 'product-development',
+    desc: 'Full-cycle digital product architecture, rapid 8-week MVPs & bilingual GCC SaaS platforms',
+    descAr: 'هندسة المنتجات الرقمية المتكاملة، إطلاق نماذج العمل (MVP) في 8 أسابيع وتطبيقات الويب والهاتف',
+    icon: 'Rocket',
+  },
+  {
+    name: 'DevOps & Cloud Engineering',
+    nameAr: 'ديف أوبس وهندسة السحابة السيادية',
+    href: '/services/cloud-devops',
+    slug: 'cloud-devops',
+    desc: 'In-kingdom multi-cloud (AWS, Azure, GCP Dammam, Oracle), Kubernetes, GitOps & FinOps',
+    descAr: 'بنى سحابية محلية متعددة، كوبرنيتيس، تيرا فورم وأتمتة النشر المستمر مع ترشيد التكاليف',
     icon: 'Cloud',
   },
   {
-    name: 'DevSecOps & KSA Compliance',
-    nameAr: 'ديف سيك أوبس والامتثال لضوابط المملكة',
-    href: '/services/devsecops-ksa-compliance',
-    slug: 'devsecops-ksa-compliance',
-    desc: 'NCA ECC/CCC, NDMO data sovereignty, Vault & automated CI/CD security',
-    descAr: 'ضوابط الهيئة الوطنية للأمن السيبراني، حماية البيانات PDPL وفحص الأمان',
-    icon: 'ShieldCheck',
-  },
-  {
-    name: 'Dedicated Engineering Squads / Pods',
-    nameAr: 'فرق وهندسة مخصصة بنظام التواجد الزمني',
-    href: '/services/dedicated-engineering-squads',
-    slug: 'dedicated-engineering-squads',
-    desc: 'Full-cycle product pods with GMT+3 working hours and US governance',
-    descAr: 'فرق برمجية متكاملة تعمل بتزامن كامل مع توقيت الرياض وإشراف أمريكي',
-    icon: 'Users',
+    name: 'Custom Software Development',
+    nameAr: 'تطوير البرمجيات المؤسسية المخصصة',
+    href: '/services/custom-software',
+    slug: 'custom-software',
+    desc: 'Mission-critical distributed systems, <80ms APIs, Kafka event streams & ZATCA/SAMA compliance',
+    descAr: 'أنظمة مؤسسية موزعة فائقة الأداء، واجهات برمجية سريعة وتكامل الفاتورة وساما',
+    icon: 'Code2',
   },
 ];
 
 // Backwards-compatible legacy service mapping
 export const LEGACY_SERVICE_LINKS = [
-  { name: 'Applied AI & Autonomous Agents', href: '/services/ai-consulting', slug: 'ai-consulting' },
-  { name: 'Sovereign Cloud & DevOps', href: '/services/cloud-devops', slug: 'cloud-devops' },
-  { name: 'Custom Enterprise Software', href: '/services/custom-software', slug: 'custom-software' },
-  { name: 'Product Engineering & Rapid MVPs', href: '/services/new-product-development', slug: 'new-product-development' },
+  { name: 'AI Automation & Integration', href: '/services/ai-automation', slug: 'ai-automation' },
+  { name: 'Product Development', href: '/services/product-development', slug: 'product-development' },
+  { name: 'DevOps & Cloud Engineering', href: '/services/cloud-devops', slug: 'cloud-devops' },
+  { name: 'Custom Software Development', href: '/services/custom-software', slug: 'custom-software' },
 ];
 
 export const CLOUD_PARTNERS = [

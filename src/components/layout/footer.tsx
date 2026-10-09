@@ -57,15 +57,23 @@ export const Footer: React.FC = () => {
           {/* Column 2: Engineering Services */}
           <div>
             <h4 className="text-sm font-mono font-bold text-fg uppercase tracking-wider mb-4">
-              {t.footer.servicesTitle}
+              {locale === 'ar' ? 'الخدمات التقنية الأربع' : '4 Core Services'}
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="/services/ai-consulting"
+                  href="/services/ai-automation"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'الذكاء الاصطناعي والوكلاء' : 'Applied AI & Agents'}
+                  {locale === 'ar' ? 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة' : 'AI Automation & Integration'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services/product-development"
+                  className="hover:text-accent transition-colors"
+                >
+                  {locale === 'ar' ? 'تطوير المنتجات الرقمية (MVPs)' : 'Product Development'}
                 </Link>
               </li>
               <li>
@@ -73,7 +81,7 @@ export const Footer: React.FC = () => {
                   href="/services/cloud-devops"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'السحابة السيادية وديف أوبس' : 'Sovereign Cloud & DevOps'}
+                  {locale === 'ar' ? 'ديف أوبس وهندسة السحابة' : 'DevOps & Cloud Engineering'}
                 </Link>
               </li>
               <li>
@@ -81,20 +89,12 @@ export const Footer: React.FC = () => {
                   href="/services/custom-software"
                   className="hover:text-accent transition-colors"
                 >
-                  {locale === 'ar' ? 'البرمجيات المؤسسية المخصصة' : 'Custom Enterprise Software'}
+                  {locale === 'ar' ? 'البرمجيات المؤسسية المخصصة' : 'Custom Software Development'}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/services/new-product-development"
-                  className="hover:text-accent transition-colors"
-                >
-                  {locale === 'ar' ? 'تطوير النماذج الأولية MVPs' : 'Rapid MVP Development'}
-                </Link>
-              </li>
-              <li>
-                <Link href="/#industries" className="hover:text-accent transition-colors">
-                  {locale === 'ar' ? 'القطاعات ذات الأولوية' : 'Priority Industries'}
+                <Link href="/services" className="text-xs font-mono text-accent hover:underline">
+                  {locale === 'ar' ? 'نظرة شاملة على الخدمات ←' : 'View All 4 Disciplines →'}
                 </Link>
               </li>
             </ul>

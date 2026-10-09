@@ -42,8 +42,6 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   const pathname = usePathname();
   const { t, locale, toggleLocale, direction } = useTranslation();
   const prevPathnameRef = useRef(pathname);
-  const [solutionsExpanded, setSolutionsExpanded] = useState(false);
-  const [servicesExpanded, setServicesExpanded] = useState(false);
 
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
@@ -78,57 +76,34 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  const solutionLinks = [
-    {
-      name: locale === 'ar' ? 'التقنية المالية والمصرفية' : 'FinTech & Digital Banking',
-      desc: locale === 'ar' ? 'جاهزية ساما، المصرفية المفتوحة و ISO 20022' : 'SAMA Open Banking, ISO 20022 & mada',
-      href: '/solutions/fintech-digital-banking',
-      icon: <CreditCard className="h-4 w-4 text-accent shrink-0" />,
-    },
-    {
-      name: locale === 'ar' ? 'المشاريع الكبرى والمنصات الذكية' : 'Giga-Projects & Platforms',
-      desc: locale === 'ar' ? 'إنترنت الأشياء، التوائم الرقمية والحوسبة الطرفية' : 'IoT telemetry, digital twins & cognitive edge',
-      href: '/solutions/giga-projects-smart-infrastructure',
-      icon: <Building2 className="h-4 w-4 text-accent shrink-0" />,
-    },
-    {
-      name: locale === 'ar' ? 'الهجرة السحابية السيادية' : 'Enterprise Cloud Migration',
-      desc: locale === 'ar' ? 'جوجل الدمام، أزور، أمازون وأوراكل الرياض' : 'GCP Dammam, Azure Riyadh, AWS & Oracle',
-      href: '/solutions/enterprise-cloud-migration',
-      icon: <CloudLightning className="h-4 w-4 text-accent shrink-0" />,
-    },
-    {
-      name: locale === 'ar' ? 'الشركات الريادية وساس (SaaS)' : 'High-Growth SaaS',
-      desc: locale === 'ar' ? 'بنى متعددة المستأجرين وإطلاق MVP في 8 أسابيع' : 'Multi-tenant scale & 8-week MVP launch',
-      href: '/solutions/high-growth-saas',
-      icon: <Flame className="h-4 w-4 text-accent shrink-0" />,
-    },
-  ];
-
   const serviceLinks = [
     {
-      name: locale === 'ar' ? 'هندسة المنتجات المرتكزة على السحابة' : 'Cloud-First Product Engineering',
-      desc: locale === 'ar' ? 'خدمات مصغرة، بث كافكا والأنظمة اللامركزية' : 'Microservices, Kafka event-streaming & serverless',
-      href: '/services/cloud-first-product-engineering',
+      name: locale === 'ar' ? 'أتمتة الذكاء الاصطناعي وتكامل الأنظمة' : 'AI Automation & Integration',
+      desc: locale === 'ar' ? 'وكلاء ذكاء اصطناعي ذاتية، استضافة نماذج سيادية H100، ومحركات RAG' : 'Autonomous agents, private sovereign LLMs (vLLM/H100) & enterprise RAG',
+      href: '/services/ai-automation',
       icon: <Cpu className="h-4 w-4 text-accent shrink-0" />,
+      tag: 'SOVEREIGN AI',
     },
     {
-      name: locale === 'ar' ? 'هندسة المنصات وديف أوبس' : 'Platform Engineering & DevOps',
-      desc: locale === 'ar' ? 'كوبرنيتيس، منصات المطورين وتيرا فورم GitOps' : 'Internal Developer Platforms, Kubernetes & IaC',
-      href: '/services/platform-engineering-devops',
+      name: locale === 'ar' ? 'تطوير المنتجات الرقمية وهندسة الابتكار' : 'Product Development',
+      desc: locale === 'ar' ? 'هندسة المنتجات الرقمية المتكاملة، إطلاق MVPs في 8 أسابيع ومنصات SaaS' : 'Full-cycle digital products, rapid 8-week MVPs & bilingual GCC SaaS',
+      href: '/services/product-development',
+      icon: <Rocket className="h-4 w-4 text-accent shrink-0" />,
+      tag: 'RAPID MVPS',
+    },
+    {
+      name: locale === 'ar' ? 'ديف أوبس وهندسة السحابة السيادية' : 'DevOps & Cloud Engineering',
+      desc: locale === 'ar' ? 'بنى سحابية محلية متعددة، كوبرنيتيس، تيرا فورم وأتمتة النشر وترشيد FinOps' : 'In-kingdom multi-cloud (AWS, Azure, GCP, Oracle), K8s & FinOps',
+      href: '/services/cloud-devops',
       icon: <Cloud className="h-4 w-4 text-accent shrink-0" />,
+      tag: '99.99% RESILIENCE',
     },
     {
-      name: locale === 'ar' ? 'ديف سيك أوبس والامتثال السيادي' : 'DevSecOps & KSA Compliance',
-      desc: locale === 'ar' ? 'ضوابط NCA ECC/CCC، حماية البيانات PDPL وفولت' : 'NCA ECC/CCC, NDMO data residency & Vault',
-      href: '/services/devsecops-ksa-compliance',
-      icon: <ShieldCheck className="h-4 w-4 text-accent shrink-0" />,
-    },
-    {
-      name: locale === 'ar' ? 'فرق هندسية مخصصة (Pods)' : 'Dedicated Engineering Squads',
-      desc: locale === 'ar' ? 'فرق عمل متزامنة بتوقيت الرياض GMT+3 وإشراف أمريكي' : 'Full-cycle pods with GMT+3 overlap & US governance',
-      href: '/services/dedicated-engineering-squads',
-      icon: <Users className="h-4 w-4 text-accent shrink-0" />,
+      name: locale === 'ar' ? 'تطوير البرمجيات المؤسسية المخصصة' : 'Custom Software Development',
+      desc: locale === 'ar' ? 'أنظمة مؤسسية موزعة فائقة الأداء، واجهات برمجية سريعة وتكامل الفاتورة وساما' : 'High-throughput microservices, <80ms APIs, Kafka streams & ZATCA/SAMA',
+      href: '/services/custom-software',
+      icon: <Code2 className="h-4 w-4 text-accent shrink-0" />,
+      tag: 'ENTERPRISE B2B',
     },
   ];
 
@@ -148,62 +123,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           dir={direction}
         >
           <div className="flex flex-col space-y-6">
-            {/* 1. Solutions Accordion */}
+            {/* 1. Services Section */}
             <div>
-              <button
-                onClick={() => setSolutionsExpanded(!solutionsExpanded)}
-                className="flex items-center justify-between w-full text-[11px] font-mono uppercase tracking-[0.2em] text-fg-subtle mb-2"
-              >
+              <div className="flex items-center justify-between w-full text-[11px] font-mono uppercase tracking-[0.2em] text-accent mb-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>{locale === 'ar' ? 'الحلول القطاعية (رؤية 2030)' : 'SOLUTIONS (VISION 2030)'}</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                  <span>{locale === 'ar' ? 'الخدمات التقنية الأربع' : '4 CORE SERVICES'}</span>
                 </div>
-                <ChevronDown className={`h-4 w-4 transition-transform ${solutionsExpanded ? 'rotate-180 text-accent' : ''}`} />
-              </button>
-
-              <div className="grid grid-cols-1 gap-2 pt-1">
-                {solutionLinks.map((sol) => (
-                  <Link
-                    key={sol.href}
-                    href={sol.href}
-                    onClick={onClose}
-                    className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 transition-colors hover:border-accent/40 hover:bg-white/[0.06] active:scale-[0.99]"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-lg bg-white/5 p-2 border border-white/10">
-                        {sol.icon}
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold text-white">
-                          {sol.name}
-                        </div>
-                        <div className="text-[11px] text-fg-subtle">
-                          {sol.desc}
-                        </div>
-                      </div>
-                    </div>
-                    {direction === 'rtl' ? (
-                      <ArrowLeft className="h-4 w-4 text-fg-subtle" />
-                    ) : (
-                      <ArrowRight className="h-4 w-4 text-fg-subtle" />
-                    )}
-                  </Link>
-                ))}
+                <span className="text-[10px] text-fg-subtle">{locale === 'ar' ? 'معايير وادي السيليكون' : 'US-KSA Pods'}</span>
               </div>
-            </div>
-
-            {/* 2. Services Accordion */}
-            <div>
-              <button
-                onClick={() => setServicesExpanded(!servicesExpanded)}
-                className="flex items-center justify-between w-full text-[11px] font-mono uppercase tracking-[0.2em] text-fg-subtle mb-2"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>{locale === 'ar' ? 'القدرات الهندسية المؤسسية' : 'ENGINEERING SERVICES'}</span>
-                </div>
-                <ChevronDown className={`h-4 w-4 transition-transform ${servicesExpanded ? 'rotate-180 text-accent' : ''}`} />
-              </button>
 
               <div className="grid grid-cols-1 gap-2 pt-1">
                 {serviceLinks.map((service) => (
@@ -213,23 +141,25 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                     onClick={onClose}
                     className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 transition-colors hover:border-accent/40 hover:bg-white/[0.06] active:scale-[0.99]"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-lg bg-white/5 p-2 border border-white/10">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="rounded-lg bg-white/5 p-2 border border-white/10 shrink-0">
                         {service.icon}
                       </div>
-                      <div>
-                        <div className="text-sm font-semibold text-white">
-                          {service.name}
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-semibold text-white truncate">
+                            {service.name}
+                          </span>
                         </div>
-                        <div className="text-[11px] text-fg-subtle">
+                        <div className="text-[11px] text-fg-subtle truncate">
                           {service.desc}
                         </div>
                       </div>
                     </div>
                     {direction === 'rtl' ? (
-                      <ArrowLeft className="h-4 w-4 text-fg-subtle" />
+                      <ArrowLeft className="h-4 w-4 text-fg-subtle shrink-0 ms-2" />
                     ) : (
-                      <ArrowRight className="h-4 w-4 text-fg-subtle" />
+                      <ArrowRight className="h-4 w-4 text-fg-subtle shrink-0 ms-2" />
                     )}
                   </Link>
                 ))}

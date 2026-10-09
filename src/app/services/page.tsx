@@ -4,12 +4,10 @@ import Link from 'next/link';
 import {
   Cpu,
   Cloud,
-  ShieldCheck,
-  Users,
+  Code2,
+  Rocket,
   ArrowRight,
   CheckCircle2,
-  Terminal,
-  Zap,
   Sparkles,
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
@@ -17,48 +15,48 @@ import { RadialGlowCard } from '@/components/ui/radial-glow-card';
 import { SovereignMicroservicesTopology } from '@/components/schematics';
 
 export const metadata: Metadata = {
-  title: 'Enterprise Engineering Capabilities & Services | AEITCH',
+  title: 'The 4 Core Engineering Services | AEITCH',
   description:
-    'Full-cycle cloud engineering capabilities: Cloud-First Product Engineering, Platform Engineering & DevOps, DevSecOps & KSA Compliance, and Dedicated Engineering Squads.',
+    'Silicon Valley-grade engineering services tailored for Saudi Arabia: AI Automation & Integration, Product Development, DevOps & Cloud Engineering, and Custom Software Development.',
 };
 
 export default function ServicesOverviewPage() {
   const services = [
     {
-      slug: 'cloud-first-product-engineering',
-      title: 'Cloud-First Product Engineering',
-      badge: 'Microservices & Event-Driven',
-      desc: 'End-to-end greenfield SaaS builds, monolith-to-microservices decomposition, API-first ecosystems, and event-driven architectures (Kafka, RabbitMQ, EventBridge).',
+      slug: 'ai-automation',
+      title: 'AI Automation & Integration',
+      badge: 'Sovereign LLMs & Autonomous Swarms',
+      desc: 'Air-gapped private LLM serving on NVIDIA H100 enclaves, stateful autonomous agents (LangGraph), hybrid dense/sparse RAG, and deterministic ERP/CRM integrations without sensitive data leakage.',
       icon: Cpu,
-      stack: ['Node.js/TypeScript', 'Go', 'Python', 'React/Next.js 15', 'PostgreSQL', 'Redis', 'Kafka', 'Docker'],
-      outcomes: ['Sub-80ms transaction latency', 'Decoupled domain services', 'Zero-downtime rolling deploys'],
+      stack: ['vLLM', 'NVIDIA H100 SXM5', 'LangGraph', 'Qdrant Hybrid RAG', 'NeMo Guardrails', 'FastAPI', 'Temporal', 'PyTorch'],
+      outcomes: ['< 80ms Time-To-First-Token', '> 96% RAGAS Faithfulness', '100% In-Kingdom Data Sovereignty'],
     },
     {
-      slug: 'platform-engineering-devops',
-      title: 'Platform Engineering & DevOps',
-      badge: 'Kubernetes & GitOps',
-      desc: 'Internal Developer Platforms (IDPs), Infrastructure as Code (Terraform, Pulumi), container orchestration (EKS, GKE, AKS, OpenShift), and full-stack SRE telemetry.',
+      slug: 'product-development',
+      title: 'Product Development',
+      badge: 'Rapid MVPs & High-Growth SaaS',
+      desc: 'Full-cycle digital product architecture from discovery to scaled production. Launching investor-grade MVPs into the GCC market in 8 weeks with bilingual RTL/LTR experiences and modular architectures.',
+      icon: Rocket,
+      stack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma', 'React Native', 'AWS/GCP'],
+      outcomes: ['8-Week Production Launch', 'Bilingual GCC Arabic/English UX', '100k+ Concurrency Scale'],
+    },
+    {
+      slug: 'cloud-devops',
+      title: 'DevOps & Cloud Engineering',
+      badge: 'In-Kingdom Multi-Cloud & GitOps',
+      desc: 'Sovereign multi-cloud infrastructure engineering across AWS KSA, Google Cloud Dammam, Azure Riyadh, and Oracle Cloud KSA with Kubernetes orchestration, Terraform GitOps, and FinOps governance.',
       icon: Cloud,
-      stack: ['Terraform', 'Kubernetes (CKA)', 'ArgoCD', 'Prometheus', 'Grafana', 'OpenTelemetry', 'Datadog'],
-      outcomes: ['Deployment lead time: weeks → minutes', '99.95%+ SLA guarantees', 'Automated multi-cluster failover'],
+      stack: ['AWS Saudi Arabia', 'GCP Dammam', 'Azure Riyadh', 'Oracle Cloud KSA', 'Kubernetes (CKA)', 'Terraform', 'ArgoCD', 'HashiCorp Vault'],
+      outcomes: ['99.99% Multi-AZ Availability', '30–45% FinOps Cost Savings', 'NCA ECC-1:2018 Audit Ready'],
     },
     {
-      slug: 'devsecops-ksa-compliance',
-      title: 'DevSecOps & KSA Compliance',
-      badge: 'NCA ECC/CCC & PDPL',
-      desc: 'Automated secret management (HashiCorp Vault), CI/CD pipeline security (SonarQube, Snyk, Trivy), CSPM, and automated compliance reporting for Saudi NCA and PDPL.',
-      icon: ShieldCheck,
-      stack: ['HashiCorp Vault', 'SonarQube', 'Snyk', 'Trivy', 'Trivy CSPM', 'Istio mTLS', 'AWS KMS'],
-      outcomes: ['NCA ECC-1:2018 audit readiness', 'Zero hardcoded secrets', 'Automated container signing'],
-    },
-    {
-      slug: 'dedicated-engineering-squads',
-      title: 'Dedicated Engineering Squads / Pods',
-      badge: 'Managed Teams • GMT+3',
-      desc: 'Full-cycle product pods (Product Architect, DevOps Lead, Senior Full-Stack Devs, QA) operating in continuous Riyadh working hours overlap under US technical governance.',
-      icon: Users,
-      stack: ['Agile 2-Week Sprints', 'Daily Standups (GMT+3)', 'US Architectural Reviews', '100% IP Transfer'],
-      outcomes: ['Direct engineer access', 'Transparent Jira/GitHub boards', '60% capital cost optimization'],
+      slug: 'custom-software',
+      title: 'Custom Software Development',
+      badge: 'Enterprise Distributed Systems',
+      desc: 'Bespoke, mission-critical platforms engineered to outperform off-the-shelf software. High-throughput microservices, sub-80ms APIs, event-driven streaming pipelines, and seamless ZATCA/SAMA compliance.',
+      icon: Code2,
+      stack: ['Go', 'TypeScript / Node.js', 'Apache Kafka', 'Redis Streams', 'gRPC', 'ZATCA Fatoora API', 'SAMA Open Banking', 'PostgreSQL'],
+      outcomes: ['Sub-80ms Transaction Response', 'Millions of Concurrent Events', '100% Client Code & IP Handover'],
     },
   ];
 
@@ -75,21 +73,21 @@ export default function ServicesOverviewPage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-md mb-6">
               <Sparkles className="h-4 w-4 text-[#e9800a]" />
               <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a]">
-                ENTERPRISE ENGINEERING CAPABILITIES
+                THE 4 CORE DISCIPLINES
               </span>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1} yOffset={20}>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-              Cloud-First Engineering Disciplines Built for Enterprise Scale
+              Enterprise Engineering Disciplines Built for the Kingdom’s Digital Future
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.15} yOffset={20}>
             <p className="text-base sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              We provide deep architectural rigor and high-velocity engineering pods to help GCC enterprises
-              decouple monolithic systems, automate deployment pipelines, and maintain uncompromised security.
+              We combine US product governance with high-velocity engineering pods to deliver 4 core engineering capabilities
+              grounded in Saudi data sovereignty, ultra-low latency, and production-grade resilience.
             </p>
           </ScrollReveal>
         </div>
@@ -144,7 +142,7 @@ export default function ServicesOverviewPage() {
                       </div>
 
                       <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-bold text-white group-hover:text-[#e9800a] transition-colors">
-                        <span>Explore Capability Deep Dive</span>
+                        <span>Explore Engineering Deep Dive</span>
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </RadialGlowCard>
