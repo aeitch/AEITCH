@@ -1,0 +1,521 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+
+export interface SovereignSecurityVault3DProps {
+  className?: string;
+  activeControlId?: string;
+  onSelectControl?: (controlId: string) => void;
+}
+
+interface SecurityNode {
+  id: string;
+  name: string;
+  role: string;
+  pos: THREE.Vector3;
+  color: number;
+}
+
+// 5 Key Sovereign Cyber Nodes: Vault HSM Core, Pipeline Scanner, Cloud CSPM, NCA Policy Gate, PDPL Encryption
+const SECURITY_NODES: SecurityNode[] = [
+  {
+    id: 'vault-core',
+    name: 'HashiCorp Vault Dynamic Secrets',
+    role: 'Ephemeral 15-Min Leases & Zero Static Keys',
+    pos: new THREE.Vector3(0, 2.2, 0.4),
+    color: 0xe9800a,
+  },
+  {
+    id: 'sast-pipeline',
+    name: 'Shift-Left Pipeline Gate (SonarQube/Trivy)',
+    role: 'Automated 0-CVE Blocking in CI/CD',
+    pos: new THREE.Vector3(-2.4, 0.6, -0.5),
+    color: 0xffa033,
+  },
+  {
+    id: 'nca-ecc',
+    name: 'NCA ECC-1:2018 Policy-as-Code',
+    role: 'Automated OPA Terraform Compliance',
+    pos: new THREE.Vector3(2.4, 0.6, -0.5),
+    color: 0xe9800a,
+  },
+  {
+    id: 'pdpl-cipher',
+    name: 'Saudi PDPL Class 3 Cryptographic HSM',
+    role: 'In-Kingdom AES-256 Field-Level Encryption',
+    pos: new THREE.Vector3(1.6, -1.8, 0.5),
+    color: 0xffa033,
+  },
+  {
+    id: 'cspm-audit',
+    name: 'Continuous Multi-Cloud CSPM',
+    role: 'Zero Public Bucket & CIS Benchmarks',
+    pos: new THREE.Vector3(-1.6, -1.8, 0.5),
+    color: 0xe9800a,
+  },
+];
+
+function createCurvedArc(p1: THREE.Vector3, p2: THREE.Vector3, elevation: number) {
+  const mid = p1.clone().add(p2).multiplyScalar(0.5);
+  const distance = p1.distanceTo(p2);
+  const midLength = mid.length();
+  mid.normalize();
+  mid.multiplyScalar(midLength + distance * elevation);
+  return new THREE.QuadraticBezierCurve3(p1, mid, p2);
+}
+
+export function SovereignSecurityVault3D({
+  className = '',
+  activeControlId = 'vault-core',
+  onSelectControl,
+}: SovereignSecurityVault3DProps) {
+  const mountRef = useRef<HTMLDivElement>(null);
+  const [webglSupported, setWebglSupported] = useState(true);
+
+  const activeControlRef = useRef<string>(activeControlId);
+  activeControlRef.current = activeControlId;
+
+  const onSelectControlRef = useRef(onSelectControl);
+  onSelectControlRef.current = onSelectControl;
+
+  const targetRotationRef = useRef<{ x: number; y: number }>({ x: 0.15, y: 0.0 });
+
+  useEffect(() => {
+    const node = SECURITY_NODES.find((n) => n.id === activeControlId);
+    if (node) {
+      targetRotationRef.current = {
+        x: -node.pos.y * 0.08,
+        y: node.pos.x * 0.12,
+      };
+    }
+  }, [activeControlId]);
+
+  useEffect(() => {
+    const container = mountRef.current;
+    if (!container) return;
+
+    // Check WebGL availability
+    try {
+      const testCanvas = document.createElement('canvas');
+      const gl =
+        testCanvas.getContext('webgl2') ||
+        testCanvas.getContext('webgl') ||
+        testCanvas.getContext('experimental-webgl');
+      if (!gl) {
+        setWebglSupported(false);
+        return;
+      }
+    } catch {
+      setWebglSupported(false);
+      return;
+    }
+
+    let animationFrameId: number;
+    let isDestroyed = false;
+
+    // 1. Scene & Camera Setup
+    const scene = new THREE.Scene();
+    const width = container.clientWidth || 500;
+    const height = container.clientHeight || 450;
+
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+    camera.position.set(0, 0, 7.2);
+    camera.lookAt(0, 0, 0);
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance',
+    });
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(width, height);
+    renderer.setClearColor(0x000000, 0);
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.display = 'block';
+    container.appendChild(renderer.domElement);
+
+    // 2. Lighting Setup
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const amberLight = new THREE.PointLight(0xe9800a, 4.5, 18);
+    amberLight.position.set(3, 4, 5);
+    scene.add(amberLight);
+
+    const emeraldRimLight = new THREE.DirectionalLight(0x10b981, 1.0);
+    emeraldRimLight.position.set(-5, -2, -3);
+    scene.add(emeraldRimLight);
+
+    // 3. Central Vault Group
+    const vaultGroup = new THREE.Group();
+    scene.add(vaultGroup);
+
+    // 4. Central Cryptographic Shield / HSM Core (Dual Octahedron Cipher Sphere)
+    const centerPos = new THREE.Vector3(0, 0, 0);
+
+    const coreGeo = new THREE.OctahedronGeometry(0.58, 1);
+    const coreMat = new THREE.MeshStandardMaterial({
+      color: 0x0a0a0a,
+      emissive: 0xe9800a,
+      emissiveIntensity: 1.3,
+      roughness: 0.25,
+      metalness: 0.9,
+    });
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    vaultGroup.add(coreMesh);
+
+    // Outer Cipher Wireframe Cage
+    const wireGeo = new THREE.OctahedronGeometry(0.76, 1);
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0xe9800a,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.4,
+    });
+    const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+    vaultGroup.add(wireMesh);
+
+    // Concentric Key Shield Rings
+    const ringGeo1 = new THREE.TorusGeometry(1.05, 0.018, 8, 48);
+    const ringMat1 = new THREE.MeshBasicMaterial({
+      color: 0xe9800a,
+      transparent: true,
+      opacity: 0.6,
+    });
+    const shieldRing1 = new THREE.Mesh(ringGeo1, ringMat1);
+    shieldRing1.rotation.x = Math.PI / 3;
+    vaultGroup.add(shieldRing1);
+
+    const ringGeo2 = new THREE.TorusGeometry(1.3, 0.014, 8, 48);
+    const ringMat2 = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.35,
+    });
+    const shieldRing2 = new THREE.Mesh(ringGeo2, ringMat2);
+    shieldRing2.rotation.y = Math.PI / 4;
+    vaultGroup.add(shieldRing2);
+
+    // 5. Build 5 Orbital Security Satellite Nodes
+    const nodeMeshes: Array<{
+      id: string;
+      group: THREE.Group;
+      core: THREE.Mesh;
+      halo: THREE.Mesh;
+      hitMesh: THREE.Mesh;
+      basePos: THREE.Vector3;
+    }> = [];
+
+    // Shield/Prism node geometry
+    const nodeGeo = new THREE.DodecahedronGeometry(0.3, 0);
+    const haloGeo = new THREE.RingGeometry(0.36, 0.52, 32);
+    const hitGeo = new THREE.SphereGeometry(0.65, 16, 16);
+    const hitMat = new THREE.MeshBasicMaterial({ visible: false });
+
+    SECURITY_NODES.forEach((node) => {
+      const nodeGroup = new THREE.Group();
+      nodeGroup.position.copy(node.pos);
+
+      const nodeMat = new THREE.MeshStandardMaterial({
+        color: 0x111114,
+        emissive: node.color,
+        emissiveIntensity: node.id === activeControlRef.current ? 1.6 : 0.6,
+        roughness: 0.2,
+        metalness: 0.85,
+      });
+      const nodeMesh = new THREE.Mesh(nodeGeo, nodeMat);
+      nodeGroup.add(nodeMesh);
+
+      const haloMat = new THREE.MeshBasicMaterial({
+        color: node.color,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: node.id === activeControlRef.current ? 0.85 : 0.2,
+      });
+      const halo = new THREE.Mesh(haloGeo, haloMat);
+      halo.lookAt(0, 0, 1);
+      nodeGroup.add(halo);
+
+      const hitMesh = new THREE.Mesh(hitGeo, hitMat);
+      hitMesh.userData = { nodeId: node.id };
+      nodeGroup.add(hitMesh);
+
+      vaultGroup.add(nodeGroup);
+
+      nodeMeshes.push({
+        id: node.id,
+        group: nodeGroup,
+        core: nodeMesh,
+        halo,
+        hitMesh,
+        basePos: node.pos.clone(),
+      });
+    });
+
+    // 6. Connect Satellite Nodes to Central HSM with Laser Beams
+    const curves: THREE.QuadraticBezierCurve3[] = [];
+    const arcLines: THREE.Line[] = [];
+
+    SECURITY_NODES.forEach((node) => {
+      const arcCurve = createCurvedArc(centerPos, node.pos, 0.22);
+      curves.push(arcCurve);
+
+      const pts = arcCurve.getPoints(40);
+      const arcGeo = new THREE.BufferGeometry().setFromPoints(pts);
+      const arcMat = new THREE.LineBasicMaterial({
+        color: 0xe9800a,
+        transparent: true,
+        opacity: 0.5,
+        linewidth: 1.5,
+      });
+      const line = new THREE.Line(arcGeo, arcMat);
+      vaultGroup.add(line);
+      arcLines.push(line);
+    });
+
+    // 7. Dynamic Secret Rotation Pulses along Arcs
+    const packetCount = 8;
+    const packetGeo = new THREE.SphereGeometry(0.065, 12, 12);
+    const packetMat = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.95,
+    });
+
+    const packets: Array<{ mesh: THREE.Mesh; curveIndex: number; offset: number }> = [];
+    for (let k = 0; k < packetCount; k++) {
+      const p = new THREE.Mesh(packetGeo, packetMat);
+      vaultGroup.add(p);
+      packets.push({
+        mesh: p,
+        curveIndex: k % curves.length,
+        offset: k / packetCount,
+      });
+    }
+
+    // 8. Cryptographic Particle Field
+    const particleCount = 130;
+    const particleGeo = new THREE.BufferGeometry();
+    const particleCoords = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      particleCoords[i] = (Math.random() - 0.5) * 8.5;
+      particleCoords[i + 1] = (Math.random() - 0.5) * 6.0;
+      particleCoords[i + 2] = (Math.random() - 0.5) * 4.0;
+    }
+
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particleCoords, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0xe9800a,
+      size: 0.035,
+      transparent: true,
+      opacity: 0.35,
+    });
+    const particleField = new THREE.Points(particleGeo, particleMat);
+    vaultGroup.add(particleField);
+
+    // 9. Pointer Drag & Raycasting Interaction
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    let isDragging = false;
+    let prevMouseX = 0;
+    let prevMouseY = 0;
+    let dragDistance = 0;
+
+    const onPointerDown = (e: PointerEvent) => {
+      isDragging = true;
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+      dragDistance = 0;
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+      if (!isDragging) return;
+      const deltaX = e.clientX - prevMouseX;
+      const deltaY = e.clientY - prevMouseY;
+      dragDistance += Math.abs(deltaX) + Math.abs(deltaY);
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+
+      targetRotationRef.current.y += deltaX * 0.004;
+      targetRotationRef.current.x = Math.max(
+        -0.5,
+        Math.min(0.5, targetRotationRef.current.x + deltaY * 0.003)
+      );
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      isDragging = false;
+
+      if (dragDistance < 6) {
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const hitMeshes = nodeMeshes.map((m) => m.hitMesh);
+        const intersects = raycaster.intersectObjects(hitMeshes, false);
+
+        if (intersects.length > 0) {
+          const hitId = intersects[0].object.userData.nodeId;
+          if (hitId && onSelectControlRef.current) {
+            onSelectControlRef.current(hitId);
+          }
+        }
+      }
+    };
+
+    renderer.domElement.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+
+    // 10. Resize Handling
+    const handleResize = () => {
+      if (!container) return;
+      const w = container.clientWidth || 500;
+      const h = container.clientHeight || 450;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // 11. Render Loop
+    const clock = new THREE.Clock();
+
+    const animate = () => {
+      if (isDestroyed) return;
+      animationFrameId = requestAnimationFrame(animate);
+
+      const elapsedTime = clock.getElapsedTime();
+
+      // Smooth parallax orbit
+      vaultGroup.rotation.y += (targetRotationRef.current.y - vaultGroup.rotation.y) * 0.05;
+      vaultGroup.rotation.x += (targetRotationRef.current.x - vaultGroup.rotation.x) * 0.05;
+
+      // Central core continuous rotation
+      coreMesh.rotation.y = elapsedTime * 0.5;
+      coreMesh.rotation.x = elapsedTime * 0.3;
+      wireMesh.rotation.y = -elapsedTime * 0.25;
+      shieldRing1.rotation.z = elapsedTime * 0.7;
+      shieldRing2.rotation.z = -elapsedTime * 0.4;
+
+      const currentActiveId = activeControlRef.current;
+
+      // Animate Nodes
+      nodeMeshes.forEach((item, idx) => {
+        const isActive = item.id === currentActiveId;
+
+        item.group.position.y = item.basePos.y + Math.sin(elapsedTime * 2 + idx) * 0.08;
+        item.core.rotation.y = elapsedTime * (isActive ? 1.5 : 0.4);
+
+        const coreMaterial = item.core.material as THREE.MeshStandardMaterial;
+        const haloMaterial = item.halo.material as THREE.MeshBasicMaterial;
+
+        if (isActive) {
+          const pulse = 1.0 + Math.sin(elapsedTime * 4) * 0.25;
+          coreMaterial.emissiveIntensity = 1.7 * pulse;
+          haloMaterial.opacity = 0.9;
+          item.halo.scale.set(pulse, pulse, pulse);
+        } else {
+          coreMaterial.emissiveIntensity = 0.6;
+          haloMaterial.opacity = 0.2;
+          item.halo.scale.set(1.0, 1.0, 1.0);
+        }
+      });
+
+      // Flow secret rotation packets
+      packets.forEach((p) => {
+        const curve = curves[p.curveIndex];
+        const t = (elapsedTime * 0.26 + p.offset) % 1;
+        p.mesh.position.copy(curve.getPoint(t));
+      });
+
+      particleField.rotation.y = elapsedTime * 0.012;
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // 12. Cleanup
+    return () => {
+      isDestroyed = true;
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+
+      if (renderer.domElement && container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
+
+      renderer.dispose();
+      coreGeo.dispose();
+      coreMat.dispose();
+      wireGeo.dispose();
+      wireMat.dispose();
+      ringGeo1.dispose();
+      ringMat1.dispose();
+      ringGeo2.dispose();
+      ringMat2.dispose();
+      nodeGeo.dispose();
+      haloGeo.dispose();
+      hitGeo.dispose();
+      hitMat.dispose();
+      packetGeo.dispose();
+      packetMat.dispose();
+      particleGeo.dispose();
+      particleMat.dispose();
+      arcLines.forEach((l) => l.geometry.dispose());
+    };
+  }, []);
+
+  if (!webglSupported) {
+    return (
+      <div className={`flex items-center justify-center rounded-3xl border border-white/10 bg-black/60 p-8 text-center ${className}`}>
+        <p className="text-xs font-mono text-white/50">
+          WebGL Vault Acceleration Inactive. Standard Security Active.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`relative w-full h-[380px] sm:h-[440px] lg:h-[500px] flex items-center justify-center select-none ${className}`}>
+      {/* 3D Canvas */}
+      <div ref={mountRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
+
+      {/* Floating HUD Telemetry Tags */}
+      <div className="pointer-events-none absolute top-4 start-4 flex items-center gap-2 rounded-xl border border-white/10 bg-black/80 px-3 py-1.5 backdrop-blur-md">
+        <span className="h-2 w-2 rounded-full bg-[#e9800a] animate-pulse" />
+        <span className="font-mono text-[11px] font-bold text-white tracking-wider">
+          LIVE SOVEREIGN CIPHER MESH
+        </span>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-4 end-4 text-end">
+        <span className="font-mono text-[10px] text-white/40 block">
+          IN-KINGDOM DATA SOVEREIGNTY
+        </span>
+        <span className="font-mono text-xs font-bold text-[#e9800a]">
+          NCA ECC-1:2018 • SAUDI PDPL
+        </span>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-4 start-4 font-mono text-[10px] text-white/40">
+        CLICK NODES TO INSPECT CONTROL
+      </div>
+    </div>
+  );
+}
