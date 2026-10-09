@@ -1,33 +1,32 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  Layers,
+  Terminal,
   Workflow,
-  Radio,
-  Code2,
-  Database,
-  Cpu,
-  ArrowRight,
+  Server,
+  Activity,
+  Layers,
   ShieldCheck,
   CheckCircle2,
-  Sparkles,
+  DollarSign,
+  Cpu,
   GitBranch,
-  Terminal,
-  Activity,
+  Sparkles,
+  Lock,
 } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 import { viewportOnce } from '@/lib/motion';
 
-export function CloudDisciplinesBento() {
+export function PlatformDisciplinesBento() {
   const { locale, direction } = useTranslation();
   const isAr = locale === 'ar';
 
   return (
     <section className="relative py-24 sm:py-32 bg-[#09090b] text-white overflow-hidden border-b border-white/10" dir={direction}>
       {/* Background Ambience */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#1c1208]/30 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[#1c1208]/30 via-transparent to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -41,27 +40,27 @@ export function CloudDisciplinesBento() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-[#e9800a]/30 bg-[#e9800a]/10 px-3.5 py-1.5 text-xs font-mono font-semibold text-[#e9800a] mb-4">
               <Layers className="h-3.5 w-3.5" />
-              <span>{isAr ? 'التخصصات الهندسية المعمارية' : 'ENGINEERING DISCIPLINES'}</span>
+              <span>{isAr ? 'منهجيات هندسة المنصات' : 'PLATFORM DISCIPLINES'}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
-              {isAr ? 'بناء متين بدون تنازلات تقنية' : 'Engineered for Scale, Speed, and Zero Regrets'}
+              {isAr ? 'بنية تحتية ذاتية الخدمة ومعايير SRE صارمة' : 'Self-Service Platforms & SRE Engineering Rigor'}
             </h2>
             <p className="text-base sm:text-lg text-white/70 leading-relaxed">
               {isAr
-                ? 'معايير هندسية متقدمة تفصل منطق الأعمال المعقد إلى أنظمة مستقلة تضمن استمرارية الأعمال وقابلية التوسع المليوني.'
-                : 'Advanced architectural principles separating complex business logic into sovereign, decoupled services that sustain multi-million transaction spikes.'}
+                ? 'تحويل البنية التحتية إلى منصة برمجية موحدة تمكن فرق المنتجات من إطلاق الميزات باستقلالية وأمان تام دون الاعتماد على طلبات الدعم اليدوية.'
+                : 'Empowering product squads with self-service developer portals, automated GitOps canary rollouts, and zero-drift infrastructure as code.'}
             </p>
           </motion.div>
 
           <div className="font-mono text-xs text-white/50 border-s-2 border-[#e9800a] ps-4 py-1">
-            <span>DISCIPLINE_FRAMEWORK • V4.2</span>
-            <span className="block text-[#e9800a] font-bold">100% PRODUCTION PROVEN</span>
+            <span>SRE_CADENCE • ZERO TICKETS</span>
+            <span className="block text-[#e9800a] font-bold">AUTOMATION-FIRST</span>
           </div>
         </div>
 
         {/* Asymmetric Bento Grid (2.0 Architecture) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Card 1: Greenfield Multi-Tenant SaaS Engine (8 cols) */}
+          {/* Card 1: Internal Developer Platforms (IDPs) (8 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -74,21 +73,21 @@ export function CloudDisciplinesBento() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/15 border border-[#e9800a]/30 text-[#e9800a]">
-                  <Layers className="h-6 w-6" />
+                  <Terminal className="h-6 w-6" />
                 </div>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">
-                  MULTI-TENANT DDD
+                  SELF-SERVICE IDP
                 </span>
               </div>
 
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#e9800a] transition-colors">
-                {isAr ? 'معمارية برمجيات SaaS خضراء من الصفر' : 'Greenfield Multi-Tenant SaaS Architecture'}
+                {isAr ? 'منصات المطورين الداخلية (IDPs)' : 'Internal Developer Platforms (IDPs)'}
               </h3>
 
               <p className="text-sm sm:text-base text-white/70 leading-relaxed max-w-xl mb-6">
                 {isAr
-                  ? 'بناء منتجات برمجية متعددة المستأجرين من الألف إلى الياء، مدعومة بمبادئ التصميم القائم على النطاق (Domain-Driven Design)، وفصل صارم بين البيانات باستخدام Row-Level Security أو قواعد بيانات معزولة لكل عميل.'
-                  : 'Ground-up engineering of multi-tenant enterprise SaaS platforms using Domain-Driven Design (DDD) bounded contexts, tenant isolation schemes (RLS & schema-per-tenant), and automated tenant onboarding pipelines.'}
+                  ? 'بوابات خدمة ذاتية للمطورين تمكن فرق المنتجات من إنشاء بيئات تجريبية، قواعد بيانات معزولة، وخطوط نشر CI/CD مؤتمتة في دقائق دون الحاجة لفتح تذاكر عمليات يدوية.'
+                  : 'Self-service developer portals empowering product squads to provision isolated preview environments, database instances, and secure CI/CD pipelines in minutes without operational ticket delays.'}
               </p>
             </div>
 
@@ -96,20 +95,20 @@ export function CloudDisciplinesBento() {
             <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs text-white/80">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e9800a]" />
-                <span>Tenant Schema Isolation</span>
+                <span>Ephemeral Environments</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e9800a]" />
-                <span>Row-Level Security (RLS)</span>
+                <span>Automated PR Sandboxes</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e9800a]" />
-                <span>Automated Pod Provisioning</span>
+                <span>RBAC & Secrets Injection</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Card 2: Strangler-Fig Monolith Decomposition (4 cols) */}
+          {/* Card 2: Immutable Infrastructure as Code (4 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -123,27 +122,27 @@ export function CloudDisciplinesBento() {
                   <Workflow className="h-6 w-6" />
                 </div>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-[#e9800a] bg-[#e9800a]/10 border border-[#e9800a]/30 px-3 py-1 rounded-full">
-                  ZERO DOWNTIME
+                  ZERO DRIFT
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#e9800a] transition-colors">
-                {isAr ? 'تفكيك الأنظمة القديمة (Strangler Fig)' : 'Monolith-to-Microservices Decomposition'}
+                {isAr ? 'البنية التحتية ككود ثابت (IaC)' : 'Immutable Infrastructure as Code'}
               </h3>
 
               <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
                 {isAr
-                  ? 'هجرة تدريجية آمنة تعتمد على نمط التين الخانق (Strangler-Fig) وتتبع تغييرات البيانات (CDC)، لعزل قواعد البيانات وفصل الخدمات الحيوية دون توقف النظام التشغيلي ثانية واحدة.'
-                  : 'Systematic strangler-fig pattern migration separating monolithic databases and tangled logic into isolated services using Change Data Capture (CDC) with zero user-facing downtime.'}
+                  ? 'إدارة السحابة بدون أي انحراف (Zero-Drift) باستخدام Terraform و OpenTofu، مع قفل الحالة عن بعد وحوكمة السياسات ككود (Policy-as-Code) لضمان الأمان المؤسسي.'
+                  : 'Zero-drift cloud provisioning using Terraform, OpenTofu, and Pulumi with automated state locking, policy-as-code guardrails (OPA), and modular blueprints.'}
               </p>
             </div>
 
             <div className="pt-4 border-t border-white/10 font-mono text-[11px] text-white/60">
-              <span>CDC via Debezium • Traffic Canary Flipping</span>
+              <span>Terraform Modules • OPA Policy Gates</span>
             </div>
           </motion.div>
 
-          {/* Card 3: Event-Driven Streaming & Decoupled Bus (4 cols) */}
+          {/* Card 3: Multi-Cloud Kubernetes Orchestration (4 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -154,30 +153,30 @@ export function CloudDisciplinesBento() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/15 border border-[#e9800a]/30 text-[#e9800a]">
-                  <Radio className="h-6 w-6" />
+                  <Server className="h-6 w-6" />
                 </div>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-white/50">
-                  KAFKA / RABBITMQ
+                  EKS / AKS / GKE
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#e9800a] transition-colors">
-                {isAr ? 'البث الموجه بالأحداث والناقل الموزع' : 'Event-Driven Streaming & Decoupling'}
+                {isAr ? 'إدارة كوبرنيتس متعدد السحابات' : 'Multi-Cluster Kubernetes Orchestration'}
               </h3>
 
               <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
                 {isAr
-                  ? 'خطوط نقل رسائل فائقة السرعة تمنع الانهيارات المتتالية، وتضمن معالجة متزامنة وغير متزامنة للأحداث مع ضمان وصول الرسائل دون أي فقدان.'
-                  : 'High-throughput asynchronous message backbones utilizing Apache Kafka, RabbitMQ, and AWS EventBridge to decouple critical systems and prevent cascading latency failures.'}
+                  ? 'معماريات كوبرنيتس معتمدة من CKA في مناطق الرياض والدمام السحابية مع تحجيم تلقائي فائق السرعة عبر Karpenter وشبكة Istio mTLS.'
+                  : 'Certified CKA Kubernetes multi-cluster architectures deployed on AWS EKS Riyadh, Azure AKS, and GKE with sub-second Karpenter autoscaling and Istio mesh.'}
               </p>
             </div>
 
             <div className="pt-4 border-t border-white/10 font-mono text-[11px] text-white/60">
-              <span>Partition Balancing • Dead-Letter Queues (DLQ)</span>
+              <span>Karpenter Spot Scaling • Istio mTLS</span>
             </div>
           </motion.div>
 
-          {/* Card 4: Contract-First API Ecosystems & gRPC (4 cols) */}
+          {/* Card 4: GitOps Progressive Delivery Fabric (4 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,30 +187,30 @@ export function CloudDisciplinesBento() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/15 border border-[#e9800a]/30 text-[#e9800a]">
-                  <Code2 className="h-6 w-6" />
+                  <GitBranch className="h-6 w-6" />
                 </div>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-white/50">
-                  OPENAPI 3.1 & gRPC
+                  ARGOCD GITOPS
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#e9800a] transition-colors">
-                {isAr ? 'منظومة واجهات API المعتمدة على العقود' : 'Contract-First API Ecosystems & gRPC'}
+                {isAr ? 'خطوط تسليم GitOps المؤتمتة' : 'GitOps Progressive Delivery Fabric'}
               </h3>
 
               <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
                 {isAr
-                  ? 'تصميم الواجهات البرمجية أولاً بموجب مواصفات صارمة، مع بوابات GraphQL موحدة وتوليد آلي لمكتبات الربط مع فحص تطابق الأنماط البرمجية.'
-                  : 'Rigorous OpenAPI/Swagger & Protocol Buffer contract specifications with federated GraphQL gateways and automated end-to-end type validation between client and service.'}
+                  ? 'خطوط تسليم تعتمد على ArgoCD تدعم نشر الكناري التدريجي (Canary) والتبديل الأزرق/الأخضر (Blue-Green) مع اختبارات آلية تحت 10 دقائق.'
+                  : 'ArgoCD declarative delivery pipelines enforcing progressive delivery: automated canary rollouts, blue-green cutovers, and sub-10-minute automated test cycles.'}
               </p>
             </div>
 
             <div className="pt-4 border-t border-white/10 font-mono text-[11px] text-white/60">
-              <span>Type-Safe Client SDKs • Sub-1ms gRPC Transport</span>
+              <span>Canary Analysis • Automated Rollback</span>
             </div>
           </motion.div>
 
-          {/* Card 5: In-Memory Micro-Caching & Distributed State (4 cols) */}
+          {/* Card 5: Full-Stack SRE & Distributed Tracing (4 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -222,30 +221,30 @@ export function CloudDisciplinesBento() {
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/15 border border-[#e9800a]/30 text-[#e9800a]">
-                  <Database className="h-6 w-6" />
+                  <Activity className="h-6 w-6" />
                 </div>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-white/50">
-                  REDIS CLUSTER
+                  OPENTELEMETRY
                 </span>
               </div>
 
               <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#e9800a] transition-colors">
-                {isAr ? 'التخزين المؤقت الموزع وحالات النظام' : 'In-Memory Micro-Caching & Distributed State'}
+                {isAr ? 'هندسة موثوقية الأنظمة (SRE) والتتبع' : 'Full-Stack SRE & Distributed Tracing'}
               </h3>
 
               <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
                 {isAr
-                  ? 'أوقات استجابة فائقة السرعة أقل من 2 ميلي ثانية باستخدام عناقيد Redis، مع أقفال موزعة وإدارة ذكية للجلسات وقراءة متفائلة.'
-                  : 'Sub-2ms query response times using Redis Cluster tiers, distributed locking (Redlock), and optimistic read-replicas capable of handling extreme concurrency.'}
+                  ? 'مراقبة وتتبع شامل للنظام باستخدام OpenTelemetry و Prometheus و Grafana، مع إشعارات ذكية وأدلة تشغيل مؤتمتة لمعالجة الحوادث.'
+                  : 'End-to-end telemetry engineered with OpenTelemetry, Prometheus, and Grafana, providing real-time distributed tracing and automated incident response.'}
               </p>
             </div>
 
             <div className="pt-4 border-t border-white/10 font-mono text-[11px] text-white/60">
-              <span>Distributed Redlock • Optimistic Replication</span>
+              <span>SLO Alerting • Synthetic Canary Probes</span>
             </div>
           </motion.div>
 
-          {/* Card 6: Polyglot High-Performance Microservices (12 cols) */}
+          {/* Card 6: FinOps Cloud Spend Governance (12 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -256,39 +255,39 @@ export function CloudDisciplinesBento() {
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-4">
                 <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#e9800a]">
-                  {isAr ? 'هندسة متعددة اللغات' : 'POLYGLOT RUNTIME EXCELLENCE'}
+                  {isAr ? 'حوكمة النفقات السحابية FINOPS' : 'FINOPS CLOUD OPEX OPTIMIZATION'}
                 </span>
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e9800a]" />
                 <span className="font-mono text-xs text-white/60">
-                  GO • TYPESCRIPT • PYTHON
+                  SUSTAINED 35% - 50% SAVINGS
                 </span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
                 {isAr
-                  ? 'خدمات برمجية متعددة اللغات مخصصة للأداء الأقصى'
-                  : 'Polyglot High-Performance Microservices Runtime'}
+                  ? 'حوكمة التكاليف وضبط استهلاك الموارد السحابية'
+                  : 'Continuous Cloud Spend Governance & Rightsizing'}
               </h3>
 
               <p className="text-sm sm:text-base text-white/75 leading-relaxed">
                 {isAr
-                  ? 'نستخدم اللغة المناسبة للوظيفة المناسبة: لغة Go للمعالجة الحسابية المتزامنة والبث السريع، وTypeScript/Node.js لواجهات التطبيقات الغنية، وPython لخطوط تدريب الذكاء الاصطناعي ومعالجة البيانات الضخمة.'
-                  : 'We pair language characteristics to precise operational workloads: Go for low-latency streaming and concurrency engines, TypeScript/Node.js for rich domain APIs and BFF layers, and Python for asynchronous AI/ML pipeline workers.'}
+                  ? 'إيقاف الهدر المالي السحابي عبر جدولة الخوادم غير النشطة، وإدارة عقود الحجز المسبق، واستخدام الحاويات المؤقتة (Spot Instances) المضمونة، مما يوفر 30% إلى 50% شهرياً في فواتير الحوسبة.'
+                  : 'Automated cluster rightsizing, Karpenter Spot instance orchestration, and continuous idle resource reclamation delivering sustained 30-50% infrastructure OPEX reductions without sacrificing production headroom.'}
               </p>
             </div>
 
-            <div className="flex flex-wrap lg:flex-nowrap items-center gap-3 shrink-0">
-              <div className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center font-mono">
-                <span className="text-2xl font-bold text-white block">Go</span>
-                <span className="text-[10px] text-white/50 uppercase">Concurrency</span>
+            <div className="flex flex-wrap lg:flex-nowrap items-center gap-3 shrink-0 font-mono">
+              <div className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center">
+                <span className="text-2xl font-bold text-emerald-400 block">-42%</span>
+                <span className="text-[10px] text-white/50 uppercase">Compute OPEX</span>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center font-mono">
-                <span className="text-2xl font-bold text-white block">Node.js</span>
-                <span className="text-[10px] text-white/50 uppercase">Domain APIs</span>
+              <div className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center">
+                <span className="text-2xl font-bold text-white block">Spot</span>
+                <span className="text-[10px] text-white/50 uppercase">Karpenter Pool</span>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center font-mono">
-                <span className="text-2xl font-bold text-white block">Python</span>
-                <span className="text-[10px] text-white/50 uppercase">AI Workers</span>
+              <div className="rounded-2xl border border-white/10 bg-black/40 p-4 text-center">
+                <span className="text-2xl font-bold text-[#e9800a] block">Zero</span>
+                <span className="text-[10px] text-white/50 uppercase">Idle Waste</span>
               </div>
             </div>
           </motion.div>
