@@ -15,8 +15,10 @@ export const BRAND = {
   gulfTimezone: 'GMT+3 (Riyadh / Mecca)',
   foundedYear: 2022,
   founder: 'Haseeb Ur Rehman Khan',
+  phone: '+92 318 4055723',
+  phoneDisplay: '+92 318 4055723',
   phonePlaceholder: '0318-4055723',
-  whatsappDirect: '0318-4055723',
+  whatsappDirect: '+92 318 4055723',
   whatsappUrl: 'https://wa.me/923184055723?text=Hello%20AEITCH,%20I%20would%20like%20to%20inquire%20about%20a%20technical%20consultation.',
   colors: {
     bg: '#000000',
@@ -41,9 +43,36 @@ export const BRAND = {
 
 export const NAV_LINKS = [
   { name: 'Services', nameAr: 'الخدمات', href: '/services' },
-  { name: 'Vision 2030', nameAr: 'رؤية 2030', href: '/#vision-2030' },
+  { name: 'Vision 2030', nameAr: 'رؤية 2030', href: '/vision-2030' },
   { name: 'Our Work', nameAr: 'أعمالنا', href: '/case-studies' },
   { name: 'About', nameAr: 'من نحن', href: '/about-us' },
+  { name: 'Blog', nameAr: 'المدونة', href: '/insights' },
+  { name: 'Contact', nameAr: 'تواصل معنا', href: '/contact-us' },
+];
+
+export const OUR_WORK_LINKS = [
+  {
+    name: 'Case Studies',
+    nameAr: 'دراسات الحالة',
+    href: '/case-studies',
+    desc: 'Real enterprise production deliveries',
+    descAr: 'مشاريع مؤسسية حقيقية',
+  },
+  {
+    name: 'Our Products',
+    nameAr: 'منتجاتنا',
+    href: '/our-products',
+    desc: 'ParkKaro and Paylink in market',
+    descAr: 'منتجات حقيقية أطلقناها في السوق',
+  },
+];
+
+export const TRUST_BADGES = [
+  { ar: 'مهندسون senior', en: 'Senior engineers', icon: 'Users' },
+  { ar: 'إصدارات أسبوعية', en: 'Weekly releases', icon: 'Rocket' },
+  { ar: 'ملكية كاملة للكود', en: 'Full code ownership', icon: 'KeyRound' },
+  { ar: 'الأمان من أول يوم', en: 'Security from day one', icon: 'ShieldCheck' },
+  { ar: 'تواصل بالعربية والإنجليزية', en: 'Arabic and English communication', icon: 'Globe' },
 ];
 
 export const SERVICES_LINKS = [

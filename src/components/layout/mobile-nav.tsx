@@ -174,7 +174,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Link
-                  href="/#vision-2030"
+                  href="/vision-2030"
                   onClick={onClose}
                   className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-accent bg-accent-soft border border-accent/25 hover:bg-accent/20 transition-colors"
                 >
@@ -203,11 +203,50 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 </Link>
 
                 <Link
+                  href="/our-products"
+                  onClick={onClose}
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <span>{locale === 'ar' ? 'منتجاتنا' : 'Our Products'}</span>
+                  {direction === 'rtl' ? (
+                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                  ) : (
+                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                  )}
+                </Link>
+
+                <Link
                   href="/about-us"
                   onClick={onClose}
                   className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
                 >
                   <span>{locale === 'ar' ? 'من نحن' : 'About'}</span>
+                  {direction === 'rtl' ? (
+                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                  ) : (
+                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                  )}
+                </Link>
+
+                <Link
+                  href="/insights"
+                  onClick={onClose}
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <span>{locale === 'ar' ? 'المدونة' : 'Blog'}</span>
+                  {direction === 'rtl' ? (
+                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                  ) : (
+                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                  )}
+                </Link>
+
+                <Link
+                  href="/contact-us"
+                  onClick={onClose}
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <span>{locale === 'ar' ? 'تواصل معنا' : 'Contact'}</span>
                   {direction === 'rtl' ? (
                     <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
                   ) : (
@@ -255,7 +294,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   hello@aeitch.com
                 </a>
               </span>
-              <span className="font-mono text-fg-muted">0318-4055723</span>
+              <span className="font-mono text-fg-muted">+92 318 4055723</span>
             </div>
           </div>
         </motion.div>

@@ -1,19 +1,15 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { AiConsultingHero } from '@/components/services/AiConsultingHero';
-import { AiDisciplinesBento } from '@/components/services/AiDisciplinesBento';
-import { AiArchitectureSchematic } from '@/components/services/AiArchitectureSchematic';
-import { AiFeasibilitySimulator } from '@/components/services/AiFeasibilitySimulator';
-import { AiConsultingCTA } from '@/components/services/AiConsultingCTA';
+import { AiAutomationDetailView } from '@/components/services/AiAutomationDetailView';
 
 export const metadata: Metadata = {
-  title: 'AI Automation & Integration | Sovereign Enterprise Systems | AEITCH',
+  title: 'AI Automation & Integration for Enterprises | AI Agents & System Integration | إيتش',
   description:
-    'Production-grade sovereign AI, private in-kingdom LLM serving (vLLM / TensorRT on NVIDIA H100s), zero-hallucination enterprise RAG, and autonomous agent swarms engineered for Saudi data sovereignty (PDPL & NDMO).',
+    'AI that works inside your business, not next to it. We design and build automation, AI agents and predictive analytics, connected to your existing systems under Saudi PDPL regulations.',
   openGraph: {
-    title: 'AI Automation & Integration | Sovereign Enterprise Systems | AEITCH',
+    title: 'AI Automation & Integration for Enterprises | AI Agents & System Integration | AEITCH',
     description:
-      'Private generative AI and autonomous agent systems engineered for Saudi data sovereignty. In-kingdom GPU execution, hybrid vector RAG, and deterministic NeMo guardrails.',
+      'We design and build automation, AI agents and predictive analytics, and connect them to your existing systems and data, so the impact shows up in time, cost and decision quality.',
     url: 'https://aeitch.com/services/ai-automation',
     siteName: 'AEITCH',
     type: 'website',
@@ -24,22 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function AiAutomationPage() {
-  return (
-    <div className="flex w-full flex-col overflow-hidden bg-[#080808] text-white selection:bg-[#e9800a] selection:text-black">
-      {/* 1. Asymmetric Hero with Interactive 3D WebGL Sovereign AI Neural Core */}
-      <AiConsultingHero />
-
-      {/* 2. Asymmetric Bento 2.0 AI Disciplines Grid */}
-      <AiDisciplinesBento />
-
-      {/* 3. 4-Tier Sovereign AI Pipeline & Agent Topology Schematic */}
-      <AiArchitectureSchematic />
-
-      {/* 4. Interactive AI Feasibility, GPU Sizing & Compute Simulator */}
-      <AiFeasibilitySimulator />
-
-      {/* 5. Sovereign AI Enterprise Closing CTA Block */}
-      <AiConsultingCTA />
-    </div>
-  );
+  return <AiAutomationDetailView />;
 }

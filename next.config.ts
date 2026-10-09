@@ -82,6 +82,31 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      {
+        source: '/services/ai-automation-integration',
+        destination: '/services/ai-automation',
+        permanent: true,
+      },
+      {
+        source: '/services/devops-cloud-engineering',
+        destination: '/services/cloud-devops',
+        permanent: true,
+      },
+      {
+        source: '/services/custom-software-development',
+        destination: '/services/custom-software',
+        permanent: true,
+      },
+      {
+        source: '/our-mvp-showcase',
+        destination: '/our-products',
+        permanent: true,
+      },
+      {
+        source: '/saudi-hub',
+        destination: '/vision-2030',
+        permanent: true,
+      },
     ];
   },
 };

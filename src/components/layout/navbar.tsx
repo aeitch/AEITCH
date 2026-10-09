@@ -34,6 +34,7 @@ export const Navbar: React.FC = () => {
   const { t, locale, toggleLocale, direction } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [workOpen, setWorkOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [consultationModalOpen, setConsultationModalOpen] = useState(false);
 
@@ -53,6 +54,7 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
+    setWorkOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -221,24 +223,80 @@ export const Navbar: React.FC = () => {
 
             {/* Vision 2030 Sovereign Flagship */}
             <Link
-              href="/#vision-2030"
-              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-accent bg-accent-soft/70 border border-accent/25 hover:bg-accent/20 transition-colors"
+              href="/vision-2030"
+              className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                pathname === '/vision-2030'
+                  ? 'text-accent bg-accent-soft border border-accent/40'
+                  : 'text-accent bg-accent-soft/70 border border-accent/25 hover:bg-accent/20'
+              }`}
             >
               <Sparkles className="h-3.5 w-3.5 text-accent" />
               <span>{locale === 'ar' ? 'رؤية 2030' : 'Vision 2030'}</span>
             </Link>
 
-            {/* Our Work */}
-            <Link
-              href="/case-studies"
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === '/case-studies'
-                  ? 'text-accent'
-                  : 'text-fg-muted hover:text-white hover:bg-white/5'
-              }`}
+            {/* Our Work Dropdown (Case Studies & Our Products) */}
+            <div
+              className="relative"
+              onMouseEnter={() => setWorkOpen(true)}
+              onMouseLeave={() => setWorkOpen(false)}
             >
-              {locale === 'ar' ? 'أعمالنا' : 'Our Work'}
-            </Link>
+              <button
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  pathname === '/case-studies' || pathname === '/our-products'
+                    ? 'text-accent'
+                    : 'text-fg-muted hover:text-white hover:bg-white/5'
+                }`}
+                aria-expanded={workOpen}
+              >
+                <span>{locale === 'ar' ? 'أعمالنا' : 'Our Work'}</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    workOpen ? 'rotate-180 text-accent' : 'text-fg-subtle'
+                  }`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {workOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute top-full start-0 pt-2 w-64 z-50"
+                  >
+                    <div className="rounded-2xl border border-border bg-surface p-2 shadow-2xl backdrop-blur-2xl">
+                      <div className="space-y-1">
+                        <Link
+                          href="/case-studies"
+                          onClick={() => setWorkOpen(false)}
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                        >
+                          <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
+                            {locale === 'ar' ? 'دراسات الحالة' : 'Case Studies'}
+                          </div>
+                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                            {locale === 'ar' ? 'مشاريع مؤسسية حقيقية' : 'Real enterprise deliverables'}
+                          </div>
+                        </Link>
+                        <Link
+                          href="/our-products"
+                          onClick={() => setWorkOpen(false)}
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                        >
+                          <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
+                            {locale === 'ar' ? 'منتجاتنا' : 'Our Products'}
+                          </div>
+                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                            {locale === 'ar' ? 'ParkKaro و Paylink في السوق' : 'ParkKaro & Paylink in market'}
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* About Us */}
             <Link
@@ -250,6 +308,30 @@ export const Navbar: React.FC = () => {
               }`}
             >
               {locale === 'ar' ? 'من نحن' : 'About'}
+            </Link>
+
+            {/* Blog */}
+            <Link
+              href="/insights"
+              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                pathname?.startsWith('/insights')
+                  ? 'text-accent'
+                  : 'text-fg-muted hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {locale === 'ar' ? 'المدونة' : 'Blog'}
+            </Link>
+
+            {/* Contact */}
+            <Link
+              href="/contact-us"
+              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                pathname === '/contact-us'
+                  ? 'text-accent'
+                  : 'text-fg-muted hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {locale === 'ar' ? 'تواصل معنا' : 'Contact'}
             </Link>
           </nav>
 
