@@ -110,7 +110,7 @@ export const Navbar: React.FC = () => {
 
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 bg-black/95 backdrop-blur-xl border-b border-white/15 shadow-2xl ${
-          mobileMenuOpen ? 'h-16 sm:h-20' : isScrolled ? 'h-16' : 'h-16 sm:h-20'
+          mobileMenuOpen ? 'h-16 sm:h-20 !bg-black !border-white/20' : isScrolled ? 'h-16' : 'h-16 sm:h-20'
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -183,10 +183,13 @@ export const Navbar: React.FC = () => {
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute top-full start-0 pt-2 w-[420px] z-50"
                   >
-                    <div className="rounded-2xl border border-border bg-surface p-2.5 shadow-2xl backdrop-blur-2xl">
-                      <div className="flex items-center justify-between px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/5 mb-1.5">
+                    <div
+                      style={{ backgroundColor: '#0D0D10' }}
+                      className="rounded-2xl border border-white/15 bg-[#0D0D10] p-2.5 shadow-2xl backdrop-blur-2xl"
+                    >
+                      <div className="flex items-center justify-between px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/10 mb-1.5">
                         <span>{locale === 'ar' ? 'الخدمات الهندسية' : 'Engineering Services'}</span>
-                        <span className="text-[9px] text-fg-subtle">{locale === 'ar' ? 'معيار تقني متقن' : 'Enterprise Standard'}</span>
+                        <span className="text-[9px] text-zinc-400">{locale === 'ar' ? 'معيار تقني متقن' : 'Enterprise Standard'}</span>
                       </div>
                       <div className="space-y-1">
                         {serviceItems.map((s) => (
@@ -194,9 +197,9 @@ export const Navbar: React.FC = () => {
                             key={s.href}
                             href={s.href}
                             onClick={() => setServicesOpen(false)}
-                            className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                            className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-white/10"
                           >
-                            <div className="rounded-lg bg-surface-2 p-2 border border-border group-hover:border-accent/40 transition-colors shrink-0 mt-0.5">
+                            <div className="rounded-lg bg-black/60 p-2 border border-white/10 group-hover:border-accent/40 transition-colors shrink-0 mt-0.5">
                               {s.icon}
                             </div>
                             <div className="min-w-0 flex-1">
@@ -210,7 +213,7 @@ export const Navbar: React.FC = () => {
                                   </span>
                                 )}
                               </div>
-                              <div className="text-xs text-fg-subtle leading-snug mt-1 line-clamp-2">
+                              <div className="text-xs text-zinc-300 leading-snug mt-1 line-clamp-2">
                                 {s.desc}
                               </div>
                             </div>
@@ -267,29 +270,32 @@ export const Navbar: React.FC = () => {
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute top-full start-0 pt-2 w-64 z-50"
                   >
-                    <div className="rounded-2xl border border-border bg-surface p-2 shadow-2xl backdrop-blur-2xl">
+                    <div
+                      style={{ backgroundColor: '#0D0D10' }}
+                      className="rounded-2xl border border-white/15 bg-[#0D0D10] p-2 shadow-2xl backdrop-blur-2xl"
+                    >
                       <div className="space-y-1">
                         <Link
                           href="/case-studies"
                           onClick={() => setWorkOpen(false)}
-                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-white/10"
                         >
                           <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
                             {locale === 'ar' ? 'دراسات الحالة' : 'Case Studies'}
                           </div>
-                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                          <div className="text-xs text-zinc-300 leading-snug mt-0.5">
                             {locale === 'ar' ? 'مشاريع مؤسسية حقيقية' : 'Real enterprise deliverables'}
                           </div>
                         </Link>
                         <Link
                           href="/our-products"
                           onClick={() => setWorkOpen(false)}
-                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-white/10"
                         >
                           <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
                             {locale === 'ar' ? 'منتجاتنا' : 'Our Products'}
                           </div>
-                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                          <div className="text-xs text-zinc-300 leading-snug mt-0.5">
                             {locale === 'ar' ? 'ParkKaro و Paylink في السوق' : 'ParkKaro & Paylink in market'}
                           </div>
                         </Link>
@@ -331,34 +337,37 @@ export const Navbar: React.FC = () => {
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute top-full start-0 pt-2 w-64 z-50"
                   >
-                    <div className="rounded-2xl border border-border bg-surface p-2 shadow-2xl backdrop-blur-2xl">
+                    <div
+                      style={{ backgroundColor: '#0D0D10' }}
+                      className="rounded-2xl border border-white/15 bg-[#0D0D10] p-2 shadow-2xl backdrop-blur-2xl"
+                    >
                       <div className="space-y-1">
                         <Link
                           href="/about-us"
                           onClick={() => setAboutOpen(false)}
-                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-white/10"
                         >
                           <div className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
                             {locale === 'ar' ? 'عن الشركة' : 'About Company'}
                           </div>
-                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                          <div className="text-xs text-zinc-300 leading-snug mt-0.5">
                             {locale === 'ar' ? 'رسالتنا وهندستنا التقنية' : 'Our mission & methodology'}
                           </div>
                         </Link>
                         <Link
                           href="/about-us/life-at-aeitch"
                           onClick={() => setAboutOpen(false)}
-                          className="group block rounded-xl p-2.5 transition-colors hover:bg-surface-2"
+                          className="group block rounded-xl p-2.5 transition-colors hover:bg-white/10"
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-sm font-semibold text-white group-hover:text-accent transition-colors">
                               {locale === 'ar' ? 'الحياة في إيتش' : 'Life at AEITCH'}
                             </span>
-                            <span className="font-mono text-[9px] uppercase tracking-wider text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30">
+                            <span className="font-mono text-[9px] uppercase tracking-wider text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30 font-bold">
                               NEW
                             </span>
                           </div>
-                          <div className="text-xs text-fg-subtle leading-snug mt-0.5">
+                          <div className="text-xs text-zinc-300 leading-snug mt-0.5">
                             {locale === 'ar' ? 'ثقافة العمل، الفريق والرحلات' : 'Culture, squad & expeditions'}
                           </div>
                         </Link>
@@ -424,7 +433,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
-              className="flex lg:hidden rounded-xl border border-border bg-surface p-2 text-fg-muted hover:text-white"
+              className="flex lg:hidden rounded-xl border border-white/20 bg-black/60 p-2 text-white hover:text-accent hover:border-accent/40 transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

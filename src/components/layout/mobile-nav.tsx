@@ -116,6 +116,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          style={{ backgroundColor: '#000000' }}
           className="fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-black/98 backdrop-blur-2xl z-50 overflow-y-auto p-6 lg:hidden flex flex-col justify-between"
           role="dialog"
           aria-modal="true"
@@ -130,36 +131,41 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                   <span>{locale === 'ar' ? 'الخدمات' : 'SERVICES'}</span>
                 </div>
-                <span className="text-[10px] text-fg-subtle">{locale === 'ar' ? 'مجالات التخصص' : 'Core Disciplines'}</span>
+                <span className="text-[10px] text-zinc-400 font-medium">{locale === 'ar' ? 'مجالات التخصص' : 'Core Disciplines'}</span>
               </div>
 
-              <div className="grid grid-cols-1 gap-2 pt-1">
+              <div className="grid grid-cols-1 gap-2.5 pt-1">
                 {serviceLinks.map((service) => (
                   <Link
                     key={service.href}
                     href={service.href}
                     onClick={onClose}
-                    className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 transition-colors hover:border-accent/40 hover:bg-white/[0.06] active:scale-[0.99]"
+                    className="flex items-center justify-between rounded-xl border border-white/10 bg-[#111114] p-3 transition-colors hover:border-accent/50 hover:bg-[#18181d] active:scale-[0.99] shadow-sm"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="rounded-lg bg-white/5 p-2 border border-white/10 shrink-0">
+                      <div className="rounded-lg bg-black/60 p-2 border border-white/15 shrink-0 text-accent">
                         {service.icon}
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-semibold text-white truncate">
+                          <span className="text-sm font-bold text-white truncate">
                             {service.name}
                           </span>
+                          {service.tag && (
+                            <span className="font-mono text-[9px] uppercase tracking-wider text-accent bg-accent-soft px-1.5 py-0.2 rounded border border-accent/30 shrink-0">
+                              {service.tag}
+                            </span>
+                          )}
                         </div>
-                        <div className="text-[11px] text-fg-subtle truncate">
+                        <div className="text-xs text-zinc-300 truncate mt-0.5">
                           {service.desc}
                         </div>
                       </div>
                     </div>
                     {direction === 'rtl' ? (
-                      <ArrowLeft className="h-4 w-4 text-fg-subtle shrink-0 ms-2" />
+                      <ArrowLeft className="h-4 w-4 text-accent/80 shrink-0 ms-2" />
                     ) : (
-                      <ArrowRight className="h-4 w-4 text-fg-subtle shrink-0 ms-2" />
+                      <ArrowRight className="h-4 w-4 text-accent/80 shrink-0 ms-2" />
                     )}
                   </Link>
                 ))}
@@ -168,7 +174,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
             {/* 2. Main Navigation Links */}
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-fg-subtle mb-3 flex items-center gap-2">
+              <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-400 mb-3 flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 <span>{locale === 'ar' ? 'التنقل' : 'NAVIGATION'}</span>
               </div>
@@ -176,7 +182,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 <Link
                   href="/vision-2030"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-accent bg-accent-soft border border-accent/25 hover:bg-accent/20 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-semibold text-accent bg-accent-soft border border-accent/30 hover:bg-accent/20 transition-colors shadow-sm"
                 >
                   <div className="flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-accent" />
@@ -192,50 +198,50 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 <Link
                   href="/case-studies"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors border border-transparent hover:border-white/10"
                 >
                   <span>{locale === 'ar' ? 'أعمالنا' : 'Our Work'}</span>
                   {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowLeft className="h-3.5 w-3.5 text-zinc-400" />
                   ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
                   )}
                 </Link>
 
                 <Link
                   href="/our-products"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors border border-transparent hover:border-white/10"
                 >
                   <span>{locale === 'ar' ? 'منتجاتنا' : 'Our Products'}</span>
                   {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowLeft className="h-3.5 w-3.5 text-zinc-400" />
                   ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
                   )}
                 </Link>
 
                 <Link
                   href="/about-us"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors border border-transparent hover:border-white/10"
                 >
                   <span>{locale === 'ar' ? 'من نحن' : 'About'}</span>
                   {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowLeft className="h-3.5 w-3.5 text-zinc-400" />
                   ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
                   )}
                 </Link>
 
                 <Link
                   href="/about-us/life-at-aeitch"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors border border-transparent hover:border-white/10"
                 >
                   <div className="flex items-center gap-2">
                     <span>{locale === 'ar' ? 'الحياة في إيتش' : 'Life at AEITCH'}</span>
-                    <span className="text-[9px] font-mono text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30">
+                    <span className="text-[9px] font-mono text-accent bg-accent-soft px-1.5 py-0.5 rounded border border-accent/30 font-bold">
                       NEW
                     </span>
                   </div>
@@ -249,26 +255,26 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                 <Link
                   href="/insights"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors border border-transparent hover:border-white/10"
                 >
                   <span>{locale === 'ar' ? 'المدونة' : 'Blog'}</span>
                   {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowLeft className="h-3.5 w-3.5 text-zinc-400" />
                   ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
                   )}
                 </Link>
 
                 <Link
                   href="/contact-us"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-fg-muted hover:text-white hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors border border-transparent hover:border-white/10"
                 >
                   <span>{locale === 'ar' ? 'تواصل معنا' : 'Contact'}</span>
                   {direction === 'rtl' ? (
-                    <ArrowLeft className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowLeft className="h-3.5 w-3.5 text-zinc-400" />
                   ) : (
-                    <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                    <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
                   )}
                 </Link>
               </div>
@@ -276,7 +282,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           </div>
 
           {/* 3. Bottom Actions & Contact */}
-          <div className="space-y-4 pt-6 mt-6 border-t border-white/10">
+          <div className="space-y-4 pt-6 mt-6 border-t border-white/15">
             {/* Primary Action Button */}
             <button
               onClick={() => {
@@ -285,7 +291,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   onOpenConsultation();
                 }
               }}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-sm font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-sm font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95 cursor-pointer"
             >
               <span>{locale === 'ar' ? 'احجز استشارة' : 'Book a Consultation'}</span>
               {direction === 'rtl' ? (
@@ -298,21 +304,21 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             {/* Language Switcher */}
             <button
               onClick={toggleLocale}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-2.5 text-xs font-semibold text-white hover:bg-white/10 transition-colors"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-[#16161a] py-3 text-xs font-semibold text-white hover:bg-[#202026] hover:border-accent/40 transition-colors cursor-pointer"
             >
               <Globe className="h-4 w-4 text-accent" />
               <span>{locale === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'}</span>
             </button>
 
             {/* Verified Contact Details */}
-            <div className="flex items-center justify-between text-[11px] text-fg-subtle pt-2 px-1">
+            <div className="flex items-center justify-between text-xs text-zinc-400 pt-2 px-1">
               <span className="flex items-center gap-1.5">
                 <Mail className="h-3.5 w-3.5 text-accent" />
-                <a href="mailto:hello@aeitch.com" className="hover:text-accent">
+                <a href="mailto:hello@aeitch.com" className="hover:text-accent text-zinc-300">
                   hello@aeitch.com
                 </a>
               </span>
-              <span className="font-mono text-fg-muted">+92 318 4055723</span>
+              <span className="font-mono text-zinc-200">+92 318 4055723</span>
             </div>
           </div>
         </motion.div>

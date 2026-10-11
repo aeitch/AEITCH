@@ -211,10 +211,10 @@ export const FinalCtaForm: React.FC = () => {
                   <select
                     value={formData.serviceRequested}
                     onChange={(e) => setFormData({ ...formData, serviceRequested: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-surface-2 px-3.5 py-2.5 text-sm text-white focus:border-accent focus:outline-none transition-colors"
+                    className="w-full rounded-xl border border-white/15 bg-[#141418] px-3.5 py-2.5 text-sm text-white focus:border-accent focus:outline-none transition-colors"
                   >
                     {services.map((s) => (
-                      <option key={s.value} value={s.value} className="bg-surface text-white">
+                      <option key={s.value} value={s.value} className="bg-[#111114] text-white py-2">
                         {locale === 'ar' ? s.labelAr : s.labelEn}
                       </option>
                     ))}

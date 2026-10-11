@@ -236,18 +236,18 @@ export function ConsultationModal({ isOpen, onClose, defaultService = 'ai-automa
                   <select
                     value={formData.serviceRequested}
                     onChange={(e) => setFormData({ ...formData, serviceRequested: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-bg px-4 py-2.5 text-sm text-fg focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl border border-white/15 bg-[#141418] px-4 py-2.5 text-sm text-white focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   >
-                    <option value="ai-automation">
+                    <option value="ai-automation" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'الذكاء الاصطناعي والوكلاء الأذكياء' : 'Applied AI & Autonomous Agents'}
                     </option>
-                    <option value="cloud-devops">
+                    <option value="cloud-devops" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'السحابة السيادية وحلول ديف أوبس' : 'Sovereign Cloud & DevOps'}
                     </option>
-                    <option value="custom-software">
+                    <option value="custom-software" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'البرمجيات المؤسسية المخصصة' : 'Custom Enterprise Software'}
                     </option>
-                    <option value="mvp-development">
+                    <option value="mvp-development" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'تطوير النماذج الأولية (MVPs)' : 'Rapid MVP Development (8 Weeks)'}
                     </option>
                   </select>
@@ -260,15 +260,15 @@ export function ConsultationModal({ isOpen, onClose, defaultService = 'ai-automa
                   <select
                     value={formData.budgetRange}
                     onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-bg px-4 py-2.5 text-sm text-fg focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl border border-white/15 bg-[#141418] px-4 py-2.5 text-sm text-white focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   >
-                    <option value="mvp">
+                    <option value="mvp" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'مشروع ناشئ / نموذج أولي (MVP)' : 'Startup MVP / Fast Launch'}
                     </option>
-                    <option value="enterprise">
+                    <option value="enterprise" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'تطوير مؤسسي / تحول رقمي شامل' : 'Enterprise Digital Transformation'}
                     </option>
-                    <option value="advisory">
+                    <option value="advisory" className="bg-[#111114] text-white py-2">
                       {locale === 'ar' ? 'استشارات معمارية وتدقيق أمني' : 'Architectural Audit & Advisory'}
                     </option>
                   </select>

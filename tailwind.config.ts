@@ -78,6 +78,9 @@ const config: Config = {
           500: 'rgba(255, 255, 255, 0.8)',
         },
       },
+      opacity: {
+        '98': '0.98',
+      },
       boxShadow: {
         'glow-sm': '0 0 15px -2px rgba(233, 128, 10, 0.3)',
         'glow-md': '0 0 25px -4px rgba(233, 128, 10, 0.45)',
