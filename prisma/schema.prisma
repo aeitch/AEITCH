@@ -1,11 +1,11 @@
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
 }
 
 // 1. Admin Users & Credentials
@@ -27,11 +27,11 @@ model Service {
   title        String
   tagline      String
   category     String    @default("Engineering")
-  description  String
-  fullContent  String
+  description  String    @db.Text
+  fullContent  String    @db.LongText
   icon         String
-  features     String    // JSON stringified array of strings
-  techStack    String    // JSON stringified array of strings
+  features     String    @db.Text // JSON stringified array of strings
+  techStack    String    @db.Text // JSON stringified array of strings
   order        Int       @default(0)
   isActive     Boolean   @default(true)
   createdAt    DateTime  @default(now())
@@ -46,11 +46,11 @@ model CaseStudy {
   clientName     String
   clientIndustry String
   type           String    @default("CASE_STUDY") // "CASE_STUDY" | "MVP_SHOWCASE"
-  summary        String
-  challenge      String
-  solution       String
-  results        String    // JSON stringified array of { metric: string, label: string }
-  techStack      String    // JSON stringified array of strings
+  summary        String    @db.Text
+  challenge      String    @db.Text
+  solution       String    @db.Text
+  results        String    @db.Text // JSON stringified array of { metric: string, label: string }
+  techStack      String    @db.Text // JSON stringified array of strings
   coverImage     String?
   liveUrl        String?
   order          Int       @default(0)
@@ -67,7 +67,7 @@ model Testimonial {
   clientRole    String
   clientCompany String
   avatarUrl     String?
-  quote         String
+  quote         String    @db.Text
   rating        Int       @default(5)
   verified      Boolean   @default(true)
   order         Int       @default(0)
@@ -83,7 +83,7 @@ model MetricCounter {
   value       String
   prefix      String    @default("")
   suffix      String    @default("")
-  description String?
+  description String?   @db.Text
   icon        String?
   order       Int       @default(0)
   isActive    Boolean   @default(true)
@@ -100,13 +100,13 @@ model Inquiry {
   serviceRequested String?
   budgetRange      String?
   timeline         String?
-  message          String
+  message          String    @db.Text
   meetingDate      String?
   meetingTime      String?
   status           String    @default("NEW") // "NEW" | "CONTACTED" | "IN_DISCUSSION" | "CONVERTED" | "ARCHIVED"
-  notes            String?
+  notes            String?   @db.Text
   ipAddress        String?
-  userAgent        String?
+  userAgent        String?   @db.Text
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
 }
