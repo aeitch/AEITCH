@@ -117,7 +117,7 @@ describe('Life at AEITCH: Component Renders & Interactions', () => {
       </LocaleProvider>
     );
     expect(screen.getByText(/جميع المهندسين/i)).toBeInTheDocument();
-    expect(screen.getByText(/م. حسيب الرحمن خان/i)).toBeInTheDocument();
+    expect(screen.getByText(/م. حسيب الرحمن/i)).toBeInTheDocument();
   });
 
   it('renders LifeCelebrationsSection and clicking month triggers interaction', () => {
@@ -162,7 +162,7 @@ describe('Life at AEITCH: Component Renders & Interactions', () => {
     expect(screen.getByText(/08 \/\//i)).toBeInTheDocument();
     const btn2 = screen.getByLabelText(/Go to quote 2/i);
     fireEvent.click(btn2);
-    expect(screen.getByText(/م. زينب البلوشي/i)).toBeInTheDocument();
+    expect(screen.getByText(/م. عمر عوان/i)).toBeInTheDocument();
   });
 
   it('renders LifeJoinCtaSection with email link to careers@aeitch.com', () => {

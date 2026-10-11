@@ -21,7 +21,7 @@ export const CULTURE_VALUES: CultureValue[] = [
     lineEn: 'We reject disposable shortcuts. We architect clean software built to withstand real institutional pressure.',
     detailAr: 'السرعة في إيتش ليست فوضى، بل نتيجة إتقان المعمارية والتصميم المسبق. لا نطلق شيفرة نخجل من وضع أسمائنا عليها.',
     detailEn: 'Speed at AEITCH is the byproduct of disciplined engineering foresight. We never push a line of code we would hesitate to sign our names to.',
-    photo: '/life/values/value-1.svg',
+    photo: '/life/team/umer-awan.png',
     aspect: '4:3',
   },
   {
@@ -33,7 +33,7 @@ export const CULTURE_VALUES: CultureValue[] = [
     lineEn: 'No blame games or finger-pointing. Every engineer owns their vertical from architectural blueprint to live telemetry.',
     detailAr: 'عندما يقع خطأ، نبحث عن الخلل في النظام وليس في الشخص. نصححه فوراً، نكتب مراجعة بأثر رجعي (Postmortem)، ونتعلم معاً.',
     detailEn: 'When anomalies emerge, we interrogate the system architecture, not individuals. We remediate immediately and publish honest postmortems.',
-    photo: '/life/values/value-2.svg',
+    photo: '/life/trips/mushkpuri-summit.jpg',
     aspect: '4:3',
   },
   {
@@ -45,7 +45,7 @@ export const CULTURE_VALUES: CultureValue[] = [
     lineEn: 'Direct, candid technical critiques raise everyone’s caliber. Pull request review is a sacred peer-learning ritual.',
     detailAr: 'نناقش الأفكار بقوة وتجرد، ولكننا نتفق ونتحد عند التنفيذ. لا تُقبل أي شفرة دون فحص أمني واختبارات مرور آلية.',
     detailEn: 'We debate technical choices vigorously without political hesitation, then commit in unison. Zero PRs merge without automated test gates.',
-    photo: '/life/values/value-3.svg',
+    photo: '/life/team/haseeb-ur-rehman.jpg',
     aspect: '4:3',
   },
   {
@@ -57,7 +57,7 @@ export const CULTURE_VALUES: CultureValue[] = [
     lineEn: 'We carve out deliberate weekly time to dissect bleeding-edge AI whitepapers and contribute to open source tooling.',
     detailAr: 'التفوق في السوق السعودي والخليجي يتطلب أن نكون متقدمين بخطوة على التقنيات السائدة، وتجربة النماذج الجديدة في بيئات معزولة.',
     detailEn: 'Staying ahead in the GCC enterprise ecosystem requires exploring tomorrow’s paradigms today inside sandboxed research pods.',
-    photo: '/life/values/value-4.svg',
+    photo: '/life/trips/mushkpuri-joy.jpg',
     aspect: '4:3',
   },
   {
@@ -69,7 +69,7 @@ export const CULTURE_VALUES: CultureValue[] = [
     lineEn: 'We engineer platforms our clients own 100%, equipping regional teams to steer their sovereign digital roadmap.',
     detailAr: 'نجاحنا الحقيقي ليس في إبقاء العميل معتمداً علينا، بل في تمكينه من امتلاك زمام تقنيته وبناء فريقه الداخلي بثقة.',
     detailEn: 'Our benchmark of victory is not perpetual vendor lock-in, but conferring operational autonomy and architectural independence.',
-    photo: '/life/values/value-5.svg',
+    photo: '/life/trips/mushkpuri-terrace.jpg',
     aspect: '4:3',
   },
 ];

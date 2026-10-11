@@ -35,7 +35,8 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     shortAr: 'ينا',
     shortEn: 'Jan',
     people: [
-      { nameAr: 'م. حسيب الرحمن', nameEn: 'Haseeb Ur Rehman', day: 14, roleAr: 'رئيس المعمارية', roleEn: 'Principal Architect' },
+      { nameAr: 'م. حسيب الرحمن', nameEn: 'Haseeb ur Rehman', day: 5, roleAr: 'الرئيس التنفيذي والشريك المؤسس', roleEn: 'Chief Executive Officer (CEO)' },
+      { nameAr: 'أ. آمنة سفر', nameEn: 'Amna Safar', day: 20, roleAr: 'مسؤولة تطوير الأعمال والشراكات', roleEn: 'Business Development Executive' },
     ],
   },
   {
@@ -44,9 +45,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'February',
     shortAr: 'فبر',
     shortEn: 'Feb',
-    people: [
-      { nameAr: 'م. زينب البلوشي', nameEn: 'Zainab Al-Balushi', day: 22, roleAr: 'مهندسة سحابة', roleEn: 'Cloud Engineer' },
-    ],
+    people: [],
   },
   {
     monthIndex: 2,
@@ -55,7 +54,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     shortAr: 'مار',
     shortEn: 'Mar',
     people: [
-      { nameAr: 'م. عمر طارق', nameEn: 'Omer Tariq', day: 9, roleAr: 'رئيس المنتجات', roleEn: 'Product Lead' },
+      { nameAr: 'م. عمر عوان', nameEn: 'Umer Awan', day: 1, roleAr: 'المدير التقني ورئيس إدارة المنتجات', roleEn: 'CTO & Product Manager' },
     ],
   },
   {
@@ -64,9 +63,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'April',
     shortAr: 'أبر',
     shortEn: 'Apr',
-    people: [
-      { nameAr: 'م. حمزة فاروق', nameEn: 'Hamza Farooq', day: 18, roleAr: 'مهندس خلفي', roleEn: 'Backend Lead' },
-    ],
+    people: [],
   },
   {
     monthIndex: 4,
@@ -74,9 +71,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'May',
     shortAr: 'ماي',
     shortEn: 'May',
-    people: [
-      { nameAr: 'م. عبد الله سليم', nameEn: 'Abdullah Saleem', day: 5, roleAr: 'مهندس ذكاء اصطناعي', roleEn: 'AI Lead' },
-    ],
+    people: [],
   },
   {
     monthIndex: 5,
@@ -84,9 +79,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'June',
     shortAr: 'يون',
     shortEn: 'Jun',
-    people: [
-      { nameAr: 'م. عائشة مالك', nameEn: 'Ayesha Malik', day: 27, roleAr: 'مهندسة أمن', roleEn: 'Security Lead' },
-    ],
+    people: [],
   },
   {
     monthIndex: 6,
@@ -94,9 +87,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'July',
     shortAr: 'يول',
     shortEn: 'Jul',
-    people: [
-      { nameAr: 'م. دانيال أحمد', nameEn: 'Danial Ahmed', day: 12, roleAr: 'مهندس نظم', roleEn: 'Systems Engineer' },
-    ],
+    people: [],
   },
   {
     monthIndex: 7,
@@ -104,9 +95,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'August',
     shortAr: 'أغس',
     shortEn: 'Aug',
-    people: [
-      { nameAr: 'م. مريم رحمن', nameEn: 'Maryam Rehman', day: 31, roleAr: 'باحثة تجربة المستخدم', roleEn: 'UX Researcher' },
-    ],
+    people: [],
   },
   {
     monthIndex: 8,
@@ -114,9 +103,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'September',
     shortAr: 'سبت',
     shortEn: 'Sep',
-    people: [
-      { nameAr: 'م. أسامة خالد', nameEn: 'Osama Khalid', day: 16, roleAr: 'مهندس واجهات', roleEn: 'Frontend Engineer' },
-    ],
+    people: [],
   },
   {
     monthIndex: 9,
@@ -125,7 +112,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     shortAr: 'أكت',
     shortEn: 'Oct',
     people: [
-      { nameAr: 'م. فاطمة نور', nameEn: 'Fatima Noor', day: 24, roleAr: 'مهندسة بيانات', roleEn: 'Data Engineer' },
+      { nameAr: 'أ. عائشة مظفر', nameEn: 'Ayesha Muzaffar', day: 28, roleAr: 'مسؤولة الموارد البشرية وثقافة الفريق', roleEn: 'HR Executive' },
     ],
   },
   {
@@ -134,9 +121,7 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     nameEn: 'November',
     shortAr: 'نوف',
     shortEn: 'Nov',
-    people: [
-      { nameAr: 'م. بلال حيدر', nameEn: 'Bilal Haider', day: 8, roleAr: 'مهندس موثوقية SRE', roleEn: 'SRE Specialist' },
-    ],
+    people: [],
   },
   {
     monthIndex: 11,
@@ -145,65 +130,65 @@ export const BIRTHDAYS_DATA: MonthBirthdays[] = [
     shortAr: 'ديس',
     shortEn: 'Dec',
     people: [
-      { nameAr: 'م. سارة إقبال', nameEn: 'Sara Iqbal', day: 19, roleAr: 'مهندسة ضمان جودة', roleEn: 'QA Engineer' },
+      { nameAr: 'م. حسن بت', nameEn: 'Hasan Butt', day: 8, roleAr: 'المدير التقني وهندسة السحابة', roleEn: 'Chief Technology Officer (CTO)' },
     ],
   },
 ];
 
 export const CELEBRATION_MOMENTS: CelebrationMoment[] = [
   {
-    id: 'moment-eid',
-    titleAr: 'بهجة العيد وتبادل الحلويات',
-    titleEn: 'Eid Feast & Sweets Exchange',
-    categoryAr: 'مناسبة دينية ووطنية',
-    categoryEn: 'Cultural Milestone',
-    descriptionAr: 'اجتماع كامل الفريق لتبادل التهاني وتناول المأكولات التقليدية والحلويات الشعبية في بهو المكتب.',
-    descriptionEn: 'The full pod gathers to share traditional festive meals and celebrate shared cultural bonds.',
-    image: '/life/celebrations/eid-celebration.svg',
-    tag: 'EID MUBARAK',
-  },
-  {
-    id: 'moment-iftar',
-    titleAr: 'إفطار رمضان السنوي لفريق الهندسة',
-    titleEn: 'Annual Ramadan Engineering Iftar',
-    categoryAr: 'روحانيات وتواصل',
-    categoryEn: 'Team Gathering',
-    descriptionAr: 'أمسية دافئة حول مائدة إفطار موحدة تكسر روتين العمل البرمجي وتعزز روابط الأخوة والزمالة.',
-    descriptionEn: 'A twilight gathering breaking bread together during holy Ramadan, stepping back from the terminal.',
-    image: '/life/celebrations/annual-iftar.svg',
-    tag: 'RAMADAN KAREEM',
-  },
-  {
     id: 'moment-cake',
-    titleAr: 'كعكة الإطلاق والوصول للإنتاج',
-    titleEn: 'Production Ship Cake & Claps',
-    categoryAr: 'إنجاز تسليم تقني',
-    categoryEn: 'Sprint Release',
-    descriptionAr: 'كل إطلاق ناجح لنظام عميل في بيئة الإنتاج يرافقه تقطيع كعكة خاصة وتصفيق حار لكل المهندسين المساهمين.',
-    descriptionEn: 'Every major zero-downtime production deployment is celebrated with custom cake and squad applause.',
-    image: '/life/celebrations/cake-ship-milestone.svg',
-    tag: 'SHIP DAY',
+    titleAr: 'احتفالات أعياد الميلاد وإطلاق الإنتاج',
+    titleEn: 'Birthday Celebrations & Release Cake',
+    categoryAr: 'فرحة الفريق وإنجاز التسليم',
+    categoryEn: 'Team Milestone',
+    descriptionAr: 'كل مناسبة ميلاد وإطلاق ناجح لنظام عميل في بيئة الإنتاج يرافقه تقطيع كعكة خاصة وتصفيق حار لكل المساهمين.',
+    descriptionEn: 'Every squad member birthday and zero-downtime client production deployment is celebrated with cake and applause.',
+    image: '/life/celebrations/birthday-cake.png',
+    tag: 'BIRTHDAY & SHIP',
   },
   {
-    id: 'moment-dinner',
-    titleAr: 'العشاء الفصلي المفتوح',
-    titleEn: 'Quarterly Off-Grid Team Dinner',
-    categoryAr: 'لقاء اجتماعي',
-    categoryEn: 'Quarterly Offsite',
-    descriptionAr: 'ليلة استراحة في مطعم محلي مفتوح بدون حواسيب محمولة؛ أحاديث عن الطموحات والكتب والهوايات.',
-    descriptionEn: 'A night out in the capital with laptops left behind; talking books, cinema, and ambitious futures.',
-    image: '/life/celebrations/team-dinner.svg',
-    tag: 'QUARTERLY DINNER',
+    id: 'moment-terrace',
+    titleAr: 'استراحة شاي كرك على التراس الجبلي',
+    titleEn: 'Mountain Terrace Tea Gathering',
+    categoryAr: 'لقاء مفتوح وأحاديث ملهمة',
+    categoryEn: 'Offsite Retreat',
+    descriptionAr: 'أمسية دافئة حول أكواب الشاي الطازجة في الهواء الطلق، حيث نتبادل النقاشات المعمارية والرؤى المستقبلية.',
+    descriptionEn: 'Gathering on the mountain terrace overlooking alpine valleys, discussing engineering futures over fresh tea.',
+    image: '/life/trips/mushkpuri-terrace.jpg',
+    tag: 'CHAI & PERSPECTIVE',
   },
   {
-    id: 'moment-hackathon',
-    titleAr: 'عرض مشاريع الابتكار واستعراض الجمعة',
-    titleEn: 'Friday Demos & Chai Pour',
-    categoryAr: 'ابتكار أسبوعي',
-    categoryEn: 'Weekly Demo',
-    descriptionAr: 'ساعة مخصصة نهاية كل أسبوع حيث يعرض المهندسون تجاربهم الشخصية وأدوات المصادر المفتوحة مع الشاي الطازج.',
-    descriptionEn: 'Friday golden hour: engineers showcase experimental side-projects and OSS contributions over freshly brewed tea.',
-    image: '/life/celebrations/hackathon-demo.svg',
-    tag: 'FRIDAY DEMO',
+    id: 'moment-summit',
+    titleAr: 'تحدي القمة وروح الفريق العالية',
+    titleEn: 'Summit Ridge & Team Synergy',
+    categoryAr: 'استكشاف وتحدي جبلي',
+    categoryEn: 'Alpine Expedition',
+    descriptionAr: 'صعود جماعي إلى قمة الجبل على ارتفاع 2,800م؛ إصرار متبادل يعكس قوة الفريق وتكامله في مواجهة التحديات البرمجية المعقدة.',
+    descriptionEn: 'Summiting 2,800m alpine peaks together—solidifying our shared resilience, high spirits, and collaborative power.',
+    image: '/life/trips/mushkpuri-summit.jpg',
+    tag: 'SUMMIT 2,800M',
+  },
+  {
+    id: 'moment-joy',
+    titleAr: 'طاقة إيجابية وضحكات لا تنقطع',
+    titleEn: 'Trail Laughter & Camaraderie',
+    categoryAr: 'ثقافة إنسانية مرحة',
+    categoryEn: 'Team Culture',
+    descriptionAr: 'أجواء عفوية وضحكات مشتركة تكسر الجدية الهندسية الصارمة وتجعل من بيئة العمل مجتمعاً إنسانياً حقيقياً.',
+    descriptionEn: 'Unfiltered joy and genuine smiles along the trek, proving high-performance engineering thrives best with true camaraderie.',
+    image: '/life/trips/mushkpuri-joy.jpg',
+    tag: 'TEAM CAMARADERIE',
+  },
+  {
+    id: 'moment-culture',
+    titleAr: 'لقاءات دورية لتبادل الأفكار وتكريم المتميزين',
+    titleEn: 'Quarterly Offsite & Recognition',
+    categoryAr: 'تكريم وإنجازات',
+    categoryEn: 'Quarterly Gathering',
+    descriptionAr: 'لحظات استراحة واحتفاء بكل جهد يبذله الفريق، مع تسليط الضوء على الإنجازات التقنية الاستثنائية.',
+    descriptionEn: 'Quarterly milestones celebrating dedicated craft, peer recognition, and bold ambitious roadmap targets.',
+    image: '/life/hero/polaroid-team.jpg',
+    tag: 'COMPANY CULTURE',
   },
 ];
