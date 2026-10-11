@@ -117,7 +117,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
           style={{ backgroundColor: '#000000' }}
-          className="fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-black/98 backdrop-blur-2xl z-50 overflow-y-auto p-6 lg:hidden flex flex-col justify-between"
+          className="fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-black/98 backdrop-blur-2xl z-40 overflow-y-auto p-6 lg:hidden flex flex-col justify-between"
           role="dialog"
           aria-modal="true"
           aria-label={locale === 'ar' ? 'قائمة التنقل للأجهزة المحمولة' : 'Mobile Navigation Menu'}

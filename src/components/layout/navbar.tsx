@@ -109,7 +109,7 @@ export const Navbar: React.FC = () => {
       />
 
       <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 bg-black/95 backdrop-blur-xl border-b border-white/15 shadow-2xl ${
+        className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 bg-black/95 backdrop-blur-xl border-b border-white/15 shadow-2xl ${
           mobileMenuOpen ? 'h-16 sm:h-20 !bg-black !border-white/20' : isScrolled ? 'h-16' : 'h-16 sm:h-20'
         }`}
       >
@@ -440,6 +440,8 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       </header>
+      {/* Spacer to preserve document flow height for the fixed header */}
+      <div className="h-16 sm:h-20 shrink-0 w-full pointer-events-none" aria-hidden="true" />
 
       {/* Decoupled Isolated Mobile Drawer */}
       <MobileNav

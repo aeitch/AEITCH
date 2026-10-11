@@ -87,7 +87,7 @@ export function ConsultationModal({ isOpen, onClose, defaultService = 'ai-automa
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md transition-all duration-300"
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md transition-all duration-300"
     >
       <div
         className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-2xl shadow-black/80"
