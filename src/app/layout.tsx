@@ -104,7 +104,7 @@ export default function RootLayout({
     name: 'AEITCH - إيتش للحلول الرقمية والهندسية',
     alternateName: 'AEITCH Digital Engineering',
     url: 'https://aeitch.com',
-    logo: 'https://aeitch.com/logo.svg',
+    logo: 'https://aeitch.com/logo.png',
     description:
       'Premier software engineering consultancy delivering sovereign AI, cloud infrastructure, and rapid digital products across Saudi Arabia and the GCC.',
     address: {

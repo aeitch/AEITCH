@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Globe, Clock } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 
@@ -15,23 +16,17 @@ export const Footer: React.FC = () => {
       <div className="pointer-events-none absolute bottom-0 start-1/2 -translate-x-1/2 h-72 w-full max-w-7xl bg-accent/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-border">
           {/* Column 1: Brand & Positioning */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-black shadow-inner">
-                <span className="font-mono text-lg font-black tracking-tighter text-white">
-                  H<span className="text-accent">.</span>
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-extrabold text-white">
-                  AEITCH<span className="text-accent">.</span>
-                </span>
-                <span className="text-[10px] font-mono tracking-widest text-fg-subtle uppercase">
-                  {locale === 'ar' ? 'هندسة رقمية للمؤسسات' : 'DIGITAL ENGINEERING'}
-                </span>
-              </div>
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <Image
+                src="/logo.png"
+                alt="AEITCH"
+                width={296}
+                height={38}
+                className="h-7 sm:h-8 w-auto object-contain transition-opacity group-hover:opacity-90"
+              />
             </Link>
 
             <p className="text-sm text-fg-muted leading-relaxed max-w-sm">

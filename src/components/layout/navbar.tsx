@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import {
@@ -114,39 +115,19 @@ export const Navbar: React.FC = () => {
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* 1. Geometric AEITCH Logo */}
+          {/* 1. Official AEITCH Logo */}
           <Link href="/" className="group flex items-center gap-3">
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-surface border border-border transition-all duration-300 group-hover:border-accent group-hover:shadow-glow-sm">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="transition-transform duration-300 group-hover:scale-105"
-              >
-                <path
-                  d="M5 4V20M19 4V20M5 12H19"
-                  stroke="#ffffff"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-sans text-xl font-extrabold tracking-tight text-white">
-                  AEITCH<span className="text-accent animate-pulse">.</span>
-                </span>
-                <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-semibold text-accent border border-border">
-                  {locale === 'ar' ? 'إيتش' : 'KSA'}
-                </span>
-              </div>
-              <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-fg-subtle">
-                {locale === 'ar' ? 'أنظمة السحابة والتحول' : 'ENTERPRISE CLOUD'}
-              </span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="AEITCH"
+              width={296}
+              height={38}
+              priority
+              className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+            <span className="hidden sm:inline-flex rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-semibold text-accent border border-border">
+              {locale === 'ar' ? 'إيتش' : 'KSA'}
+            </span>
           </Link>
 
           {/* 2. Desktop Navigation Links */}

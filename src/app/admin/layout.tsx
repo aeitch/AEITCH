@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
@@ -79,15 +80,16 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           {/* Logo Header */}
           <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
             <Link href="/admin" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#e9800a] text-black font-black font-mono text-sm shadow-[0_0_15px_rgba(233,128,10,0.3)]">
-                H
-              </div>
-              <div>
-                <div className="font-black text-sm text-white tracking-wider">AEITCH</div>
-                <div className="text-[10px] font-mono text-[#e9800a] tracking-widest uppercase">
-                  Admin CMS
-                </div>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="AEITCH"
+                width={296}
+                height={38}
+                className="h-6 w-auto object-contain"
+              />
+              <span className="text-[10px] font-mono text-[#e9800a] tracking-widest uppercase bg-surface-2 px-1.5 py-0.5 rounded border border-border">
+                Admin
+              </span>
             </Link>
           </div>
 
