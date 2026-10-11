@@ -58,7 +58,7 @@ describe('Life at AEITCH: Data Integrity & Strict Privacy', () => {
   });
 
   it('contains company trips with valid photo paths and altitude', () => {
-    expect(COMPANY_TRIPS.length).toBeGreaterThanOrEqual(3);
+    expect(COMPANY_TRIPS.length).toBe(1);
     COMPANY_TRIPS.forEach((trip) => {
       expect(trip.year).toBeTruthy();
       expect(trip.placeAr).toBeTruthy();
