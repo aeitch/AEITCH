@@ -64,7 +64,7 @@ export function HeroSection() {
               <span>{eyebrow}</span>
             </motion.div>
 
-            {/* Semantic H1 Headline */}
+            {/* Semantic H1 Headline with Kinetic Self-Drawing Accent */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
               <motion.span
                 className="inline-block"
@@ -72,7 +72,55 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               >
-                {h1}
+                {locale === 'ar' ? (
+                  <>
+                    <span>هندسة رقمية متقدمة. </span>
+                    <span className="relative inline-block text-white">
+                      معيار واحد متقن.
+                      <svg
+                        className="absolute -bottom-2 sm:-bottom-3 start-0 w-full overflow-visible pointer-events-none"
+                        height="16"
+                        viewBox="0 0 240 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <motion.path
+                          d="M 5 12 Q 120 3 235 11"
+                          stroke="#e9800a"
+                          strokeWidth="3.5"
+                          strokeLinecap="round"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                        />
+                      </svg>
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span>Advanced digital engineering. </span>
+                    <span className="relative inline-block text-white">
+                      One uncompromising standard.
+                      <svg
+                        className="absolute -bottom-2 sm:-bottom-3 start-0 w-full overflow-visible pointer-events-none"
+                        height="16"
+                        viewBox="0 0 340 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <motion.path
+                          d="M 5 12 Q 170 3 335 11"
+                          stroke="#e9800a"
+                          strokeWidth="3.5"
+                          strokeLinecap="round"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                        />
+                      </svg>
+                    </span>
+                  </>
+                )}
               </motion.span>
             </h1>
 
@@ -86,16 +134,18 @@ export function HeroSection() {
               {sub}
             </motion.p>
 
-            {/* Dual CTAs */}
+            {/* Dual CTAs with spring motion */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10"
             >
-              <button
+              <motion.button
                 onClick={() => setModalOpen(true)}
-                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md active:scale-95"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-black hover:bg-accent-hover transition-all duration-200 shadow-glow-sm hover:shadow-glow-md"
               >
                 <span>{cta1}</span>
                 {direction === 'rtl' ? (
@@ -103,14 +153,16 @@ export function HeroSection() {
                 ) : (
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 )}
-              </button>
+              </motion.button>
 
-              <a
+              <motion.a
                 href="#services"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-5 sm:px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white hover:border-accent hover:text-accent transition-all duration-200 backdrop-blur-md"
               >
                 <span>{cta2}</span>
-              </a>
+              </motion.a>
             </motion.div>
 
             {/* Hero Detail Strip (Small Mono Labels) */}

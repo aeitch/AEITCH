@@ -142,6 +142,7 @@ export function CaseStudiesIndexView() {
                 <Link
                   key={cs.slug}
                   href={`/case-studies/${cs.slug}`}
+                  data-cursor-type="photo"
                   className="group rounded-3xl border border-white/10 bg-[#121215] p-7 sm:p-8 flex flex-col justify-between hover:border-[#e9800a]/50 hover:bg-[#141418] transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl"
                 >
                   <div>
@@ -201,19 +202,86 @@ export function CaseStudiesIndexView() {
         </div>
       </section>
 
-      {/* 4. FOOTER BANNER STRIP */}
-      <section className="py-16 sm:py-20 bg-[#080808] border-b border-white/10 text-center">
+      {/* 4. VERIFICATION DISCIPLINE — HIGH-CONTRAST LIGHT ARCHITECTURAL CANVAS */}
+      <section className="py-24 sm:py-32 bg-[#F5F5F3] text-[#0A0A0A] border-b border-black/10" data-theme="light">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
+              {isAr ? 'معيار التوثيق الهندسي' : 'VERIFICATION DISCIPLINE'}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0A0A] tracking-tight">
+              {isAr ? 'كيف نوثق ونقيس كل دراسة حالة؟' : 'How We Audit & Verify Each Case Study'}
+            </h2>
+            <p className="text-sm sm:text-base text-[#4A4A4A] max-w-2xl mx-auto leading-relaxed">
+              {isAr
+                ? 'لا نبتكر أرقامًا تسويقية. كل رقم أو قياس منشور في دراساتنا يستند إلى بيئات إنتاجية حقيقية وتوثيق هندسي صارم.'
+                : 'We don’t invent marketing claims. Every published benchmark reflects production-grade telemetry, strict SLAs, and verified engineering handovers.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                num: '01',
+                titleAr: 'بيئات إنتاج حقيقية، لا عروض شكلية',
+                titleEn: 'Production Telemetry, Zero Mockups',
+                descAr: 'المشاريع المنشورة تعمل فعليًا في بيئات إنتاجية حية وتخدم مستخدمين حقيقيين.',
+                descEn: 'Every system is deployed to live production serving actual end-user workflows and transactional loads.',
+              },
+              {
+                num: '02',
+                titleAr: 'قياس أداء دقيق وموثق',
+                titleEn: 'Benchmarked Latency & Uptime',
+                descAr: 'نوثق أوقات الاستجابة، ونسب الجاهزية التشغيلية ومعدلات توفير الميزانية بالأرقام.',
+                descEn: 'Documented latencies, SLA uptime percentages, and infrastructure cost reductions.',
+              },
+              {
+                num: '03',
+                titleAr: 'سرية تامة وامتثال سيبراني',
+                titleEn: 'Strict NDA & Data Hygiene',
+                descAr: 'حماية كاملة للبيانات الحساسة وأسرار العملاء التجارية وفق ضوابط PDPL والأمن السيبراني.',
+                descEn: 'Full confidentiality protection adhering strictly to PDPL frameworks and enterprise security standards.',
+              },
+            ].map((v) => (
+              <div
+                key={v.num}
+                data-cursor-type="explore"
+                className="group rounded-3xl border border-black/10 bg-white p-8 sm:p-10 shadow-sm hover:shadow-xl hover:border-[#e9800a] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-mono text-sm font-bold text-[#e9800a] bg-[#e9800a]/10 px-3 py-1 rounded-lg border border-[#e9800a]/20">
+                      {v.num}
+                    </span>
+                    <span className="h-2 w-2 rounded-full bg-black/20 group-hover:bg-[#e9800a] transition-colors" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0A0A0A] mb-3 group-hover:text-[#e9800a] transition-colors">
+                    {isAr ? v.titleAr : v.titleEn}
+                  </h3>
+                  <p className="text-sm text-[#555555] leading-relaxed">
+                    {isAr ? v.descAr : v.descEn}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FOOTER BANNER STRIP */}
+      <section className="py-20 sm:py-28 bg-[#080808] border-b border-white/10 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
             {isAr ? 'هل لديك تحدٍّ مشابه في مشروعك؟' : 'Facing a similar engineering challenge?'}
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 mb-8">
+          <p className="text-sm sm:text-base text-neutral-400 mb-8 max-w-xl mx-auto">
             {isAr
               ? 'احجز استشارة تقنية مجانية لمراجعة متطلباتك مع أحد كبار مهندسينا المعماريين.'
               : 'Book a free technical consultation with one of our principal architects to review your requirements.'}
           </p>
           <Link
             href="/contact-us"
+            data-cursor-type="explore"
             className="inline-flex items-center gap-2 rounded-xl bg-[#e9800a] px-8 py-3.5 text-sm font-bold text-black hover:bg-[#ff9420] transition-colors shadow-glow-sm active:scale-95"
           >
             <span>{isAr ? 'احجز استشارة مجانية' : 'Book a free consultation'}</span>
@@ -222,7 +290,7 @@ export function CaseStudiesIndexView() {
         </div>
       </section>
 
-      {/* 5. VISION 2030 STRIP */}
+      {/* 6. VISION 2030 STRIP */}
       <Vision2030Strip />
     </div>
   );

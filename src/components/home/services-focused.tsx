@@ -46,7 +46,13 @@ export const ServicesFocused: React.FC = () => {
         {/* BLOCK 01 — AI Automation & Integration                          */}
         {/* Layout: Asymmetric Split Grid with Engineering Capability Matrix */}
         {/* ============================================================== */}
-        <div className="relative border-b border-border/80 pb-20 sm:pb-28">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-70px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative border-b border-border/80 pb-20 sm:pb-28"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Left Narrative Column (5 cols) */}
             <div className="lg:col-span-5 space-y-6">
@@ -85,6 +91,7 @@ export const ServicesFocused: React.FC = () => {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={() => openConsultation('ai-automation')}
+                  data-cursor-type="explore"
                   className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-black hover:bg-accent-hover transition-colors shadow-glow-sm"
                 >
                   <span>{locale === 'ar' ? 'ابدأ مشروع ذكاء اصطناعي' : 'Start an AI project'}</span>
@@ -92,6 +99,7 @@ export const ServicesFocused: React.FC = () => {
                 </button>
                 <Link
                   href="/services/ai-automation"
+                  data-cursor-type="explore"
                   className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-xs font-semibold text-fg-muted hover:text-white hover:border-accent/40 transition-colors"
                 >
                   <span>{locale === 'ar' ? 'تفاصيل الخدمة' : 'Service Details'}</span>
@@ -158,7 +166,8 @@ export const ServicesFocused: React.FC = () => {
                 ].map((item) => (
                   <div
                     key={item.num}
-                    className="group rounded-xl border border-white/5 bg-white/[0.02] p-4 transition-all hover:border-accent/30 hover:bg-white/[0.04]"
+                    data-cursor-type="explore"
+                    className="group rounded-xl border border-white/5 bg-white/[0.02] p-4 transition-all hover:border-accent/40 hover:bg-white/[0.04]"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-mono text-[10px] text-accent/80 font-bold">
@@ -177,13 +186,19 @@ export const ServicesFocused: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ============================================================== */}
         {/* BLOCK 02 — Product Development                                 */}
         {/* Layout: Horizontal 8-Week Timeline & Full-Cycle Roadmap        */}
         {/* ============================================================== */}
-        <div className="relative border-b border-border/80 pb-20 sm:pb-28">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-70px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative border-b border-border/80 pb-20 sm:pb-28"
+        >
           <div className="space-y-8">
             {/* Header Ribbon */}
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
@@ -255,13 +270,14 @@ export const ServicesFocused: React.FC = () => {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-border bg-surface p-5 hover:border-accent/40 transition-colors flex flex-col justify-between"
+                  data-cursor-type="explore"
+                  className="rounded-2xl border border-border bg-surface p-5 hover:border-accent/40 transition-colors flex flex-col justify-between group"
                 >
                   <div className="space-y-2">
                     <span className="font-mono text-[10px] text-accent tracking-widest uppercase">
                       {item.phase}
                     </span>
-                    <h3 className="text-base font-bold text-white">
+                    <h3 className="text-base font-bold text-white group-hover:text-accent transition-colors">
                       {locale === 'ar' ? item.ar : item.en}
                     </h3>
                     <p className="text-xs text-fg-subtle leading-relaxed">
@@ -288,6 +304,7 @@ export const ServicesFocused: React.FC = () => {
               <div className="flex items-center gap-3 shrink-0">
                 <button
                   onClick={() => openConsultation('product-development')}
+                  data-cursor-type="explore"
                   className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold text-black hover:bg-accent-hover transition-colors shadow-glow-sm"
                 >
                   <span>{locale === 'ar' ? 'ناقش فكرة منتجك' : 'Talk through your product idea'}</span>
@@ -295,6 +312,7 @@ export const ServicesFocused: React.FC = () => {
                 </button>
                 <Link
                   href="/services/product-development"
+                  data-cursor-type="explore"
                   className="text-xs font-mono text-fg-muted hover:text-white transition-colors"
                 >
                   {locale === 'ar' ? 'صفحة الخدمة ←' : 'Learn more →'}
@@ -302,16 +320,25 @@ export const ServicesFocused: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ============================================================== */}
         {/* BLOCK 03 — DevOps & Cloud Engineering                           */}
         {/* Layout: Technical Infrastructure Schematic with Pipeline Flow  */}
         {/* ============================================================== */}
-        <div className="relative border-b border-border/80 pb-20 sm:pb-28">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-70px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative border-b border-border/80 pb-20 sm:pb-28"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Terminal Schematic (6 cols) */}
-            <div className="lg:col-span-6 rounded-2xl border border-border bg-black/90 p-5 sm:p-7 shadow-2xl font-mono text-xs">
+            <div
+              data-cursor-type="explore"
+              className="lg:col-span-6 rounded-2xl border border-border bg-black/90 p-5 sm:p-7 shadow-2xl font-mono text-xs hover:border-accent/40 transition-colors"
+            >
               {/* Terminal Window Chrome */}
               <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-5">
                 <div className="flex items-center gap-2">
@@ -335,7 +362,7 @@ export const ServicesFocused: React.FC = () => {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-2.5 rounded-lg border border-white/5 bg-white/[0.02] hover:border-accent/30 transition-colors"
+                    className="flex items-center justify-between p-2.5 rounded-lg border border-white/5 bg-white/[0.02] hover:border-accent/30 hover:bg-white/[0.04] transition-all"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       <span className="text-accent text-[11px] font-bold">[{item.tag}]</span>
@@ -388,6 +415,7 @@ export const ServicesFocused: React.FC = () => {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={() => openConsultation('cloud-devops')}
+                  data-cursor-type="explore"
                   className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-black hover:bg-accent-hover transition-colors shadow-glow-sm"
                 >
                   <span>{locale === 'ar' ? 'قيّم بنيتك السحابية' : 'Review your cloud setup'}</span>
@@ -395,6 +423,7 @@ export const ServicesFocused: React.FC = () => {
                 </button>
                 <Link
                   href="/services/cloud-devops"
+                  data-cursor-type="explore"
                   className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-xs font-semibold text-fg-muted hover:text-white hover:border-accent/40 transition-colors"
                 >
                   <span>{locale === 'ar' ? 'تفاصيل السحابة وDevOps' : 'Cloud Architecture Details'}</span>
@@ -402,13 +431,19 @@ export const ServicesFocused: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ============================================================== */}
         {/* BLOCK 04 — Custom Software Development                         */}
         {/* Layout: Modular Architectural Blueprint Matrix                */}
         {/* ============================================================== */}
-        <div className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-70px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
+        >
           <div className="space-y-10">
             {/* Top Header */}
             <div className="max-w-3xl space-y-4">
@@ -480,16 +515,17 @@ export const ServicesFocused: React.FC = () => {
               ].map((module) => (
                 <div
                   key={module.code}
-                  className="rounded-2xl border border-border bg-surface p-6 hover:border-accent/40 transition-colors flex flex-col justify-between"
+                  data-cursor-type="explore"
+                  className="rounded-2xl border border-border bg-surface p-6 hover:border-accent/40 transition-colors flex flex-col justify-between group"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] text-accent font-bold">
                         {module.code}
                       </span>
-                      <Code2 className="h-4 w-4 text-fg-subtle" />
+                      <Code2 className="h-4 w-4 text-fg-subtle group-hover:text-accent transition-colors" />
                     </div>
-                    <h3 className="text-base font-bold text-white">
+                    <h3 className="text-base font-bold text-white group-hover:text-accent transition-colors">
                       {locale === 'ar' ? module.ar : module.en}
                     </h3>
                     <p className="text-xs text-fg-subtle leading-relaxed">
@@ -516,6 +552,7 @@ export const ServicesFocused: React.FC = () => {
               <div className="flex items-center gap-3 shrink-0">
                 <button
                   onClick={() => openConsultation('custom-software')}
+                  data-cursor-type="explore"
                   className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-bold text-black hover:bg-accent-hover transition-colors shadow-glow-sm"
                 >
                   <span>{locale === 'ar' ? 'ابدأ مشروعك البرمجي' : 'Start your software project'}</span>
@@ -523,6 +560,7 @@ export const ServicesFocused: React.FC = () => {
                 </button>
                 <Link
                   href="/services/custom-software"
+                  data-cursor-type="explore"
                   className="text-xs font-mono text-fg-muted hover:text-white transition-colors"
                 >
                   {locale === 'ar' ? 'تفاصيل الخدمة ←' : 'Learn more →'}
@@ -530,7 +568,7 @@ export const ServicesFocused: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
 

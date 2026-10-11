@@ -246,16 +246,21 @@ export function Vision2030DetailView() {
       {/* 2. TRUST BADGES */}
       <TrustBadges />
 
-      {/* 3. SECTION 1: STRATEGIC ALIGNMENT WITH NATIONAL PRIORITIES */}
-      <section className="py-20 sm:py-28 bg-[#0c0c0e] border-b border-white/10">
+      {/* 3. SECTION 1: STRATEGIC ALIGNMENT WITH NATIONAL PRIORITIES — HIGH-CONTRAST LIGHT CANVAS */}
+      <section className="py-24 sm:py-32 bg-[#F5F5F3] text-[#0A0A0A] border-b border-black/10" data-theme="light">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block mb-2">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
               {isAr ? 'المواءمة الاستراتيجية' : 'STRATEGIC ALIGNMENT'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0A0A] tracking-tight">
               {isAr ? 'قدراتنا الهندسية في خدمة الأولويات الوطنية' : 'Engineering Capabilities Serving National Priorities'}
             </h2>
+            <p className="text-sm sm:text-base text-[#4A4A4A] max-w-xl mx-auto">
+              {isAr
+                ? 'نربط قدراتنا الهندسية المباشرة مع مستهدفات التحول الرقمي والتنويع الاقتصادي في المملكة.'
+                : 'Mapping core engineering capabilities to the digital transformation and economic diversification pillars.'}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -264,19 +269,20 @@ export function Vision2030DetailView() {
               return (
                 <div
                   key={idx}
-                  className="rounded-3xl border border-white/10 bg-[#121215] p-8 sm:p-10 flex flex-col justify-between hover:border-[#e9800a]/50 transition-all"
+                  data-cursor-type="explore"
+                  className="group relative rounded-3xl border border-black/10 bg-white p-8 sm:p-10 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-[#e9800a] transition-all duration-300"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-4 mb-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/10 text-[#e9800a] border border-[#e9800a]/20">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/10 text-[#e9800a] border border-[#e9800a]/20 group-hover:scale-105 transition-transform">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <span className="font-mono text-xs text-neutral-400 bg-white/5 px-3 py-1 rounded-full border border-white/5">
+                      <span className="font-mono text-xs text-[#555555] bg-[#FAF9F6] px-3 py-1 rounded-full border border-black/5 font-semibold">
                         {isAr ? 'أولوية 2030' : 'Vision Priority'}
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#0A0A0A] mb-2 group-hover:text-[#e9800a] transition-colors">
                       {isAr ? item.serviceAr : item.serviceEn}
                     </h3>
 
@@ -284,18 +290,19 @@ export function Vision2030DetailView() {
                       {isAr ? item.priorityAr : item.priorityEn}
                     </div>
 
-                    <p className="text-sm text-neutral-300 leading-relaxed mb-6">
+                    <p className="text-sm text-[#555555] leading-relaxed mb-6">
                       {isAr ? item.whatWeDoAr : item.whatWeDoEn}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-white/5">
+                  <div className="pt-4 border-t border-black/5">
                     <Link
                       href={item.link}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-300 hover:text-[#e9800a] transition-colors"
+                      data-cursor-type="explore"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0A] hover:text-[#e9800a] transition-colors"
                     >
                       <span>{isAr ? 'تفاصيل الخدمة' : 'View service details'}</span>
-                      <ArrowIcon className="h-3.5 w-3.5" />
+                      <ArrowIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -366,31 +373,37 @@ export function Vision2030DetailView() {
         </div>
       </section>
 
-      {/* 5. SECTION 3: COMMITMENTS */}
-      <section className="py-20 sm:py-24 bg-[#0c0c0e] border-b border-white/10">
+      {/* 5. SECTION 3: COMMITMENTS — HIGH-CONTRAST ARCHITECTURAL CANVAS */}
+      <section className="py-24 sm:py-30 bg-[#FAF9F6] text-[#0A0A0A] border-b border-black/10" data-theme="light">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block mb-2">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
               {isAr ? 'التزاماتنا' : 'OUR COMMITMENTS'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0A0A] tracking-tight">
               {isAr ? 'ما نعدك به في كل مشروع' : 'What We Explicitly Promise'}
             </h2>
+            <p className="text-sm sm:text-base text-[#4A4A4A] max-w-xl mx-auto">
+              {isAr
+                ? 'ستة وعود هندسية غير قابلة للمساومة نلتزم بها في كافة مراحل المشروع.'
+                : 'Six non-negotiable engineering promises we uphold across every stage of delivery.'}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {commitments.map((c, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-white/10 bg-[#121215] p-7 hover:border-[#e9800a]/40 transition-colors"
+                data-cursor-type="explore"
+                className="group rounded-2xl border border-black/10 bg-white p-7 shadow-sm hover:shadow-xl hover:border-[#e9800a] transition-all duration-300"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#e9800a]/10 text-[#e9800a] font-mono text-xs font-bold mb-4">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#e9800a]/10 text-[#e9800a] font-mono text-xs font-bold mb-4 group-hover:scale-110 transition-transform">
                   0{idx + 1}
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2">
+                <h3 className="text-base sm:text-lg font-bold text-[#0A0A0A] mb-2 group-hover:text-[#e9800a] transition-colors">
                   {isAr ? c.ar : c.en}
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
                   {isAr ? c.descAr : c.descEn}
                 </p>
               </div>
@@ -422,17 +435,17 @@ export function Vision2030DetailView() {
         </div>
       </section>
 
-      {/* 7. SECTION 5: READINESS CHECK */}
-      <section className="py-20 sm:py-28 bg-[#0c0c0e] border-b border-white/10">
+      {/* 7. SECTION 5: READINESS CHECK — HIGH-CONTRAST LIGHT CANVAS */}
+      <section className="py-24 sm:py-32 bg-[#F5F5F3] text-[#0A0A0A] border-b border-black/10" data-theme="light">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block mb-2">
+          <div className="text-center mb-16 space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
               {isAr ? 'تقييم الجاهزية' : 'READINESS CHECK'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0A0A] tracking-tight">
               {isAr ? 'فحص جاهزية التحول الرقمي' : 'Digital Transformation Readiness Checklist'}
             </h2>
-            <p className="text-sm text-neutral-400 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-[#4A4A4A] max-w-xl mx-auto">
               {isAr
                 ? 'خمسة أسئلة جوهرية تحدد موقعك الحالي وتساعدنا في رسم خارطة الطريق الأنسب.'
                 : 'Five foundational questions to evaluate your operational readiness.'}
@@ -446,20 +459,21 @@ export function Vision2030DetailView() {
                 <div
                   key={idx}
                   onClick={() => toggleCheck(idx)}
-                  className={`flex items-start gap-4 p-5 rounded-2xl border cursor-pointer transition-all ${
+                  data-cursor-type="explore"
+                  className={`flex items-start gap-4 p-5 rounded-2xl border cursor-pointer transition-all duration-300 shadow-sm ${
                     isChecked
                       ? 'border-[#e9800a] bg-[#e9800a]/10'
-                      : 'border-white/10 bg-[#121215] hover:border-white/20'
+                      : 'border-black/10 bg-white hover:border-[#e9800a]/50 hover:shadow-md'
                   }`}
                 >
                   <div
                     className={`h-6 w-6 rounded-lg border flex items-center justify-center mt-0.5 shrink-0 transition-colors ${
-                      isChecked ? 'border-[#e9800a] bg-[#e9800a] text-black' : 'border-white/20 bg-black/40'
+                      isChecked ? 'border-[#e9800a] bg-[#e9800a] text-black' : 'border-black/20 bg-[#FAF9F6]'
                     }`}
                   >
                     {isChecked && <CheckCircle2 className="h-4 w-4" />}
                   </div>
-                  <span className="text-sm sm:text-base font-semibold text-neutral-200">
+                  <span className="text-sm sm:text-base font-semibold text-[#0A0A0A]">
                     {idx + 1}. {isAr ? item.ar : item.en}
                   </span>
                 </div>
@@ -470,10 +484,11 @@ export function Vision2030DetailView() {
           <div className="text-center">
             <Link
               href="/contact-us"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#e9800a] px-8 py-3.5 text-sm font-bold text-black hover:bg-[#ff9420] transition-colors shadow-glow-sm active:scale-95"
+              data-cursor-type="explore"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#0A0A0A] px-8 py-3.5 text-sm font-bold text-white hover:bg-neutral-800 transition-colors shadow-lg active:scale-95"
             >
               <span>{isAr ? 'ناقش إجاباتك مع مهندس معماري' : 'Walk through your answers with an architect'}</span>
-              <ArrowIcon className="h-4 w-4" />
+              <ArrowIcon className="h-4 w-4 text-[#e9800a]" />
             </Link>
           </div>
         </div>

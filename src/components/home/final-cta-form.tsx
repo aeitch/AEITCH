@@ -70,7 +70,13 @@ export const FinalCtaForm: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Text / Value Proposition */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-70px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-accent">
               {locale === 'ar' ? 'جلسة تقنية مباشرة' : 'EXECUTIVE CONSULTATION'}
             </div>
@@ -97,10 +103,16 @@ export const FinalCtaForm: React.FC = () => {
                 <span className="font-mono">0318-4055723</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Form Card */}
-          <div className="lg:col-span-7 rounded-2xl border border-border bg-surface p-6 sm:p-10 shadow-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-70px' }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 rounded-2xl border border-border bg-surface p-6 sm:p-10 shadow-2xl"
+          >
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 border border-accent/30 text-accent">
@@ -231,6 +243,7 @@ export const FinalCtaForm: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
+                  data-cursor-type="explore"
                   className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-bold text-black hover:bg-accent-hover transition-colors shadow-glow-sm disabled:opacity-50"
                 >
                   <span>{isSubmitting ? (locale === 'ar' ? 'جارٍ الإرسال...' : 'Sending...') : (locale === 'ar' ? 'أرسل الطلب' : 'Send request')}</span>
@@ -245,7 +258,7 @@ export const FinalCtaForm: React.FC = () => {
                 </p>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

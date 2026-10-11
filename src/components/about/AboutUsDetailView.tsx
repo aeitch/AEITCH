@@ -156,32 +156,41 @@ export function AboutUsDetailView() {
       {/* 2. TRUST BADGES */}
       <TrustBadges />
 
-      {/* 3. WHAT MAKES US DIFFERENT (3 VALUES) */}
-      <section className="py-20 sm:py-28 bg-[#0c0c0e] border-b border-white/10">
+      {/* 3. WHAT MAKES US DIFFERENT (3 VALUES) — HIGH-CONTRAST LIGHT ARCHITECTURAL CANVAS */}
+      <section className="py-24 sm:py-32 bg-[#F5F5F3] text-[#0A0A0A] border-b border-black/10" data-theme="light">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block mb-2">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
               {isAr ? 'قيمنا الهندسية' : 'OUR VALUES'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0A0A] tracking-tight">
               {isAr ? 'ما يميز أسلوب عمل إيتش' : 'What Makes Us Different'}
             </h2>
+            <p className="text-sm sm:text-base text-[#4A4A4A] max-w-xl mx-auto">
+              {isAr
+                ? 'ثلاثة مبادئ هندسية صارمة تفصل بين المشاريع التي تنجح والمشاريع التي تتعثر.'
+                : 'Three foundational engineering principles separating systems that scale from those that fail.'}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((v) => (
+            {values.map((v, idx) => (
               <div
                 key={v.num}
-                className="rounded-3xl border border-white/10 bg-[#121215] p-8 sm:p-10 hover:border-[#e9800a]/50 transition-all flex flex-col justify-between"
+                data-cursor-type="explore"
+                className="group relative rounded-3xl border border-black/10 bg-white p-8 sm:p-10 shadow-sm hover:shadow-xl hover:border-[#e9800a] transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <span className="font-mono text-xs font-bold text-[#e9800a] bg-black/60 px-3 py-1 rounded border border-white/10 inline-block mb-6">
-                    {v.num}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-mono text-sm font-bold text-[#e9800a] bg-[#e9800a]/10 px-3 py-1 rounded-lg border border-[#e9800a]/20">
+                      {v.num}
+                    </span>
+                    <span className="h-2 w-2 rounded-full bg-black/20 group-hover:bg-[#e9800a] group-hover:scale-125 transition-all" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0A0A0A] mb-3 group-hover:text-[#e9800a] transition-colors">
                     {isAr ? v.titleAr : v.titleEn}
                   </h3>
-                  <p className="text-sm text-neutral-300 leading-relaxed">
+                  <p className="text-sm text-[#555555] leading-relaxed">
                     {isAr ? v.descAr : v.descEn}
                   </p>
                 </div>
@@ -191,28 +200,34 @@ export function AboutUsDetailView() {
         </div>
       </section>
 
-      {/* 4. HOW WE WORK (5 STAGES) */}
-      <section className="py-20 sm:py-28 bg-[#080808] border-b border-white/10">
+      {/* 4. HOW WE WORK (5 STAGES) — DEEP OBSIDIAN CADENCE */}
+      <section className="py-24 sm:py-32 bg-[#080808] border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block mb-2">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
               {isAr ? 'دورة الحياة الهندسية' : 'HOW WE WORK'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               {isAr ? 'خمس مراحل محكمة من البداية إلى الاستدامة' : 'Five Structured Delivery Stages'}
             </h2>
+            <p className="text-sm sm:text-base text-neutral-400 max-w-xl mx-auto">
+              {isAr
+                ? 'انضباط أسبوعي في التسليم يحفظ وقتك ويضمن سلامة البناء المعماري.'
+                : 'Disciplined weekly cadences protecting your timeline and ensuring architectural integrity.'}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {stages.map((stg) => (
               <div
                 key={stg.step}
-                className="rounded-2xl border border-white/10 bg-[#111114] p-6 hover:border-[#e9800a]/40 transition-colors"
+                data-cursor-type="explore"
+                className="group rounded-2xl border border-white/10 bg-[#111114] p-6 hover:border-[#e9800a]/50 hover:bg-[#16161b] transition-all duration-300"
               >
                 <span className="font-mono text-xs font-bold text-[#e9800a] block mb-3">
                   STAGE {stg.step}
                 </span>
-                <h4 className="text-base font-bold text-white mb-2">
+                <h4 className="text-base font-bold text-white mb-2 group-hover:text-[#e9800a] transition-colors">
                   {isAr ? stg.titleAr : stg.titleEn}
                 </h4>
                 <p className="text-xs text-neutral-400 leading-relaxed">
@@ -224,35 +239,46 @@ export function AboutUsDetailView() {
         </div>
       </section>
 
-      {/* 5. WHERE WE WORK FROM (Islamabad & Riyadh Alignment) */}
-      <section className="py-20 sm:py-24 bg-[#0c0c0e] border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-white/15 bg-gradient-to-r from-[#121215] via-[#16161b] to-[#121215] p-8 sm:p-12 backdrop-blur-xl">
+      {/* 5. WHERE WE WORK FROM (Islamabad & Riyadh Alignment + Life at AEITCH Link) — HIGH-CONTRAST ARCHITECTURAL CANVAS */}
+      <section className="py-24 sm:py-28 bg-[#FAF9F6] text-[#0A0A0A] border-b border-black/10" data-theme="light">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="rounded-3xl border border-black/10 bg-white p-8 sm:p-12 shadow-md">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="space-y-4 max-w-2xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-[#e9800a]">
+                <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#FAF9F6] px-3.5 py-1 font-mono text-xs text-[#e9800a] font-bold">
                   <MapPin className="h-3.5 w-3.5" />
-                  <span>{isAr ? 'موقع فريقنا' : 'OUR BASE'}</span>
+                  <span>{isAr ? 'موقع فريقنا والجدول الزمني' : 'OUR BASE & TIMEZONE'}</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0A0A0A] tracking-tight">
                   {isAr ? 'أين نعمل ومن أين نخدمك؟' : 'Where We Work From'}
                 </h3>
-                <p className="text-sm sm:text-base text-neutral-300 leading-relaxed">
+                <p className="text-sm sm:text-base text-[#4A4A4A] leading-relaxed">
                   {isAr
                     ? 'فريقنا الهندسي في إسلام آباد، ونخدم عملاء في المنطقة والعالم. نعمل بتوقيت باكستان (UTC+5) أي بفارق ساعتين عن الرياض، ما يتيح تداخلًا كاملًا في ساعات العمل وتواصلًا فوريًا باللغتين العربية والإنجليزية.'
                     : 'Our engineering team is in Islamabad, serving clients in the region and worldwide. We work on Pakistan time (UTC+5), two hours ahead of Riyadh, so working hours overlap fully with seamless English and Arabic collaboration.'}
                 </p>
+
+                {/* Cultural link to Life at AEITCH */}
+                <div className="pt-2">
+                  <Link
+                    href="/about-us/life-at-aeitch"
+                    data-cursor-type="photo"
+                    className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[#e9800a] hover:text-[#0A0A0A] transition-colors pb-1 border-b border-[#e9800a]/40 hover:border-black"
+                  >
+                    <span>{isAr ? 'اكتشف ثقافة الفريق في إيتش (الحياة في إيتش) ←' : 'Explore our engineering culture (Life at AEITCH) →'}</span>
+                  </Link>
+                </div>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-black/40 p-6 text-center shrink-0 w-full sm:w-auto">
-                <div className="font-mono text-3xl font-extrabold text-[#e9800a] mb-1">
+              <div className="rounded-2xl border border-black/10 bg-[#FAF9F6] p-7 text-center shrink-0 w-full sm:w-auto shadow-inner">
+                <div className="font-mono text-4xl font-extrabold text-[#e9800a] mb-1">
                   UTC+5
                 </div>
-                <div className="text-xs text-neutral-400 font-mono mb-3">
+                <div className="text-xs text-[#666666] font-mono mb-3">
                   {isAr ? 'فارق ساعتين عن توقيت الرياض' : '2 Hours Ahead of Riyadh (UTC+3)'}
                 </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
                   <span>{isAr ? 'تداخل كامل لساعات العمل' : 'Full Business Hour Overlap'}</span>
                 </div>
               </div>

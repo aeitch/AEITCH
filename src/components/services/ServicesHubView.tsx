@@ -191,22 +191,100 @@ export function ServicesHubView() {
               );
             })}
           </div>
+        </div>
+      </section>
 
-          {/* NOT SURE WHERE TO START BOX */}
-          <div className="mt-16 sm:mt-20 rounded-3xl border border-[#e9800a]/40 bg-gradient-to-r from-[#17120a] via-[#121214] to-[#17120a] p-8 sm:p-10 text-center backdrop-blur-xl shadow-2xl">
+      {/* 4. WHY SPECIALIZED ENGINEERING — HIGH-CONTRAST LIGHT ARCHITECTURAL CANVAS */}
+      <section className="py-24 sm:py-32 bg-[#F5F5F3] text-[#0A0A0A] border-b border-black/10" data-theme="light">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#e9800a] block">
+              {isAr ? 'المعيار الهندسي' : 'ENGINEERING STANDARDS'}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0A0A] tracking-tight">
+              {isAr ? 'لماذا التخصص الهندسي بدل الوكالات العامة؟' : 'Why Focused Engineering Over General Agencies?'}
+            </h2>
+            <p className="text-sm sm:text-base text-[#4A4A4A] max-w-2xl mx-auto leading-relaxed">
+              {isAr
+                ? 'لا نشتت طاقتنا في مئات الخدمات المتفرقة. نركز على مجالات متخصصة وننفذها بأعلى كفاءة مؤسسية.'
+                : 'We don’t dilute focus across unrelated agency tasks. We engineer specialized disciplines with principal-level rigor.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                num: '01',
+                titleAr: 'مهندسون Senior فقط',
+                titleEn: 'Senior Engineers Only',
+                descAr: 'لا نمرر مشروعك لمطورين مبتدئين؛ يتولى بناؤه مهندسون خبراء مباشرة.',
+                descEn: 'Your project is built directly by senior engineers, never handed down to juniors.',
+              },
+              {
+                num: '02',
+                titleAr: 'ملكية تامة للكود والـ IP',
+                titleEn: '100% Code & IP Ownership',
+                descAr: 'الكود والمستودعات والتراخيص ملكك بالكامل من اليوم الأول دون أي احتكار.',
+                descEn: 'Full repository, IP, and deployment rights transferred directly to your organization.',
+              },
+              {
+                num: '03',
+                titleAr: 'إصدارات أسبوعية ملموسة',
+                titleEn: 'Weekly Testable Releases',
+                descAr: 'تشاهد التقدم الفعلي كل أسبوع على بيئة تجريبية حقيقية بدل التقارير النظرية.',
+                descEn: 'Experience weekly testable builds deployed to staging instead of theoretical slides.',
+              },
+              {
+                num: '04',
+                titleAr: 'أمان وامتثال سيادي',
+                titleEn: 'Sovereign Security Controls',
+                descAr: 'هندسة معمارية متوافقة مع متطلبات الأمن السيبراني وحماية البيانات الإقليمية.',
+                descEn: 'Strict architecture alignment with regional cybersecurity and PDPL data governance.',
+              },
+            ].map((pillar) => (
+              <div
+                key={pillar.num}
+                data-cursor-type="explore"
+                className="group rounded-2xl border border-black/10 bg-white p-6 shadow-sm hover:shadow-xl hover:border-[#e9800a] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-[#e9800a] bg-[#e9800a]/10 px-2.5 py-1 rounded-md border border-[#e9800a]/20">
+                      {pillar.num}
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-black/20 group-hover:bg-[#e9800a] transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0A0A0A] group-hover:text-[#e9800a] transition-colors">
+                    {isAr ? pillar.titleAr : pillar.titleEn}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
+                    {isAr ? pillar.descAr : pillar.descEn}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. NOT SURE WHERE TO START BOX */}
+      <section className="py-20 sm:py-28 bg-[#0c0c0e]">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-[#e9800a]/40 bg-gradient-to-r from-[#17120a] via-[#121214] to-[#17120a] p-8 sm:p-12 text-center backdrop-blur-xl shadow-2xl">
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e9800a]/15 text-[#e9800a] mb-4">
               <HelpCircle className="h-6 w-6" />
             </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
               {isAr ? 'لست متأكدًا من أين تبدأ؟' : 'Not sure where to start?'}
             </h3>
-            <p className="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto mb-8 leading-relaxed">
               {isAr
                 ? 'لست متأكدًا؟ احجز 30 دقيقة ونرشدك إلى الخيار الأنسب لنشاطك، ونقيّم احتياجاتك التقنية دون أي التزام.'
                 : 'Not sure? Book 30 minutes and we’ll guide you to the right option for your business, reviewing your technical needs with zero commitment.'}
             </p>
             <Link
               href="/contact-us"
+              data-cursor-type="explore"
               className="inline-flex items-center gap-2 rounded-xl bg-[#e9800a] px-8 py-3.5 text-sm font-bold text-black hover:bg-[#ff9420] transition-colors shadow-lg active:scale-95"
             >
               <span>{isAr ? 'احجز استشارة 30 دقيقة' : 'Book a 30-Minute Consultation'}</span>
@@ -216,7 +294,7 @@ export function ServicesHubView() {
         </div>
       </section>
 
-      {/* 4. VISION 2030 STRIP */}
+      {/* 6. VISION 2030 STRIP */}
       <Vision2030Strip />
     </div>
   );
