@@ -253,7 +253,7 @@ export function CustomSoftwareDetailView() {
               {isAr ? 'لماذا البرمجيات المخصصة؟' : 'WHY CUSTOM SOFTWARE'}
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
-              {isAr ? 'أربعة أسباب تجعل البرمجيات المخصصة استثمارًا حقيقيًا' : 'Four Reasons Custom Builds Outperform Generic Tools'}
+              {isAr ? 'أسباب تجعل البرمجيات المخصصة استثمارًا حقيقيًا' : 'Why Custom Builds Outperform Generic Tools'}
             </h2>
           </div>
 

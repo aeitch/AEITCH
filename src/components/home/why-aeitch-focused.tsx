@@ -16,10 +16,10 @@ export const WhyAeitchFocused: React.FC = () => {
     },
     {
       num: '02',
-      titleAr: 'تركيز على أربع خدمات',
-      textAr: 'عمق بدل التشتت.',
-      titleEn: 'Four services, done deeply',
-      textEn: 'Depth over sprawl.',
+      titleAr: 'تخصص هندسي مركّز',
+      textAr: 'عمق تقني بدل التشتت.',
+      titleEn: 'Focused specialization',
+      textEn: 'Technical depth over sprawl.',
     },
     {
       num: '03',

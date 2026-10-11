@@ -3,8 +3,8 @@ export const BRAND = {
   nameArabic: 'إيتش',
   hook: 'Digital engineering for enterprises.',
   hookArabic: 'إيتش — هندسة رقمية للمؤسسات.',
-  tagline: 'Four services. One engineering standard.',
-  taglineArabic: 'أربع خدمات. هندسة واحدة متقنة.',
+  tagline: 'Enterprise Digital Engineering. One High Standard.',
+  taglineArabic: 'هندسة رقمية للمؤسسات. معيار تقني متقن.',
   description:
     'We build AI automation, digital products, cloud infrastructure and custom software, with senior engineers, in step with Saudi Vision 2030.',
   descriptionArabic:

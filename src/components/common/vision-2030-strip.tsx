@@ -28,8 +28,8 @@ export const Vision2030Strip: React.FC<{ className?: string }> = ({ className = 
               </div>
               <p className="text-base sm:text-lg md:text-xl font-bold text-white leading-snug">
                 {locale === 'ar'
-                  ? 'نبني للمملكة التي تتحول رقميًا. تعرّف على كيف تدعم خدماتنا الأربع أولويات رؤية 2030.'
-                  : 'We build for a Kingdom that is going digital. See how our four services support Vision 2030 priorities.'}
+                  ? 'نبني للمملكة التي تتحول رقميًا. تعرّف على توافق هندستنا وحلولنا مع مستهدفات رؤية 2030.'
+                  : 'We build for a Kingdom that is going digital. See how our engineering capabilities support Vision 2030 priorities.'}
               </p>
             </div>
           </div>

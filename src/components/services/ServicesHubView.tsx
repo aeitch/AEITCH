@@ -114,7 +114,7 @@ export function ServicesHubView() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-            {isAr ? 'أربع خدمات نتقنها' : 'Four services we do well'}
+            {isAr ? 'خدمات هندسية نتقنها بعمق' : 'Engineering services we do with precision'}
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
@@ -128,7 +128,7 @@ export function ServicesHubView() {
       {/* 2. TRUST BADGES STRIP */}
       <TrustBadges />
 
-      {/* 3. FOUR DISTINCT SERVICE CARDS */}
+      {/* 3. DISTINCT SERVICE CARDS */}
       <section className="relative py-20 sm:py-28 bg-[#0c0c0e]">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">

@@ -36,8 +36,8 @@ export const Footer: React.FC = () => {
 
             <p className="text-sm text-fg-muted leading-relaxed max-w-sm">
               {locale === 'ar'
-                ? 'إيتش — هندسة رقمية بأربع خدمات، ورؤية واضحة.'
-                : 'AEITCH — Digital engineering: four services, one clear vision.'}
+                ? 'إيتش — هندسة رقمية متقدمة للمؤسسات، ورؤية واضحة.'
+                : 'AEITCH — Enterprise digital engineering: precision craft, one clear vision.'}
             </p>
 
             <div className="space-y-2 pt-2 text-xs text-fg-subtle">

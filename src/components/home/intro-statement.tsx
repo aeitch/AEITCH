@@ -9,8 +9,8 @@ export const IntroStatement: React.FC = () => {
 
   const text =
     locale === 'ar'
-      ? 'لا نقدم كل شيء لكل أحد. نركز على أربع خدمات نتقنها، ونسلّمها من الفكرة إلى الإنتاج، بشفافية كاملة وملكية كاملة للعميل على الكود.'
-      : "We don't do everything for everyone. We focus on four services we do well, delivered from idea to production, with full transparency and full client ownership of the code.";
+      ? 'لا نقدم كل شيء لكل أحد. نركز على تخصصات دقيقة نتقنها بعمق، ونسلّمها من الفكرة إلى الإنتاج، بشفافية كاملة وملكية كاملة للعميل على الكود.'
+      : "We don't do everything for everyone. We focus on core disciplines we execute with depth, delivered from idea to production, with full transparency and full client ownership of the code.";
 
   return (
     <section className="relative py-20 sm:py-28 md:py-36 bg-bg overflow-hidden border-t border-b border-border/80" dir={direction}>

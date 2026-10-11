@@ -130,7 +130,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                   <span>{locale === 'ar' ? 'الخدمات' : 'SERVICES'}</span>
                 </div>
-                <span className="text-[10px] text-fg-subtle">{locale === 'ar' ? 'أربع خدمات' : '4 Services'}</span>
+                <span className="text-[10px] text-fg-subtle">{locale === 'ar' ? 'مجالات التخصص' : 'Core Disciplines'}</span>
               </div>
 
               <div className="grid grid-cols-1 gap-2 pt-1">

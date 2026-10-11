@@ -91,12 +91,12 @@ export const Vision2030Focused: React.FC = () => {
 
           <p className="text-sm sm:text-base md:text-lg text-fg-muted leading-relaxed font-normal">
             {locale === 'ar'
-              ? 'تقوم رؤية السعودية 2030 على اقتصاد متنوع ومجتمع حيوي ووطن طموح، والتقنية هي المحرك الأساسي لكل ذلك. نضع خدماتنا الأربع في خدمة هذه الأولويات: ذكاء اصطناعي يرفع الإنتاجية، ومنتجات رقمية تدعم ريادة الأعمال، وبنية سحابية آمنة، وأنظمة مؤسسية حديثة.'
-              : 'Saudi Vision 2030 rests on a diversified economy, a vibrant society and an ambitious nation, and technology is the engine behind all three. Our four services serve those priorities: AI that lifts productivity, products that support entrepreneurship, secure cloud infrastructure and modern enterprise systems.'}
+              ? 'تقوم رؤية السعودية 2030 على اقتصاد متنوع ومجتمع حيوي ووطن طموح، والتقنية هي المحرك الأساسي لكل ذلك. نضع قدراتنا الهندسية في خدمة هذه الأولويات: ذكاء اصطناعي يرفع الإنتاجية، ومنتجات رقمية تدعم ريادة الأعمال، وبنية سحابية آمنة، وأنظمة مؤسسية حديثة.'
+              : 'Saudi Vision 2030 rests on a diversified economy, a vibrant society and an ambitious nation, and technology is the engine behind all three. We align our engineering capabilities with those priorities: AI that lifts productivity, digital products that support entrepreneurship, secure cloud infrastructure, and modern enterprise systems.'}
           </p>
         </div>
 
-        {/* Four Tracks (Editorial Table/Row Layout) */}
+        {/* Strategic Alignment Tracks (Editorial Table/Row Layout) */}
         <div className="rounded-2xl border border-border bg-surface overflow-hidden shadow-2xl">
           {/* Table Header (Desktop) */}
           <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-4 border-b border-border bg-white/[0.02] text-xs font-mono uppercase tracking-wider text-fg-subtle">

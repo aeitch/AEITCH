@@ -13,16 +13,16 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <div className="flex w-full flex-col overflow-x-clip bg-bg text-fg selection:bg-accent selection:text-black">
-      {/* 1. Hero: Four services. One engineering standard. + Hero detail strip */}
+      {/* 1. Hero: Enterprise digital engineering + Hero detail strip */}
       <HeroSection />
 
       {/* 2. Intro statement: One short paragraph, large type */}
       <IntroStatement />
 
-      {/* 3. Services: Four blocks, each a different layout */}
+      {/* 3. Services: Focused service blocks, each a different layout */}
       <ServicesFocused />
 
-      {/* 4. Vision 2030: Main feature section with 4 tracks editorial layout */}
+      {/* 4. Vision 2030: Main feature section with strategic tracks editorial layout */}
       <Vision2030Focused />
 
       {/* 5. How we work: 4 simple steps */}

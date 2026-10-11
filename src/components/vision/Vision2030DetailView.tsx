@@ -227,8 +227,8 @@ export function Vision2030DetailView() {
 
           <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-8">
             {isAr
-              ? 'ثلاثة محاور هي مجتمع حيوي واقتصاد مزدهر ووطن طموح. والتقنية هي المحرك المشترك بينها. هذه صفحتنا لنشرح كيف تخدم خدماتنا الأربع هذه الأولويات، وما الذي نلتزم به وما الذي لا ندّعيه.'
-              : 'Three themes (a vibrant society, a thriving economy, an ambitious nation) with technology as the shared engine. This page explains how our four services serve those priorities, what we commit to, and what we don’t claim.'}
+              ? 'ثلاثة محاور هي مجتمع حيوي واقتصاد مزدهر ووطن طموح، والتقنية هي المحرك المشترك بينها. هذه صفحتنا لنشرح كيف تخدم قدراتنا الهندسية هذه الأولويات، وما الذي نلتزم به وما الذي لا ندّعيه.'
+              : 'Three themes (a vibrant society, a thriving economy, an ambitious nation) with technology as the shared engine. This page explains how our engineering capabilities serve those priorities, what we commit to, and what we don’t claim.'}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -246,7 +246,7 @@ export function Vision2030DetailView() {
       {/* 2. TRUST BADGES */}
       <TrustBadges />
 
-      {/* 3. SECTION 1: FOUR SERVICES, FOUR PRIORITIES */}
+      {/* 3. SECTION 1: STRATEGIC ALIGNMENT WITH NATIONAL PRIORITIES */}
       <section className="py-20 sm:py-28 bg-[#0c0c0e] border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -254,7 +254,7 @@ export function Vision2030DetailView() {
               {isAr ? 'المواءمة الاستراتيجية' : 'STRATEGIC ALIGNMENT'}
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
-              {isAr ? 'أربع خدمات، أربع أولويات وطنية' : 'Four Services, Four National Priorities'}
+              {isAr ? 'قدراتنا الهندسية في خدمة الأولويات الوطنية' : 'Engineering Capabilities Serving National Priorities'}
             </h2>
           </div>
 

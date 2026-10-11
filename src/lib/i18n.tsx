@@ -260,7 +260,7 @@ export const dictionaries: Record<Locale, Translations> = {
     },
     services: {
       sectionTag: "حلول هندسية مصممة للنتائج",
-      heading: "الخدمات التقنية الأربع الأساسية",
+      heading: "الخدمات التقنية الأساسية",
       subheading: "نقدم خبرات تقنية عميقة تركز على خفض التكاليف التشغيلية، زيادة السرعة البرمجية، ورفع كفاءة الأعمال.",
       items: [
         {
@@ -688,7 +688,7 @@ export const dictionaries: Record<Locale, Translations> = {
     },
     services: {
       sectionTag: "Outcome-Driven Engineering",
-      heading: "Four Core Engineering Disciplines",
+      heading: "Core Engineering Disciplines",
       subheading: "Deep technical capabilities focused on cutting operational expenditure, speeding deployment, and scaling business value.",
       items: [
         {

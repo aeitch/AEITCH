@@ -433,7 +433,7 @@ export function ContactUsDetailView() {
                       </div>
                     </div>
 
-                    {/* Service Selection (4 Services + Vision 2030 + Not Sure) */}
+                    {/* Service Selection */}
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-neutral-300 mb-2">
                         {isAr ? 'الخدمة المطلوبة *' : 'Service Requested *'}

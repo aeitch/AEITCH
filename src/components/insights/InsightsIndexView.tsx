@@ -183,7 +183,7 @@ export function InsightsIndexView() {
               href="/services"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-8 py-3.5 text-sm font-semibold text-fg hover:border-accent/40 hover:bg-surface-2 transition-all duration-200"
             >
-              <span>{locale === 'ar' ? 'استكشف خدماتنا الـ 4' : 'Explore Our 4 Core Services'}</span>
+              <span>{locale === 'ar' ? 'استكشف خدماتنا الهندسية' : 'Explore Our Engineering Services'}</span>
             </Link>
           </div>
         </div>

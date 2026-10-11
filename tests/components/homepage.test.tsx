@@ -24,7 +24,7 @@ describe('Home Section 1: HeroSection', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /أربع خدمات\. هندسة واحدة متقنة\./i,
+        name: /هندسة رقمية متقدمة\. معيار واحد متقن\./i,
       })
     ).toBeInTheDocument();
     expect(screen.getByText(/نبني حلول الذكاء الاصطناعي والمنتجات الرقمية/i)).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe('Home Section 1: HeroSection', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /Four services\. One engineering standard\./i,
+        name: /Advanced digital engineering\. One uncompromising standard\./i,
       })
     ).toBeInTheDocument();
     expect(
@@ -69,7 +69,7 @@ describe('Home Section 2: IntroStatement', () => {
     );
 
     expect(
-      screen.getByText(/We don't do everything for everyone\. We focus on four services we do well/i)
+      screen.getByText(/We don't do everything for everyone\. We focus on core disciplines we execute with depth/i)
     ).toBeInTheDocument();
   });
 });
@@ -165,7 +165,7 @@ describe('Home Section 7: WhyAeitchFocused', () => {
     );
 
     expect(screen.getByText('Senior engineers only')).toBeInTheDocument();
-    expect(screen.getByText('Four services, done deeply')).toBeInTheDocument();
+    expect(screen.getByText('Focused specialization')).toBeInTheDocument();
     expect(screen.getByText('Flexible engagement')).toBeInTheDocument();
     expect(screen.getByText('A clear process')).toBeInTheDocument();
   });
@@ -203,12 +203,12 @@ describe('Full HomePage Integration', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /Four services\. One engineering standard\./i,
+        name: /Advanced digital engineering\. One uncompromising standard\./i,
       })
     ).toBeInTheDocument();
 
     expect(
-      screen.getByText(/We don't do everything for everyone\. We focus on four services we do well/i)
+      screen.getByText(/We don't do everything for everyone\. We focus on core disciplines we execute with depth/i)
     ).toBeInTheDocument();
     expect(screen.getAllByText(/AI Automation & Integration/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/Product Development/i).length).toBeGreaterThanOrEqual(1);

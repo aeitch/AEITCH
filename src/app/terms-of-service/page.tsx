@@ -72,12 +72,12 @@ export default function TermsOfServicePage() {
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-bold text-fg flex items-center gap-2">
               <span className="text-accent font-mono text-base">01.</span>
-              <span>{locale === 'ar' ? 'نطاق الخدمات الهندسية الأربع وبيان العمل (SOW)' : 'The 4 Core Services & Statements of Work (SOW)'}</span>
+              <span>{locale === 'ar' ? 'نطاق الخدمات الهندسية وبيان العمل (SOW)' : 'Scope of Engineering Services & Statements of Work (SOW)'}</span>
             </h2>
             <p>
               {locale === 'ar'
-                ? 'تقدم شركة إيتش (AEITCH) خدمات هندسية وبرمجية متخصصة تتركز حصرياً في أربعة مسارات رئيسية: (1) الذكاء الاصطناعي والأتمتة، (2) تطوير المنتجات، (3) DevOps وهندسة السحابة، و(4) تطوير البرمجيات المخصصة.'
-                : 'AEITCH provides focused enterprise engineering across four dedicated disciplines: (1) AI Automation & Integration, (2) Product Development, (3) DevOps & Cloud Engineering, and (4) Custom Software Development.'}
+                ? 'تقدم شركة إيتش (AEITCH) خدمات هندسية وبرمجية متخصصة تتركز في مسارات رئيسية: (1) الذكاء الاصطناعي والأتمتة، (2) تطوير المنتجات، (3) DevOps وهندسة السحابة، و(4) تطوير البرمجيات المخصصة.'
+                : 'AEITCH provides enterprise engineering across dedicated disciplines: (1) AI Automation & Integration, (2) Product Development, (3) DevOps & Cloud Engineering, and (4) Custom Software Development.'}
             </p>
             <p>
               {locale === 'ar'

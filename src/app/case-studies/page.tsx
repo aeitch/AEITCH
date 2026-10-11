@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Case Studies | AEITCH Work in AI, Product, Cloud and Software',
     description:
-      'Real engineering projects delivered over weeks and months, sorted across our four core disciplines.',
+      'Real engineering projects delivered over weeks and months, sorted across our core disciplines.',
     url: 'https://aeitch.com/case-studies',
     siteName: 'AEITCH',
     type: 'website',

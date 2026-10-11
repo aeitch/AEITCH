@@ -28,7 +28,7 @@ export function HeroSection() {
     locale === 'ar' ? 'إيتش — هندسة رقمية للمؤسسات' : 'AEITCH — Digital engineering for enterprises';
 
   const h1 =
-    locale === 'ar' ? 'أربع خدمات. هندسة واحدة متقنة.' : 'Four services. One engineering standard.';
+    locale === 'ar' ? 'هندسة رقمية متقدمة. معيار واحد متقن.' : 'Advanced digital engineering. One uncompromising standard.';
 
   const sub =
     locale === 'ar'

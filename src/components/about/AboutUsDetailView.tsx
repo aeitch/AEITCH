@@ -137,8 +137,8 @@ export function AboutUsDetailView() {
 
           <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-8">
             {isAr
-              ? 'إيتش شركة هندسة تركّز على المنتج، وتقدم أربع خدمات: الذكاء الاصطناعي والأتمتة، وتطوير المنتجات، وDevOps والسحابة، والبرمجيات المخصصة. نعمل مع الشركات الناشئة والمؤسسات لنحوّل الأفكار الجريئة إلى منتجات رقمية عالية الأداء مبنية للتوسع منذ اليوم الأول، ونرافقها بما يخدم أولويات التحول الرقمي في المملكة.'
-              : 'AEITCH is a product-focused engineering company with four services: AI Automation & Integration, Product Development, DevOps & Cloud Engineering, and Custom Software Development. We work with startups and enterprises to turn bold ideas into high-performing digital products built to scale from day one, in step with the Kingdom’s digital-transformation priorities.'}
+              ? 'إيتش شركة هندسة تركّز على المنتج، وتتخصص في حلول الذكاء الاصطناعي والأتمتة، وتطوير المنتجات، وDevOps وهندسة السحابة، والبرمجيات المخصصة. نعمل مع الشركات الناشئة والمؤسسات لنحوّل الأفكار الجريئة إلى منتجات رقمية عالية الأداء مبنية للتوسع منذ اليوم الأول، ونرافقها بما يخدم أولويات التحول الرقمي في المملكة.'
+              : 'AEITCH is a product-focused engineering company specializing in AI Automation & Integration, Product Development, DevOps & Cloud Engineering, and Custom Software Development. We work with startups and enterprises to turn bold ideas into high-performing digital products built to scale from day one, in step with the Kingdom’s digital-transformation priorities.'}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

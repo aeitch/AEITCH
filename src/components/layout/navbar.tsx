@@ -152,7 +152,7 @@ export const Navbar: React.FC = () => {
           {/* 2. Desktop Navigation Links */}
           {/* 2. Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {/* 4 Core Services Dropdown */}
+            {/* Services Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setServicesOpen(true)}
@@ -185,8 +185,8 @@ export const Navbar: React.FC = () => {
                   >
                     <div className="rounded-2xl border border-border bg-surface p-2.5 shadow-2xl backdrop-blur-2xl">
                       <div className="flex items-center justify-between px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-accent border-b border-white/5 mb-1.5">
-                        <span>{locale === 'ar' ? 'أربع خدمات' : 'Four Services'}</span>
-                        <span className="text-[9px] text-fg-subtle">{locale === 'ar' ? 'هندسة واحدة متقنة' : 'One Standard'}</span>
+                        <span>{locale === 'ar' ? 'الخدمات الهندسية' : 'Engineering Services'}</span>
+                        <span className="text-[9px] text-fg-subtle">{locale === 'ar' ? 'معيار تقني متقن' : 'Enterprise Standard'}</span>
                       </div>
                       <div className="space-y-1">
                         {serviceItems.map((s) => (
