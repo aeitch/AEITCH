@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --token-253b942c-bcd1-4840-89d4-5980aca8b347: rgb(255, 156, 170);
+  --token-aa303802-e5d1-4856-bfe5-30475052d91c: rgb(0, 0, 0);
+  --token-faaeecaa-41fe-4dfd-98b2-d3d642cf9422: rgb(79, 19, 53);
+  --token-3691ae33-3995-416c-b98d-222061437e6c: rgba(255, 255, 255, 0.1);
+  --token-815e5fc9-6007-49aa-bdaa-1b3c91360a01: rgba(252, 106, 128, 0.2);
+  --token-6a192018-af3b-4f80-90e0-379651ce7d89: rgba(252, 106, 128, 0.1);
+  --token-3ab14806-3b75-490f-ae8f-3e499c4989e2: rgb(242, 196, 97);
+  --token-36935f7d-760a-4429-b323-0396f8a97bcd: rgb(18, 18, 18);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Inter Display", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Framer Video Positioning */
+@media (min-width: 1024px) {
+  .framer-1jodj3k {
+    position: absolute;
+    top: 50%;
+    right: -48px;
+    width: 53%;
+    max-width: 820px;
+    aspect-ratio: 0.75;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .framer-1jodj3k {
+    position: relative;
+    margin: 0 auto;
+    width: clamp(72px, 17vw, 92px);
+    height: clamp(92px, 22vw, 118px);
+    aspect-ratio: 0.75;
+    pointer-events: none;
+    z-index: 1;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+}
