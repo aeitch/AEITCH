@@ -15,17 +15,15 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 desktop:grid-cols-5 gap-12 desktop:gap-8 mb-16">
           {/* Brand Info & Mission (Spans 2 cols on desktop) */}
           <div className="desktop:col-span-2 flex flex-col gap-6">
-            <a href="/" className="flex items-center gap-3 no-underline group w-fit">
-              {/* Monogram Icon */}
-              <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white transition-all duration-300 group-hover:border-white/30 group-hover:bg-white/10 shadow-sm backdrop-blur-sm">
-                <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" role="img" aria-label="AEITCH Logo">
-                  <path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6.5l2.2 5h-4.4l2.2-5z" />
-                </svg>
-              </div>
-              <span className="font-poppins font-bold text-[20px] tracking-tight text-white group-hover:text-white/90">
-                AEITCH
-              </span>
-            </a>
+            <Link href="/" className="inline-flex items-center no-underline group w-fit">
+              <img
+                src="/logo.png"
+                alt="AEITCH"
+                width={296}
+                height={38}
+                className="h-7 sm:h-8 w-auto object-contain transition-opacity duration-200 group-hover:opacity-90"
+              />
+            </Link>
 
             <p className="font-poppins text-white/60 text-[14px] leading-relaxed max-w-[380px]">
               The engineering collective behind mission-critical AI systems, high-velocity digital products, resilient cloud backbones, and bespoke software.

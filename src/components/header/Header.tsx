@@ -79,26 +79,18 @@ export const Header: React.FC = () => {
       }`}
     >
       <div className="w-full max-w-[1440px] mx-auto h-[64px] sm:h-[70px] px-6 tablet:px-12 desktop:px-[80px] flex items-center justify-between">
-        {/* Brand: Logo Monogram + Name */}
+        {/* Brand: Official AEITCH Logo */}
         <Link
           href="/"
-          className="flex items-center gap-3 no-underline group focus:outline-none"
+          className="flex items-center no-underline group focus:outline-none"
         >
-          {/* Glass Monogram Icon */}
-          <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white transition-all duration-300 group-hover:border-white/30 group-hover:bg-white/10 shadow-sm backdrop-blur-sm">
-            <svg
-              className="w-4 h-4 fill-current"
-              viewBox="0 0 24 24"
-              role="img"
-              aria-label="AEITCH Logo"
-            >
-              <path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm0 6.5l2.2 5h-4.4l2.2-5z" />
-            </svg>
-          </div>
-
-          <span className="font-poppins font-bold text-[18px] tracking-tight text-white transition-colors duration-200 group-hover:text-white/90">
-            AEITCH
-          </span>
+          <img
+            src="/logo.png"
+            alt="AEITCH"
+            width={296}
+            height={38}
+            className="h-6 sm:h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+          />
         </Link>
 
         {/* Desktop & Tablet Navigation */}
