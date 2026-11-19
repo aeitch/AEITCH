@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES_CONFIG } from '../../config/servicesData';
 import { Link } from '../../router/Router';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 export const AIAutomationPage: React.FC = () => {
   const service = SERVICES_CONFIG['ai-automation'];
@@ -16,6 +17,23 @@ export const AIAutomationPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-[#F7C059] selection:text-black overflow-hidden">
+      <SEOHead
+        title="AI Automation & Agent Development Services | AEITCH"
+        description="Scale enterprise operations with autonomous multi-agent systems, private RAG knowledge retrieval, and custom LLM orchestration pipelines engineered for zero data leakage."
+        canonicalPath="/services/ai-automation"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "AI Automation & Autonomous Agent Development",
+          "provider": {
+            "@type": "Organization",
+            "name": "AEITCH",
+            "url": "https://aeitch.com"
+          },
+          "areaServed": "US",
+          "description": "Multi-agent autonomous swarms, enterprise RAG, hybrid semantic vector search, and intelligent workflow automation."
+        }}
+      />
       {/* Top Background Flare & Ambient Lighting */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] opacity-25 pointer-events-none blur-[140px] -z-0"

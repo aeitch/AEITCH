@@ -2,14 +2,34 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES_CONFIG, ServiceDetail } from '../../config/servicesData';
 import { Link } from '../../router/Router';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 interface ServicePageProps {
   serviceId: string;
 }
 
+const SERVICE_SEO: Record<string, { title: string; description: string }> = {
+  'product-development': {
+    title: 'SaaS Product Development & MVP Engineering | AEITCH',
+    description: 'Ship market-ready SaaS platforms in 4–8 week sprints. We pair elite software architects with rapid prototyping, type-safe Next.js, and modern UX.',
+  },
+  'devops-cloud': {
+    title: 'DevOps Consulting & Multi-Region Kubernetes | AEITCH',
+    description: 'Modernize infrastructure with deterministic Terraform IaC, production Kubernetes orchestration, 35%+ cloud cost reduction, and 99.99% uptime SLAs.',
+  },
+  'custom-software': {
+    title: 'Custom Software & High-Throughput Distributed Systems | AEITCH',
+    description: 'Bespoke backend engineering in Go and Rust. Event-driven architectures handling 50k+ QPS at sub-10ms latency for high-stakes enterprise systems.',
+  },
+};
+
 export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
   const service: ServiceDetail = SERVICES_CONFIG[serviceId] ?? SERVICES_CONFIG['ai-automation'];
   const videoRef = useRef<HTMLVideoElement>(null);
+  const seo = SERVICE_SEO[serviceId] ?? {
+    title: `${service.title} | AEITCH`,
+    description: service.shortDescription,
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,6 +40,23 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden select-none">
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={service.path}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": service.title,
+          "provider": {
+            "@type": "Organization",
+            "name": "AEITCH",
+            "url": "https://aeitch.com"
+          },
+          "areaServed": "US",
+          "description": service.shortDescription
+        }}
+      />
       {/* Dynamic Background Flare with the exact Service Color */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] opacity-25 pointer-events-none blur-[140px] -z-0"

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 export const CaseStudiesPage: React.FC = () => {
   useEffect(() => {
@@ -52,6 +53,11 @@ export const CaseStudiesPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-hidden select-none">
+      <SEOHead
+        title="Engineering Case Studies & Production Benchmarks | AEITCH"
+        description="Explore how AEITCH deploys mission-critical software across autonomous AI, full-stack product development, cloud backbones, and bespoke systems."
+        canonicalPath="/case-studies"
+      />
       {/* Top Ambient Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] opacity-20 pointer-events-none blur-[140px] -z-0"

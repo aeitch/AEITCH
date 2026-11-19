@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 export const AboutPage: React.FC = () => {
   useEffect(() => {
@@ -32,6 +33,11 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-hidden select-none">
+      <SEOHead
+        title="About AEITCH — Engineering Collective Behind Intelligent Systems"
+        description="AEITCH SMC PVT LTD is an engineering collective uniting senior software architects with cutting-edge autonomous AI systems to build production-grade architectures."
+        canonicalPath="/about"
+      />
       {/* Top Ambient Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] opacity-20 pointer-events-none blur-[140px] -z-0"

@@ -4,10 +4,17 @@ import { MetricsSection } from '../../components/metrics/MetricsSection';
 import { ServicesSection } from '../../components/services/ServicesSection';
 import { ProcessSection } from '../../components/process/ProcessSection';
 import { CTASection } from '../../components/cta/CTASection';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 export const HomePage: React.FC = () => {
   return (
     <div className="w-full bg-black">
+      <SEOHead
+        title="AEITCH — Enterprise AI & Software Engineering Collective"
+        description="AEITCH is an enterprise engineering collective architecting autonomous AI agent systems, full-cycle SaaS products, resilient multi-cloud backbones, and bespoke high-throughput software."
+        canonicalPath="/"
+      />
+
       {/* 1. Hero Section */}
       <Hero />
 

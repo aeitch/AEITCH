@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
+import { contactConfig } from '../../config/contactConfig';
 
 export const CTASection: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -99,7 +100,7 @@ export const CTASection: React.FC = () => {
 
               {/* Secondary CTA */}
               <motion.a
-                href="tel:+966318405573"
+                href={`tel:${contactConfig.phoneTel}`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center gap-2.5 rounded-full font-medium no-underline transition-all duration-300"
@@ -131,9 +132,12 @@ export const CTASection: React.FC = () => {
 
             {/* Contact info */}
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-[13px] text-white/50">
-              <div className="flex items-center gap-2">
+              <a
+                href={`mailto:${contactConfig.email}`}
+                className="flex items-center gap-2 hover:text-white/80 transition-colors no-underline text-inherit"
+              >
                 <svg
-                  className="w-4 h-4"
+                  className="w-4 h-4 text-[#5EEAD4]"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -141,11 +145,11 @@ export const CTASection: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                <span>Riyadh, Saudi Arabia</span>
-              </div>
+                <span>{contactConfig.email}</span>
+              </a>
               <div className="flex items-center gap-2">
                 <svg
                   className="w-4 h-4"
@@ -159,7 +163,7 @@ export const CTASection: React.FC = () => {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <span>Response within 24 hours</span>
+                <span>{contactConfig.responseTime}</span>
               </div>
             </div>
           </div>

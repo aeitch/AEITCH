@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useId, FormEvent, ChangeEvent } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { contactConfig } from '../../config/contactConfig';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 interface ServiceOption {
   id: string;
@@ -83,55 +84,6 @@ export const ContactPage: React.FC = () => {
   const companyId = useId();
   const phoneId = useId();
   const messageId = useId();
-
-  // SEO & Head title / Meta setup
-  useEffect(() => {
-    const originalTitle = document.title;
-    document.title = 'Contact AEITCH';
-
-    let metaDesc = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDesc ? metaDesc.getAttribute('content') : null;
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute(
-      'content',
-      'Connect directly with AEITCH engineers to evaluate technical feasibility and receive a customized implementation roadmap.'
-    );
-
-    // OpenGraph meta tags
-    const ogTags = [
-      { property: 'og:title', content: 'Contact AEITCH' },
-      {
-        property: 'og:description',
-        content: 'Connect directly with AEITCH engineers to evaluate technical feasibility and receive a customized implementation roadmap.',
-      },
-      { property: 'og:url', content: 'https://aeitch.com/contact' },
-      { property: 'og:type', content: 'website' },
-    ];
-
-    const createdOgTags: Element[] = [];
-    ogTags.forEach(({ property, content }) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
-        createdOgTags.push(tag);
-      }
-      tag.setAttribute('content', content);
-    });
-
-    return () => {
-      document.title = originalTitle;
-      if (prevDesc && metaDesc) {
-        metaDesc.setAttribute('content', prevDesc);
-      }
-      createdOgTags.forEach((tag) => tag.remove());
-    };
-  }, []);
 
   // Preselect service from URL query parameter (e.g. /contact?service=devops)
   useEffect(() => {
@@ -293,6 +245,11 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-[#fafafa] selection:bg-[#FFC247] selection:text-[#1a1203] overflow-x-hidden">
+      <SEOHead
+        title="Contact AEITCH | Book a Technical Architecture Call"
+        description="Connect directly with AEITCH engineers to evaluate technical feasibility and receive a customized implementation roadmap."
+        canonicalPath="/contact"
+      />
       {/* Background Amber Glow (Top Right) */}
       <div
         className="absolute top-0 right-0 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] opacity-25 pointer-events-none blur-[140px] -z-0"
@@ -338,14 +295,30 @@ export const ContactPage: React.FC = () => {
 
           {/* Meta row */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2 font-body text-[13px] sm:text-[13.5px] text-[#85858c]">
-            {/* Location Pin */}
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#FFC247] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
+            {/* Helping Email */}
+            <a
+              href={`mailto:${contactConfig.email}`}
+              className="flex items-center gap-2 hover:text-[#fafafa] transition-colors no-underline text-inherit"
+            >
+              <svg className="w-4 h-4 text-[#5EEAD4] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
-              <span>{contactConfig.location}</span>
-            </div>
+              <span>{contactConfig.email}</span>
+            </a>
+
+            {/* Helping Phone / WhatsApp */}
+            <a
+              href={contactConfig.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[#25D366] transition-colors no-underline text-inherit"
+            >
+              <svg className="w-4 h-4 text-[#25D366] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.27C8.94 7.27 8.66 7.33 8.42 7.59C8.19 7.85 7.53 8.47 7.53 9.74C7.53 11.01 8.45 12.23 8.58 12.4C8.71 12.57 10.38 15.15 12.94 16.26C15.08 17.18 15.51 17 15.97 16.96C16.43 16.92 17.46 16.35 17.67 15.75C17.88 15.15 17.88 14.64 17.82 14.53C17.76 14.42 17.59 14.36 17.33 14.23C17.07 14.1 15.8 13.47 15.57 13.38C15.34 13.29 15.17 13.25 15 13.51C14.83 13.77 14.34 14.36 14.19 14.53C14.04 14.7 13.89 14.72 13.63 14.59C13.37 14.46 12.53 14.19 11.54 13.31C10.77 12.62 10.25 11.77 10.1 11.51C9.95 11.25 10.08 11.11 10.21 10.98C10.33 10.86 10.47 10.67 10.61 10.51C10.75 10.35 10.79 10.23 10.88 10.05C10.97 9.87 10.92 9.72 10.86 9.59C10.8 9.46 10.3 8.24 10.09 7.73C9.88 7.23 9.68 7.3 9.52 7.29C9.37 7.28 9.2 7.27 9.11 7.27Z"/>
+              </svg>
+              <span>{contactConfig.phone}</span>
+            </a>
 
             {/* Clock Response */}
             <div className="flex items-center gap-2">
@@ -820,39 +793,61 @@ export const ContactPage: React.FC = () => {
               </h3>
 
               <div className="flex flex-col gap-3 font-body text-[13.5px]">
-                {/* Location */}
-                <div className="flex items-center gap-2.5 text-[#a1a1aa]">
-                  <svg className="w-4 h-4 text-[#FFC247] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  <span>{contactConfig.location}</span>
+                {/* Helping Email */}
+                <div className="flex flex-col gap-1.5 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <span className="font-body text-[11px] font-medium uppercase tracking-wider text-[#85858c]">
+                    Helping Email
+                  </span>
+                  <a
+                    href={`mailto:${contactConfig.email}`}
+                    className="flex items-center gap-2.5 text-[#fafafa] hover:text-[#5EEAD4] transition-colors group no-underline"
+                  >
+                    <svg className="w-4 h-4 text-[#5EEAD4] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect width="20" height="16" x="2" y="4" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                    <span className="font-mono text-[13px] text-[#fafafa] group-hover:text-[#5EEAD4] transition-colors">
+                      {contactConfig.email}
+                    </span>
+                  </a>
+                </div>
+
+                {/* Helping Phone with WhatsApp */}
+                <div className="flex flex-col gap-1.5 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <span className="font-body text-[11px] font-medium uppercase tracking-wider text-[#85858c]">
+                    Helping Phone
+                  </span>
+                  <a
+                    href={contactConfig.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between text-[#fafafa] hover:text-[#25D366] transition-colors group no-underline"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <svg className="w-4 h-4 text-[#25D366] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.27C8.94 7.27 8.66 7.33 8.42 7.59C8.19 7.85 7.53 8.47 7.53 9.74C7.53 11.01 8.45 12.23 8.58 12.4C8.71 12.57 10.38 15.15 12.94 16.26C15.08 17.18 15.51 17 15.97 16.96C16.43 16.92 17.46 16.35 17.67 15.75C17.88 15.15 17.88 14.64 17.82 14.53C17.76 14.42 17.59 14.36 17.33 14.23C17.07 14.1 15.8 13.47 15.57 13.38C15.34 13.29 15.17 13.25 15 13.51C14.83 13.77 14.34 14.36 14.19 14.53C14.04 14.7 13.89 14.72 13.63 14.59C13.37 14.46 12.53 14.19 11.54 13.31C10.77 12.62 10.25 11.77 10.1 11.51C9.95 11.25 10.08 11.11 10.21 10.98C10.33 10.86 10.47 10.67 10.61 10.51C10.75 10.35 10.79 10.23 10.88 10.05C10.97 9.87 10.92 9.72 10.86 9.59C10.8 9.46 10.3 8.24 10.09 7.73C9.88 7.23 9.68 7.3 9.52 7.29C9.37 7.28 9.2 7.27 9.11 7.27Z"/>
+                      </svg>
+                      <span className="font-mono text-[13px] text-[#fafafa] group-hover:text-[#25D366] transition-colors">
+                        {contactConfig.phone}
+                      </span>
+                    </div>
+                    <span className="font-body text-[11px] font-medium text-[#25D366] bg-[#25D366]/10 border border-[#25D366]/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <span>WhatsApp</span>
+                      <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </span>
+                  </a>
                 </div>
 
                 {/* Response SLA */}
-                <div className="flex items-center gap-2.5 text-[#a1a1aa]">
+                <div className="flex items-center gap-2.5 text-[#a1a1aa] px-1 pt-0.5">
                   <svg className="w-4 h-4 text-[#FFC247] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
                   <span>{contactConfig.responseTime}</span>
-                </div>
-
-                {/* Email Placeholder */}
-                <div className="flex items-center gap-2.5 text-[#fafafa]">
-                  <svg className="w-4 h-4 text-[#5EEAD4] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect width="20" height="16" x="2" y="4" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                  <span className="font-mono text-[12.5px] text-[#a1a1aa]">{contactConfig.email}</span>
-                </div>
-
-                {/* Phone Placeholder */}
-                <div className="flex items-center gap-2.5 text-[#fafafa]">
-                  <svg className="w-4 h-4 text-[#62B6FF] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                  <span className="font-mono text-[12.5px] text-[#a1a1aa]">{contactConfig.phone}</span>
                 </div>
               </div>
 

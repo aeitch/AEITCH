@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
+import { SEOHead } from '../../components/seo/SEOHead';
 
 export const SolutionsPage: React.FC = () => {
   useEffect(() => {
@@ -48,6 +49,11 @@ export const SolutionsPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-hidden select-none">
+      <SEOHead
+        title="Strategic Enterprise Software Solutions | AEITCH"
+        description="Discover how AEITCH bridges artificial intelligence, rapid product velocity, cloud infrastructure stability, and bespoke backend engineering into unified digital solutions."
+        canonicalPath="/solutions"
+      />
       {/* Top Ambient Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] opacity-20 pointer-events-none blur-[140px] -z-0"

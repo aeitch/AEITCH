@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Dedicated rules for AI Search & Answer Engines (GEO visibility)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Disallow internal API endpoints from crawling
+Disallow: /api/
+
+Sitemap: https://aeitch.com/sitemap.xml

@@ -148,7 +148,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar: Copyright & Secondary Links */}
         <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-poppins text-[13px] text-white/40">
-            © {new Date().getFullYear()} AEITCH Inc. All rights reserved.
+            © {new Date().getFullYear()} AEITCH SMC PVT LTD. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">

@@ -165,10 +165,10 @@ async function sendContactEmail(payload: ContactSubmissionPayload): Promise<{ su
   const subject = `New AEITCH query: ${serviceLabel} — ${payload.name}`;
 
   const submissionTime = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Riyadh',
+    timeZone: 'UTC',
     dateStyle: 'full',
     timeStyle: 'medium',
-  }) + ' (Asia/Riyadh)';
+  }) + ' (UTC)';
 
   const plainText = `
 NEW QUERY RECEIVED VIA AEITCH WEBSITE
