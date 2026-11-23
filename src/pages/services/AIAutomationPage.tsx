@@ -55,8 +55,8 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}
       {/* ========================================================================= */}
-      <section className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-20 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-8 desktop:gap-12">
+      <section className="relative z-10 w-full pt-24 sm:pt-32 desktop:pt-36 pb-14 sm:pb-18 desktop:pb-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-6 sm:gap-8 desktop:gap-10">
           {/* Top Breadcrumb Navigation */}
           <Breadcrumbs
             items={[
@@ -65,13 +65,13 @@ export const AIAutomationPage: React.FC = () => {
             ]}
           />
 
-          <div className="w-full flex flex-col desktop:flex-row items-center justify-between gap-12 desktop:gap-16">
+          <div className="w-full flex flex-col desktop:flex-row items-center justify-between gap-10 sm:gap-12 desktop:gap-16">
             {/* Left Column: Heading, Badges, Value Prop & CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center desktop:items-start text-center desktop:text-left gap-6 max-w-[680px]"
+              className="flex flex-col items-center desktop:items-start text-center desktop:text-left gap-5 sm:gap-6 max-w-[680px]"
             >
 
             {/* Tag Badge */}
@@ -107,10 +107,10 @@ export const AIAutomationPage: React.FC = () => {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center desktop:justify-start gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center desktop:justify-start gap-3.5 sm:gap-4 pt-2 w-full sm:w-auto">
               <Link
                 href="/contact?service=ai-automation#contact-form"
-                className="inline-flex items-center gap-2 text-black font-poppins font-semibold text-[14px] px-6 py-3 rounded-full shadow-[0_0_25px_rgba(247,192,89,0.35)] hover:scale-[1.03] active:scale-[0.98] transition-all no-underline"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-black font-poppins font-semibold text-[14px] px-6 py-3 rounded-full shadow-[0_0_25px_rgba(247,192,89,0.35)] hover:scale-[1.03] active:scale-[0.98] transition-all no-underline"
                 style={{ backgroundColor: service.accentColor }}
               >
                 <span>Schedule AI Strategy Call</span>
@@ -122,7 +122,7 @@ export const AIAutomationPage: React.FC = () => {
 
               <a
                 href="#capabilities"
-                className="inline-flex items-center gap-2 bg-white/[0.04] text-white/90 border border-white/10 hover:border-white/30 font-poppins font-medium text-[14px] px-6 py-3 rounded-full hover:bg-white/[0.08] transition-all no-underline backdrop-blur-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.04] text-white/90 border border-white/10 hover:border-white/30 font-poppins font-medium text-[14px] px-6 py-3 rounded-full hover:bg-white/[0.08] transition-all no-underline backdrop-blur-sm"
               >
                 <span>View Capabilities</span>
                 <svg className="w-4 h-4 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -137,7 +137,7 @@ export const AIAutomationPage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex items-center justify-center w-full max-w-[480px] desktop:max-w-[540px] aspect-square"
+            className="relative flex items-center justify-center w-full max-w-[420px] sm:max-w-[480px] desktop:max-w-[540px] aspect-square"
           >
             {/* Ambient Backlight Flare */}
             <div
@@ -147,7 +147,7 @@ export const AIAutomationPage: React.FC = () => {
             />
 
             {/* Video Container Card */}
-            <div className="relative w-[320px] sm:w-[380px] desktop:w-[440px] aspect-square rounded-[32px] overflow-hidden border border-[#F7C059]/30 bg-black/60 shadow-[0_16px_50px_rgba(0,0,0,0.8)] backdrop-blur-md flex items-center justify-center">
+            <div className="relative w-full max-w-[320px] sm:max-w-[380px] desktop:max-w-[440px] aspect-square rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#F7C059]/30 bg-black/60 shadow-[0_16px_50px_rgba(0,0,0,0.8)] backdrop-blur-md flex items-center justify-center">
               <video
                 ref={videoRef}
                 src={service.videoSrc}
@@ -176,17 +176,17 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 2. LIVE METRICS BAR */}
       {/* ========================================================================= */}
-      <section className="relative z-10 w-full border-y border-white/[0.08] bg-white/[0.015] backdrop-blur-md py-10 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="relative z-10 w-full border-y border-white/[0.08] bg-white/[0.015] backdrop-blur-md py-8 sm:py-10 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {service.metrics.map((metric, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center gap-1.5">
+            <div key={idx} className="flex flex-col items-center text-center gap-1 sm:gap-1.5 p-2">
               <span
-                className="font-sans font-normal text-[36px] sm:text-[44px] tracking-tight"
+                className="font-sans font-normal text-[28px] sm:text-[38px] desktop:text-[44px] tracking-tight"
                 style={{ color: service.accentColor }}
               >
                 {metric.value}
               </span>
-              <span className="font-poppins text-[13px] sm:text-[14px] text-white/60">
+              <span className="font-poppins text-[12px] sm:text-[14px] text-white/60">
                 {metric.label}
               </span>
             </div>
@@ -197,29 +197,29 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 3. CAPABILITIES MATRIX */}
       {/* ========================================================================= */}
-      <section id="capabilities" className="relative z-10 w-full py-24 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
+      <section id="capabilities" className="relative z-10 w-full py-16 sm:py-20 desktop:py-28 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-10 sm:gap-16">
           {/* Section Header */}
-          <div className="flex flex-col items-center text-center gap-4 max-w-[720px] mx-auto">
+          <div className="flex flex-col items-center text-center gap-3 sm:gap-4 max-w-[720px] mx-auto">
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#F7C059] uppercase">
               Core Capabilities
             </span>
-            <h2 className="font-sans font-normal text-[32px] sm:text-[44px] tracking-tight text-white leading-tight">
+            <h2 className="font-sans font-normal text-[28px] sm:text-[38px] desktop:text-[44px] tracking-tight text-white leading-tight">
               End-to-End Autonomous AI Engineering
             </h2>
-            <p className="font-poppins text-white/60 text-[15px] sm:text-[16px] leading-relaxed">
+            <p className="font-poppins text-white/60 text-[14px] sm:text-[16px] leading-relaxed">
               We don’t just wrap generic APIs. We architect self-orchestrating systems with hardened guardrails, deterministic data flows, and zero data leakage.
             </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {service.capabilities.map((cap, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
-                className="group relative rounded-2xl p-8 bg-white/[0.02] border border-white/10 hover:border-[#F7C059]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-lg"
+                className="group relative rounded-2xl p-5 sm:p-7 desktop:p-8 bg-white/[0.02] border border-white/10 hover:border-[#F7C059]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-lg"
               >
                 {/* Subtle Hover Gradient */}
                 <div
@@ -258,36 +258,36 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4. FOUR-STAGE DELIVERY PROCESS */}
       {/* ========================================================================= */}
-      <section className="relative z-10 w-full py-24 bg-white/[0.01] border-t border-white/[0.08] px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
-          <div className="flex flex-col items-center text-center gap-4 max-w-[700px] mx-auto">
+      <section className="relative z-10 w-full py-16 sm:py-20 desktop:py-28 bg-white/[0.01] border-t border-white/[0.08] px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-10 sm:gap-16">
+          <div className="flex flex-col items-center text-center gap-3 sm:gap-4 max-w-[700px] mx-auto">
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#F7C059] uppercase">
               Methodology
             </span>
-            <h2 className="font-sans font-normal text-[32px] sm:text-[44px] tracking-tight text-white leading-tight">
+            <h2 className="font-sans font-normal text-[28px] sm:text-[38px] desktop:text-[44px] tracking-tight text-white leading-tight">
               How AEITCH Deploys Autonomous Systems
             </h2>
-            <p className="font-poppins text-white/60 text-[15px] sm:text-[16px]">
+            <p className="font-poppins text-white/60 text-[14px] sm:text-[16px]">
               A disciplined, engineering-first roadmap from initial pipeline profiling to active telemetry in production.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 desktop:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 desktop:grid-cols-4 gap-4 sm:gap-6">
             {service.processSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="relative rounded-2xl p-7 bg-white/[0.02] border border-white/10 flex flex-col gap-4 hover:border-white/20 transition-all"
+                className="relative rounded-2xl p-5 sm:p-6 desktop:p-7 bg-white/[0.02] border border-white/10 flex flex-col gap-3.5 sm:gap-4 hover:border-white/20 transition-all"
               >
                 <span
-                  className="font-mono text-[28px] font-bold tracking-tight"
+                  className="font-mono text-[24px] sm:text-[28px] font-bold tracking-tight"
                   style={{ color: service.accentColor }}
                 >
                   {step.number}
                 </span>
-                <h4 className="font-poppins font-semibold text-[17px] text-white">
+                <h4 className="font-poppins font-semibold text-[16px] sm:text-[17px] text-white">
                   {step.title}
                 </h4>
-                <p className="font-poppins text-[13.5px] text-white/60 leading-relaxed">
+                <p className="font-poppins text-[13px] sm:text-[13.5px] text-white/60 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -299,22 +299,22 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 5. TECH STACK & INTEGRATION ECOSYSTEM */}
       {/* ========================================================================= */}
-      <section className="relative z-10 w-full py-20 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center text-center gap-10">
+      <section className="relative z-10 w-full py-14 sm:py-16 desktop:py-20 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center text-center gap-8 sm:gap-10">
           <div className="flex flex-col gap-2">
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-white/40 uppercase">
               Technology Ecosystem
             </span>
-            <h3 className="font-poppins font-semibold text-[22px] sm:text-[26px] text-white">
+            <h3 className="font-poppins font-semibold text-[20px] sm:text-[26px] text-white">
               Built on Modern AI & Distributed Systems
             </h3>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 max-w-[900px]">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-[900px]">
             {service.techStack.map((tech, idx) => (
               <div
                 key={idx}
-                className="px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 hover:border-[#F7C059]/40 hover:bg-[#F7C059]/5 transition-all text-white/80 font-poppins text-[13.5px]"
+                className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.03] border border-white/10 hover:border-[#F7C059]/40 hover:bg-[#F7C059]/5 transition-all text-white/80 font-poppins text-[12.5px] sm:text-[13.5px]"
               >
                 {tech}
               </div>
@@ -326,30 +326,30 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 6. FEATURED CASE STUDY BANNER */}
       {/* ========================================================================= */}
-      <section className="relative z-10 w-full py-16 px-6 tablet:px-12 desktop:px-[80px]">
+      <section className="relative z-10 w-full py-12 sm:py-16 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
         <div className="w-full max-w-[1440px] mx-auto">
-          <div className="relative rounded-[28px] p-8 sm:p-12 border border-[#F7C059]/30 bg-gradient-to-r from-black via-white/[0.02] to-black overflow-hidden shadow-2xl flex flex-col desktop:flex-row items-center justify-between gap-8">
+          <div className="relative rounded-[24px] sm:rounded-[28px] p-6 sm:p-10 desktop:p-12 border border-[#F7C059]/30 bg-gradient-to-r from-black via-white/[0.02] to-black overflow-hidden shadow-2xl flex flex-col desktop:flex-row items-center justify-between gap-6 sm:gap-8">
             <div
               className="absolute -right-20 -bottom-20 w-[400px] h-[400px] rounded-full opacity-20 pointer-events-none blur-[90px]"
               style={{ backgroundColor: service.accentColor }}
               aria-hidden="true"
             />
 
-            <div className="flex flex-col gap-3 max-w-[700px] text-center desktop:text-left">
+            <div className="flex flex-col gap-2.5 sm:gap-3 max-w-[700px] text-center desktop:text-left">
               <span className="font-poppins text-[12px] font-semibold text-[#F7C059] uppercase tracking-wider">
                 {service.caseStudyPreview.badge}
               </span>
-              <h3 className="font-sans font-normal text-[26px] sm:text-[34px] text-white tracking-tight">
+              <h3 className="font-sans font-normal text-[22px] sm:text-[30px] desktop:text-[34px] text-white tracking-tight">
                 {service.caseStudyPreview.title}
               </h3>
-              <p className="font-poppins text-white/70 text-[15px] leading-relaxed">
+              <p className="font-poppins text-white/70 text-[14px] sm:text-[15px] leading-relaxed">
                 {service.caseStudyPreview.impact}
               </p>
             </div>
 
             <Link
               href={service.caseStudyPreview.href}
-              className="inline-flex items-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all shrink-0 no-underline shadow-md"
+              className="inline-flex items-center justify-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all shrink-0 no-underline shadow-md w-full sm:w-auto"
             >
               <span>View Architecture Blueprint</span>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -374,52 +374,52 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* RELATED CAPABILITIES & INTERNAL LINK MESH */}
       {/* ========================================================================= */}
-      <section className="relative z-10 w-full py-16 px-6 tablet:px-12 desktop:px-[80px] border-t border-white/10">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-8">
+      <section className="relative z-10 w-full py-12 sm:py-16 px-4 sm:px-6 tablet:px-12 desktop:px-[80px] border-t border-white/10">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-6 sm:gap-8">
           <div className="flex flex-col gap-2">
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#F7C059] uppercase">
               Connected Engineering Disciplines
             </span>
-            <h3 className="font-sans font-normal text-[24px] sm:text-[30px] text-white">
+            <h3 className="font-sans font-normal text-[22px] sm:text-[28px] desktop:text-[30px] text-white">
               Explore Complementary Core Capabilities
             </h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <Link
               href="/services/product-development"
-              className="p-6 rounded-xl border border-white/10 hover:border-[#76E3DC]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+              className="p-5 sm:p-6 rounded-xl border border-white/10 hover:border-[#76E3DC]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-2.5 sm:gap-3"
             >
               <span className="text-[#76E3DC] font-poppins text-[13px] font-medium">Full-Cycle SaaS</span>
-              <h4 className="font-sans text-[18px] text-white group-hover:text-[#76E3DC] transition-colors">
+              <h4 className="font-sans text-[17px] sm:text-[18px] text-white group-hover:text-[#76E3DC] transition-colors">
                 Product Development & MVP Engineering
               </h4>
-              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+              <p className="font-poppins text-white/60 text-[13.5px] sm:text-[14px] leading-relaxed">
                 Turn your AI capabilities into market-ready SaaS applications with type-safe React, Next.js, and intuitive UX.
               </p>
             </Link>
 
             <Link
               href="/services/devops-cloud"
-              className="p-6 rounded-xl border border-white/10 hover:border-[#FF9CAA]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+              className="p-5 sm:p-6 rounded-xl border border-white/10 hover:border-[#FF9CAA]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-2.5 sm:gap-3"
             >
               <span className="text-[#FF9CAA] font-poppins text-[13px] font-medium">Cloud Infrastructure</span>
-              <h4 className="font-sans text-[18px] text-white group-hover:text-[#FF9CAA] transition-colors">
+              <h4 className="font-sans text-[17px] sm:text-[18px] text-white group-hover:text-[#FF9CAA] transition-colors">
                 DevOps Consulting & Multi-Region Kubernetes
               </h4>
-              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+              <p className="font-poppins text-white/60 text-[13.5px] sm:text-[14px] leading-relaxed">
                 Deploy resilient AI inference clusters with autoscaling, GPU management, and automated zero-downtime CI/CD.
               </p>
             </Link>
 
             <Link
               href="/services/custom-software"
-              className="p-6 rounded-xl border border-white/10 hover:border-[#74C8FC]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+              className="p-5 sm:p-6 rounded-xl border border-white/10 hover:border-[#74C8FC]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-2.5 sm:gap-3"
             >
               <span className="text-[#74C8FC] font-poppins text-[13px] font-medium">Bespoke Systems</span>
-              <h4 className="font-sans text-[18px] text-white group-hover:text-[#74C8FC] transition-colors">
+              <h4 className="font-sans text-[17px] sm:text-[18px] text-white group-hover:text-[#74C8FC] transition-colors">
                 High-Throughput Custom Software Backends
               </h4>
-              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+              <p className="font-poppins text-white/60 text-[13.5px] sm:text-[14px] leading-relaxed">
                 Engineer low-latency event-driven transaction processors and data streaming pipelines in Go and Rust.
               </p>
             </Link>
@@ -430,8 +430,8 @@ export const AIAutomationPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 7. CONVERSION CALL TO ACTION */}
       {/* ========================================================================= */}
-      <section id="contact" className="relative z-10 w-full py-24 sm:py-32 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1000px] mx-auto text-center flex flex-col items-center gap-8 relative">
+      <section id="contact" className="relative z-10 w-full py-16 sm:py-24 desktop:py-32 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1000px] mx-auto text-center flex flex-col items-center gap-6 sm:gap-8 relative">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] opacity-25 blur-[100px] pointer-events-none -z-10"
             style={{ backgroundColor: service.accentColor }}
@@ -442,18 +442,18 @@ export const AIAutomationPage: React.FC = () => {
             Let’s Build Together
           </span>
 
-          <h2 className="font-sans font-normal text-[36px] sm:text-[52px] tracking-tight text-white leading-tight">
+          <h2 className="font-sans font-normal text-[30px] sm:text-[46px] desktop:text-[52px] tracking-tight text-white leading-tight">
             Ready to Automate Your High-Impact Workflows?
           </h2>
 
-          <p className="font-poppins text-white/70 text-[16px] sm:text-[18px] max-w-[620px] leading-relaxed">
+          <p className="font-poppins text-white/70 text-[15px] sm:text-[17px] desktop:text-[18px] max-w-[620px] leading-relaxed">
             Connect directly with AEITCH AI architects to evaluate your technical roadmap and receive an end-to-end automation plan.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2 w-full sm:w-auto">
             <Link
               href="/contact?service=ai-automation#contact-form"
-              className="inline-flex items-center gap-2 text-black font-poppins font-semibold text-[14.5px] px-8 py-3.5 rounded-full shadow-[0_0_30px_rgba(247,192,89,0.4)] hover:scale-105 active:scale-95 transition-all no-underline"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-black font-poppins font-semibold text-[14.5px] px-8 py-3.5 rounded-full shadow-[0_0_30px_rgba(247,192,89,0.4)] hover:scale-105 active:scale-95 transition-all no-underline"
               style={{ backgroundColor: service.accentColor }}
             >
               <span>Get in Touch with AEITCH</span>

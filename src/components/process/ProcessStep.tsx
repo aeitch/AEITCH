@@ -37,7 +37,7 @@ export const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
     >
       {/* Number Badge */}
       <motion.div
-        className="relative w-[120px] h-[120px] mb-5 sm:mb-6 flex items-center justify-center"
+        className="relative w-[84px] h-[84px] sm:w-[100px] sm:h-[100px] desktop:w-[120px] desktop:h-[120px] mb-4 sm:mb-5 desktop:mb-6 flex items-center justify-center"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 1 } : {}}
         transition={{
@@ -58,7 +58,7 @@ export const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
 
         {/* Inner glow */}
         <div
-          className="absolute inset-[8px] rounded-full"
+          className="absolute inset-[6px] sm:inset-[8px] rounded-full"
           style={{
             background: `radial-gradient(circle at 50% 50%, ${step.accentColor}10 0%, transparent 70%)`,
           }}
@@ -66,7 +66,7 @@ export const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
 
         {/* Number */}
         <span
-          className="relative z-10 text-[42px] sm:text-[48px] font-bold tracking-tight"
+          className="relative z-10 text-[32px] sm:text-[40px] desktop:text-[48px] font-bold tracking-tight"
           style={{
             color: step.accentColor,
             fontFeatureSettings: '"lnum" on, "cv11" on',

@@ -78,7 +78,7 @@ export const Header: React.FC = () => {
           : 'bg-transparent border-b border-transparent shadow-none'
       }`}
     >
-      <div className="w-full max-w-[1440px] mx-auto h-[64px] sm:h-[70px] px-6 tablet:px-12 desktop:px-[80px] flex items-center justify-between">
+      <div className="w-full max-w-[1440px] mx-auto h-[64px] sm:h-[70px] px-4 sm:px-6 tablet:px-12 desktop:px-[80px] flex items-center justify-between">
         {/* Brand: Official AEITCH Logo */}
         <Link
           href="/"

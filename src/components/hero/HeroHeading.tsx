@@ -28,7 +28,7 @@ export const HeroHeading: React.FC<HeroHeadingProps> = ({
           fontFeatureSettings: '"lnum" on, "cv11" on, "cv05" on, "cv13" on',
         }}
       >
-        <div className="block whitespace-nowrap">{headingLine1}</div>
+        <div className="block whitespace-normal sm:whitespace-nowrap">{headingLine1}</div>
         <div className="flex flex-wrap items-baseline justify-center desktop:justify-start">
           {headingPrefix && <span className="text-white whitespace-pre">{headingPrefix}</span>}
           <RotatingWord themes={themes} activeIndex={activeIndex} />

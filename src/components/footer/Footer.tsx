@@ -10,9 +10,9 @@ export const Footer: React.FC = () => {
         aria-hidden="true"
       />
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 tablet:px-12 desktop:px-[80px] pt-16 sm:pt-20 pb-12">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 tablet:px-12 desktop:px-[80px] pt-12 sm:pt-16 desktop:pt-20 pb-12">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 desktop:grid-cols-5 gap-12 desktop:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 desktop:grid-cols-5 gap-10 sm:gap-12 desktop:gap-8 mb-12 sm:mb-16">
           {/* Brand Info & Mission (Spans 2 cols on desktop) */}
           <div className="desktop:col-span-2 flex flex-col gap-6">
             <Link href="/" className="inline-flex items-center no-underline group w-fit">
@@ -150,7 +150,7 @@ export const Footer: React.FC = () => {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white text-black font-poppins font-semibold text-[13px] px-5 py-2.5 rounded-full hover:bg-neutral-200 transition-all no-underline w-fit"
+              className="inline-flex items-center justify-center gap-2 bg-white text-black font-poppins font-semibold text-[13px] px-5 py-2.5 rounded-full hover:bg-neutral-200 transition-all no-underline w-full sm:w-fit"
             >
               <span>Book Architecture Call</span>
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

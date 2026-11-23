@@ -64,32 +64,32 @@ export const SolutionsPage: React.FC = () => {
         aria-hidden="true"
       />
 
-      <section className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-20 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
+      <section className="relative z-10 w-full pt-28 sm:pt-32 desktop:pt-36 pb-16 sm:pb-20 desktop:pb-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-10 sm:gap-14 desktop:gap-16">
           {/* Header */}
-          <div className="flex flex-col items-center text-center gap-5 max-w-[760px] mx-auto">
+          <div className="flex flex-col items-center text-center gap-4 sm:gap-5 max-w-[760px] mx-auto">
             <Breadcrumbs align="center" items={[{ label: 'Solutions', path: '/solutions' }]} />
 
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-white/50 uppercase">
               Strategic Solutions
             </span>
-            <h1 className="font-sans font-normal text-[36px] sm:text-[48px] tablet:text-[56px] leading-[1.08] tracking-[-0.03em] text-white">
+            <h1 className="font-sans font-normal text-[30px] sm:text-[44px] tablet:text-[52px] leading-[1.08] tracking-[-0.03em] text-white">
               End-to-End Solutions for <br />
               <span className="text-white/90">Mission-Critical Demands</span>
             </h1>
-            <p className="font-poppins text-white/70 text-[16px] sm:text-[17px] leading-relaxed">
+            <p className="font-poppins text-white/70 text-[14.5px] sm:text-[17px] leading-relaxed">
               We bridge artificial intelligence, product velocity, infrastructure stability, and custom engineering into unified digital engines.
             </p>
           </div>
 
           {/* Solutions Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 desktop:gap-8">
             {solutions.map((item, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
-                className="group relative rounded-2xl p-8 sm:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xl"
+                className="group relative rounded-2xl p-5 sm:p-8 desktop:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xl"
                 style={{ borderColor: item.borderColor }}
               >
                 <div
@@ -99,10 +99,10 @@ export const SolutionsPage: React.FC = () => {
                   }}
                 />
 
-                <div className="relative z-10 flex flex-col gap-5">
+                <div className="relative z-10 flex flex-col gap-4 sm:gap-5">
                   <div className="flex items-center justify-between">
                     <span
-                      className="font-poppins font-semibold text-[13px] tracking-wide uppercase px-3 py-1 rounded-full border"
+                      className="font-poppins font-semibold text-[12px] sm:text-[13px] tracking-wide uppercase px-3 py-1 rounded-full border"
                       style={{
                         color: item.color,
                         borderColor: item.borderColor,
@@ -111,18 +111,18 @@ export const SolutionsPage: React.FC = () => {
                     >
                       {item.service}
                     </span>
-                    <span className="font-mono text-white/40 text-[14px]">0{idx + 1}</span>
+                    <span className="font-mono text-white/40 text-[13px] sm:text-[14px]">0{idx + 1}</span>
                   </div>
 
-                  <h3 className="font-sans font-normal text-[24px] sm:text-[28px] text-white">
+                  <h3 className="font-sans font-normal text-[20px] sm:text-[26px] desktop:text-[28px] text-white">
                     {item.title}
                   </h3>
 
-                  <p className="font-poppins text-[15px] text-white/65 leading-relaxed">
+                  <p className="font-poppins text-[14px] sm:text-[15px] text-white/65 leading-relaxed">
                     {item.desc}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1 sm:pt-2">
                     {item.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
@@ -134,7 +134,7 @@ export const SolutionsPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="relative z-10 pt-8">
+                <div className="relative z-10 pt-6 sm:pt-8">
                   <Link
                     href={item.path}
                     className="inline-flex items-center gap-2 font-poppins font-medium text-[13.5px] transition-all no-underline"

@@ -68,28 +68,28 @@ export const CaseStudiesPage: React.FC = () => {
         aria-hidden="true"
       />
 
-      <section className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-20 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
-          <div className="flex flex-col items-center text-center gap-5 max-w-[760px] mx-auto">
+      <section className="relative z-10 w-full pt-28 sm:pt-32 desktop:pt-36 pb-16 sm:pb-20 desktop:pb-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-10 sm:gap-14 desktop:gap-16">
+          <div className="flex flex-col items-center text-center gap-4 sm:gap-5 max-w-[760px] mx-auto">
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#F7C059] uppercase">
               Proven Impact
             </span>
-            <h1 className="font-sans font-normal text-[36px] sm:text-[48px] tablet:text-[56px] leading-[1.08] tracking-[-0.03em] text-white">
+            <h1 className="font-sans font-normal text-[30px] sm:text-[44px] tablet:text-[52px] leading-[1.08] tracking-[-0.03em] text-white">
               Engineering Case Studies & <br />
               <span className="text-white/90">Production Benchmarks</span>
             </h1>
-            <p className="font-poppins text-white/70 text-[16px] sm:text-[17px] leading-relaxed">
+            <p className="font-poppins text-white/70 text-[14.5px] sm:text-[17px] leading-relaxed">
               Explore how AEITCH deploys mission-critical software across autonomous AI, full-stack product development, cloud backbones, and bespoke systems.
             </p>
           </div>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-5 sm:gap-6 desktop:gap-8">
             {studies.map((item, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2 }}
-                className="group relative rounded-2xl p-8 sm:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col desktop:flex-row items-start desktop:items-center justify-between gap-8 overflow-hidden shadow-xl"
+                className="group relative rounded-2xl p-5 sm:p-8 desktop:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col desktop:flex-row items-start desktop:items-center justify-between gap-6 sm:gap-8 overflow-hidden shadow-xl"
                 style={{ borderColor: item.borderColor }}
               >
                 <div
@@ -99,10 +99,10 @@ export const CaseStudiesPage: React.FC = () => {
                   }}
                 />
 
-                <div className="relative z-10 flex flex-col gap-4 max-w-[800px]">
+                <div className="relative z-10 flex flex-col gap-3.5 sm:gap-4 max-w-[800px]">
                   <div className="flex items-center gap-3">
                     <span
-                      className="font-poppins font-semibold text-[12px] tracking-wide uppercase px-3 py-1 rounded-full border"
+                      className="font-poppins font-semibold text-[11.5px] sm:text-[12px] tracking-wide uppercase px-3 py-1 rounded-full border"
                       style={{
                         color: item.color,
                         borderColor: item.borderColor,
@@ -111,10 +111,10 @@ export const CaseStudiesPage: React.FC = () => {
                     >
                       {item.service}
                     </span>
-                    <span className="font-mono text-white/40 text-[12px]">CASE #{idx + 1}</span>
+                    <span className="font-mono text-white/40 text-[11.5px] sm:text-[12px]">CASE #{idx + 1}</span>
                   </div>
 
-                  <h3 className="font-sans font-normal text-[24px] sm:text-[30px] text-white">
+                  <h3 className="font-sans font-normal text-[20px] sm:text-[26px] desktop:text-[30px] text-white">
                     {item.title}
                   </h3>
 

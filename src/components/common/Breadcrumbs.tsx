@@ -40,14 +40,14 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         aria-label="Breadcrumb"
         className={`w-full flex ${align === 'center' ? 'justify-center' : 'justify-start'} ${className}`}
       >
-        <ol className="inline-flex items-center flex-wrap gap-2 py-1 px-3.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md text-[12px] font-poppins text-white/50 shadow-sm">
+        <ol className="inline-flex items-center flex-wrap gap-1.5 sm:gap-2 py-1 px-3 sm:px-3.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md text-[11.5px] sm:text-[12px] font-poppins text-white/50 shadow-sm max-w-full">
           {allItems.map((item, index) => {
             const isLast = index === allItems.length - 1;
             return (
-              <li key={item.path} className="inline-flex items-center gap-2">
+              <li key={item.path} className="inline-flex items-center gap-1.5 sm:gap-2">
                 {index > 0 && (
                   <svg
-                    className="w-3 h-3 text-white/30 shrink-0"
+                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white/30 shrink-0"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -61,7 +61,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
                 )}
                 {isLast ? (
                   <span
-                    className="text-white/90 font-medium truncate max-w-[200px] sm:max-w-[320px]"
+                    className="text-white/90 font-medium truncate max-w-[140px] sm:max-w-[320px]"
                     aria-current="page"
                     title={item.label}
                   >

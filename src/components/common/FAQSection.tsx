@@ -38,28 +38,28 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
   };
 
   return (
-    <section className="relative z-10 w-full py-20 px-6 tablet:px-12 desktop:px-[80px]">
+    <section className="relative z-10 w-full py-14 sm:py-18 desktop:py-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="w-full max-w-[1000px] mx-auto flex flex-col gap-12">
-        <div className="flex flex-col items-center text-center gap-4">
+      <div className="w-full max-w-[1000px] mx-auto flex flex-col gap-8 sm:gap-12">
+        <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
           <span
             className="font-poppins text-[12px] font-semibold tracking-widest uppercase"
             style={{ color: accentColor }}
           >
             Engineering Transparency
           </span>
-          <h2 className="font-sans font-normal text-[32px] sm:text-[44px] tracking-tight text-white leading-tight">
+          <h2 className="font-sans font-normal text-[28px] sm:text-[38px] desktop:text-[44px] tracking-tight text-white leading-tight">
             {title}
           </h2>
-          <p className="font-poppins text-white/65 text-[15px] sm:text-[16px] max-w-[620px] leading-relaxed">
+          <p className="font-poppins text-white/65 text-[14.5px] sm:text-[16px] max-w-[620px] leading-relaxed">
             {subtitle}
           </p>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3.5 sm:gap-4">
           {items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
@@ -73,10 +73,10 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => toggle(index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 hover:bg-white/[0.02] transition-colors"
+                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left gap-4 hover:bg-white/[0.02] transition-colors"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-poppins font-medium text-[16px] sm:text-[17px] text-white">
+                  <span className="font-poppins font-medium text-[15px] sm:text-[17px] text-white">
                     {item.question}
                   </span>
                   <span
@@ -91,7 +91,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                   </span>
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-white/70 font-poppins text-[14px] sm:text-[15px] leading-relaxed border-t border-white/[0.04]">
+                  <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-2 text-white/70 font-poppins text-[13.5px] sm:text-[15px] leading-relaxed border-t border-white/[0.04]">
                     {item.answer}
                   </div>
                 )}

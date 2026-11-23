@@ -77,32 +77,32 @@ export const PricingPage: React.FC = () => {
         aria-hidden="true"
       />
 
-      <section className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-24 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
+      <section className="relative z-10 w-full pt-28 sm:pt-32 desktop:pt-36 pb-16 sm:pb-20 desktop:pb-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-10 sm:gap-14 desktop:gap-16">
           {/* Header */}
-          <div className="flex flex-col items-center text-center gap-5 max-w-[760px] mx-auto">
+          <div className="flex flex-col items-center text-center gap-4 sm:gap-5 max-w-[760px] mx-auto">
             <Breadcrumbs align="center" items={[{ label: 'Pricing & Engagements', path: '/pricing' }]} />
 
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#76E3DC] uppercase">
               Transparent Engagement
             </span>
-            <h1 className="font-sans font-normal text-[36px] sm:text-[48px] tablet:text-[56px] leading-[1.08] tracking-[-0.03em] text-white">
+            <h1 className="font-sans font-normal text-[30px] sm:text-[44px] tablet:text-[52px] leading-[1.08] tracking-[-0.03em] text-white">
               Predictable Engineering Models <br />
               <span className="text-white/80">Tailored to Your Scale</span>
             </h1>
-            <p className="font-poppins text-white/70 text-[16px] sm:text-[17px] leading-relaxed">
+            <p className="font-poppins text-white/70 text-[14.5px] sm:text-[17px] leading-relaxed">
               No bloated overhead. No junior bench. Senior engineering teams dedicated to delivering measurable business impact.
             </p>
           </div>
 
           {/* Pricing Grid */}
-          <div className="grid grid-cols-1 desktop:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 desktop:grid-cols-3 gap-5 sm:gap-6 desktop:gap-8">
             {tiers.map((tier, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
-                className={`relative rounded-3xl p-8 sm:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-2xl ${
+                className={`relative rounded-3xl p-5 sm:p-8 desktop:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-2xl ${
                   tier.highlight ? 'bg-white/[0.035] ring-1 ring-[#76E3DC]/30' : ''
                 }`}
                 style={{ borderColor: tier.borderColor }}
@@ -114,7 +114,7 @@ export const PricingPage: React.FC = () => {
                   }}
                 />
 
-                <div className="relative z-10 flex flex-col gap-6">
+                <div className="relative z-10 flex flex-col gap-5 sm:gap-6">
                   <div className="flex items-center justify-between">
                     <span
                       className="font-mono text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border"
@@ -126,14 +126,14 @@ export const PricingPage: React.FC = () => {
                     >
                       {tier.badge}
                     </span>
-                    <span className="font-poppins text-[13px] text-white/50">{tier.duration}</span>
+                    <span className="font-poppins text-[12.5px] sm:text-[13px] text-white/50">{tier.duration}</span>
                   </div>
 
                   <div>
-                    <h3 className="font-sans font-normal text-[26px] text-white">
+                    <h3 className="font-sans font-normal text-[22px] sm:text-[26px] text-white">
                       {tier.name}
                     </h3>
-                    <p className="font-poppins text-[14px] text-white/60 pt-1">
+                    <p className="font-poppins text-[13.5px] sm:text-[14px] text-white/60 pt-1">
                       {tier.tagline}
                     </p>
                   </div>
@@ -141,12 +141,12 @@ export const PricingPage: React.FC = () => {
                   <div className="h-[1px] bg-white/10 w-full" />
 
                   <div className="flex flex-col gap-3">
-                    <span className="font-poppins text-[12px] font-semibold uppercase tracking-wider text-white/40">
+                    <span className="font-poppins text-[11.5px] sm:text-[12px] font-semibold uppercase tracking-wider text-white/40">
                       What is included:
                     </span>
-                    <ul className="flex flex-col gap-3 list-none p-0 m-0">
+                    <ul className="flex flex-col gap-2.5 sm:gap-3 list-none p-0 m-0">
                       {tier.deliverables.map((item, dIdx) => (
-                        <li key={dIdx} className="flex items-start gap-3">
+                        <li key={dIdx} className="flex items-start gap-2.5 sm:gap-3">
                           <svg
                             className="w-4 h-4 shrink-0 mt-0.5"
                             viewBox="0 0 24 24"
@@ -156,7 +156,7 @@ export const PricingPage: React.FC = () => {
                           >
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
-                          <span className="font-poppins text-[13.5px] text-white/75 leading-relaxed">
+                          <span className="font-poppins text-[13px] sm:text-[13.5px] text-white/75 leading-relaxed">
                             {item}
                           </span>
                         </li>
@@ -165,7 +165,7 @@ export const PricingPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="relative z-10 pt-10">
+                <div className="relative z-10 pt-8 sm:pt-10">
                   <Link
                     href="/contact#contact-form"
                     className="w-full inline-flex items-center justify-center gap-2 font-poppins font-semibold text-[14px] px-6 py-3.5 rounded-full transition-all no-underline shadow-md"

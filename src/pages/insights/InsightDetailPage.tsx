@@ -71,8 +71,8 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
         aria-hidden="true"
       />
 
-      <article className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-24 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[880px] mx-auto flex flex-col gap-10">
+      <article className="relative z-10 w-full pt-28 sm:pt-32 desktop:pt-36 pb-16 sm:pb-20 desktop:pb-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[880px] mx-auto flex flex-col gap-8 sm:gap-10">
           {/* Breadcrumbs */}
           <Breadcrumbs
             items={[
@@ -82,18 +82,18 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
           />
 
           {/* Article Header */}
-          <header className="flex flex-col gap-5 border-b border-white/10 pb-8">
-            <div className="flex items-center gap-3 text-[13px] font-mono text-[#F7C059]">
+          <header className="flex flex-col gap-4 sm:gap-5 border-b border-white/10 pb-6 sm:pb-8">
+            <div className="flex items-center gap-2.5 sm:gap-3 text-[12px] sm:text-[13px] font-mono text-[#F7C059]">
               <span>{article.category}</span>
               <span className="text-white/30">•</span>
               <span className="text-white/60">{article.readTime}</span>
             </div>
 
-            <h1 className="font-sans font-normal text-[32px] sm:text-[44px] tablet:text-[50px] leading-[1.12] tracking-[-0.03em] text-white">
+            <h1 className="font-sans font-normal text-[26px] sm:text-[38px] tablet:text-[46px] leading-[1.12] tracking-[-0.03em] text-white">
               {article.title}
             </h1>
 
-            <div className="flex items-center justify-between text-[13.5px] font-poppins text-white/60 pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[13px] sm:text-[13.5px] font-poppins text-white/60 pt-1 sm:pt-2">
               <div className="flex items-center gap-2">
                 <span>By</span>
                 <span className="text-white font-medium">{article.authorByline}</span>
@@ -103,17 +103,17 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
           </header>
 
           {/* AI Citation Summary Box */}
-          <aside className="p-6 sm:p-8 rounded-2xl border border-[#F7C059]/30 bg-[#F7C059]/[0.04] flex flex-col gap-4">
-            <div className="flex items-center gap-2 text-[#F7C059] font-mono text-[12px] uppercase tracking-wider font-semibold">
+          <aside className="p-4 sm:p-6 desktop:p-8 rounded-2xl border border-[#F7C059]/30 bg-[#F7C059]/[0.04] flex flex-col gap-3.5 sm:gap-4">
+            <div className="flex items-center gap-2 text-[#F7C059] font-mono text-[11.5px] sm:text-[12px] uppercase tracking-wider font-semibold">
               <span className="w-2 h-2 rounded-full bg-[#F7C059]" />
               <span>Architectural Takeaway (Executive Summary)</span>
             </div>
-            <p className="font-poppins text-white/90 text-[15px] sm:text-[16px] leading-relaxed font-medium">
+            <p className="font-poppins text-white/90 text-[14.5px] sm:text-[16px] leading-relaxed font-medium">
               {article.summaryBox.coreTakeaway}
             </p>
             <ul className="flex flex-col gap-2 pt-2 border-t border-[#F7C059]/15">
               {article.summaryBox.keyPoints.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-[14px] text-white/75 font-poppins leading-relaxed">
+                <li key={idx} className="flex items-start gap-2 text-[13.5px] sm:text-[14px] text-white/75 font-poppins leading-relaxed">
                   <span className="text-[#F7C059] mt-0.5">▪</span>
                   <span>{point}</span>
                 </li>
@@ -122,14 +122,14 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
           </aside>
 
           {/* Article Body */}
-          <div className="flex flex-col gap-10 font-poppins text-[16px] text-white/80 leading-relaxed">
-            <p className="text-[17px] sm:text-[18px] text-white/90 leading-relaxed border-l-2 border-[#F7C059] pl-5 italic">
+          <div className="flex flex-col gap-8 sm:gap-10 font-poppins text-[15px] sm:text-[16px] text-white/80 leading-relaxed">
+            <p className="text-[16px] sm:text-[18px] text-white/90 leading-relaxed border-l-2 border-[#F7C059] pl-4 sm:pl-5 italic">
               {article.content.lead}
             </p>
 
             {article.content.sections.map((section, sIdx) => (
-              <section key={sIdx} className="flex flex-col gap-5 pt-4">
-                <h2 className="font-sans font-normal text-[26px] sm:text-[32px] text-white tracking-tight leading-snug">
+              <section key={sIdx} className="flex flex-col gap-4 sm:gap-5 pt-3 sm:pt-4">
+                <h2 className="font-sans font-normal text-[22px] sm:text-[28px] desktop:text-[32px] text-white tracking-tight leading-snug">
                   {section.heading}
                 </h2>
 
@@ -140,25 +140,25 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
                 ))}
 
                 {section.codeSnippet && (
-                  <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0c] my-3">
+                  <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0c] my-2 sm:my-3">
                     {section.codeSnippet.caption && (
-                      <div className="px-4 py-2 border-b border-white/10 bg-white/[0.03] text-[12px] font-mono text-white/50">
+                      <div className="px-3.5 sm:px-4 py-2 border-b border-white/10 bg-white/[0.03] text-[11.5px] sm:text-[12px] font-mono text-white/50">
                         {section.codeSnippet.caption}
                       </div>
                     )}
-                    <pre className="p-4 sm:p-6 overflow-x-auto text-[13px] font-mono text-[#F7C059]/90 leading-relaxed">
+                    <pre className="p-3.5 sm:p-5 overflow-x-auto text-[12px] sm:text-[13px] font-mono text-[#F7C059]/90 leading-relaxed">
                       <code>{section.codeSnippet.code}</code>
                     </pre>
                   </div>
                 )}
 
                 {section.comparisonTable && (
-                  <div className="overflow-x-auto my-4 rounded-xl border border-white/10">
-                    <table className="w-full text-left text-[14px] font-poppins border-collapse">
+                  <div className="overflow-x-auto my-3 sm:my-4 rounded-xl border border-white/10">
+                    <table className="w-full text-left text-[13px] sm:text-[14px] font-poppins border-collapse">
                       <thead>
                         <tr className="bg-white/[0.04] border-b border-white/10">
                           {section.comparisonTable.headers.map((h, hIdx) => (
-                            <th key={hIdx} className="p-4 font-semibold text-white">
+                            <th key={hIdx} className="p-3 sm:p-4 font-semibold text-white">
                               {h}
                             </th>
                           ))}
@@ -168,7 +168,7 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
                         {section.comparisonTable.rows.map((row, rIdx) => (
                           <tr key={rIdx} className="border-b border-white/[0.04] hover:bg-white/[0.02]">
                             {row.map((cell, cIdx) => (
-                              <td key={cIdx} className="p-4 text-white/75">
+                              <td key={cIdx} className="p-3 sm:p-4 text-white/75">
                                 {cell}
                               </td>
                             ))}
@@ -183,13 +183,13 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
 
             {/* References Section */}
             {article.content.references && article.content.references.length > 0 && (
-              <section className="pt-8 border-t border-white/10 flex flex-col gap-4">
-                <h3 className="font-sans font-normal text-[20px] text-white">
+              <section className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col gap-3.5 sm:gap-4">
+                <h3 className="font-sans font-normal text-[18px] sm:text-[20px] text-white">
                   Technical References & Industry Standards
                 </h3>
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-2.5 sm:gap-3">
                   {article.content.references.map((ref, rIdx) => (
-                    <li key={rIdx} className="text-[14px] font-poppins text-white/60">
+                    <li key={rIdx} className="text-[13px] sm:text-[14px] font-poppins text-white/60">
                       <a
                         href={ref.url}
                         target="_blank"
@@ -206,19 +206,19 @@ export const InsightDetailPage: React.FC<InsightDetailPageProps> = ({ slug }) =>
             )}
 
             {/* Related Service Pillar CTA */}
-            <div className="p-8 rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] to-transparent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-8">
-              <div className="flex flex-col gap-2">
+            <div className="p-5 sm:p-8 rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] to-transparent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6 mt-6 sm:mt-8">
+              <div className="flex flex-col gap-1.5 sm:gap-2">
                 <span className="text-[12px] font-mono text-[#F7C059] uppercase">Related Capability</span>
-                <h4 className="font-sans text-[20px] text-white">
+                <h4 className="font-sans text-[18px] sm:text-[20px] text-white">
                   {article.pillarService.name}
                 </h4>
-                <p className="text-[14px] text-white/60 max-w-[480px]">
+                <p className="text-[13.5px] sm:text-[14px] text-white/60 max-w-[480px]">
                   Explore how AEITCH engineers implement production architectures for enterprise clients.
                 </p>
               </div>
               <Link
                 href={article.pillarService.path}
-                className="inline-flex items-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all shrink-0 no-underline shadow-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all shrink-0 no-underline shadow-md"
               >
                 <span>View Service Details</span>
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

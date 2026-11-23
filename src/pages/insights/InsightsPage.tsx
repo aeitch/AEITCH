@@ -35,35 +35,35 @@ export const InsightsPage: React.FC = () => {
         aria-hidden="true"
       />
 
-      <section className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-24 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
+      <section className="relative z-10 w-full pt-28 sm:pt-32 desktop:pt-36 pb-16 sm:pb-20 desktop:pb-24 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-10 sm:gap-14 desktop:gap-16">
           {/* Header */}
-          <div className="flex flex-col items-center text-center gap-6 max-w-[800px] mx-auto">
+          <div className="flex flex-col items-center text-center gap-4 sm:gap-6 max-w-[800px] mx-auto">
             <Breadcrumbs align="center" items={[{ label: 'Technical Insights', path: '/insights' }]} />
 
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#F7C059]" />
-              <span className="font-poppins font-medium text-[13px] text-white/80">
+              <span className="font-poppins font-medium text-[12px] sm:text-[13px] text-white/80">
                 AEITCH Research & Engineering
               </span>
             </div>
 
-            <h1 className="font-sans font-normal text-[36px] sm:text-[48px] tablet:text-[58px] leading-[1.08] tracking-[-0.03em] text-white">
+            <h1 className="font-sans font-normal text-[30px] sm:text-[44px] tablet:text-[52px] leading-[1.08] tracking-[-0.03em] text-white">
               Technical Insights & <br />
               <span className="text-white/80">Systems Architecture</span>
             </h1>
 
-            <p className="font-poppins text-white/70 text-[16px] sm:text-[18px] leading-relaxed">
+            <p className="font-poppins text-white/70 text-[14.5px] sm:text-[17px] leading-relaxed">
               In-depth engineering analyses, architectural decision frameworks, and production-tested patterns from senior software architects at AEITCH SMC PVT LTD.
             </p>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-2 sm:pt-4">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full font-poppins text-[13px] transition-all cursor-pointer ${
+                  className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full font-poppins text-[12.5px] sm:text-[13px] transition-all cursor-pointer ${
                     selectedCategory === cat
                       ? 'bg-white text-black font-semibold shadow-md'
                       : 'bg-white/[0.04] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
@@ -76,14 +76,14 @@ export const InsightsPage: React.FC = () => {
           </div>
 
           {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 desktop:gap-8">
             {filteredArticles.map((article, idx) => (
               <motion.article
                 key={article.slug}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="group rounded-2xl border border-white/10 hover:border-[#F7C059]/40 bg-white/[0.02] hover:bg-white/[0.04] p-8 flex flex-col justify-between gap-6 transition-all shadow-lg"
+                className="group rounded-2xl border border-white/10 hover:border-[#F7C059]/40 bg-white/[0.02] hover:bg-white/[0.04] p-5 sm:p-7 desktop:p-8 flex flex-col justify-between gap-5 sm:gap-6 transition-all shadow-lg"
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between text-[12px] font-mono text-white/50">

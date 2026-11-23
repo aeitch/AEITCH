@@ -267,7 +267,7 @@ export const ContactPage: React.FC = () => {
       />
 
       {/* Main Container */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 w900:px-8 desktop:px-12 pt-28 sm:pt-32 tablet:pt-36 pb-24">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 tablet:px-12 desktop:px-[80px] pt-28 sm:pt-32 desktop:pt-36 pb-16 sm:pb-20 desktop:pb-24">
         {/* ========================================================================= */}
         {/* 1. HERO SECTION (Left-aligned) */}
         {/* ========================================================================= */}
@@ -348,7 +348,7 @@ export const ContactPage: React.FC = () => {
           {/* --------------------------------------------------------------------- */}
           <div
             id="contact-form"
-            className="scroll-mt-24 sm:scroll-mt-28 relative rounded-[20px] p-6 sm:p-8 tablet:p-10 bg-[#0b0b0c] border border-white/[0.09] shadow-2xl overflow-hidden transition-all duration-300"
+            className="scroll-mt-24 sm:scroll-mt-28 relative rounded-[20px] p-4 sm:p-8 tablet:p-10 bg-[#0b0b0c] border border-white/[0.09] shadow-2xl overflow-hidden transition-all duration-300"
           >
             {/* Dynamic Card Top-Left Glow based on Selected Service */}
             <div
@@ -732,7 +732,7 @@ export const ContactPage: React.FC = () => {
           {/* --------------------------------------------------------------------- */}
           <div className="flex flex-col gap-6">
             {/* Sidebar Card 1: What happens next */}
-            <div className="rounded-[20px] p-6 sm:p-7 bg-[#0b0b0c] border border-white/[0.09] shadow-xl flex flex-col gap-5">
+            <div className="rounded-[20px] p-5 sm:p-7 bg-[#0b0b0c] border border-white/[0.09] shadow-xl flex flex-col gap-5">
               <h3 className="font-sans font-light text-[20px] sm:text-[22px] text-[#fafafa] tracking-tight">
                 What happens next
               </h3>
@@ -790,7 +790,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* Sidebar Card 2: Reach us directly */}
-            <div className="rounded-[20px] p-6 sm:p-7 bg-[#0b0b0c] border border-white/[0.09] shadow-xl flex flex-col gap-5">
+            <div className="rounded-[20px] p-5 sm:p-7 bg-[#0b0b0c] border border-white/[0.09] shadow-xl flex flex-col gap-5">
               <h3 className="font-sans font-light text-[20px] sm:text-[22px] text-[#fafafa] tracking-tight">
                 Reach us directly
               </h3>

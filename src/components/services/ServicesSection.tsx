@@ -16,7 +16,7 @@ const SECTION_FADE_IN = {
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section className="relative w-full bg-black py-20 sm:py-24 tablet:py-28 desktop:py-32 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
+    <section className="relative w-full bg-black py-16 sm:py-20 tablet:py-24 desktop:py-28 px-4 sm:px-6 tablet:px-12 desktop:px-[80px]">
       <div className="relative w-full max-w-[1440px] mx-auto">
         {/* Section Header */}
         <motion.div

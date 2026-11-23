@@ -108,10 +108,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       />
 
       {/* Card Content */}
-      <div className="relative z-10 p-6 sm:p-7 desktop:p-8 flex flex-col h-full">
+      <div className="relative z-10 p-5 sm:p-7 desktop:p-8 flex flex-col h-full">
         {/* Icon Container */}
         <motion.div
-          className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-5 sm:mb-6"
+          className="w-12 h-12 sm:w-14 sm:h-14 desktop:w-16 desktop:h-16 rounded-xl flex items-center justify-center mb-4 sm:mb-6"
           style={{
             background: `linear-gradient(135deg, ${service.accentColor}20 0%, ${service.accentColor}08 100%)`,
             border: `1px solid ${service.accentColor}30`,
@@ -125,7 +125,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
         >
           <motion.svg
-            className="w-7 h-7 sm:w-8 sm:h-8"
+            className="w-6 h-6 sm:w-7 sm:h-7 desktop:w-8 desktop:h-8"
             viewBox="0 0 24 24"
             fill="none"
             stroke={service.accentColor}

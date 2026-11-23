@@ -134,7 +134,7 @@ export const StatCards: React.FC<StatCardsProps> = ({
 
             {/* Inner Content for Active Card */}
             <div
-              className="w-full h-full flex flex-col justify-center items-center px-4 text-center transition-opacity duration-300 relative z-10"
+              className="w-full h-full flex flex-col justify-center items-center px-2.5 sm:px-4 text-center transition-opacity duration-300 relative z-10"
               style={{
                 opacity: isActive ? 1 : 0,
                 pointerEvents: isActive ? 'auto' : 'none',

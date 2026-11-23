@@ -26,7 +26,7 @@ export const CTASection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", duration: 0.8, bounce: 0 }}
-          className="relative overflow-hidden rounded-3xl p-8 sm:p-10 tablet:p-12 desktop:p-16 text-center"
+          className="relative overflow-hidden rounded-3xl p-6 sm:p-10 tablet:p-12 desktop:p-16 text-center"
           style={{
             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -61,13 +61,13 @@ export const CTASection: React.FC = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full">
               {/* Primary CTA */}
               <Link
                 href="/contact#contact-form"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full font-medium no-underline transition-all duration-300 shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 overflow-hidden rounded-full font-medium no-underline transition-all duration-300 shadow-lg hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   height: 'clamp(48px, 4.5vw, 52px)',
                   paddingLeft: '36px',
@@ -103,7 +103,7 @@ export const CTASection: React.FC = () => {
                 href={`tel:${contactConfig.phoneTel}`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-2.5 rounded-full font-medium no-underline transition-all duration-300"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-medium no-underline transition-all duration-300"
                 style={{
                   height: 'clamp(48px, 4.5vw, 52px)',
                   paddingLeft: '32px',

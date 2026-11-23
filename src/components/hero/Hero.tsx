@@ -36,13 +36,13 @@ export const Hero: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-[100dvh] max-h-[100dvh] bg-black flex flex-col justify-between items-center px-4 sm:px-6 tablet:px-12 desktop:px-[80px] select-none"
+      className="relative w-full min-h-[100dvh] desktop:h-[100dvh] desktop:max-h-[100dvh] bg-black flex flex-col justify-between items-center px-4 sm:px-6 tablet:px-12 desktop:px-[80px] select-none"
       style={{
         backgroundColor: '#000000',
         overflow: 'visible',
       }}
     >
-      <div className="relative w-full max-w-[1440px] h-full flex flex-col justify-between items-center desktop:items-start pt-20 sm:pt-24 tablet:pt-24 desktop:pt-20 pb-3 sm:pb-4 tablet:pb-6 desktop:pb-8 overflow-visible">
+      <div className="relative w-full max-w-[1440px] min-h-[100dvh] desktop:min-h-0 desktop:h-full flex flex-col justify-between items-center desktop:items-start pt-20 sm:pt-24 desktop:pt-20 pb-4 sm:pb-6 desktop:pb-8 overflow-visible">
         {/* Mobile: Unified video + content block in upper-center. Desktop: contents */}
         <div className="flex flex-col items-center w-full my-auto desktop:my-0 desktop:contents">
           <HeroBackground

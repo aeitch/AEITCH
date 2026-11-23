@@ -69,7 +69,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({ metric, index }) => {
     <motion.div
       ref={cardRef}
       variants={CARD_FADE_UP}
-      className="relative group overflow-hidden rounded-2xl p-6 sm:p-7 desktop:p-8 flex flex-col items-center text-center"
+      className="relative group overflow-hidden rounded-2xl p-4 sm:p-6 desktop:p-8 flex flex-col items-center text-center"
       style={{
         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
         border: '1px solid rgba(255, 255, 255, 0.06)',
@@ -85,10 +85,10 @@ export const MetricCard: React.FC<MetricCardProps> = ({ metric, index }) => {
         }}
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         {/* Animated Number */}
         <motion.div
-          className="text-[36px] sm:text-[42px] tablet:text-[48px] desktop:text-[56px] font-bold mb-2 tracking-tight"
+          className="text-[28px] sm:text-[38px] tablet:text-[46px] desktop:text-[56px] font-bold mb-1.5 sm:mb-2 tracking-tight"
           style={{
             color: 'rgb(247, 192, 89)',
             fontFeatureSettings: '"lnum" on, "cv11" on, "cv05" on, "cv13" on',
@@ -104,7 +104,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({ metric, index }) => {
         >
           {displayValue}
           {metric.suffix && (
-            <span className="text-[24px] sm:text-[28px] desktop:text-[32px] ml-1">
+            <span className="text-[18px] sm:text-[24px] desktop:text-[32px] ml-0.5 sm:ml-1">
               {metric.suffix}
             </span>
           )}
