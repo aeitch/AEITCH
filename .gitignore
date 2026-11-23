@@ -46,6 +46,7 @@ skills-lock.json
 # raw / unused frame extractions
 scroll motion animations/
 public/scroll-motion/
+SEO Issues/
 
 # typescript
 *.tsbuildinfo

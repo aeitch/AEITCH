@@ -10,6 +10,7 @@ import { CaseStudiesPage } from './pages/casestudies/CaseStudiesPage';
 import { AboutPage } from './pages/about/AboutPage';
 import { PricingPage } from './pages/pricing/PricingPage';
 import { ContactPage } from './pages/contact/ContactPage';
+import { NotFoundPage } from './pages/notfound/NotFoundPage';
 
 const AppContent: React.FC = () => {
   const { currentPath } = useRouter();
@@ -27,13 +28,15 @@ const AppContent: React.FC = () => {
     '/pricing',
   ];
 
-  const isHome = currentPath === '/' || !knownPaths.includes(currentPath);
+  const isHome = currentPath === '/';
+  const isNotFound = !knownPaths.includes(currentPath);
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-[#FFC247] selection:text-[#1a1203] flex flex-col justify-between">
       <Header />
       <main className="flex-grow">
         {isHome && <HomePage />}
+        {isNotFound && <NotFoundPage />}
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/services/ai-automation" element={<AIAutomationPage />} />
         <Route path="/services/product-development" element={<ServicePage serviceId="product-development" />} />

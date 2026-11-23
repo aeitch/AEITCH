@@ -3,6 +3,78 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/life-at-aeitch",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/services/cloud-devops",
+      "destination": "/services/devops-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/services/platform-engineering-devops",
+      "destination": "/services/devops-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/services/new-product-development",
+      "destination": "/services/product-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/cloud-first-product-engineering",
+      "destination": "/services/product-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-consulting",
+      "destination": "/services/ai-automation",
+      "permanent": true
+    },
+    {
+      "source": "/services/dedicated-engineering-squads",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/our-products",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/our-mvp-showcase",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/saudi-hub",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/vision-2030",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!api/).*)",

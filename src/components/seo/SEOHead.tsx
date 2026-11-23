@@ -5,6 +5,7 @@ export interface SEOHeadProps {
   description: string;
   canonicalPath: string;
   ogType?: string;
+  noindex?: boolean;
   schema?: Record<string, any> | Record<string, any>[];
 }
 
@@ -15,6 +16,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonicalPath,
   ogType = 'website',
+  noindex = false,
   schema,
 }) => {
   useEffect(() => {
@@ -46,12 +48,17 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     const canonicalUrl = `${BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}`;
 
-    // 2. Set Meta Description
+    // 2. Set Robots Meta
+    const robotsMeta = getOrCreateMeta('name', 'robots');
+    const prevRobots = robotsMeta.getAttribute('content');
+    robotsMeta.setAttribute('content', noindex ? 'noindex, follow' : 'index, follow');
+
+    // 3. Set Meta Description
     const metaDesc = getOrCreateMeta('name', 'description');
     const prevDesc = metaDesc.getAttribute('content');
     metaDesc.setAttribute('content', description);
 
-    // 3. Set Canonical Link
+    // 4. Set Canonical Link
     const canonicalLink = getOrCreateCanonical();
     const prevCanonical = canonicalLink.getAttribute('href');
     canonicalLink.setAttribute('href', canonicalUrl);
@@ -91,13 +98,14 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     return () => {
       document.title = originalTitle;
+      if (prevRobots) robotsMeta.setAttribute('content', prevRobots);
       if (prevDesc) metaDesc.setAttribute('content', prevDesc);
       if (prevCanonical) canonicalLink.setAttribute('href', prevCanonical);
       if (scriptTag && scriptTag.parentNode) {
         scriptTag.parentNode.removeChild(scriptTag);
       }
     };
-  }, [title, description, canonicalPath, ogType, schema]);
+  }, [title, description, canonicalPath, ogType, noindex, schema]);
 
   return null;
 };

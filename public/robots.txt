@@ -17,7 +17,8 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Disallow internal API endpoints from crawling
+# Disallow internal API and legacy admin endpoints from crawling
 Disallow: /api/
+Disallow: /admin/
 
 Sitemap: https://aeitch.com/sitemap.xml
