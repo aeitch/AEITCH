@@ -21,4 +21,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://aeitch.com/sitemap.xml
+Sitemap: https://www.aeitch.com/sitemap.xml

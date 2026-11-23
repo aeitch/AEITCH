@@ -9,7 +9,7 @@ export interface SEOHeadProps {
   schema?: Record<string, any> | Record<string, any>[];
 }
 
-const BASE_URL = 'https://aeitch.com';
+const BASE_URL = 'https://www.aeitch.com';
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
