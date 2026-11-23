@@ -5,7 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build:client": "tsc && vite build",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "prerender": "node scripts/prerender.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "seo:check": "node scripts/seo-check.mjs",
+    "build": "tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/generate-sitemap.mjs && node scripts/seo-check.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

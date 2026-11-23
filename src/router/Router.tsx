@@ -6,7 +6,7 @@ interface RouterContextType {
 }
 
 const RouterContext = createContext<RouterContextType>({
-  currentPath: window.location.pathname,
+  currentPath: typeof window !== 'undefined' ? window.location.pathname || '/' : '/',
   navigate: () => {},
 });
 
@@ -14,12 +14,13 @@ export const useRouter = () => useContext(RouterContext);
 
 export interface RouterProps {
   children: ReactNode;
+  initialPath?: string;
 }
 
-export const Router: React.FC<RouterProps> = ({ children }) => {
+export const Router: React.FC<RouterProps> = ({ children, initialPath }) => {
   const [currentPath, setCurrentPath] = useState<string>(() => {
-    // Normalise pathname (fallback to '/' if empty)
-    return window.location.pathname || '/';
+    if (initialPath) return initialPath;
+    return typeof window !== 'undefined' ? window.location.pathname || '/' : '/';
   });
 
   useEffect(() => {
