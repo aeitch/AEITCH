@@ -21,8 +21,16 @@ async function prerender() {
     process.exit(1);
   }
 
-  const templatePath = path.join(distDir, 'index.html');
-  const templateHtml = fs.readFileSync(templatePath, 'utf-8');
+  const originalTemplatePath = path.join(distDir, 'index.original.html');
+  let templateHtml;
+  if (fs.existsSync(originalTemplatePath)) {
+    templateHtml = fs.readFileSync(originalTemplatePath, 'utf-8');
+  } else {
+    templateHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
+    // Sanitize template to ensure clean empty #root
+    templateHtml = templateHtml.replace(/<div id="root">[\s\S]*<\/div>\s*<script type="module"/, '<div id="root"></div>\n    <script type="module"');
+    fs.writeFileSync(originalTemplatePath, templateHtml, 'utf-8');
+  }
 
   // Dynamically import entry-server
   const { render, getAllRoutes } = await import(`file://${ssrEntryPath}?t=${Date.now()}`);
@@ -36,11 +44,8 @@ async function prerender() {
 
     let finalHtml = templateHtml;
 
-    // 1. Replace #root content
-    finalHtml = finalHtml.replace(
-      /<div id="root">[\s\S]*?<\/div>/,
-      `<div id="root">${renderedBody}</div>`
-    );
+    // 1. Replace #root content cleanly
+    finalHtml = finalHtml.replace('<div id="root"></div>', `<div id="root">${renderedBody}</div>`);
 
     // 2. Replace <title>
     finalHtml = finalHtml.replace(
@@ -108,6 +113,17 @@ async function prerender() {
     }
 
     fs.writeFileSync(targetFilePath, finalHtml, 'utf-8');
+
+    // Dual-write ${route}.html alongside ${route}/index.html for universal Clean URLs compatibility
+    if (outputPath.endsWith('/index.html')) {
+      const cleanHtmlPath = path.join(distDir, outputPath.replace(/\/index\.html$/, '.html'));
+      const cleanDir = path.dirname(cleanHtmlPath);
+      if (!fs.existsSync(cleanDir)) {
+        fs.mkdirSync(cleanDir, { recursive: true });
+      }
+      fs.writeFileSync(cleanHtmlPath, finalHtml, 'utf-8');
+    }
+
     console.log(`  ✓ Prerendered: ${routePath.padEnd(52)} -> dist/${outputPath} (${(finalHtml.length / 1024).toFixed(1)} KB)`);
   }
 

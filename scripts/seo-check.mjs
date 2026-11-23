@@ -195,6 +195,12 @@ async function runSeoAudit() {
         fs.rmSync(ssrDir, { recursive: true, force: true });
       } catch {}
     }
+    const originalTemplate = path.resolve(distDir, 'index.original.html');
+    if (fs.existsSync(originalTemplate)) {
+      try {
+        fs.rmSync(originalTemplate, { force: true });
+      } catch {}
+    }
   }
 }
 
