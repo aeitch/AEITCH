@@ -30,7 +30,7 @@ export const StackHubPage: React.FC = () => {
         <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-6 max-w-[800px] mx-auto">
-            <Breadcrumbs items={[{ label: 'Technology Stack', path: '/stack' }]} />
+            <Breadcrumbs align="center" items={[{ label: 'Technology Stack', path: '/stack' }]} />
 
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#76E3DC]" />

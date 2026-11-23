@@ -185,16 +185,27 @@ export const StackDetailPage: React.FC<StackDetailPageProps> = ({ slug }) => {
               Implementation Blueprint & Code Contracts
             </h2>
             {item.implementationBlueprint.map((step, sIdx) => (
-              <div key={sIdx} className="flex flex-col gap-3">
-                <h3 className="font-sans text-[18px] text-white font-medium">
-                  {step.stepTitle}
-                </h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
+              <div key={sIdx} className="flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-white/[0.015]">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#76E3DC]/15 text-[#76E3DC] font-mono text-[12px] font-bold">
+                    {sIdx + 1}
+                  </span>
+                  <h3 className="font-sans text-[18px] sm:text-[20px] text-white font-medium">
+                    {step.stepTitle}
+                  </h3>
+                </div>
+                <p className="text-[14.5px] text-white/70 leading-relaxed pl-10">
                   {step.description}
                 </p>
                 {step.codeOrConfig && (
-                  <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0c] my-2">
-                    <pre className="p-4 sm:p-5 overflow-x-auto text-[13px] font-mono text-[#76E3DC]/90 leading-relaxed">
+                  <div className="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0c] mt-2">
+                    <div className="flex items-center justify-between px-4 py-2 border-b border-white/[0.06] bg-white/[0.02]">
+                      <span className="text-[11px] font-mono text-white/40 uppercase tracking-widest">
+                        {step.codeOrConfig.language}
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-[#76E3DC]/60" />
+                    </div>
+                    <pre className="p-4 sm:p-5 overflow-x-auto text-[13px] font-mono text-[#76E3DC]/95 leading-relaxed selection:bg-[#76E3DC]/20">
                       <code>{step.codeOrConfig.code}</code>
                     </pre>
                   </div>

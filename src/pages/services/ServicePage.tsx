@@ -79,21 +79,24 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
       {/* 1. HERO SECTION */}
       {/* ========================================================================= */}
       <section className="relative z-10 w-full pt-32 sm:pt-36 tablet:pt-40 desktop:pt-44 pb-20 px-6 tablet:px-12 desktop:px-[80px]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col desktop:flex-row items-center justify-between gap-12 desktop:gap-16">
-          {/* Left Column: Heading, Badges, Value Prop & CTAs */}
-          <motion.div
-            key={`hero-${service.id}`}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center desktop:items-start text-center desktop:text-left gap-6 max-w-[680px]"
-          >
-            <Breadcrumbs
-              items={[
-                { label: 'Services', path: '/solutions' },
-                { label: service.title, path: service.path },
-              ]}
-            />
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-8 desktop:gap-12">
+          {/* Top Breadcrumb Navigation */}
+          <Breadcrumbs
+            items={[
+              { label: 'Services', path: '/solutions' },
+              { label: service.title, path: service.path },
+            ]}
+          />
+
+          <div className="w-full flex flex-col desktop:flex-row items-center justify-between gap-12 desktop:gap-16">
+            {/* Left Column: Heading, Badges, Value Prop & CTAs */}
+            <motion.div
+              key={`hero-${service.id}`}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-center desktop:items-start text-center desktop:text-left gap-6 max-w-[680px]"
+            >
 
             {/* Tag Badge */}
             <div
@@ -194,6 +197,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
               </div>
             </div>
           </motion.div>
+        </div>
         </div>
       </section>
 

@@ -63,24 +63,66 @@ export const STACK_PAGES: StackPageItem[] = [
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Define Typed State Schema',
-        description: 'Enforce strict schema validation on shared graph memory.',
+        stepTitle: 'Step 1: Define Typed State Schema & Reducers',
+        description: 'Define the shared memory schema using TypedDict with operator.add reducers for append-only audit tracking.',
         codeOrConfig: {
           language: 'python',
-          code: `from typing import TypedDict, Annotated, List
+          code: `from typing import TypedDict, Annotated, List, Optional
+import operator
 from langgraph.graph import StateGraph, END
 
 class AgentSwarmState(TypedDict):
     input_prompt: str
-    intermediate_artifacts: List[str]
-    audit_log: List[str]
-    iteration_count: int
-    is_terminal: bool`,
+    intermediate_steps: Annotated[List[str], operator.add]
+    research_summary: Optional[str]
+    verification_passed: bool
+    retry_count: int
+    final_output: Optional[str]`,
         },
       },
       {
-        stepTitle: 'Step 2: Compile Graph with Checkpointer',
-        description: 'Bind PostgreSQL checkpointer to enable persistent resumable execution.',
+        stepTitle: 'Step 2: Implement Agent Nodes & Conditional Routing',
+        description: 'Create specialized execution nodes and bind a conditional edge to self-reflect or escalate upon validation failure.',
+        codeOrConfig: {
+          language: 'python',
+          code: `def researcher_node(state: AgentSwarmState):
+    # Specialized research agent tool calls
+    return {"intermediate_steps": ["Gathered schema metadata"]}
+
+def verification_node(state: AgentSwarmState):
+    passed = len(state.get("intermediate_steps", [])) > 0
+    return {"verification_passed": passed, "retry_count": state["retry_count"] + 1}
+
+def route_next_step(state: AgentSwarmState) -> str:
+    if state["verification_passed"]:
+        return "human_approval"
+    if state["retry_count"] >= 3:
+        return "fallback_escalation"
+    return "researcher"`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Compile Graph with Postgres Checkpointer',
+        description: 'Attach AsyncPostgresSaver to persist checkpoints across human-in-the-loop interruptions.',
+        codeOrConfig: {
+          language: 'python',
+          code: `from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+
+workflow = StateGraph(AgentSwarmState)
+workflow.add_node("researcher", researcher_node)
+workflow.add_node("verifier", verification_node)
+workflow.set_entry_point("researcher")
+
+workflow.add_conditional_edges("verifier", route_next_step, {
+    "researcher": "researcher",
+    "human_approval": END,
+    "fallback_escalation": END,
+})
+
+# Compile with persistent checkpointing and human interruption breakpoint
+checkpointer = AsyncPostgresSaver.from_conn_string("postgresql://user:pass@db:5432/agents")
+app = workflow.compile(checkpointer=checkpointer, interrupt_before=["human_approval"])`,
+        },
       },
     ],
   },
@@ -119,8 +161,50 @@ class AgentSwarmState(TypedDict):
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Terraform Cluster Provisioning',
-        description: 'Standardize modular cluster definitions across AWS and GCP.',
+        stepTitle: 'Step 1: Multi-Cluster VPC Peering & CIDR Allocation',
+        description: 'Design non-overlapping CIDR blocks across AWS (10.100.0.0/16) and GCP (10.200.0.0/16) interconnected via redundant IPSec VPN tunnels.',
+        codeOrConfig: {
+          language: 'hcl',
+          code: `module "aws_vpc" {
+  source   = "terraform-aws-modules/vpc/aws"
+  cidr     = "10.100.0.0/16"
+  azs      = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  subnets  = ["10.100.1.0/24", "10.100.2.0/24", "10.100.3.0/24"]
+  tags     = { "kubernetes.io/cluster/eks-prod" = "shared" }
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Install Cilium eBPF CNI with WireGuard Encryption',
+        description: 'Deploy Cilium with transparent kernel-level WireGuard encryption for all inter-node pod traffic across cloud boundaries.',
+        codeOrConfig: {
+          language: 'yaml',
+          code: `helm upgrade --install cilium cilium/cilium \\
+  --namespace kube-system \\
+  --set encryption.enabled=true \\
+  --set encryption.type=wireguard \\
+  --set cluster.name=eks-us-east \\
+  --set cluster.id=1 \\
+  --set clustermesh.useAPIServer=true`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Federated Service Mesh Discovery',
+        description: 'Expose cross-cluster global services so pods in AWS seamlessly resolve endpoints running in GCP with automatic failover.',
+        codeOrConfig: {
+          language: 'yaml',
+          code: `apiVersion: v1
+kind: Service
+metadata:
+  name: order-service-global
+  annotations:
+    io.cilium/global-service: "true"
+    io.cilium/shared-service: "true"
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080`,
+        },
       },
     ],
   },
@@ -156,8 +240,55 @@ class AgentSwarmState(TypedDict):
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: OIDC Authentication Configuration',
-        description: 'Eliminate static AWS keys using role-based GitHub Actions OIDC federated auth.',
+        stepTitle: 'Step 1: OIDC Authentication Configuration (Zero Secrets)',
+        description: 'Configure GitHub Actions OIDC federation with AWS IAM to grant temporary STS session credentials without long-lived access keys.',
+        codeOrConfig: {
+          language: 'hcl',
+          code: `resource "aws_iam_openid_connect_provider" "github" {
+  url             = "https://token.actions.githubusercontent.com"
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Terragrunt Multi-Account Remote State Architecture',
+        description: 'Enforce DRY backend configurations with encrypted S3 buckets and DynamoDB distributed state locking.',
+        codeOrConfig: {
+          language: 'hcl',
+          code: `remote_state {
+  backend = "s3"
+  config = {
+    bucket         = "aeitch-terraform-state-\${get_aws_account_id()}"
+    key            = "\${path_relative_to_include()}/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = "terraform-locks"
+  }
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Automated Drift Detection & PR Plan Pipeline',
+        description: 'Automate speculative plans on pull requests and schedule daily cron drift detection to alert Slack on unauthorized mutations.',
+        codeOrConfig: {
+          language: 'yaml',
+          code: `name: Terraform Plan
+on: [pull_request]
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/GitHubTerraformPlan
+          aws-region: us-east-1
+      - run: terraform init && terraform plan -no-color`,
+        },
       },
     ],
   },
@@ -193,45 +324,144 @@ class AgentSwarmState(TypedDict):
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: HNSW Index Creation',
-        description: 'Build fast cosine similarity index with tuned m and ef_construction parameters.',
+        stepTitle: 'Step 1: Schema Setup with HNSW Vector & Full-Text Columns',
+        description: 'Initialize pgvector extension and create a table pairing dense embeddings with an auto-generated tsvector keyword column.',
+        codeOrConfig: {
+          language: 'sql',
+          code: `CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE documents (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL,
+    content TEXT NOT NULL,
+    tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,
+    embedding VECTOR(1536) NOT NULL
+);
+
+-- Build high-speed HNSW index for cosine distance
+CREATE INDEX idx_docs_hnsw ON documents 
+USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64);
+CREATE INDEX idx_docs_tsv ON documents USING gin(tsv);`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Reciprocal Rank Fusion (RRF) SQL Query Function',
+        description: 'Combine top vector results with top keyword results using standard Reciprocal Rank Fusion scoring (k=60).',
+        codeOrConfig: {
+          language: 'sql',
+          code: `WITH vector_matches AS (
+    SELECT id, ROW_NUMBER() OVER (ORDER BY embedding <=> $1) AS v_rank
+    FROM documents WHERE tenant_id = $3 LIMIT 50
+),
+text_matches AS (
+    SELECT id, ROW_NUMBER() OVER (ORDER BY ts_rank_cd(tsv, plainto_tsquery('english', $2)) DESC) AS t_rank
+    FROM documents WHERE tenant_id = $3 AND tsv @@ plainto_tsquery('english', $2) LIMIT 50
+)
+SELECT d.id, d.content,
+       COALESCE(1.0 / (60 + v.v_rank), 0.0) + COALESCE(1.0 / (60 + t.t_rank), 0.0) AS rrf_score
+FROM documents d
+LEFT JOIN vector_matches v ON d.id = v.id
+LEFT JOIN text_matches t ON d.id = t.id
+WHERE v.id IS NOT NULL OR t.id IS NOT NULL
+ORDER BY rrf_score DESC LIMIT 10;`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Multi-Tenant Row-Level Security Enforcement',
+        description: 'Enforce database-level tenant isolation so that embeddings from one enterprise can never leak into another tenant search.',
+        codeOrConfig: {
+          language: 'sql',
+          code: `ALTER TABLE documents ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY tenant_isolation_policy ON documents
+FOR ALL
+USING (tenant_id = NULLIF(current_setting('app.current_tenant_id', true), '')::UUID);`,
+        },
       },
     ],
   },
   {
     slug: 'fastapi-async-llm-gateways',
-    title: 'FastAPI Asynchronous LLM Proxy & Streaming Gateways',
+    title: 'FastAPI Asynchronous LLM Proxy & Streaming Gateway Architecture',
     seoTitle: 'FastAPI Async LLM Streaming Gateway Architecture | AEITCH',
-    metaDescription: 'Engineering high-throughput, low-latency LLM proxy gateways in Python using FastAPI, Server-Sent Events (SSE), and token rate limiters.',
-    category: 'Backend & AI',
+    metaDescription: 'High-performance Python LLM gateway architecture using FastAPI, uvloop, Server-Sent Events (SSE) streaming, and token rate limiting.',
+    category: 'API & Microservices',
     primaryPillar: {
-      name: 'Custom Software & Systems',
+      name: 'Custom Software',
       path: '/services/custom-software',
     },
     summaryDefinition:
-      'FastAPI async LLM gateways provide a centralized, resilient proxy layer that routes, streams, rate-limits, and caches AI model requests across Anthropic, OpenAI, and self-hosted model backends.',
+      'FastAPI asynchronous LLM gateways act as resilient reverse proxies between user-facing applications and upstream foundation models, providing streaming tokens, quota enforcement, prompt caching, and cost governance.',
     architecturalOverview:
-      'By utilizing Python 3.12+ asyncio and uvloop, a single FastAPI instance can handle thousands of concurrent streaming Server-Sent Events (SSE) connections with minimal memory footprint, enforcing enterprise token quotas and semantic caching.',
-    coreTechnologies: ['Python', 'FastAPI', 'uvloop', 'Redis', 'Server-Sent Events', 'Docker'],
+      'Built on ASGI with uvloop, the gateway handles 10,000+ concurrent open SSE connections per container. Requests are authenticated, rate-limited via Redis sliding-window algorithms, logged to ClickHouse for analytics, and proxied with zero memory buffering.',
+    coreTechnologies: ['FastAPI', 'uvloop', 'Redis', 'OpenTelemetry', 'Python 3.12+'],
     whenToUse: [
-      'Enterprises needing multi-model failover (Claude -> GPT-4 -> Local Llama)',
-      'Applications requiring centralized token budgeting and compliance auditing',
+      'Enterprises needing centralized LLM key management and cost tracking across squads',
+      'Applications delivering real-time generative UI or chat completions via SSE',
     ],
     whenNotToUse: [
-      'Single-developer prototype apps with direct client-to-API access',
+      'Simple internal apps making fewer than 10 requests per minute with a single API key',
     ],
     comparisonTable: {
-      headers: ['Metric', 'FastAPI Gateway Proxy', 'Direct SDK Calls from Frontend'],
+      headers: ['Architecture', 'Dedicated Async Gateway', 'Direct Client-to-OpenAI Calls'],
       rows: [
-        ['API Key Security', 'Keys remain hidden in private backend VPC', 'Keys exposed or tied to brittle client sessions'],
-        ['Model Fallback', 'Automated instant failover on provider outage', 'Hardcoded exceptions crash user UI'],
-        ['Token Analytics', 'Centralized audit log for cost attribution', 'Fragmented, untracked client billing'],
+        ['Key Security', 'API keys strictly isolated in server-side VPC', 'Exposed in client bundle or distributed to developers'],
+        ['Budget Caps', 'Hard monthly spend quotas enforced per tenant', 'Uncontrolled usage risking unexpected billing spikes'],
+        ['Audit Logging', '100% of prompts & token usage logged for compliance', 'No centralized internal audit trail'],
       ],
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Streaming Response Generator',
-        description: 'Implement async streaming generator yielding chunks as Server-Sent Events.',
+        stepTitle: 'Step 1: Asynchronous Event Loop & App Initialization',
+        description: 'Configure uvloop with FastAPI lifespan handlers to pool HTTP client sessions.',
+        codeOrConfig: {
+          language: 'python',
+          code: `import uvloop
+import asyncio
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+import httpx
+
+uvloop.install()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.client = httpx.AsyncClient(timeout=60.0)
+    yield
+    await app.state.client.aclose()
+
+app = FastAPI(lifespan=lifespan)`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Server-Sent Events (SSE) Token Streaming Endpoint',
+        description: 'Stream tokens chunk-by-chunk to clients without buffering entire responses in server RAM.',
+        codeOrConfig: {
+          language: 'python',
+          code: `from fastapi.responses import StreamingResponse
+
+async def token_stream_generator(upstream_stream):
+    async for chunk in upstream_stream:
+        yield f"data: {chunk.choices[0].delta.content or ''}\\n\\n"
+    yield "data: [DONE]\\n\\n"
+
+@app.post("/v1/chat/stream")
+async def chat_stream(request: ChatRequest):
+    upstream = await app.state.client.stream(...)
+    return StreamingResponse(token_stream_generator(upstream), media_type="text/event-stream")`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Sliding-Window Token Rate Limiting with Redis',
+        description: 'Enforce real-time rate limits per tenant using Redis atomic Lua script execution.',
+        codeOrConfig: {
+          language: 'python',
+          code: `async def enforce_quota(tenant_id: str, requested_tokens: int, redis_client):
+    key = f"quota:{tenant_id}"
+    used = await redis_client.incrby(key, requested_tokens)
+    if used > 100000:
+        raise HTTPException(status_code=429, detail="Monthly LLM token quota exceeded")`,
+        },
       },
     ],
   },
@@ -239,73 +469,179 @@ class AgentSwarmState(TypedDict):
     slug: 'nextjs-typescript-enterprise-saas',
     title: 'Next.js & TypeScript Enterprise SaaS Architecture',
     seoTitle: 'Next.js & TypeScript Enterprise SaaS Architecture | AEITCH',
-    metaDescription: 'Modern enterprise SaaS architecture guide using Next.js App Router, TypeScript, Tailwind CSS, Prisma, and multi-tenant database isolation.',
-    category: 'Frontend & SaaS',
+    metaDescription: 'Enterprise frontend architecture blueprint: Next.js App Router, Server Components, multi-tenant wildcard routing, and edge middleware.',
+    category: 'Product Engineering',
     primaryPillar: {
-      name: 'Product Development & MVP',
+      name: 'Product Development',
       path: '/services/product-development',
     },
     summaryDefinition:
-      'Next.js and TypeScript enterprise SaaS architecture pairs React Server Components with strict end-to-end type safety, automated tenant isolation, and edge-rendered user interfaces.',
+      'Next.js enterprise SaaS architecture pairs React Server Components (RSC) with strict TypeScript contracts, multi-tenant subdomain resolution, and optimistic mutations for instant, type-safe user experiences.',
     architecturalOverview:
-      'Server Components execute close to the data store, drastically cutting client bundle size. Type-safe ORMs and schema validators eliminate data discrepancies between database tables, server actions, and UI components.',
-    coreTechnologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma'],
+      'By executing database queries and security policies inside Server Components, client JavaScript bundles are reduced by up to 60%. Edge middleware inspects host headers to dynamically route requests to dedicated enterprise tenant schemas.',
+    coreTechnologies: ['Next.js 15+', 'React 19', 'TypeScript', 'Tailwind CSS', 'Vercel Edge'],
     whenToUse: [
-      'High-velocity B2B SaaS platforms requiring rapid iteration and SEO visibility',
-      'Applications needing rich interactive dashboards with fast initial page loads',
+      'B2B SaaS products requiring sub-second First Contentful Paint and rich interactive dashboards',
+      'Multi-tenant platforms requiring custom white-label domains per enterprise client',
     ],
     whenNotToUse: [
-      'Pure static marketing pages with zero user authentication or backend state',
+      'Simple brochure landing pages that require zero authentication or dynamic data',
     ],
     comparisonTable: {
-      headers: ['Architecture Aspect', 'Next.js Server Components', 'Traditional Client-Side SPA'],
+      headers: ['Design Pattern', 'Next.js App Router RSC', 'Legacy Client SPA (Create-React-App)'],
       rows: [
-        ['Initial Page Load', 'Pre-rendered HTML sent instantly from edge', 'Empty shell downloaded; requires JS execution'],
-        ['Client JS Bundle Size', 'Minimal (server components stripped from client)', 'Heavy (all application code sent to browser)'],
-        ['Data Security', 'Backend secrets stay entirely on server', 'API logic exposed in client browser bundles'],
+        ['Client JS Bundle', 'Only interactive leaf components shipped to browser', 'Entire application bundle shipped up-front'],
+        ['Data Waterfall', 'Direct async server fetching with parallel Suspense', 'Chained client-side fetch calls causing layout shifts'],
+        ['SEO Capabilities', '100% crawlable server-rendered semantic HTML', 'Empty HTML shell requiring client JS execution'],
       ],
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Multi-Tenant Middleware',
-        description: 'Extract organization context from subdomain or session headers.',
+        stepTitle: 'Step 1: Multi-Tenant Hostname Resolution in Edge Middleware',
+        description: 'Intercept incoming requests at the edge and rewrite custom enterprise domains to tenant slugs.',
+        codeOrConfig: {
+          language: 'typescript',
+          code: `import { NextRequest, NextResponse } from 'next/server';
+
+export function middleware(req: NextRequest) {
+  const hostname = req.headers.get('host') || '';
+  const currentHost = hostname.replace(':3000', '');
+  
+  if (currentHost.endsWith('.aeitch.com')) {
+    const subdomain = currentHost.replace('.aeitch.com', '');
+    return NextResponse.rewrite(new URL(\`/tenant/\${subdomain}\${req.nextUrl.pathname}\`, req.url));
+  }
+  return NextResponse.next();
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Streaming Server Component with Suspense',
+        description: 'Render UI skeletons immediately and stream high-latency dashboard metrics as promises resolve.',
+        codeOrConfig: {
+          language: 'tsx',
+          code: `import { Suspense } from 'react';
+import { MetricsSkeleton } from '@/components/skeletons';
+
+async function SlowMetrics() {
+  const data = await fetchMetricsFromDb();
+  return <MetricsGrid data={data} />;
+}
+
+export default function DashboardPage() {
+  return (
+    <div className="p-8">
+      <h1>Executive Analytics</h1>
+      <Suspense fallback={<MetricsSkeleton />}>
+        <SlowMetrics />
+      </Suspense>
+    </div>
+  );
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Type-Safe Server Action with Optimistic Updates',
+        description: 'Execute mutations directly on the server with automated revalidation and client rollback safety.',
+        codeOrConfig: {
+          language: 'typescript',
+          code: `'use server';
+import { revalidateTag } from 'next/cache';
+import { z } from 'zod';
+
+const UpdateSchema = z.object({ name: z.string().min(2) });
+
+export async function updateWorkspace(formData: FormData) {
+  const parsed = UpdateSchema.parse({ name: formData.get('name') });
+  await db.workspace.update({ where: { id }, data: { name: parsed.name } });
+  revalidateTag('workspace-details');
+}`,
+        },
       },
     ],
   },
   {
     slug: 'apache-kafka-event-streaming-systems',
-    title: 'Apache Kafka Distributed Event Streaming Backbones',
-    seoTitle: 'Apache Kafka Event Streaming Architecture | AEITCH',
-    metaDescription: 'Production architecture for high-throughput distributed event streaming using Apache Kafka, schema registries, and consumer group partitioning.',
+    title: 'Apache Kafka Distributed Event Streaming Architecture',
+    seoTitle: 'Apache Kafka Event Streaming Architecture Blueprint | AEITCH',
+    metaDescription: 'Designing resilient event-driven systems using Apache Kafka, schema governance, transactional outbox patterns, and consumer group scaling.',
     category: 'Distributed Systems',
     primaryPillar: {
-      name: 'Custom Software & Systems',
+      name: 'Custom Software',
       path: '/services/custom-software',
     },
     summaryDefinition:
-      'Apache Kafka event streaming architecture establishes an immutable, fault-tolerant log of business domain events, enabling decoupled microservices to process high-throughput data asynchronously.',
+      'Apache Kafka distributed event streaming serves as the enterprise central nervous system, decoupling asynchronous microservices through high-throughput, fault-tolerant append-only log streams.',
     architecturalOverview:
-      'By structuring communication as publish-subscribe event logs rather than direct HTTP requests, systems gain horizontal scalability, persistent backpressure management, and temporal replayability.',
-    coreTechnologies: ['Apache Kafka', 'Kafka Connect', 'Schema Registry', 'Go', 'Docker'],
+      'Messages are partitioned across broker clusters to allow horizontal consumer group scaling. The Transactional Outbox pattern guarantees that database state updates and published Kafka events execute atomically with zero message loss.',
+    coreTechnologies: ['Apache Kafka', 'Confluent Schema Registry', 'Avro', 'Go', 'Docker'],
     whenToUse: [
-      'Systems processing thousands of transactions per second (fintech, IoT, ecommerce)',
-      'Architectures requiring audit logs where events can be replayed from any timestamp',
+      'High-volume event pipelines processing 10,000+ events per second',
+      'Event-sourcing, financial audit ledgers, and distributed state replication',
     ],
     whenNotToUse: [
-      'Simple CRUD web applications with low concurrency and simple database reads',
+      'Simple request-response CRUD operations or low-volume task dispatching',
     ],
     comparisonTable: {
-      headers: ['Feature', 'Apache Kafka Event Log', 'Traditional Message Queue (RabbitMQ)'],
+      headers: ['Dimension', 'Apache Kafka Log Stream', 'Traditional Message Broker (RabbitMQ)'],
       rows: [
-        ['Message Persistence', 'Immutable log retained for days, months, or years', 'Messages typically deleted upon consumer ACK'],
-        ['Throughput Capacity', 'Millions of events per second with partition scaling', 'Tens of thousands of messages per second'],
-        ['Event Replay', 'Consumers can reset offsets and re-read historical streams', 'Replay requires custom architectural workarounds'],
+        ['Message Storage', 'Durable, persistent log retained for days/months', 'Ephemeral queue deleted upon consumer ACK'],
+        ['Replayability', 'Consumers can rewind offsets to replay past events', 'Cannot replay consumed messages without re-queuing'],
+        ['Throughput Capacity', 'Millions of events/sec via disk sequential writes', 'Tens of thousands of events/sec before memory saturation'],
       ],
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Partitioning Strategy Design',
-        description: 'Key partition distribution to guarantee strict ordering for entities.',
+        stepTitle: 'Step 1: Transactional Outbox Schema Pattern',
+        description: 'Ensure atomic consistency between PostgreSQL entity updates and Kafka publishing via outbox table.',
+        codeOrConfig: {
+          language: 'sql',
+          code: `CREATE TABLE outbox_events (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    aggregate_type VARCHAR(64) NOT NULL,
+    aggregate_id VARCHAR(64) NOT NULL,
+    payload JSONB NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    processed BOOLEAN DEFAULT FALSE
+);
+
+-- Mutation and outbox insertion in one atomic SQL transaction
+BEGIN;
+UPDATE accounts SET balance = balance - 100 WHERE id = 'acc-123';
+INSERT INTO outbox_events (aggregate_type, aggregate_id, payload) 
+VALUES ('Account', 'acc-123', '{"event": "debited", "amount": 100}');
+COMMIT;`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Idempotent Producer Configuration in Go',
+        description: 'Configure producer with acks=all and exact duplicate filtering enabled at the broker level.',
+        codeOrConfig: {
+          language: 'go',
+          code: `config := sarama.NewConfig()
+config.Producer.RequiredAcks = sarama.WaitForAll // acks=all
+config.Producer.Idempotent = true
+config.Net.MaxOpenRequests = 1 // Required for strict order preservation
+config.Producer.Return.Successes = true
+
+producer, err := sarama.NewSyncProducer([]string{"kafka-broker:9092"}, config)`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Consumer Group with Dead Letter Queue (DLQ) Fallback',
+        description: 'Isolate poison-pill messages after 3 retries into a DLQ topic without blocking the partition consumer offset.',
+        codeOrConfig: {
+          language: 'go',
+          code: `func (h *ConsumerHandler) ConsumeClaim(sess sarama.ConsumerGroupSession, claim sarama.ConsumerGroupClaim) error {
+    for msg := range claim.Messages() {
+        if err := processMessage(msg.Value); err != nil {
+            h.routeToDLQ(msg, err) // Route poison pill to error topic
+        }
+        sess.MarkMessage(msg, "") // Commit offset so pipeline continues
+    }
+    return nil
+}`,
+        },
       },
     ],
   },
@@ -313,110 +649,279 @@ class AgentSwarmState(TypedDict):
     slug: 'go-high-throughput-microservices',
     title: 'Go High-Throughput Concurrent Microservices Architecture',
     seoTitle: 'Go High-Throughput Microservices Architecture | AEITCH',
-    metaDescription: 'Architecting ultra-low latency, concurrent enterprise microservices in Golang using goroutines, channels, gRPC, and structured logging.',
-    category: 'Backend Engineering',
+    metaDescription: 'Building sub-15ms transactional backend services in Go with gRPC, worker pools, zero-allocation serialization, and Prometheus instrumentation.',
+    category: 'Backend Systems',
     primaryPillar: {
-      name: 'Custom Software & Systems',
+      name: 'Custom Software',
       path: '/services/custom-software',
     },
     summaryDefinition:
-      'Go microservices architecture leverages compiled binaries, lightweight goroutines, and strict memory efficiency to build distributed enterprise backends capable of processing tens of thousands of requests per second.',
+      'Go high-throughput microservices architecture leverages lightweight goroutines, non-blocking network I/O, and compiled native binaries to deliver sub-15ms latency SLAs under high concurrent load.',
     architecturalOverview:
-      'Go eliminates runtime virtual machine overhead while offering native CSP concurrency. Services communicate via binary gRPC protocols with Protocol Buffers, achieving 5–10x serialization speed improvements over JSON over HTTP/1.1.',
-    coreTechnologies: ['Go (Golang)', 'gRPC', 'Protocol Buffers', 'PostgreSQL', 'Docker'],
+      'Services expose low-latency gRPC interfaces backed by internal worker pools. Synchronous memory allocations are minimized through sync.Pool reuse, and telemetry metrics (p95/p99) are streamed to Prometheus via OpenTelemetry.',
+    coreTechnologies: ['Go 1.22+', 'gRPC', 'Protobuf', 'PostgreSQL', 'Prometheus'],
     whenToUse: [
-      'High-frequency API gateways, rate limiters, and telemetry aggregation engines',
-      'Microservices requiring minimal memory footprints and instant container startup',
+      'Financial transaction processing, order routing, and low-latency bidding engines',
+      'Services demanding 50,000+ requests per second on minimal cloud CPU footprints',
     ],
     whenNotToUse: [
-      'Heavy statistical data analysis pipelines requiring Python/PyTorch/Pandas',
+      'Data science, machine learning model training, or rapid exploratory prototyping',
     ],
     comparisonTable: {
-      headers: ['Attribute', 'Go Microservices', 'Java / Spring Boot'],
+      headers: ['Metric', 'Go Microservices', 'Node.js / Python FastAPIs'],
       rows: [
-        ['Binary Startup Time', '< 20 milliseconds', '3 to 15 seconds (JVM warmup)'],
-        ['Container Image Size', '~15–25MB scratch/alpine image', '~250–500MB with JRE'],
-        ['Concurrency Model', 'Lightweight goroutines (~2KB stack initial)', 'OS-level kernel threads (~1MB stack)'],
+        ['Concurrency Model', 'Preemptive M:N goroutine scheduling across all CPU cores', 'Single-threaded event loop (Node) or GIL contention (Python)'],
+        ['Memory Footprint', '15–30 MB baseline per container instance', '150–400 MB baseline per container instance'],
+        ['Cold Start Time', '< 25 milliseconds native compiled binary', '1–3 seconds runtime initialization'],
       ],
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Worker Pool Implementation',
-        description: 'Constrain maximum concurrent goroutines using buffered channels.',
+        stepTitle: 'Step 1: Bounded Worker Pool with Goroutines & Channels',
+        description: 'Prevent goroutine explosion during traffic surges by dispatching jobs to a fixed pool of persistent workers.',
+        codeOrConfig: {
+          language: 'go',
+          code: `type Job struct {
+    Data   []byte
+    Result chan error
+}
+
+type WorkerPool struct {
+    jobs chan Job
+}
+
+func NewWorkerPool(workers, queueSize int) *WorkerPool {
+    pool := &WorkerPool{jobs: make(chan Job, queueSize)}
+    for i := 0; i < workers; i++ {
+        go func() {
+            for job := range pool.jobs {
+                job.Result <- processJob(job.Data)
+            }
+        }()
+    }
+    return pool
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Low-Latency gRPC Server with Streaming Interceptors',
+        description: 'Expose binary Protobuf interfaces with logging, metrics, and panic recovery middleware.',
+        codeOrConfig: {
+          language: 'go',
+          code: `func main() {
+    lis, _ := net.Listen("tcp", ":50051")
+    grpcServer := grpc.NewServer(
+        grpc.UnaryInterceptor(telemetryUnaryInterceptor),
+    )
+    pb.RegisterTransactionServiceServer(grpcServer, &TransactionServer{})
+    grpcServer.Serve(lis)
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Prometheus Histogram Latency Metrics Emission',
+        description: 'Emit millisecond-accurate latency distribution metrics to monitor p99 performance regressions.',
+        codeOrConfig: {
+          language: 'go',
+          code: `var latencyHistogram = prometheus.NewHistogramVec(
+    prometheus.HistogramOpts{
+        Name:    "grpc_request_duration_seconds",
+        Help:    "RPC latency distributions",
+        Buckets: []float64{0.001, 0.005, 0.010, 0.025, 0.050, 0.100},
+    },
+    []string{"method", "status"},
+)`,
+        },
       },
     ],
   },
   {
     slug: 'rust-low-latency-backend-engineering',
-    title: 'Rust Memory-Safe Low-Latency Backend Systems',
-    seoTitle: 'Rust Low-Latency Backend Architecture & Memory Safety | AEITCH',
-    metaDescription: 'Building mission-critical, zero-cost abstraction backend systems in Rust without garbage collection pauses for financial and real-time computing.',
+    title: 'Rust Memory-Safe Low-Latency Backend Systems Architecture',
+    seoTitle: 'Rust Low-Latency Backend Architecture | AEITCH',
+    metaDescription: 'Building ultra-low-latency, zero-cost abstraction backend systems using Rust, Axum, Tokio asynchronous runtime, and deadpool.',
     category: 'Systems Engineering',
     primaryPillar: {
-      name: 'Custom Software & Systems',
+      name: 'Custom Software',
       path: '/services/custom-software',
     },
     summaryDefinition:
-      'Rust backend architecture delivers C-level bare-metal performance and memory safety without a garbage collector, eliminating tail latency spikes in mission-critical distributed systems.',
+      'Rust systems engineering achieves predictable sub-millisecond execution times without garbage collection pauses, combining compile-time memory safety with maximum hardware utilization.',
     architecturalOverview:
-      'Through its affine type system and ownership borrow checker, Rust guarantees freedom from data races and null pointer exceptions at compile time. Actix-web and Tokio asynchronous runtimes achieve industry-leading throughput benchmarks.',
-    coreTechnologies: ['Rust', 'Tokio', 'Actix-web / Axum', 'SQLx', 'gRPC'],
+      'Using the multi-threaded Tokio runtime and Axum web framework, requests are handled via zero-cost async futures. State is shared safely across threads via Arc without data races, delivering predictable p99.9 latency under massive load.',
+    coreTechnologies: ['Rust 1.78+', 'Tokio', 'Axum', 'Tower', 'SQLx', 'Serde'],
     whenToUse: [
-      'Financial transaction engines requiring deterministic p99 latency guarantees',
-      'Compute-intensive cryptography, real-time audio/video processing, and network proxies',
+      'High-frequency trading, packet inspection, cryptography, and real-time streaming',
+      'Services where garbage collection pause spikes (GC jitter) cannot be tolerated',
     ],
     whenNotToUse: [
-      'Quick early-stage CRUD prototypes where developer velocity outweighs raw performance',
+      'Simple web MVPs requiring rapid UI iteration by junior full-stack developers',
     ],
     comparisonTable: {
-      headers: ['Performance Metric', 'Rust (Tokio / Axum)', 'Node.js / Express'],
+      headers: ['Feature', 'Rust Systems', 'Java / Go Managed Runtimes'],
       rows: [
-        ['Garbage Collection Pauses', 'Zero (deterministic compile-time deallocation)', 'Periodic V8 GC sweeps causing latency spikes'],
-        ['Memory Consumption', 'Minimal (exact byte control, no VM overhead)', 'Moderate to high (V8 heap allocation)'],
-        ['CPU Bound Concurrency', 'True multi-core parallelism across OS threads', 'Single-threaded event loop (requires clustering)'],
+        ['Garbage Collection', 'Zero GC (deterministic compile-time RAII cleanup)', 'Periodic stop-the-world or concurrent GC cycles'],
+        ['Memory Safety', 'Guaranteed without garbage collection via Borrow Checker', 'Guaranteed via runtime overhead and pointers'],
+        ['Binary Footprint', '< 15 MB standalone static native binary', 'Requires heavy JVM or Go runtime embedded'],
       ],
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: Async Axum Router Setup',
-        description: 'Initialize Tokio runtime with type-safe state extractors.',
+        stepTitle: 'Step 1: Multi-Threaded Tokio Runtime & Axum Router Scaffold',
+        description: 'Initialize high-throughput async HTTP/WebSocket server with thread affinity tuned to host CPU cores.',
+        codeOrConfig: {
+          language: 'rust',
+          code: `use axum::{routing::get, Router};
+use std::sync::Arc;
+
+struct AppState {
+    db_pool: sqlx::PgPool,
+}
+
+#[tokio::main]
+async fn main() {
+    let pool = sqlx::PgPool::connect("postgres://user:pass@db/prod").await.unwrap();
+    let state = Arc::new(AppState { db_pool: pool });
+
+    let app = Router::new()
+        .route("/health", get(|| async { "OK" }))
+        .with_state(state);
+
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    axum::serve(listener, app).await.unwrap();
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Zero-Copy JSON Deserialization with Serde',
+        description: 'Eliminate memory allocations by borrowing string slices (&str) directly from incoming request byte buffers.',
+        codeOrConfig: {
+          language: 'rust',
+          code: `use serde::Deserialize;
+
+#[derive(Deserialize)]
+struct TransactionPayload<'a> {
+    #[serde(borrow)]
+    transaction_id: &'a str,
+    amount_cents: u64,
+    currency: &'a str,
+}`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Graceful Shutdown Signal Handler with Tower Layers',
+        description: 'Catch SIGTERM signals in Kubernetes pods and allow active in-flight database transactions to complete before process exit.',
+        codeOrConfig: {
+          language: 'rust',
+          code: `async fn shutdown_signal() {
+    tokio::signal::ctrl_c()
+        .await
+        .expect("Failed to install CTRL+C signal handler");
+    println!("Gracefully shutting down worker threads...");
+}`,
+        },
       },
     ],
   },
   {
     slug: 'argocd-gitops-continuous-delivery',
-    title: 'ArgoCD GitOps & Automated Canary Deployments',
+    title: 'ArgoCD GitOps & Automated Canary Deployment Architecture',
     seoTitle: 'ArgoCD GitOps & Canary Deployment Architecture | AEITCH',
-    metaDescription: 'Implementing declarative GitOps continuous delivery on Kubernetes using ArgoCD, Argo Rollouts, and automated Prometheus canary analysis.',
-    category: 'CI/CD & DevOps',
+    metaDescription: 'Enterprise GitOps pipeline architecture: declarative Kubernetes deployments with ArgoCD, Argo Rollouts, and automated Prometheus metric analysis.',
+    category: 'DevOps & GitOps',
     primaryPillar: {
       name: 'DevOps & Cloud',
       path: '/services/devops-cloud',
     },
     summaryDefinition:
-      'ArgoCD GitOps architecture makes Git repositories the single source of truth for desired Kubernetes cluster states, synchronizing manifest changes automatically and detecting unauthorized configuration drift.',
+      'ArgoCD GitOps continuous delivery maintains Git as the single source of truth for all Kubernetes cluster state, automating progressive canary rollouts with instant rollback capabilities.',
     architecturalOverview:
-      'ArgoCD runs inside the target cluster as an active reconciliation controller. When code merges to the main branch, Argo Rollouts gradually steps traffic to new canary pods, automatically rolling back if error rates exceed thresholds in Prometheus metrics.',
-    coreTechnologies: ['ArgoCD', 'Argo Rollouts', 'Kubernetes', 'Prometheus', 'GitHub Actions'],
+      'The ArgoCD Application Controller continually reconciles Git repository manifests with live cluster state. Deployments utilize Argo Rollouts to split traffic (e.g. 10% canary), evaluating error rates via Prometheus before promoting to 100%.',
+    coreTechnologies: ['ArgoCD', 'Argo Rollouts', 'Kubernetes', 'Prometheus', 'Helm', 'Kustomize'],
     whenToUse: [
-      'Multi-cluster Kubernetes architectures requiring strict change management and instant rollbacks',
-      'High-frequency deployment teams shipping dozens of microservice releases daily',
+      'Enterprises with multi-cluster microservices deploying multiple times per day',
+      'Regulated environments requiring complete auditability of all production releases',
     ],
     whenNotToUse: [
-      'Simple static websites or serverless applications deployed on PaaS providers',
+      'Single-server Docker Compose setups with minimal change velocity',
     ],
     comparisonTable: {
-      headers: ['Feature', 'ArgoCD GitOps Model', 'Traditional Push CI/CD (Jenkins/Scripts)'],
+      headers: ['Feature', 'ArgoCD GitOps Pull Architecture', 'Traditional CI Push Scripts (Jenkins/Actions)'],
       rows: [
-        ['Cluster Access Security', 'No external cluster admin credentials stored in CI runner', 'CI runners require broad administrative cluster access'],
-        ['Configuration Drift', 'Automatically detected and reconciled back to Git state', 'Manual cluster edits go unnoticed until next deploy'],
-        ['Automated Rollbacks', 'Instant Git revert or automated metric threshold rollback', 'Requires running full reverse deployment pipeline'],
+        ['Cluster Security', 'No cluster credentials shared outside Kubernetes', 'Requires permanent cluster admin keys stored in CI'],
+        ['Drift Detection', 'Continuous automated reconciliation resets manual changes', 'Silent drift remains undetected until next deploy'],
+        ['Rollback Speed', 'Instant git revert triggers automatic cluster update', 'Requires re-running entire compile and push build pipeline'],
       ],
     },
     implementationBlueprint: [
       {
-        stepTitle: 'Step 1: ArgoCD Application Manifest',
-        description: 'Define declarative Application resource tracking target Git repository.',
+        stepTitle: 'Step 1: ArgoCD Root Application (App-of-Apps Pattern)',
+        description: 'Define declarative root application that automatically deploys and synchronizes child microservice applications.',
+        codeOrConfig: {
+          language: 'yaml',
+          code: `apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/aeitch/gitops-manifests.git'
+    targetRevision: HEAD
+    path: applications
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true`,
+        },
+      },
+      {
+        stepTitle: 'Step 2: Argo Rollout Canary Deployment Specification',
+        description: 'Configure progressive canary release with automated pause steps (10% -> 50% -> 100%).',
+        codeOrConfig: {
+          language: 'yaml',
+          code: `apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: billing-service
+spec:
+  replicas: 10
+  strategy:
+    canary:
+      steps:
+      - setWeight: 10
+      - pause: {duration: 10m}
+      - setWeight: 50
+      - pause: {duration: 15m}
+      analysis:
+        templates:
+        - templateName: error-rate-analysis`,
+        },
+      },
+      {
+        stepTitle: 'Step 3: Prometheus AnalysisTemplate for Automated Rollback',
+        description: 'Automatically abort the rollout and restore previous stable version if HTTP 5xx error rate exceeds 1%.',
+        codeOrConfig: {
+          language: 'yaml',
+          code: `apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: error-rate-analysis
+spec:
+  metrics:
+  - name: success-rate
+    interval: 60s
+    successCondition: result[0] <= 0.01
+    failureLimit: 2
+    provider:
+      prometheus:
+        address: http://prometheus-k8s.monitoring:9090
+        query: sum(rate(http_requests_total{status=~"5.*"}[2m])) / sum(rate(http_requests_total[2m]))`,
+        },
       },
     ],
   },

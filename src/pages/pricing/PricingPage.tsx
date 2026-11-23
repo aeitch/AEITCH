@@ -81,7 +81,7 @@ export const PricingPage: React.FC = () => {
         <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-5 max-w-[760px] mx-auto">
-            <Breadcrumbs items={[{ label: 'Pricing & Engagements', path: '/pricing' }]} />
+            <Breadcrumbs align="center" items={[{ label: 'Pricing & Engagements', path: '/pricing' }]} />
 
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#76E3DC] uppercase">
               Transparent Engagement
