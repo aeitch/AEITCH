@@ -15,6 +15,7 @@
 /build
 dist/
 dist-ssr/
+unslop/
 /out/
 .claude/
 
