@@ -10,22 +10,22 @@ export const CaseStudiesPage: React.FC = () => {
 
   const studies = [
     {
-      title: 'Support Pilot — Multichannel AI Customer Assistant',
+      title: 'Support Pilot — Enterprise Agentic Support Architecture',
       service: 'AI Automation',
       color: '#F7C059',
       borderColor: 'rgba(247, 192, 89, 0.25)',
-      impact: '78% Ticket Deflection • <1.2s Response Latency • 99.4% Accuracy',
-      desc: 'Architected a multi-agent swarm connected to hybrid vector retrieval (pgvector) that resolves 120,000+ complex monthly tier-1 customer inquiries autonomously.',
-      tech: ['LangGraph', 'Anthropic Claude 3.5', 'pgvector', 'FastAPI'],
+      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
+      desc: 'Architectural blueprint for a multi-agent autonomous swarm connected to hybrid vector retrieval (pgvector) with deterministic guardrails and automated human-in-the-loop escalation.',
+      tech: ['LangGraph', 'Anthropic Claude', 'pgvector', 'FastAPI'],
       path: '/services/ai-automation',
     },
     {
-      title: 'FinScale — Next-Gen B2B Treasury & Liquidity Dashboard',
+      title: 'FinScale — Institutional Liquidity Dashboard',
       service: 'Product Development',
       color: '#76E3DC',
       borderColor: 'rgba(118, 227, 220, 0.25)',
-      impact: 'Shipped in 7 Weeks • $40M+ Processed • 100% Type-Safe',
-      desc: 'Designed and engineered an institutional-grade financial dashboard from scratch with real-time WebSocket feeds, automated audit trails, and multi-entity reconciliation.',
+      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
+      desc: 'Full-stack architecture blueprint for institutional financial interfaces featuring real-time WebSocket reconciliation, automated audit trails, and multi-tenant ledger isolation.',
       tech: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'GraphQL'],
       path: '/services/product-development',
     },
@@ -34,18 +34,18 @@ export const CaseStudiesPage: React.FC = () => {
       service: 'DevOps & Cloud',
       color: '#FF9CAA',
       borderColor: 'rgba(255, 156, 170, 0.25)',
-      impact: '99.99% Uptime • 42% Cloud Cost Reduction • Zero Downtime',
-      desc: 'Migrated 40+ microservices from fragmented VMs to multi-region Amazon EKS with automated canary deployments and deterministic Terraform configurations.',
+      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
+      desc: 'Cloud-native infrastructure blueprint demonstrating automated zero-downtime canary deployments, multi-region Amazon EKS orchestration, and deterministic Terraform modules.',
       tech: ['Kubernetes', 'Terraform', 'AWS EKS', 'ArgoCD', 'Prometheus'],
       path: '/services/devops-cloud',
     },
     {
-      title: 'TransactCore — Sub-millisecond Order Processing Engine',
+      title: 'TransactCore — Low-Latency Order Processing Engine',
       service: 'Custom Software',
       color: '#74C8FC',
       borderColor: 'rgba(116, 200, 252, 0.25)',
-      impact: '45,000 QPS • 8ms P99 Latency • 0 Data Loss',
-      desc: 'Engineered a bespoke event-driven order processing engine in Go and Apache Kafka, replacing a bottlenecked legacy system with sub-10ms transactional guarantees.',
+      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
+      desc: 'High-throughput event-driven order processing engine architecture designed in Go and Apache Kafka with sub-15ms transactional guarantees and zero data loss constraints.',
       tech: ['Go', 'Apache Kafka', 'PostgreSQL', 'Docker', 'gRPC'],
       path: '/services/custom-software',
     },
@@ -57,6 +57,7 @@ export const CaseStudiesPage: React.FC = () => {
         title="Engineering Case Studies & Production Benchmarks | AEITCH"
         description="Explore how AEITCH deploys mission-critical software across autonomous AI, full-stack product development, cloud backbones, and bespoke systems."
         canonicalPath="/case-studies"
+        noindex={true}
       />
       {/* Top Ambient Glow */}
       <div

@@ -70,10 +70,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       href: '/contact?service=ai-automation#contact-form',
     },
     metrics: [
-      { value: '78%', label: 'Routine Ticket Deflection' },
-      { value: '10x', label: 'Workflow Execution Speed' },
-      { value: '< 1.2s', label: 'Average Pipeline Latency' },
-      { value: '99.4%', label: 'Output Precision & Accuracy' },
+      { value: 'Agentic', label: 'Multi-Agent Autonomous Loops' },
+      { value: 'Private', label: 'Hybrid RAG Knowledge Retrieval' },
+      { value: '< 1.5s', label: 'Target Model Response Latency' },
+      { value: 'Deterministic', label: 'Evaluation & Guardrail Suites' },
     ],
     capabilities: [
       {
@@ -139,10 +139,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       'PostgreSQL / pgvector',
     ],
     caseStudyPreview: {
-      badge: 'Featured AI Success',
-      title: 'Support Pilot — Multichannel AI Customer Assistant',
-      impact: 'Automated 120,000+ monthly customer inquiries with 99.4% resolution accuracy and 78% deflection.',
-      href: '/case-studies/supportpilot',
+      badge: 'Reference Architecture',
+      title: 'Support Pilot — Enterprise Agentic Support Architecture',
+      impact: 'Prototype multi-agent swarm with private pgvector retrieval and automated human-in-the-loop escalation.',
+      href: '/case-studies',
     },
   },
   'product-development': {
@@ -167,10 +167,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       href: '/contact?service=product-development#contact-form',
     },
     metrics: [
-      { value: '4-8 Wks', label: 'MVP Delivery Sprint' },
-      { value: '99.9%', label: 'Application Availability' },
-      { value: '100%', label: 'Type-Safe Architecture' },
-      { value: '500K+', label: 'Active End Users Handled' },
+      { value: '4–8 Wks', label: 'MVP Sprint Cadence' },
+      { value: 'Modern', label: 'Cloud-Native Architecture' },
+      { value: '100%', label: 'Type-Safe Full-Stack Codebase' },
+      { value: 'Modular', label: 'Scalable Microservices Core' },
     ],
     capabilities: [
       {
@@ -202,10 +202,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
     ],
     techStack: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Go', 'Tailwind CSS', 'GraphQL', 'PostgreSQL'],
     caseStudyPreview: {
-      badge: 'Product Launch',
-      title: 'FinScale — Next-Gen B2B Treasury & Liquidity Dashboard',
-      impact: 'Built and scaled MVP to $40M+ in processed transactions within 90 days of launch.',
-      href: '/case-studies/finscale',
+      badge: 'Reference Architecture',
+      title: 'FinScale — Institutional Liquidity Dashboard Blueprint',
+      impact: 'Architecture blueprint demonstrating real-time WebSocket reconciliation and multi-tenant ledger isolation.',
+      href: '/case-studies',
     },
   },
   'devops-cloud': {
@@ -215,9 +215,9 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
     title: 'DevOps & Cloud',
     shortDescription: 'Kubernetes orchestration, CI/CD automation, cloud cost reduction, and SRE reliability.',
     tag: 'Cloud Infrastructure & SRE',
-    heroHeadline: 'Resilient Cloud Infrastructure Built for Zero Downtime',
+    heroHeadline: 'Resilient Cloud Infrastructure Built for High Availability',
     heroSubhead:
-      'We modernize infrastructure with Infrastructure-as-Code, multi-region Kubernetes clusters, hardened security postures, and automated zero-downtime CI/CD pipelines.',
+      'We modernize infrastructure with Infrastructure-as-Code, multi-region Kubernetes clusters, hardened security postures, and automated CI/CD pipelines.',
     accentColor: 'rgb(255, 156, 170)',
     accentColorHex: '#FF9CAA',
     tagBorderColor: 'rgb(79, 19, 53)',
@@ -230,10 +230,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       href: '/contact?service=devops-cloud#contact-form',
     },
     metrics: [
-      { value: '99.99%', label: 'Infrastructure Uptime SLA' },
-      { value: '35%+', label: 'Average Cloud Cost Reduction' },
-      { value: '0 sec', label: 'Deployment Downtime' },
-      { value: '< 5 min', label: 'Incident MTTD' },
+      { value: 'Multi-Cloud', label: 'Kubernetes Cluster Federation' },
+      { value: 'FinOps', label: 'Cloud Cost Optimization Practice' },
+      { value: 'GitOps', label: 'Automated Canary Deployments' },
+      { value: 'SLO-Driven', label: 'Proactive Alerting & SRE' },
     ],
     capabilities: [
       {
@@ -265,10 +265,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
     ],
     techStack: ['Kubernetes', 'Docker', 'Terraform', 'AWS', 'GCP', 'GitHub Actions', 'ArgoCD', 'Prometheus', 'Datadog'],
     caseStudyPreview: {
-      badge: 'Cloud Modernization',
-      title: 'CloudPulse — Multi-Region Kubernetes Migration',
-      impact: 'Migrated 40+ microservices to multi-region EKS with zero downtime and 42% cost savings.',
-      href: '/case-studies/cloudpulse',
+      badge: 'Reference Architecture',
+      title: 'CloudPulse — Cloud-Native Kubernetes Migration Blueprint',
+      impact: 'Architecture blueprint for zero-downtime containerization, Terraform modularization, and service mesh governance.',
+      href: '/case-studies',
     },
   },
   'custom-software': {
@@ -293,10 +293,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       href: '/contact?service=custom-software#contact-form',
     },
     metrics: [
-      { value: '50K+', label: 'Queries Per Second Handled' },
-      { value: 'sub-10ms', label: 'P99 Backend Latency' },
-      { value: '100%', label: 'Custom Tailored Codebase' },
-      { value: '0 Lock-in', label: 'Full Intellectual Property' },
+      { value: 'High QPS', label: 'Distributed Event Streaming' },
+      { value: 'Sub-15ms', label: 'Target P99 Service Latency' },
+      { value: '100%', label: 'Bespoke Domain Architecture' },
+      { value: '0 Lock-in', label: 'Complete Intellectual Property' },
     ],
     capabilities: [
       {
@@ -328,10 +328,10 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
     ],
     techStack: ['Go', 'Rust', 'TypeScript', 'PostgreSQL', 'Redis', 'Apache Kafka', 'gRPC', 'Docker'],
     caseStudyPreview: {
-      badge: 'Enterprise Architecture',
-      title: 'TransactCore — Sub-millisecond Order Processing Engine',
-      impact: 'Engineered high-frequency transaction processor handling 45,000 requests/sec at 8ms P99 latency.',
-      href: '/case-studies/transactcore',
+      badge: 'Reference Architecture',
+      title: 'TransactCore — Low-Latency Order Processing Engine Blueprint',
+      impact: 'Event-driven order routing architecture in Go and Kafka designed for high-concurrency transactional pipelines.',
+      href: '/case-studies',
     },
   },
 };

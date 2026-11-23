@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { SERVICES_CONFIG } from '../../config/servicesData';
 import { Link } from '../../router/Router';
 import { SEOHead } from '../../components/seo/SEOHead';
+import { Breadcrumbs } from '../../components/common/Breadcrumbs';
+import { FAQSection } from '../../components/common/FAQSection';
+import { SERVICE_FAQS } from '../../data/serviceFaqs';
 
 export const AIAutomationPage: React.FC = () => {
   const service = SERVICES_CONFIG['ai-automation'];
@@ -18,17 +21,17 @@ export const AIAutomationPage: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-[#F7C059] selection:text-black overflow-hidden">
       <SEOHead
-        title="AI Automation & Agent Development Services | AEITCH"
+        title="Enterprise AI Automation Agency & Custom Agents | AEITCH"
         description="Scale enterprise operations with autonomous multi-agent systems, private RAG knowledge retrieval, and custom LLM orchestration pipelines engineered for zero data leakage."
         canonicalPath="/services/ai-automation"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
-          "serviceType": "AI Automation & Autonomous Agent Development",
+          "serviceType": "Enterprise AI Automation Agency",
           "provider": {
             "@type": "Organization",
             "name": "AEITCH",
-            "url": "https://aeitch.com"
+            "url": "https://www.aeitch.com"
           },
           "areaServed": "US",
           "description": "Multi-agent autonomous swarms, enterprise RAG, hybrid semantic vector search, and intelligent workflow automation."
@@ -61,6 +64,13 @@ export const AIAutomationPage: React.FC = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center desktop:items-start text-center desktop:text-left gap-6 max-w-[680px]"
           >
+            <Breadcrumbs
+              items={[
+                { label: 'Services', path: '/solutions' },
+                { label: 'AI Automation', path: '/services/ai-automation' },
+              ]}
+            />
+
             {/* Tag Badge */}
             <div
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border backdrop-blur-md"
@@ -333,16 +343,82 @@ export const AIAutomationPage: React.FC = () => {
               </p>
             </div>
 
-            <a
+            <Link
               href={service.caseStudyPreview.href}
               className="inline-flex items-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all shrink-0 no-underline shadow-md"
             >
-              <span>Read Full Case Study</span>
+              <span>View Architecture Blueprint</span>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </a>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* FAQ SECTION (Visible Copy matches FAQPage Schema exactly) */}
+      {/* ========================================================================= */}
+      <FAQSection
+        title="AI Automation & Agent Architecture FAQs"
+        subtitle="Transparent answers regarding security boundaries, vector retrieval, and custom model orchestration."
+        items={SERVICE_FAQS['ai-automation']}
+        accentColor={service.accentColor}
+      />
+
+      {/* ========================================================================= */}
+      {/* RELATED CAPABILITIES & INTERNAL LINK MESH */}
+      {/* ========================================================================= */}
+      <section className="relative z-10 w-full py-16 px-6 tablet:px-12 desktop:px-[80px] border-t border-white/10">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <span className="font-poppins text-[12px] font-semibold tracking-widest text-[#F7C059] uppercase">
+              Connected Engineering Disciplines
+            </span>
+            <h3 className="font-sans font-normal text-[24px] sm:text-[30px] text-white">
+              Explore Complementary Core Capabilities
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link
+              href="/services/product-development"
+              className="p-6 rounded-xl border border-white/10 hover:border-[#76E3DC]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+            >
+              <span className="text-[#76E3DC] font-poppins text-[13px] font-medium">Full-Cycle SaaS</span>
+              <h4 className="font-sans text-[18px] text-white group-hover:text-[#76E3DC] transition-colors">
+                Product Development & MVP Engineering
+              </h4>
+              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+                Turn your AI capabilities into market-ready SaaS applications with type-safe React, Next.js, and intuitive UX.
+              </p>
+            </Link>
+
+            <Link
+              href="/services/devops-cloud"
+              className="p-6 rounded-xl border border-white/10 hover:border-[#FF9CAA]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+            >
+              <span className="text-[#FF9CAA] font-poppins text-[13px] font-medium">Cloud Infrastructure</span>
+              <h4 className="font-sans text-[18px] text-white group-hover:text-[#FF9CAA] transition-colors">
+                DevOps Consulting & Multi-Region Kubernetes
+              </h4>
+              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+                Deploy resilient AI inference clusters with autoscaling, GPU management, and automated zero-downtime CI/CD.
+              </p>
+            </Link>
+
+            <Link
+              href="/services/custom-software"
+              className="p-6 rounded-xl border border-white/10 hover:border-[#74C8FC]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+            >
+              <span className="text-[#74C8FC] font-poppins text-[13px] font-medium">Bespoke Systems</span>
+              <h4 className="font-sans text-[18px] text-white group-hover:text-[#74C8FC] transition-colors">
+                High-Throughput Custom Software Backends
+              </h4>
+              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+                Engineer low-latency event-driven transaction processors and data streaming pipelines in Go and Rust.
+              </p>
+            </Link>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useId, FormEvent, ChangeEvent } fro
 import { motion, useReducedMotion } from 'framer-motion';
 import { contactConfig } from '../../config/contactConfig';
 import { SEOHead } from '../../components/seo/SEOHead';
+import { Breadcrumbs } from '../../components/common/Breadcrumbs';
 
 interface ServiceOption {
   id: string;
@@ -276,6 +277,8 @@ export const ContactPage: React.FC = () => {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-start gap-4 sm:gap-5 mb-12 sm:mb-16"
         >
+          <Breadcrumbs items={[{ label: 'Contact', path: '/contact' }]} />
+
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#FFC247]/30 bg-[#FFC247]/10 text-[#FFC247] font-mono text-[11px] sm:text-[12px] uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FFC247]" />

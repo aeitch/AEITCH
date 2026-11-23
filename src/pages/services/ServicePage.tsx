@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { SERVICES_CONFIG, ServiceDetail } from '../../config/servicesData';
 import { Link } from '../../router/Router';
 import { SEOHead } from '../../components/seo/SEOHead';
+import { Breadcrumbs } from '../../components/common/Breadcrumbs';
+import { FAQSection } from '../../components/common/FAQSection';
+import { SERVICE_FAQS } from '../../data/serviceFaqs';
 
 interface ServicePageProps {
   serviceId: string;
@@ -10,16 +13,16 @@ interface ServicePageProps {
 
 const SERVICE_SEO: Record<string, { title: string; description: string }> = {
   'product-development': {
-    title: 'SaaS Product Development & MVP Engineering | AEITCH',
-    description: 'Ship market-ready SaaS platforms in 4–8 week sprints. We pair elite software architects with rapid prototyping, type-safe Next.js, and modern UX.',
+    title: 'SaaS Product Development Company & MVP Engineering | AEITCH',
+    description: 'Accelerate SaaS product development in 4–8 week sprints. We engineer scalable cloud-native architectures, type-safe full-stack platforms, and intuitive UX.',
   },
   'devops-cloud': {
-    title: 'DevOps Consulting & Multi-Region Kubernetes | AEITCH',
-    description: 'Modernize infrastructure with deterministic Terraform IaC, production Kubernetes orchestration, 35%+ cloud cost reduction, and 99.99% uptime SLAs.',
+    title: 'Enterprise DevOps Consulting & Kubernetes Services | AEITCH',
+    description: 'Modernize enterprise cloud infrastructure with deterministic Terraform IaC, multi-cloud Kubernetes orchestration, automated CI/CD, and FinOps audits.',
   },
   'custom-software': {
-    title: 'Custom Software & High-Throughput Distributed Systems | AEITCH',
-    description: 'Bespoke backend engineering in Go and Rust. Event-driven architectures handling 50k+ QPS at sub-10ms latency for high-stakes enterprise systems.',
+    title: 'Custom Software Development Company USA | AEITCH',
+    description: 'Bespoke enterprise backend engineering in Go and Rust. Event-driven architectures, distributed data pipelines, and microservices built for long-term scale.',
   },
 };
 
@@ -51,7 +54,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
           "provider": {
             "@type": "Organization",
             "name": "AEITCH",
-            "url": "https://aeitch.com"
+            "url": "https://www.aeitch.com"
           },
           "areaServed": "US",
           "description": service.shortDescription
@@ -85,6 +88,13 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center desktop:items-start text-center desktop:text-left gap-6 max-w-[680px]"
           >
+            <Breadcrumbs
+              items={[
+                { label: 'Services', path: '/solutions' },
+                { label: service.title, path: service.path },
+              ]}
+            />
+
             {/* Tag Badge */}
             <div
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border backdrop-blur-md"
@@ -389,11 +399,82 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
               href={service.caseStudyPreview.href}
               className="inline-flex items-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all shrink-0 no-underline shadow-md"
             >
-              <span>Read Full Case Study</span>
+              <span>View Architecture Blueprint</span>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* FAQ SECTION (Visible Copy matches FAQPage Schema exactly) */}
+      {/* ========================================================================= */}
+      {SERVICE_FAQS[service.id] && SERVICE_FAQS[service.id].length > 0 && (
+        <FAQSection
+          title={`${service.title} FAQs`}
+          subtitle={`Transparent answers regarding engineering methodology, architectural standards, and project deliverables.`}
+          items={SERVICE_FAQS[service.id]}
+          accentColor={service.accentColor}
+        />
+      )}
+
+      {/* ========================================================================= */}
+      {/* RELATED CAPABILITIES & INTERNAL LINK MESH */}
+      {/* ========================================================================= */}
+      <section className="relative z-10 w-full py-16 px-6 tablet:px-12 desktop:px-[80px] border-t border-white/10">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <span
+              className="font-poppins text-[12px] font-semibold tracking-widest uppercase"
+              style={{ color: service.accentColor }}
+            >
+              Interconnected Engineering Disciplines
+            </span>
+            <h3 className="font-sans font-normal text-[24px] sm:text-[30px] text-white">
+              Explore Complementary Engineering Capabilities
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link
+              href="/services/ai-automation"
+              className="p-6 rounded-xl border border-white/10 hover:border-[#F7C059]/40 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+            >
+              <span className="text-[#F7C059] font-poppins text-[13px] font-medium">Autonomous Intelligence</span>
+              <h4 className="font-sans text-[18px] text-white group-hover:text-[#F7C059] transition-colors">
+                AI Automation & Autonomous Agents
+              </h4>
+              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+                Deploy stateful multi-agent swarms with private vector search and automated human-in-the-loop escalations.
+              </p>
+            </Link>
+
+            <Link
+              href="/solutions"
+              className="p-6 rounded-xl border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+            >
+              <span className="text-white/60 font-poppins text-[13px] font-medium">Enterprise Solutions</span>
+              <h4 className="font-sans text-[18px] text-white group-hover:text-white transition-colors">
+                Full-Lifecycle Software Solutions
+              </h4>
+              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+                Discover unified architectures that bridge rapid product velocity with resilient multi-cloud backbones.
+              </p>
+            </Link>
+
+            <Link
+              href="/pricing"
+              className="p-6 rounded-xl border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/[0.04] transition-all no-underline group flex flex-col gap-3"
+            >
+              <span className="text-white/60 font-poppins text-[13px] font-medium">Engagement Models</span>
+              <h4 className="font-sans text-[18px] text-white group-hover:text-white transition-colors">
+                Transparent Pod Pricing & Sprints
+              </h4>
+              <p className="font-poppins text-white/60 text-[14px] leading-relaxed">
+                Explore fixed-price MVP sprints, dedicated engineering pods, and architecture advisory without bloated retainers.
+              </p>
             </Link>
           </div>
         </div>

@@ -45,81 +45,97 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="flex flex-col gap-3 list-none p-0 m-0">
               <li>
-                <a
+                <Link
                   href="/services/ai-automation"
                   className="group flex items-center gap-2.5 font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#F7C059] group-hover:scale-125 transition-transform" />
                   <span>AI Automation</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/services/product-development"
                   className="group flex items-center gap-2.5 font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#76E3DC] group-hover:scale-125 transition-transform" />
                   <span>Product Development</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/services/devops-cloud"
                   className="group flex items-center gap-2.5 font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FF9CAA] group-hover:scale-125 transition-transform" />
                   <span>DevOps & Cloud</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/services/custom-software"
                   className="group flex items-center gap-2.5 font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#74C8FC] group-hover:scale-125 transition-transform" />
                   <span>Custom Software</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Solutions & Work */}
+          {/* Solutions & Architecture */}
           <div className="flex flex-col gap-4">
             <h4 className="font-poppins font-semibold text-[13px] uppercase tracking-wider text-white/40">
-              Company
+              Architecture & Insights
             </h4>
             <ul className="flex flex-col gap-3 list-none p-0 m-0">
               <li>
-                <a
+                <Link
+                  href="/insights"
+                  className="font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
+                >
+                  Technical Insights
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/stack"
+                  className="font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
+                >
+                  Tech Stack Blueprints
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/solutions"
                   className="font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
-                  Solutions
-                </a>
+                  Enterprise Solutions
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/case-studies"
                   className="font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
-                  Case Studies
-                </a>
+                  Case Studies & Proof
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/about"
                   className="font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
-                  About Us
-                </a>
+                  About AEITCH
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/pricing"
                   className="font-poppins text-[14px] text-white/70 hover:text-white transition-colors duration-200 no-underline"
                 >
                   Engagement Models
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

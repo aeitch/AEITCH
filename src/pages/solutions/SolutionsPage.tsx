@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
 import { SEOHead } from '../../components/seo/SEOHead';
+import { Breadcrumbs } from '../../components/common/Breadcrumbs';
 
 export const SolutionsPage: React.FC = () => {
   useEffect(() => {
@@ -32,7 +33,7 @@ export const SolutionsPage: React.FC = () => {
       service: 'DevOps & Cloud',
       color: '#FF9CAA',
       borderColor: 'rgba(255, 156, 170, 0.25)',
-      desc: 'Multi-region Kubernetes clusters with automated canary rollouts, Terraform IaC, and 35%+ cloud cost optimization.',
+      desc: 'Multi-region Kubernetes clusters with automated canary rollouts, Terraform IaC, and proactive FinOps cloud cost optimization.',
       tags: ['Kubernetes', 'Terraform', 'AWS/GCP', 'FinOps'],
       path: '/services/devops-cloud',
     },
@@ -41,7 +42,7 @@ export const SolutionsPage: React.FC = () => {
       service: 'Custom Software',
       color: '#74C8FC',
       borderColor: 'rgba(116, 200, 252, 0.25)',
-      desc: 'Custom distributed backends and event-driven architectures built to handle 50,000+ QPS at sub-10ms P99 latency.',
+      desc: 'Custom distributed backends and event-driven architectures built for high-throughput concurrency and low-latency transactional execution.',
       tags: ['Go / Rust', 'Kafka', 'pgvector', 'Microservices'],
       path: '/services/custom-software',
     },
@@ -67,6 +68,8 @@ export const SolutionsPage: React.FC = () => {
         <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-16">
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-5 max-w-[760px] mx-auto">
+            <Breadcrumbs items={[{ label: 'Solutions', path: '/solutions' }]} />
+
             <span className="font-poppins text-[12px] font-semibold tracking-widest text-white/50 uppercase">
               Strategic Solutions
             </span>

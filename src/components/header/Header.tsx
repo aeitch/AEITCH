@@ -176,6 +176,24 @@ export const Header: React.FC = () => {
           </Link>
 
           <Link
+            href="/insights"
+            className={`font-poppins font-medium text-[14px] transition-colors duration-200 no-underline ${
+              currentPath.startsWith('/insights') ? 'text-[#F7C059]' : 'text-white/75 hover:text-white'
+            }`}
+          >
+            Insights
+          </Link>
+
+          <Link
+            href="/stack"
+            className={`font-poppins font-medium text-[14px] transition-colors duration-200 no-underline ${
+              currentPath.startsWith('/stack') ? 'text-[#76E3DC]' : 'text-white/75 hover:text-white'
+            }`}
+          >
+            Tech Stack
+          </Link>
+
+          <Link
             href="/case-studies"
             className={`font-poppins font-medium text-[14px] transition-colors duration-200 no-underline ${
               currentPath === '/case-studies' ? 'text-white' : 'text-white/75 hover:text-white'
@@ -269,6 +287,12 @@ export const Header: React.FC = () => {
           <div className="flex flex-col gap-3">
             <Link href="/solutions" className="font-poppins text-[15px] text-white/80 hover:text-white no-underline">
               Solutions
+            </Link>
+            <Link href="/insights" className="font-poppins text-[15px] text-[#F7C059] hover:text-white no-underline font-medium">
+              Technical Insights
+            </Link>
+            <Link href="/stack" className="font-poppins text-[15px] text-[#76E3DC] hover:text-white no-underline font-medium">
+              Tech Stack Blueprints
             </Link>
             <Link href="/case-studies" className="font-poppins text-[15px] text-white/80 hover:text-white no-underline">
               Case Studies

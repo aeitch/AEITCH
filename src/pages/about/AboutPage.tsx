@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
 import { SEOHead } from '../../components/seo/SEOHead';
+import { Breadcrumbs } from '../../components/common/Breadcrumbs';
 
 export const AboutPage: React.FC = () => {
   useEffect(() => {
@@ -51,10 +52,12 @@ export const AboutPage: React.FC = () => {
         <div className="w-full max-w-[1440px] mx-auto flex flex-col gap-20">
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-6 max-w-[760px] mx-auto">
+            <Breadcrumbs items={[{ label: 'About AEITCH', path: '/about' }]} />
+
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-white" />
+              <span className="w-2 h-2 rounded-full bg-[#F7C059]" />
               <span className="font-poppins font-medium text-[13px] text-white/80">
-                The AEITCH Philosophy
+                AEITCH SMC PVT LTD
               </span>
             </div>
 
@@ -64,8 +67,39 @@ export const AboutPage: React.FC = () => {
             </h1>
 
             <p className="font-poppins text-white/70 text-[16px] sm:text-[18px] leading-relaxed">
-              AEITCH was founded on a simple truth: technology is transforming at exponential speeds, but production-grade reliability still demands deep, uncompromising human engineering mastery.
+              AEITCH (legally registered as <strong>AEITCH SMC PVT LTD</strong>) is an enterprise engineering collective architecting autonomous AI agent systems, full-cycle SaaS products, resilient multi-cloud backbones, and bespoke high-throughput software for forward-thinking organizations worldwide.
             </p>
+          </div>
+
+          {/* Entity Profile & Corporate Overview Card */}
+          <div className="p-8 sm:p-10 rounded-2xl border border-white/10 bg-white/[0.02] max-w-[1000px] mx-auto w-full flex flex-col md:flex-row gap-8 items-start justify-between">
+            <div className="flex flex-col gap-3 max-w-[580px]">
+              <span className="text-[12px] font-mono tracking-widest text-[#F7C059] uppercase">Company Profile</span>
+              <h2 className="font-sans text-[24px] sm:text-[28px] text-white">
+                About AEITCH SMC PVT LTD
+              </h2>
+              <p className="font-poppins text-white/65 text-[14.5px] leading-relaxed">
+                Operating at the intersection of applied machine intelligence and systems engineering, AEITCH unites senior software architects to build production-ready digital architectures. We partner with CTOs, product leaders, and tech founders across the United States to deliver secure, resilient software without bloated retainers or vendor lock-in.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 text-[14px] font-poppins text-white/70 border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-8 min-w-[240px]">
+              <div>
+                <span className="block text-white/40 text-[12px]">Legal Name</span>
+                <span className="text-white font-medium">AEITCH SMC PVT LTD</span>
+              </div>
+              <div>
+                <span className="block text-white/40 text-[12px]">Corporate Contact</span>
+                <a href="mailto:hello@aeitch.com" className="text-[#F7C059] hover:underline">hello@aeitch.com</a>
+              </div>
+              <div>
+                <span className="block text-white/40 text-[12px]">Direct Phone & WhatsApp</span>
+                <a href="https://wa.me/923184055723" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">+92 318 4055723</a>
+              </div>
+              <div>
+                <span className="block text-white/40 text-[12px]">Key Markets Served</span>
+                <span className="text-white">United States & Global B2B</span>
+              </div>
+            </div>
           </div>
 
           {/* Core Values Grid (with the 4 service color accents) */}

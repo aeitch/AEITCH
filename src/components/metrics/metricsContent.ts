@@ -12,30 +12,30 @@ export interface MetricsContentData {
 }
 
 export const metricsContent: MetricsContentData = {
-  eyebrow: "Proven at Scale",
-  heading: "Engineering Excellence",
+  eyebrow: "Engineering Focus",
+  heading: "Production-Grade Systems",
 
   metrics: [
     {
       id: "systems-deployed",
-      value: "50+",
-      label: "AI Systems Deployed",
+      value: "Core",
+      label: "Agentic AI Architectures",
     },
     {
       id: "uptime",
-      value: "99.99",
-      label: "Infrastructure Uptime",
+      value: "99.9",
+      label: "Target Availability SLA",
       suffix: "%",
     },
     {
       id: "mvp-delivery",
-      value: "8",
-      label: "Week MVP Delivery",
+      value: "4–8",
+      label: "Week MVP Sprint Cycles",
     },
     {
       id: "code-ownership",
       value: "100",
-      label: "Code Ownership",
+      label: "Client IP & Code Ownership",
       suffix: "%",
     },
   ],
