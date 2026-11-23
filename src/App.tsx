@@ -11,11 +11,17 @@ import { AboutPage } from './pages/about/AboutPage';
 import { PricingPage } from './pages/pricing/PricingPage';
 import { ContactPage } from './pages/contact/ContactPage';
 import { NotFoundPage } from './pages/notfound/NotFoundPage';
+import { InsightsPage } from './pages/insights/InsightsPage';
+import { InsightDetailPage } from './pages/insights/InsightDetailPage';
+import { StackHubPage } from './pages/stack/StackHubPage';
+import { StackDetailPage } from './pages/stack/StackDetailPage';
+import { INSIGHTS_ARTICLES } from './data/insightsArticles';
+import { STACK_PAGES } from './data/stackPages';
 
 const AppContent: React.FC = () => {
   const { currentPath } = useRouter();
 
-  const knownPaths = [
+  const basePaths = [
     '/',
     '/contact',
     '/services/ai-automation',
@@ -26,7 +32,14 @@ const AppContent: React.FC = () => {
     '/case-studies',
     '/about',
     '/pricing',
+    '/insights',
+    '/stack',
   ];
+
+  const insightPaths = INSIGHTS_ARTICLES.map((a) => `/insights/${a.slug}`);
+  const stackPaths = STACK_PAGES.map((s) => `/stack/${s.slug}`);
+
+  const knownPaths = [...basePaths, ...insightPaths, ...stackPaths];
 
   const isHome = currentPath === '/';
   const isNotFound = !knownPaths.includes(currentPath);
@@ -46,15 +59,35 @@ const AppContent: React.FC = () => {
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
+        <Route path="/stack" element={<StackHubPage />} />
+
+        {/* Dynamic Insight Article Routes */}
+        {INSIGHTS_ARTICLES.map((article) => (
+          <Route
+            key={article.slug}
+            path={`/insights/${article.slug}`}
+            element={<InsightDetailPage slug={article.slug} />}
+          />
+        ))}
+
+        {/* Dynamic Tech Stack Blueprint Routes */}
+        {STACK_PAGES.map((stack) => (
+          <Route
+            key={stack.slug}
+            path={`/stack/${stack.slug}`}
+            element={<StackDetailPage slug={stack.slug} />}
+          />
+        ))}
       </main>
       <Footer />
     </div>
   );
 };
 
-export function App() {
+export function App({ initialPath }: { initialPath?: string } = {}) {
   return (
-    <Router>
+    <Router initialPath={initialPath}>
       <AppContent />
     </Router>
   );
