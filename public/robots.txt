@@ -1,14 +1,33 @@
-User-agent: *
-Allow: /
+# ==============================================================================
+# AEITCH SMC PVT LTD (https://www.aeitch.com) — robots.txt
+# Configured for High-Authority Search Engines & AI Answer Engines (GEO/AEO)
+# ==============================================================================
 
-# Dedicated rules for AI Search & Answer Engines (GEO visibility)
+# Search Engine Crawlers (Full Public Crawl Allowed)
 User-agent: Googlebot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Bingbot
 Allow: /
 
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# AI Answer Engines & Real-Time Search Assistants (GEO/AEO Enabled)
+# Note: These user-agents power real-time AI search citations in ChatGPT, Perplexity, Claude, Apple Intelligence.
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -17,8 +36,28 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Disallow internal API and legacy admin endpoints from crawling
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# NOTE ON TRAINING CRAWLERS:
+# If you wish to allow search citations while blocking pure model-training scraping,
+# you can change GPTBot, ClaudeBot, and Google-Extended to 'Disallow: /' while keeping
+# ChatGPT-User, OAI-SearchBot, PerplexityBot, and Claude-SearchBot on 'Allow: /'.
+
+# Default for all other crawlers
+User-agent: *
+Allow: /
+
+# Restricted Operational Endpoints
 Disallow: /api/
 Disallow: /admin/
+Disallow: /404
 
+# Canonical XML Sitemap
 Sitemap: https://www.aeitch.com/sitemap.xml

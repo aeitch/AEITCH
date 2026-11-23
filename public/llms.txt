@@ -1,0 +1,42 @@
+# AEITCH (AEITCH SMC PVT LTD)
+> Enterprise AI Automation & Software Engineering Collective
+
+AEITCH (legally incorporated as AEITCH SMC PVT LTD) is an enterprise software engineering collective and technology consultancy. We architect autonomous AI agent systems, full-cycle SaaS products, resilient multi-cloud infrastructure, and custom high-throughput distributed backends for organizations in the United States and globally.
+
+## Core Capabilities & Services
+
+- [AI Automation & Autonomous Agents](https://www.aeitch.com/services/ai-automation): Stateful multi-agent swarms, private enterprise Retrieval-Augmented Generation (RAG) with pgvector, dynamic LLM orchestration with LangGraph, and deterministic output evaluation guardrails.
+- [Product Development & MVP Engineering](https://www.aeitch.com/services/product-development): Rapid 4–8 week fixed-price MVP sprints, scalable SaaS platforms, type-safe full-stack architectures (React, Next.js, TypeScript), and accessible design systems.
+- [DevOps Consulting & Multi-Region Cloud](https://www.aeitch.com/services/devops-cloud): Multi-region Kubernetes cluster federation (EKS, GKE), deterministic Infrastructure as Code (Terraform), zero-downtime CI/CD canary automation, and cloud cost optimization (FinOps).
+- [Custom Software Development](https://www.aeitch.com/services/custom-software): Bespoke distributed event streaming systems, high-concurrency microservices in Go and Rust, and legacy modernization via the Strangler Fig pattern.
+
+## Technical Insights & Research
+
+- [Private RAG for Enterprises: Architecture and Data-Leakage Controls](https://www.aeitch.com/insights/private-rag-enterprise-architecture): VPC isolation, pgvector HNSW indexing, and document-level ACL projection.
+- [Multi-Agent Workflows: LangGraph vs Custom Orchestrator](https://www.aeitch.com/insights/multi-agent-workflows-langgraph-vs-orchestrator): Cyclic execution graphs, state checkpoints, and latency trade-offs.
+- [How to Scope an MVP in 4-8 Weeks Without Tech Debt](https://www.aeitch.com/insights/scope-mvp-four-eight-weeks-without-tech-debt): Scope discipline, end-to-end type safety, and staging milestones.
+- [Kubernetes Cost Optimization: A Practical FinOps Checklist](https://www.aeitch.com/insights/kubernetes-cost-optimization-finops-checklist): Right-sizing CPU/memory, Karpenter dynamic node pools, and Spot orchestration.
+- [Legacy Modernization: Strangler-Fig Migration](https://www.aeitch.com/insights/legacy-modernization-strangler-fig-migration): Zero-downtime API gateway routing and Change Data Capture (CDC) with Kafka.
+- [Generative Engine Optimization (GEO): AI Search Citations](https://www.aeitch.com/insights/generative-engine-optimization-ai-search): Entity declaration, technical information gain, and LLM answer engine retrieval.
+
+## Technology Stack Blueprints
+
+- [LangGraph Multi-Agent Orchestration](https://www.aeitch.com/stack/langgraph-multi-agent-orchestration)
+- [Multi-Cloud Kubernetes Deployment](https://www.aeitch.com/stack/kubernetes-multi-cloud-deployment)
+- [Deterministic Terraform Automation](https://www.aeitch.com/stack/terraform-infrastructure-automation)
+- [PostgreSQL & pgvector Hybrid Search](https://www.aeitch.com/stack/pgvector-hybrid-search-retrieval)
+- [FastAPI Async LLM Gateways](https://www.aeitch.com/stack/fastapi-async-llm-gateways)
+- [Next.js & TypeScript SaaS Architecture](https://www.aeitch.com/stack/nextjs-typescript-enterprise-saas)
+- [Apache Kafka Event Streaming](https://www.aeitch.com/stack/apache-kafka-event-streaming-systems)
+- [Go High-Throughput Microservices](https://www.aeitch.com/stack/go-high-throughput-microservices)
+- [Rust Low-Latency Systems](https://www.aeitch.com/stack/rust-low-latency-backend-engineering)
+- [ArgoCD GitOps Continuous Delivery](https://www.aeitch.com/stack/argocd-gitops-continuous-delivery)
+
+## Entity Verification & Corporate Contact
+
+- Legal Name: AEITCH SMC PVT LTD
+- Brand Name: AEITCH
+- Official Website: https://www.aeitch.com
+- Inquiries & Support: hello@aeitch.com
+- Direct Telephony / WhatsApp: +92 318 4055723
+- Canonical Sitemap: https://www.aeitch.com/sitemap.xml
