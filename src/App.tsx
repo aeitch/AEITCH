@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Router, Route, useRouter } from './router/Router';
 import { Header } from './components/header/Header';
 import { Footer } from './components/footer/Footer';
@@ -81,6 +82,7 @@ const AppContent: React.FC = () => {
         ))}
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 };
