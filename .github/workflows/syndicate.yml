@@ -1,0 +1,36 @@
+name: Syndicate Insights Articles
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/data/insightsArticles.ts'
+      - 'scripts/syndicate.mjs'
+  workflow_dispatch:
+
+jobs:
+  syndicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build SSR bundle
+        run: npm run build:ssr
+
+      - name: Syndicate to Dev.to & Hashnode
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+        run: npm run syndicate

@@ -3,6 +3,8 @@ import { App } from './App';
 import { INSIGHTS_ARTICLES } from './data/insightsArticles';
 import { STACK_PAGES } from './data/stackPages';
 
+export { INSIGHTS_ARTICLES };
+
 export interface RouteDefinition {
   path: string;
   outputPath: string; // relative to dist/, e.g. "index.html", "services/ai-automation/index.html", "404.html"

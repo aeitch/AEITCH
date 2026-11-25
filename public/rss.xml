@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AEITCH Technical Insights</title>
+    <link>https://www.aeitch.com/insights</link>
+    <description>Production architecture blueprints, private enterprise RAG, multi-agent orchestration, Kubernetes FinOps, and GEO insights from AEITCH.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.aeitch.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generative Engine Optimization: How to Get Cited by AI Search</title>
+      <link>https://www.aeitch.com/insights/generative-engine-optimization-ai-search</link>
+      <guid isPermaLink="true">https://www.aeitch.com/insights/generative-engine-optimization-ai-search</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>GEO &amp; AI Search Strategy</category>
+      <description>A technical guide to Generative Engine Optimization (GEO). How to optimize architectures and semantic markup to be cited by ChatGPT, Perplexity, and Claude. — Generative Engine Optimization (GEO) requires shifting from traditional keyword density to factual information density, clear entity definition in Schema.org, quotable self-contained opening definitions, and machine-readable data tables that LLMs can ingest and cite with high confidence.</description>
+    </item>
+    <item>
+      <title>Legacy Modernization: Strangler-Fig Migration from Monolith to Services</title>
+      <link>https://www.aeitch.com/insights/legacy-modernization-strangler-fig-migration</link>
+      <guid isPermaLink="true">https://www.aeitch.com/insights/legacy-modernization-strangler-fig-migration</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Software Architecture</category>
+      <description>A zero-downtime architectural guide to decomposing monolithic enterprise systems into decoupled microservices using the Strangler Fig pattern. — Big-bang rewrites almost always exceed schedules and introduce regressions. The Strangler Fig pattern allows teams to modernize critical enterprise monoliths incrementally by intercepting traffic at an API gateway and extracting domain boundaries one bounded context at a time.</description>
+    </item>
+    <item>
+      <title>Kubernetes Cost Optimization: A Practical FinOps Checklist</title>
+      <link>https://www.aeitch.com/insights/kubernetes-cost-optimization-finops-checklist</link>
+      <guid isPermaLink="true">https://www.aeitch.com/insights/kubernetes-cost-optimization-finops-checklist</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Cloud Engineering &amp; FinOps</category>
+      <description>A practical, engineering-first FinOps checklist to eliminate Kubernetes compute waste, right-size requests/limits, and leverage spot instances safely. — Most cloud clusters operate at less than 18% CPU utilization due to aggressive static resource allocations. Implementing Horizontal Pod Autoscaling (HPA) alongside Karpenter dynamic node provisioning and VPA recommendations typically cuts unneeded compute overhead substantially.</description>
+    </item>
+    <item>
+      <title>How to Scope an MVP in 4-8 Weeks Without Accruing Tech Debt</title>
+      <link>https://www.aeitch.com/insights/scope-mvp-four-eight-weeks-without-tech-debt</link>
+      <guid isPermaLink="true">https://www.aeitch.com/insights/scope-mvp-four-eight-weeks-without-tech-debt</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Product Engineering</category>
+      <description>A pragmatic engineering blueprint for technical founders to ship production-grade MVPs in 4–8 weeks while maintaining type-safe, extensible foundations. — Speed does not require cutting corners on architecture. By constraining scope to a single primary user transaction, enforcing end-to-end type safety, and utilizing managed serverless data backbones, teams can launch market-ready MVPs in 4–8 weeks without building throwaway code.</description>
+    </item>
+    <item>
+      <title>Multi-Agent Workflows: When to Use LangGraph vs a Custom Orchestrator</title>
+      <link>https://www.aeitch.com/insights/multi-agent-workflows-langgraph-vs-orchestrator</link>
+      <guid isPermaLink="true">https://www.aeitch.com/insights/multi-agent-workflows-langgraph-vs-orchestrator</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Agent Systems &amp; Architecture</category>
+      <description>Architectural evaluation: when to adopt LangGraph for stateful multi-agent workflows versus building a custom event-driven Python/Go orchestrator. — LangGraph is optimal for multi-agent loops requiring cyclic state machines, time-travel debugging, and human-in-the-loop checkpoints. For sub-100ms transactional throughput or high-frequency message streaming, a lightweight custom orchestrator in Go or asyncio yields superior resource predictability.</description>
+    </item>
+    <item>
+      <title>Private RAG for Enterprises: Architecture and Data-Leakage Controls</title>
+      <link>https://www.aeitch.com/insights/private-rag-enterprise-architecture</link>
+      <guid isPermaLink="true">https://www.aeitch.com/insights/private-rag-enterprise-architecture</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Enterprise AI &amp; Security</category>
+      <description>Architecting zero-data-leakage Retrieval-Augmented Generation for enterprise data. VPC isolation, hybrid pgvector retrieval, and access controls. — Production enterprise RAG requires moving beyond naive vector lookups to defense-in-depth: private VPC tenancy, hybrid dense/sparse retrieval with pgvector and BM25, and strict document-level Access Control List (ACL) projection before inference.</description>
+    </item>
+  </channel>
+</rss>

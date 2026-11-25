@@ -9,8 +9,10 @@
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
     "prerender": "node scripts/prerender.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
+    "rss": "node scripts/generate-rss.mjs",
+    "syndicate": "node scripts/syndicate.mjs",
     "seo:check": "node scripts/seo-check.mjs",
-    "build": "tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/generate-sitemap.mjs && node scripts/seo-check.mjs",
+    "build": "tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && node scripts/seo-check.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
