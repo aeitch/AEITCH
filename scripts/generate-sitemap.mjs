@@ -43,7 +43,7 @@ function getPriority(routePath) {
   if (routePath === '/') return '1.0';
   if (routePath.startsWith('/services/')) return '0.9';
   if (routePath === '/insights' || routePath === '/stack') return '0.8';
-  if (routePath.startsWith('/insights/') || routePath.startsWith('/stack/')) return '0.7';
+  if (routePath.startsWith('/insights/') || routePath.startsWith('/stack/') || routePath.startsWith('/case-studies/')) return '0.7';
   if (routePath === '/solutions' || routePath === '/about' || routePath === '/pricing' || routePath === '/contact') return '0.8';
   return '0.6';
 }
@@ -51,7 +51,7 @@ function getPriority(routePath) {
 function getChangeFreq(routePath) {
   if (routePath === '/' || routePath.startsWith('/services/')) return 'weekly';
   if (routePath === '/insights' || routePath === '/stack') return 'daily';
-  if (routePath.startsWith('/insights/') || routePath.startsWith('/stack/')) return 'monthly';
+  if (routePath.startsWith('/insights/') || routePath.startsWith('/stack/') || routePath.startsWith('/case-studies/')) return 'monthly';
   return 'monthly';
 }
 
@@ -79,6 +79,7 @@ async function generateSitemap() {
     if (!sourceFile) {
       if (route.path.startsWith('/insights/')) sourceFile = 'src/data/insightsArticles.ts';
       else if (route.path.startsWith('/stack/')) sourceFile = 'src/data/stackPages.ts';
+      else if (route.path.startsWith('/case-studies/')) sourceFile = 'src/data/caseStudies.ts';
       else sourceFile = 'src/App.tsx';
     }
 

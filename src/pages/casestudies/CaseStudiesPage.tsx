@@ -2,54 +2,12 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../../router/Router';
 import { SEOHead } from '../../components/seo/SEOHead';
+import { CASE_STUDIES } from '../../data/caseStudies';
 
 export const CaseStudiesPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const studies = [
-    {
-      title: 'Support Pilot — Enterprise Agentic Support Architecture',
-      service: 'AI Automation',
-      color: '#F7C059',
-      borderColor: 'rgba(247, 192, 89, 0.25)',
-      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
-      desc: 'Architectural blueprint for a multi-agent autonomous swarm connected to hybrid vector retrieval (pgvector) with deterministic guardrails and automated human-in-the-loop escalation.',
-      tech: ['LangGraph', 'Anthropic Claude', 'pgvector', 'FastAPI'],
-      path: '/services/ai-automation',
-    },
-    {
-      title: 'FinScale — Institutional Liquidity Dashboard',
-      service: 'Product Development',
-      color: '#76E3DC',
-      borderColor: 'rgba(118, 227, 220, 0.25)',
-      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
-      desc: 'Full-stack architecture blueprint for institutional financial interfaces featuring real-time WebSocket reconciliation, automated audit trails, and multi-tenant ledger isolation.',
-      tech: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'GraphQL'],
-      path: '/services/product-development',
-    },
-    {
-      title: 'CloudPulse — Multi-Region Kubernetes Migration',
-      service: 'DevOps & Cloud',
-      color: '#FF9CAA',
-      borderColor: 'rgba(255, 156, 170, 0.25)',
-      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
-      desc: 'Cloud-native infrastructure blueprint demonstrating automated zero-downtime canary deployments, multi-region Amazon EKS orchestration, and deterministic Terraform modules.',
-      tech: ['Kubernetes', 'Terraform', 'AWS EKS', 'ArgoCD', 'Prometheus'],
-      path: '/services/devops-cloud',
-    },
-    {
-      title: 'TransactCore — Low-Latency Order Processing Engine',
-      service: 'Custom Software',
-      color: '#74C8FC',
-      borderColor: 'rgba(116, 200, 252, 0.25)',
-      impact: 'Reference Architecture • [[FOUNDER TO PROVIDE: Real Client Benchmark]]',
-      desc: 'High-throughput event-driven order processing engine architecture designed in Go and Apache Kafka with sub-15ms transactional guarantees and zero data loss constraints.',
-      tech: ['Go', 'Apache Kafka', 'PostgreSQL', 'Docker', 'gRPC'],
-      path: '/services/custom-software',
-    },
-  ];
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-hidden select-none">
@@ -84,9 +42,9 @@ export const CaseStudiesPage: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-5 sm:gap-6 desktop:gap-8">
-            {studies.map((item, idx) => (
+            {CASE_STUDIES.map((item) => (
               <motion.div
-                key={idx}
+                key={item.slug}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2 }}
                 className="group relative rounded-2xl p-5 sm:p-8 desktop:p-10 bg-white/[0.02] border transition-all duration-300 flex flex-col desktop:flex-row items-start desktop:items-center justify-between gap-6 sm:gap-8 overflow-hidden shadow-xl"
@@ -111,11 +69,16 @@ export const CaseStudiesPage: React.FC = () => {
                     >
                       {item.service}
                     </span>
-                    <span className="font-mono text-white/40 text-[11.5px] sm:text-[12px]">CASE #{idx + 1}</span>
+                    <span className="font-mono text-white/40 text-[11.5px] sm:text-[12px]">{item.caseNumber}</span>
                   </div>
 
                   <h3 className="font-sans font-normal text-[20px] sm:text-[26px] desktop:text-[30px] text-white">
-                    {item.title}
+                    <Link
+                      href={`/case-studies/${item.slug}`}
+                      className="text-white hover:text-white/85 transition-colors no-underline"
+                    >
+                      {item.title}
+                    </Link>
                   </h3>
 
                   <p className="font-poppins text-[15px] text-white/70 leading-relaxed">
@@ -124,7 +87,7 @@ export const CaseStudiesPage: React.FC = () => {
 
                   <div className="flex items-center gap-2 text-white/90 font-mono text-[13px] pt-1">
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
-                    <span className="font-semibold" style={{ color: item.color }}>Impact:</span>
+                    <span className="font-semibold" style={{ color: item.color }}>{item.badge}:</span>
                     <span>{item.impact}</span>
                   </div>
 
@@ -142,7 +105,7 @@ export const CaseStudiesPage: React.FC = () => {
 
                 <div className="relative z-10 shrink-0">
                   <Link
-                    href={item.path}
+                    href={`/case-studies/${item.slug}`}
                     className="inline-flex items-center gap-2 bg-white text-black font-poppins font-semibold text-[13.5px] px-6 py-3 rounded-full hover:bg-neutral-200 transition-all no-underline shadow-md"
                   >
                     <span>Read Study & Architecture</span>

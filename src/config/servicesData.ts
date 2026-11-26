@@ -142,7 +142,7 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       badge: 'Reference Architecture',
       title: 'Support Pilot — Enterprise Agentic Support Architecture',
       impact: 'Prototype multi-agent swarm with private pgvector retrieval and automated human-in-the-loop escalation.',
-      href: '/case-studies',
+      href: '/case-studies/supportpilot',
     },
   },
   'product-development': {
@@ -205,7 +205,7 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       badge: 'Reference Architecture',
       title: 'FinScale — Institutional Liquidity Dashboard Blueprint',
       impact: 'Architecture blueprint demonstrating real-time WebSocket reconciliation and multi-tenant ledger isolation.',
-      href: '/case-studies',
+      href: '/case-studies/finscale',
     },
   },
   'devops-cloud': {
@@ -268,7 +268,7 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       badge: 'Reference Architecture',
       title: 'CloudPulse — Cloud-Native Kubernetes Migration Blueprint',
       impact: 'Architecture blueprint for zero-downtime containerization, Terraform modularization, and service mesh governance.',
-      href: '/case-studies',
+      href: '/case-studies/cloudpulse',
     },
   },
   'custom-software': {
@@ -331,7 +331,7 @@ export const SERVICES_CONFIG: Record<string, ServiceDetail> = {
       badge: 'Reference Architecture',
       title: 'TransactCore — Low-Latency Order Processing Engine Blueprint',
       impact: 'Event-driven order routing architecture in Go and Kafka designed for high-concurrency transactional pipelines.',
-      href: '/case-studies',
+      href: '/case-studies/transactcore',
     },
   },
 };

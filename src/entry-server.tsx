@@ -2,6 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { App } from './App';
 import { INSIGHTS_ARTICLES } from './data/insightsArticles';
 import { STACK_PAGES } from './data/stackPages';
+import { CASE_STUDIES } from './data/caseStudies';
 
 export { INSIGHTS_ARTICLES };
 
@@ -168,5 +169,15 @@ export function getAllRoutes(): RouteDefinition[] {
     isCanonical200: true,
   }));
 
-  return [...baseRoutes, ...insightRoutes, ...stackRoutes];
+  const caseStudyRoutes: RouteDefinition[] = CASE_STUDIES.map((study) => ({
+    path: `/case-studies/${study.slug}`,
+    outputPath: `case-studies/${study.slug}/index.html`,
+    title: study.seoTitle,
+    description: study.metaDescription,
+    canonical: `https://www.aeitch.com/case-studies/${study.slug}`,
+    ogType: 'article',
+    isCanonical200: true,
+  }));
+
+  return [...baseRoutes, ...insightRoutes, ...stackRoutes, ...caseStudyRoutes];
 }

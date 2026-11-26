@@ -7,6 +7,7 @@ import { AIAutomationPage } from './pages/services/AIAutomationPage';
 import { ServicePage } from './pages/services/ServicePage';
 import { SolutionsPage } from './pages/solutions/SolutionsPage';
 import { CaseStudiesPage } from './pages/casestudies/CaseStudiesPage';
+import { CaseStudyDetailPage } from './pages/casestudies/CaseStudyDetailPage';
 import { AboutPage } from './pages/about/AboutPage';
 import { PricingPage } from './pages/pricing/PricingPage';
 import { ContactPage } from './pages/contact/ContactPage';
@@ -17,6 +18,7 @@ import { StackHubPage } from './pages/stack/StackHubPage';
 import { StackDetailPage } from './pages/stack/StackDetailPage';
 import { INSIGHTS_ARTICLES } from './data/insightsArticles';
 import { STACK_PAGES } from './data/stackPages';
+import { CASE_STUDIES } from './data/caseStudies';
 
 const AppContent: React.FC = () => {
   const { currentPath } = useRouter();
@@ -38,8 +40,9 @@ const AppContent: React.FC = () => {
 
   const insightPaths = INSIGHTS_ARTICLES.map((a) => `/insights/${a.slug}`);
   const stackPaths = STACK_PAGES.map((s) => `/stack/${s.slug}`);
+  const caseStudyPaths = CASE_STUDIES.map((c) => `/case-studies/${c.slug}`);
 
-  const knownPaths = [...basePaths, ...insightPaths, ...stackPaths];
+  const knownPaths = [...basePaths, ...insightPaths, ...stackPaths, ...caseStudyPaths];
 
   const isHome = currentPath === '/';
   const isNotFound = !knownPaths.includes(currentPath);
@@ -77,6 +80,15 @@ const AppContent: React.FC = () => {
             key={stack.slug}
             path={`/stack/${stack.slug}`}
             element={<StackDetailPage slug={stack.slug} />}
+          />
+        ))}
+
+        {/* Dynamic Case Study Detail Routes */}
+        {CASE_STUDIES.map((study) => (
+          <Route
+            key={study.slug}
+            path={`/case-studies/${study.slug}`}
+            element={<CaseStudyDetailPage slug={study.slug} />}
           />
         ))}
       </main>

@@ -74,7 +74,7 @@ export const heroContent: HeroContentData = {
   caseStudy: {
     badge: "Latest case study",
     title: "Support Pilot — Multichannel AI Customer Assistant",
-    href: "./case-studies/supportpilot",
+    href: "/case-studies/supportpilot",
   },
 
   // 4 synchronized service cards

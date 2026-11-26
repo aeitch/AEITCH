@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from '../../router/Router';
 import { SPRING_HOVER } from './motion';
 
 interface CaseStudyCardProps {
@@ -16,7 +17,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <a
+    <Link
       href={href}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -73,6 +74,6 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
           {title}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
