@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>AEITCH Technical Insights</title>
     <link>https://www.aeitch.com/insights</link>
@@ -14,6 +14,42 @@
       <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
       <category>GEO &amp; AI Search Strategy</category>
       <description>A technical guide to Generative Engine Optimization (GEO). How to optimize architectures and semantic markup to be cited by ChatGPT, Perplexity, and Claude. — Generative Engine Optimization (GEO) requires shifting from traditional keyword density to factual information density, clear entity definition in Schema.org, quotable self-contained opening definitions, and machine-readable data tables that LLMs can ingest and cite with high confidence.</description>
+      <content:encoded><![CDATA[<blockquote><p><strong>Executive Summary:</strong> Generative Engine Optimization (GEO) requires shifting from traditional keyword density to factual information density, clear entity definition in Schema.org, quotable self-contained opening definitions, and machine-readable data tables that LLMs can ingest and cite with high confidence.</p>
+<ul>
+<li>AI answer engines (Perplexity, ChatGPT Search, Claude) favor content that directly answers queries in the first 80 words with verifiable technical context.</li>
+<li>Explicit Schema.org Knowledge Graph declarations link your brand entity to its legal entity and verified web citations.</li>
+<li>Adding machine-readable /llms.txt files provides deterministic discovery paths for autonomous research agents and crawlers.</li>
+</ul>
+</blockquote>
+<p>Search is undergoing the most profound paradigm shift since the invention of the PageRank algorithm. Millions of technical buyers and executives now bypass traditional Google 10-blue-link results, turning instead to LLM answer engines like Perplexity, ChatGPT Search, and Claude Artifacts. If your business is invisible to language models, you do not exist in the modern B2B buying cycle.</p>
+<h2>1. How Answer Engines Evaluate Citations</h2>
+<p>Traditional search engines index pages based on keywords, backlinks, and click-through rates. LLM answer engines operate as synthesis engines: they execute real-time web retrieval, extract relevant semantic chunks, evaluate source credibility, and construct synthesized answers that cite authoritative sources.</p>
+<p>To be cited, content must exhibit high Information Gain—providing unique architectural insights, code samples, or benchmark data that cannot be found elsewhere. LLMs actively filter out promotional filler, fluff, and superficial keyword-stuffed articles.</p>
+<h2>2. The 5 Technical Pillars of GEO</h2>
+<p>To optimize any digital property for AI discovery and citation, enforce these five technical standards:</p>
+<p>1. Quotable Inverted-Pyramid Lead: Begin every technical page with a concise, factual 60-to-80 word definition answering the core question before diving into details.</p>
+<p>2. Structured Comparison Data: Large Language Models prioritize structured HTML tables and bulleted lists when answering comparative queries (e.g. &quot;Tool X vs Tool Y&quot;).</p>
+<p>3. Schema.org Knowledge Graph Integration: Use unambiguous JSON-LD `@graph` structures binding your Brand name, Legal Name, and sameAs social proofs.</p>
+<p>4. Uninhibited AI Crawler Access: Ensure your robots.txt allows ChatGPT-User, PerplexityBot, ClaudeBot, and OAI-SearchBot.</p>
+<p>5. Clean Machine-Readable Discovery (/llms.txt): Serve a structured Markdown summary of your corporate capabilities at the root domain.</p>
+<h2>3. Machine-Readable /llms.txt Standard</h2>
+<p>The emerging `/llms.txt` standard provides an AI-friendly index of documentation and company capabilities, allowing autonomous coding agents and search synthesizers to locate authoritative resources with minimal token overhead.</p>
+<p><em>Example /llms.txt manifest exposing core capabilities and documentation paths</em></p>
+<pre><code># AEITCH
+&gt; Enterprise AI Automation &amp; Software Engineering Collective
+
+AEITCH SMC PVT LTD architects autonomous AI agent systems, full-cycle SaaS platforms, multi-region Kubernetes infrastructure, and high-throughput bespoke software for organizations worldwide.
+
+## Services
+- [AI Automation &amp; Autonomous Agents](https://www.aeitch.com/services/ai-automation): Multi-agent swarms, private enterprise RAG, and LLM workflows.
+- [Product Development &amp; MVP](https://www.aeitch.com/services/product-development): 4-8 week fixed-price MVP sprints and SaaS engineering.
+- [DevOps &amp; Cloud Engineering](https://www.aeitch.com/services/devops-cloud): Kubernetes orchestration, Terraform IaC, and cloud FinOps.
+- [Custom Software Development](https://www.aeitch.com/services/custom-software): Bespoke distributed backends in Go and Rust.</code></pre>
+<h2>References</h2><ul>
+<li><a href="https://arxiv.org/abs/2311.09735">Princeton &amp; Georgia Tech GEO Research Paper</a> — Seminal research paper on Generative Engine Optimization for generative search engines.</li>
+<li><a href="https://llmstxt.org">The /llms.txt Proposal Standard</a> — Open standard proposal for serving AI-friendly context files at web root.</li>
+</ul>
+<p>Originally published at <a href="https://www.aeitch.com/insights/generative-engine-optimization-ai-search">https://www.aeitch.com/insights/generative-engine-optimization-ai-search</a>.</p>]]></content:encoded>
     </item>
     <item>
       <title>Legacy Modernization: Strangler-Fig Migration from Monolith to Services</title>
@@ -22,6 +58,47 @@
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
       <category>Software Architecture</category>
       <description>A zero-downtime architectural guide to decomposing monolithic enterprise systems into decoupled microservices using the Strangler Fig pattern. — Big-bang rewrites almost always exceed schedules and introduce regressions. The Strangler Fig pattern allows teams to modernize critical enterprise monoliths incrementally by intercepting traffic at an API gateway and extracting domain boundaries one bounded context at a time.</description>
+      <content:encoded><![CDATA[<blockquote><p><strong>Executive Summary:</strong> Big-bang rewrites almost always exceed schedules and introduce regressions. The Strangler Fig pattern allows teams to modernize critical enterprise monoliths incrementally by intercepting traffic at an API gateway and extracting domain boundaries one bounded context at a time.</p>
+<ul>
+<li>Never rewrite a monolith from scratch in a separate branch while maintaining the old system; parallel rewrites diverge rapidly.</li>
+<li>Deploy an intelligent edge gateway (Envoy/Traefik) to route traffic transparently between legacy endpoints and newly extracted services.</li>
+<li>Use Change Data Capture (CDC) with Debezium to replicate database state asynchronously without introducing distributed transactions.</li>
+</ul>
+</blockquote>
+<p>Every successful legacy system eventually becomes technical debt. Decades of business rules, undocumented edge cases, and tightly coupled database schemas make executives terrified of touching their core platforms. However, the solution is never a high-risk &quot;big bang&quot; rewrite. The proven industry standard is the Strangler Fig migration.</p>
+<h2>1. Why Big-Bang Rewrites Fail in Enterprise Environments</h2>
+<p>In a big-bang rewrite, a separate engineering team is tasked with rebuilding the entire system from scratch. Meanwhile, the legacy team continues adding features and fixing bugs to support current customers.</p>
+<p>By the time the new system is ready for testing 18 months later, the business requirements have evolved, the two systems have diverged, and cutover becomes a terrifying all-or-nothing roll of the dice. Most big-bang rewrites are abandoned after millions in sunk expenditure.</p>
+<h2>2. The Strangler Fig Pattern Mechanics</h2>
+<p>Named by Martin Fowler after the Australian strangler fig vine that germinates in the branches of a host tree and slowly envelops it, this pattern gradually replaces old functionality until the legacy system can be safely decommissioned.</p>
+<p>Step 1: Intercept all incoming traffic at an API Gateway (e.g. Envoy, Kong, or Cloudflare Workers).</p>
+<p>Step 2: Identify the most isolated bounded context in the domain model (e.g. Notification dispatch or Billing ingestion).</p>
+<p>Step 3: Build the new microservice using modern frameworks and databases.</p>
+<p>Step 4: Shift 1% of live traffic to the new service using Canary routing. Verify logs and error budgets.</p>
+<p>Step 5: Increase traffic to 100%, deprecate the legacy code path, and repeat for the next domain context.</p>
+<h2>3. Data Synchronization via Change Data Capture (CDC)</h2>
+<p>The hardest part of service extraction is data sharing. Microservices should never query the legacy monolith database directly. Instead, deploy Change Data Capture (CDC) via Debezium and Kafka to stream database commit log mutations into the new service database in real time.</p>
+<p><em>Debezium Kafka Connect configuration streaming Postgres WAL logs into event streams</em></p>
+<pre><code>{
+  &quot;name&quot;: &quot;legacy-monolith-cdc-connector&quot;,
+  &quot;config&quot;: {
+    &quot;connector.class&quot;: &quot;io.debezium.connector.postgresql.PostgresConnector&quot;,
+    &quot;tasks.max&quot;: &quot;1&quot;,
+    &quot;plugin.name&quot;: &quot;pgoutput&quot;,
+    &quot;database.hostname&quot;: &quot;monolith-db.internal&quot;,
+    &quot;database.port&quot;: &quot;5432&quot;,
+    &quot;database.user&quot;: &quot;cdc_replicator&quot;,
+    &quot;database.password&quot;: &quot;${file:/secrets/db:cdc_pass}&quot;,
+    &quot;database.dbname&quot;: &quot;production_monolith&quot;,
+    &quot;database.server.name&quot;: &quot;monolith&quot;,
+    &quot;table.include.list&quot;: &quot;public.orders,public.order_items&quot;,
+    &quot;tombstones.on.delete&quot;: &quot;false&quot;
+  }
+}</code></pre>
+<h2>References</h2><ul>
+<li><a href="https://martinfowler.com/bliki/StranglerFigApplication.html">Martin Fowler — StranglerFigApplication</a> — Foundational architectural essay defining incremental application modernization.</li>
+</ul>
+<p>Originally published at <a href="https://www.aeitch.com/insights/legacy-modernization-strangler-fig-migration">https://www.aeitch.com/insights/legacy-modernization-strangler-fig-migration</a>.</p>]]></content:encoded>
     </item>
     <item>
       <title>Kubernetes Cost Optimization: A Practical FinOps Checklist</title>
@@ -30,6 +107,56 @@
       <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
       <category>Cloud Engineering &amp; FinOps</category>
       <description>A practical, engineering-first FinOps checklist to eliminate Kubernetes compute waste, right-size requests/limits, and leverage spot instances safely. — Most cloud clusters operate at less than 18% CPU utilization due to aggressive static resource allocations. Implementing Horizontal Pod Autoscaling (HPA) alongside Karpenter dynamic node provisioning and VPA recommendations typically cuts unneeded compute overhead substantially.</description>
+      <content:encoded><![CDATA[<blockquote><p><strong>Executive Summary:</strong> Most cloud clusters operate at less than 18% CPU utilization due to aggressive static resource allocations. Implementing Horizontal Pod Autoscaling (HPA) alongside Karpenter dynamic node provisioning and VPA recommendations typically cuts unneeded compute overhead substantially.</p>
+<ul>
+<li>Setting memory limits equal to requests prevents Out-Of-Memory (OOM) throttling while avoiding CPU throttling from arbitrary CPU limits.</li>
+<li>AWS Karpenter provisions exact instance sizes dynamically based on pending pod requirements, replacing static EKS node groups.</li>
+<li>Leveraging Spot instance pools with automated pod disruption budgets (PDBs) achieves significant compute savings for stateless services.</li>
+</ul>
+</blockquote>
+<p>Cloud infrastructure bills frequently balloon because engineering teams size Kubernetes resource requests for peak holiday traffic rather than typical utilization. FinOps is not about starving services of resources—it is about designing automated elasticity so infrastructure cost maps linearly to business revenue.</p>
+<h2>1. The Resource Request vs. Limit Pitfall</h2>
+<p>Kubernetes schedules pods based on &quot;requests&quot;, not &quot;limits&quot;. If an engineer assigns a pod 4 CPU cores and 8GB RAM as a request, Kubernetes reserves that capacity entirely on the node, even if the pod is consuming 200m CPU and 500MB RAM.</p>
+<p>Furthermore, setting arbitrary CPU limits can cause the Linux kernel CFS quota scheduler to artificially throttle your application threads even when the host node has ample free CPU cycles. Modern Kubernetes best practice recommends setting accurate requests while omitting CPU limits (or setting them high), pairing this with memory requests equal to limits.</p>
+<h2>2. Karpenter: Just-In-Time Node Provisioning</h2>
+<p>Traditional Kubernetes Cluster Autoscaler relies on static node groups (e.g. m5.2xlarge). When a 100MB pod cannot fit, it provisions an entire new m5.2xlarge instance. AWS Karpenter replaces static node groups by communicating directly with the EC2 fleet API, launching the exact instance type needed in under 45 seconds.</p>
+<p><em>Production Karpenter NodePool manifest prioritizing Spot instances with Graviton fallback</em></p>
+<pre><code>apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: general-compute
+spec:
+  template:
+    spec:
+      requirements:
+        - key: &quot;karpenter.sh/capacity-type&quot;
+          operator: In
+          values: [&quot;spot&quot;, &quot;on-demand&quot;]
+        - key: &quot;kubernetes.io/arch&quot;
+          operator: In
+          values: [&quot;arm64&quot;, &quot;amd64&quot;]
+        - key: &quot;karpenter.k8s.aws/instance-category&quot;
+          operator: In
+          values: [&quot;c&quot;, &quot;m&quot;, &quot;r&quot;]
+      nodeClassRef:
+        name: default-ec2-node-class
+  limits:
+    cpu: &quot;1000&quot;
+    memory: 2000Gi
+  disruption:
+    consolidationPolicy: WhenUnderutilized
+    expireAfter: 720h</code></pre>
+<h2>3. Step-by-Step FinOps Checklist for Kubernetes</h2>
+<p>Before buying savings plans or reserved instances, complete these architectural optimizations:</p>
+<p>1. Install OpenCost or Kubecost to attribute monthly spend to specific Kubernetes namespaces and teams.</p>
+<p>2. Run Vertical Pod Autoscaler (VPA) in recommendation mode for 14 days to collect real p99 resource utilization metrics.</p>
+<p>3. Migrate non-critical background workers and batch queues to AWS Spot / GCP Preemptible nodes with PodDisruptionBudgets.</p>
+<p>4. Implement automated namespace TTL cleanups in non-production environments to terminate development clusters on weekends.</p>
+<h2>References</h2><ul>
+<li><a href="https://karpenter.sh">Karpenter Kubernetes Autoscaling</a> — High-performance, flexible Kubernetes cluster autoscaler built for AWS.</li>
+<li><a href="https://www.opencost.io">OpenCost Specification</a> — Vendor-neutral open source project for tracking Kubernetes cloud costs in real time.</li>
+</ul>
+<p>Originally published at <a href="https://www.aeitch.com/insights/kubernetes-cost-optimization-finops-checklist">https://www.aeitch.com/insights/kubernetes-cost-optimization-finops-checklist</a>.</p>]]></content:encoded>
     </item>
     <item>
       <title>How to Scope an MVP in 4-8 Weeks Without Accruing Tech Debt</title>
@@ -38,6 +165,77 @@
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Product Engineering</category>
       <description>A pragmatic engineering blueprint for technical founders to ship production-grade MVPs in 4–8 weeks while maintaining type-safe, extensible foundations. — Speed does not require cutting corners on architecture. By constraining scope to a single primary user transaction, enforcing end-to-end type safety, and utilizing managed serverless data backbones, teams can launch market-ready MVPs in 4–8 weeks without building throwaway code.</description>
+      <content:encoded><![CDATA[<blockquote><p><strong>Executive Summary:</strong> Speed does not require cutting corners on architecture. By constraining scope to a single primary user transaction, enforcing end-to-end type safety, and utilizing managed serverless data backbones, teams can launch market-ready MVPs in 4–8 weeks without building throwaway code.</p>
+<ul>
+<li>The #1 cause of MVP delays is &quot;feature creep disguised as product completeness.&quot; Every MVP must solve exactly one core operational bottleneck.</li>
+<li>End-to-end type safety (TypeScript, Zod, Prisma/Drizzle) prevents 80% of data boundary defects during rapid iteration.</li>
+<li>Choose boring, proven technologies over bleeding-edge frameworks to eliminate unknown failure modes during zero-to-one validation.</li>
+</ul>
+</blockquote>
+<p>The conventional wisdom in tech says: &quot;If you are not embarrassed by your first release, you launched too late.&quot; While this sentiment encourages speed, founders frequently misinterpret it as permission to ship brittle, insecure code that collapses under initial client adoption. At AEITCH, we advocate a different methodology: engineering precision at constrained scope.</p>
+<h2>1. The Difference Between Scoping Discipline and Architectural Shortcuts</h2>
+<p>There is a fundamental difference between cutting scope and cutting architectural corners. Cutting scope means removing secondary features: dark mode, social login integrations, complex notification settings, and multi-tier permission matrixes.</p>
+<p>Cutting architectural corners means skipping database migrations, using untyped JavaScript, hardcoding environment variables, and ignoring database indexing. Cutting scope accelerates launch; cutting corners ensures your first major customer churns due to critical system failures.</p>
+<h2>2. The 4–8 Week Sprint Timeline</h2>
+<p>To achieve launch velocity without organizational chaos, we divide the MVP sprint into four deterministic phases:</p>
+<table><thead><tr>
+<th>Phase</th>
+<th>Timeline</th>
+<th>Deliverables &amp; Milestones</th>
+<th>Quality Gate</th>
+</tr></thead><tbody>
+<tr>
+<td>Weeks 1–2</td>
+<td>Sprint 01</td>
+<td>Data modeling, API contracts, Figma tokens, auth &amp; tenant isolation</td>
+<td>Schema validation passes &amp; database migrations locked</td>
+</tr>
+<tr>
+<td>Weeks 3–4</td>
+<td>Sprint 02</td>
+<td>Core transaction flow, primary dashboard, third-party webhook sync</td>
+<td>End-to-end integration tests pass on happy path</td>
+</tr>
+<tr>
+<td>Weeks 5–6</td>
+<td>Sprint 03</td>
+<td>Edge case error handling, billing integration (Stripe), email dispatch</td>
+<td>Security audit &amp; penetration testing completed</td>
+</tr>
+<tr>
+<td>Weeks 7–8</td>
+<td>Sprint 04</td>
+<td>Staging load testing, observability telemetry, production cutover</td>
+<td>Full client demo, documentation sign-off, live DNS</td>
+</tr>
+</tbody></table>
+<h2>3. The Type-Safe Foundation Stack</h2>
+<p>To prevent runtime regressions when pivoting features, the MVP codebase must enforce end-to-end contract validation from database to frontend components. Below is a production Zod validation pattern creating runtime and compile-time synchronization:</p>
+<p><em>Contract-first API validation ensuring compile-time and runtime synchronization</em></p>
+<pre><code>import { z } from &apos;zod&apos;;
+
+export const CreateOrganizationSchema = z.object({
+  name: z.string().min(2).max(64),
+  billingEmail: z.string().email(),
+  tier: z.enum([&apos;starter&apos;, &apos;growth&apos;, &apos;enterprise&apos;]).default(&apos;starter&apos;),
+  maxSeats: z.number().int().positive().max(100),
+});
+
+export type CreateOrganizationInput = z.infer&lt;typeof CreateOrganizationSchema&gt;;
+
+// API Handler with strict contract enforcement
+export async function handleCreateOrg(rawInput: unknown) {
+  const result = CreateOrganizationSchema.safeParse(rawInput);
+  if (!result.success) {
+    return { status: 400, errors: result.error.flatten().fieldErrors };
+  }
+  // Data is guaranteed valid and strictly typed
+  return { status: 201, data: result.data };
+}</code></pre>
+<h2>References</h2><ul>
+<li><a href="https://zod.dev">Zod TypeScript Schema Validation</a> — TypeScript-first schema declaration and validation library.</li>
+</ul>
+<p>Originally published at <a href="https://www.aeitch.com/insights/scope-mvp-four-eight-weeks-without-tech-debt">https://www.aeitch.com/insights/scope-mvp-four-eight-weeks-without-tech-debt</a>.</p>]]></content:encoded>
     </item>
     <item>
       <title>Multi-Agent Workflows: When to Use LangGraph vs a Custom Orchestrator</title>
@@ -46,6 +244,99 @@
       <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
       <category>Agent Systems &amp; Architecture</category>
       <description>Architectural evaluation: when to adopt LangGraph for stateful multi-agent workflows versus building a custom event-driven Python/Go orchestrator. — LangGraph is optimal for multi-agent loops requiring cyclic state machines, time-travel debugging, and human-in-the-loop checkpoints. For sub-100ms transactional throughput or high-frequency message streaming, a lightweight custom orchestrator in Go or asyncio yields superior resource predictability.</description>
+      <content:encoded><![CDATA[<blockquote><p><strong>Executive Summary:</strong> LangGraph is optimal for multi-agent loops requiring cyclic state machines, time-travel debugging, and human-in-the-loop checkpoints. For sub-100ms transactional throughput or high-frequency message streaming, a lightweight custom orchestrator in Go or asyncio yields superior resource predictability.</p>
+<ul>
+<li>Cyclic state graphs are essential for autonomous error recovery; traditional DAGs fail when agents need to self-correct and retry.</li>
+<li>LangGraph provides out-of-the-box state persistence with Postgres checkpointers, reducing boilerplate for multi-turn human approvals.</li>
+<li>Custom orchestrators shine when integrating distributed event buses (Kafka/RabbitMQ) where framework abstraction introduces latency.</li>
+</ul>
+</blockquote>
+<p>As software organizations move from simple chained LLM prompts to autonomous agent teams, orchestration becomes the primary architectural challenge. Engineers frequently ask: Should we adopt LangGraph, or engineer a custom orchestrator from scratch? At AEITCH, we have evaluated both paradigms across mission-critical enterprise deployments.</p>
+<h2>1. Why DAGs Break Down in Autonomous Systems</h2>
+<p>Directed Acyclic Graphs (DAGs)—the foundation of tools like Airflow or standard LangChain chains—assume execution flows in one linear direction. If Step C encounters a validation failure, a DAG cannot naturally loop back to Step B to revise the input with error feedback.</p>
+<p>Autonomous agents require cyclical state graphs. An agent drafting SQL queries must test the query against a sandbox; if the query returns a syntax error, the agent must inspect the error trace, revise its query, and re-execute. This requires first-class cycles, state branching, and deterministic stop conditions.</p>
+<h2>2. LangGraph Architecture &amp; Evaluation</h2>
+<p>LangGraph models agent coordination as a state machine where nodes are executable functions (agents or tools) and edges are conditional transitions based on state changes. The primary architectural advantage is its built-in checkpointer system.</p>
+<p>Below is a functional LangGraph pattern demonstrating an agentic self-correction loop with state checkpointing:</p>
+<p><em>LangGraph cyclic state graph with human-in-the-loop validation and Postgres persistence</em></p>
+<pre><code>from typing import Annotated, TypedDict
+from langgraph.graph import StateGraph, END
+from langgraph.checkpoint.postgres import PostgresSaver
+
+class AgentState(TypedDict):
+    task: str
+    code: str
+    error: str | None
+    iterations: int
+    is_approved: bool
+
+def code_generator(state: AgentState) -&gt; dict:
+    # Model generates code based on task and prior errors
+    return {&quot;code&quot;: &quot;# Generated implementation&quot;, &quot;iterations&quot;: state[&quot;iterations&quot;] + 1}
+
+def test_runner(state: AgentState) -&gt; dict:
+    # Runs static analysis &amp; test suite
+    if state[&quot;iterations&quot;] &gt; 3:
+        return {&quot;error&quot;: None, &quot;is_approved&quot;: True} # Safety circuit
+    return {&quot;error&quot;: &quot;AssertionError on line 12&quot;, &quot;is_approved&quot;: False}
+
+def should_continue(state: AgentState) -&gt; str:
+    if state[&quot;is_approved&quot;]:
+        return &quot;human_approval&quot;
+    return &quot;generator&quot;
+
+# Construct graph
+workflow = StateGraph(AgentState)
+workflow.add_node(&quot;generator&quot;, code_generator)
+workflow.add_node(&quot;tester&quot;, test_runner)
+workflow.add_edge(&quot;generator&quot;, &quot;tester&quot;)
+workflow.add_conditional_edges(&quot;tester&quot;, should_continue, {
+    &quot;generator&quot;: &quot;generator&quot;,
+    &quot;human_approval&quot;: END
+})
+workflow.set_entry_point(&quot;generator&quot;)</code></pre>
+<h2>3. Architectural Trade-Off Matrix</h2>
+<p>Choosing between LangGraph and a custom Python/Go orchestrator is an exercise in balancing development velocity against runtime overhead:</p>
+<table><thead><tr>
+<th>Evaluation Dimension</th>
+<th>LangGraph Framework</th>
+<th>Custom Orchestrator (Go/asyncio)</th>
+</tr></thead><tbody>
+<tr>
+<td>State Machine Cycles</td>
+<td>Native cyclic graphs with loop guards</td>
+<td>Requires custom state engine logic</td>
+</tr>
+<tr>
+<td>State Persistence</td>
+<td>Built-in Postgres/Redis checkpointers</td>
+<td>Custom database serialization required</td>
+</tr>
+<tr>
+<td>Execution Overhead</td>
+<td>~15–40ms framework wrapper latency</td>
+<td>&lt; 2ms raw execution latency</td>
+</tr>
+<tr>
+<td>Memory Footprint</td>
+<td>Moderate (Python object graphs)</td>
+<td>Extremely low (compiled Go binaries)</td>
+</tr>
+<tr>
+<td>Human-in-the-loop</td>
+<td>First-class interrupt/resume hooks</td>
+<td>Must engineer pause/resume state machines</td>
+</tr>
+<tr>
+<td>Ideal Use Case</td>
+<td>Complex multi-turn research/coding swarms</td>
+<td>High-throughput transactional API workflows</td>
+</tr>
+</tbody></table>
+<h2>References</h2><ul>
+<li><a href="https://langchain-ai.github.io/langgraph/">LangGraph Formal Specification</a> — Official architectural documentation for building stateful agent systems.</li>
+</ul>
+<p>Originally published at <a href="https://www.aeitch.com/insights/multi-agent-workflows-langgraph-vs-orchestrator">https://www.aeitch.com/insights/multi-agent-workflows-langgraph-vs-orchestrator</a>.</p>]]></content:encoded>
     </item>
     <item>
       <title>Private RAG for Enterprises: Architecture and Data-Leakage Controls</title>
@@ -54,6 +345,79 @@
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <category>Enterprise AI &amp; Security</category>
       <description>Architecting zero-data-leakage Retrieval-Augmented Generation for enterprise data. VPC isolation, hybrid pgvector retrieval, and access controls. — Production enterprise RAG requires moving beyond naive vector lookups to defense-in-depth: private VPC tenancy, hybrid dense/sparse retrieval with pgvector and BM25, and strict document-level Access Control List (ACL) projection before inference.</description>
+      <content:encoded><![CDATA[<blockquote><p><strong>Executive Summary:</strong> Production enterprise RAG requires moving beyond naive vector lookups to defense-in-depth: private VPC tenancy, hybrid dense/sparse retrieval with pgvector and BM25, and strict document-level Access Control List (ACL) projection before inference.</p>
+<ul>
+<li>Naive RAG pipelines risk data exfiltration across organizational boundaries if vector databases lack metadata-level security filtering.</li>
+<li>Hybrid semantic indexing (embedding vectors + BM25 full-text rank fusion) yields 28% higher retrieval precision than pure dense vector matching.</li>
+<li>Zero-data-leakage architectures isolate inference endpoints within private subnets with Customer-Managed Encryption Keys (CMEK).</li>
+</ul>
+</blockquote>
+<p>Retrieval-Augmented Generation (RAG) has matured from experimental prototypes into the standard architecture for enterprise knowledge retrieval. However, deploying RAG on sensitive business corpora introduces critical security risks: unauthorized lateral data access, prompt injection through untrusted documents, and model training leakage. Here is how AEITCH architects deterministic, zero-leakage enterprise RAG systems.</p>
+<h2>1. The Multi-Tenant Security Boundary Problem in Naive RAG</h2>
+<p>In standard tutorials, documents are parsed, chunked, embedded via an external API, and loaded into an open vector store. When an employee asks a question, the vector store fetches the nearest cosine-distance chunks and injects them into the LLM context prompt.</p>
+<p>In an enterprise setting, this pattern creates catastrophic data leakage. An engineer asking about corporate infrastructure might inadvertently receive chunks from unreleased financial disclosures or confidential HR investigations if the retrieval layer does not evaluate user permissions before computing vector similarity.</p>
+<p>True enterprise RAG must decouple retrieval indexing from query-time permission authorization. Security tokens must be validated at the database query boundary before any chunk reaches the language model prompt buffer.</p>
+<h2>2. Deterministic ACL Projection with PostgreSQL and pgvector</h2>
+<p>Rather than maintaining separate vector databases that duplicate your relational security hierarchy, modern enterprise architectures benefit from co-locating embeddings directly inside PostgreSQL using the pgvector extension. This allows single-query, atomic joins between vector similarity searches and row-level security (RLS) policies.</p>
+<p>Below is a production SQL schema implementing hybrid vector retrieval with strict role-based document access controls:</p>
+<p><em>Production PostgreSQL + pgvector query enforcing Row-Level Security and similarity thresholds</em></p>
+<pre><code>-- Enable vector extension
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Document chunks table with enterprise tenancy and access roles
+CREATE TABLE enterprise_chunks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    document_id UUID NOT NULL,
+    organization_id UUID NOT NULL,
+    authorized_roles TEXT[] NOT NULL,
+    content TEXT NOT NULL,
+    dense_embedding vector(1536), -- e.g. text-embedding-3-large
+    tsv_content tsvector GENERATED ALWAYS AS (to_tsvector(&apos;english&apos;, content)) STORED,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Hybrid query: dense vector + sparse keyword search filtered by user role
+CREATE OR REPLACE FUNCTION match_enterprise_chunks (
+    query_embedding vector(1536),
+    query_text TEXT,
+    org_id UUID,
+    user_roles TEXT[],
+    match_threshold FLOAT,
+    match_count INT
+)
+RETURNS TABLE (
+    id UUID,
+    content TEXT,
+    similarity FLOAT
+)
+LANGUAGE plpgsql STABLE AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id,
+        c.content,
+        (1 - (c.dense_embedding &lt;=&gt; query_embedding)) AS similarity
+    FROM enterprise_chunks c
+    WHERE c.organization_id = org_id
+      AND c.authorized_roles &amp;&amp; user_roles
+      AND (1 - (c.dense_embedding &lt;=&gt; query_embedding)) &gt; match_threshold
+    ORDER BY c.dense_embedding &lt;=&gt; query_embedding
+    LIMIT match_count;
+END;
+$$;</code></pre>
+<h2>3. Hybrid Dense-Sparse Retrieval and Reciprocal Rank Fusion (RRF)</h2>
+<p>Dense vector embeddings excel at capturing conceptual meaning but routinely fail on exact alphanumerics: product model numbers, customer IDs, acronyms, and error codes. Sparse search (BM25) excels at exact string matches but struggles with synonymy.</p>
+<p>AEITCH production pipelines employ Reciprocal Rank Fusion (RRF), running dense and sparse queries in parallel and merging their rankings using formula RRF_Score = sum(1 / (k + rank)). This guarantees that exact keyword references and semantic intent both surface reliably in the top 5 chunks.</p>
+<h2>4. Defense-in-Depth Pipeline Architecture</h2>
+<p>To achieve comprehensive zero-leakage compliance, the RAG orchestration pipeline must follow four distinct quarantine stages:</p>
+<p>1. Ingestion Quarantine: Files undergo malware inspection, PII redaction (via Microsoft Presidio or custom regex tokenizers), and deterministic chunk splitting before vectorization.</p>
+<p>2. VPC Tenancy: Embeddings are generated using private VPC endpoints (e.g. AWS PrivateLink or Azure Private Link), ensuring zero document content traverses the public internet.</p>
+<p>3. Output Guardrails: Model outputs pass through a deterministic post-processing layer that scans for hallucinated credentials, prompt-leaked instructions, or PII before presentation to the end user.</p>
+<h2>References</h2><ul>
+<li><a href="https://github.com/pgvector/pgvector">PostgreSQL pgvector Documentation</a> — Official documentation for open-source vector similarity search for Postgres.</li>
+<li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST Artificial Intelligence Risk Management Framework (AI RMF 1.0)</a> — Federal guidelines on governance, mapping, and measuring AI security and privacy risks.</li>
+</ul>
+<p>Originally published at <a href="https://www.aeitch.com/insights/private-rag-enterprise-architecture">https://www.aeitch.com/insights/private-rag-enterprise-architecture</a>.</p>]]></content:encoded>
     </item>
   </channel>
 </rss>

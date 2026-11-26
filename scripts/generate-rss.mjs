@@ -20,9 +20,76 @@ function escapeXml(str = '') {
     .replace(/'/g, '&apos;');
 }
 
+function escapeCdata(html = '') {
+  return String(html).replace(/\]\]>/g, ']]]]><![CDATA[>');
+}
+
 function toRfc822(isoDate) {
   const date = new Date(`${isoDate}T00:00:00Z`);
   return Number.isNaN(date.getTime()) ? new Date().toUTCString() : date.toUTCString();
+}
+
+function articleToHtml(article) {
+  const articleUrl = `${SITE_URL}/insights/${article.slug}`;
+  const parts = [];
+
+  if (article.summaryBox) {
+    parts.push(`<blockquote><p><strong>Executive Summary:</strong> ${escapeXml(article.summaryBox.coreTakeaway)}</p>`);
+    if (article.summaryBox.keyPoints?.length) {
+      parts.push('<ul>');
+      for (const pt of article.summaryBox.keyPoints) {
+        parts.push(`<li>${escapeXml(pt)}</li>`);
+      }
+      parts.push('</ul>');
+    }
+    parts.push('</blockquote>');
+  }
+
+  if (article.content?.lead) {
+    parts.push(`<p>${escapeXml(article.content.lead)}</p>`);
+  }
+
+  for (const section of article.content?.sections || []) {
+    parts.push(`<h2>${escapeXml(section.heading)}</h2>`);
+    if (section.subheading) {
+      parts.push(`<h3>${escapeXml(section.subheading)}</h3>`);
+    }
+    for (const p of section.paragraphs || []) {
+      parts.push(`<p>${escapeXml(p)}</p>`);
+    }
+    if (section.codeSnippet?.code) {
+      if (section.codeSnippet.caption) {
+        parts.push(`<p><em>${escapeXml(section.codeSnippet.caption)}</em></p>`);
+      }
+      parts.push(`<pre><code>${escapeXml(section.codeSnippet.code)}</code></pre>`);
+    }
+    if (section.comparisonTable?.headers?.length) {
+      parts.push('<table><thead><tr>');
+      for (const h of section.comparisonTable.headers) {
+        parts.push(`<th>${escapeXml(h)}</th>`);
+      }
+      parts.push('</tr></thead><tbody>');
+      for (const row of section.comparisonTable.rows || []) {
+        parts.push('<tr>');
+        for (const cell of row) {
+          parts.push(`<td>${escapeXml(cell)}</td>`);
+        }
+        parts.push('</tr>');
+      }
+      parts.push('</tbody></table>');
+    }
+  }
+
+  if (article.content?.references?.length) {
+    parts.push('<h2>References</h2><ul>');
+    for (const ref of article.content.references) {
+      parts.push(`<li><a href="${escapeXml(ref.url)}">${escapeXml(ref.title)}</a> — ${escapeXml(ref.annotation)}</li>`);
+    }
+    parts.push('</ul>');
+  }
+
+  parts.push(`<p>Originally published at <a href="${articleUrl}">${articleUrl}</a>.</p>`);
+  return parts.join('\n');
 }
 
 async function generateRss() {
@@ -47,7 +114,7 @@ async function generateRss() {
   const lastBuildDate = toRfc822(sortedArticles[0].publishDate);
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml += '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n';
+  xml += '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n';
   xml += '  <channel>\n';
   xml += '    <title>AEITCH Technical Insights</title>\n';
   xml += `    <link>${SITE_URL}/insights</link>\n`;
@@ -61,6 +128,7 @@ async function generateRss() {
     const summaryText = article.summaryBox?.coreTakeaway
       ? `${article.metaDescription} — ${article.summaryBox.coreTakeaway}`
       : article.metaDescription;
+    const htmlBody = articleToHtml(article);
 
     xml += '    <item>\n';
     xml += `      <title>${escapeXml(article.title)}</title>\n`;
@@ -69,6 +137,7 @@ async function generateRss() {
     xml += `      <pubDate>${toRfc822(article.publishDate)}</pubDate>\n`;
     xml += `      <category>${escapeXml(article.category)}</category>\n`;
     xml += `      <description>${escapeXml(summaryText)}</description>\n`;
+    xml += `      <content:encoded><![CDATA[${escapeCdata(htmlBody)}]]></content:encoded>\n`;
     xml += '    </item>\n';
   }
 
